@@ -1,4 +1,14 @@
-# uCode3 — HomeNest (Application Layer)
+# HomeNest — Legacy Implementation Inventory
+
+> **Architecture reset (2026-08-20):** HomeNest is a separate household media
+> and automation product, not uCode3 and not part of the uCode 1/2 sprint
+> sequence. The repository appears to contain useful working vertical slices;
+> duplicated layouts and old boundaries need consolidation before further
+> expansion. See
+> [`docs/RESET_AND_RESCAFFOLD_PLAN.md`](docs/RESET_AND_RESCAFFOLD_PLAN.md).
+> The content below is retained as historical implementation context.
+
+# Historical: uCode3 — HomeNest (Application Layer)
 
 **Ownership:** uDosGo  
 **Core Language:** Python + Rust  
