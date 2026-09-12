@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-12",
+  "records": [
+    {
+      "path": "HOMENEST_README.md",
+      "archive": "docs/archive/pre-revival/HOMENEST_README.md",
+      "sha256": "daec77b965d084052259a1b19907eb765135152d62f2de63ae3828b8969fd40f",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "FIRST-TIME-INSTALL.md",
+      "archive": "docs/archive/pre-revival/FIRST-TIME-INSTALL.md",
+      "sha256": "2e7a84b715aacf944c9b9153ada77c7c311898804b1f34b812200da4e174ad08",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "QUICKSTART.md",
+      "archive": "docs/archive/pre-revival/QUICKSTART.md",
+      "sha256": "aabdb2ea8dfbf99cca226c1656a81a73096a74d2458adcba2b10058b32d9a9d2",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "TASKS.md",
+      "archive": "docs/archive/pre-revival/TASKS.md",
+      "sha256": "74a13c3c5f84d59e8bb8f419cc9e7dadc1fc311e246a8e8f8ded41ba68f58dc4",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/RESET_AND_RESCAFFOLD_PLAN.md",
+      "archive": "docs/archive/pre-revival/docs/RESET_AND_RESCAFFOLD_PLAN.md",
+      "sha256": "070c1a2022cc8619ca149c5d54870dfb48e127dcf1151c1c856afa26291deb2e",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/UCODE3_GETTING_STARTED.md",
+      "archive": "docs/archive/pre-revival/docs/UCODE3_GETTING_STARTED.md",
+      "sha256": "ff16eb592e209bfe4cc2c2205ee28d7afaaf197e76ae7ea84a517b0e5cef2af1",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "archive": "docs/archive/pre-revival/docs/ROADMAP.md",
+      "sha256": "23229518396e30de44330962c3dab48b3cc2b70b5a2a6abdb919f3a0a9364fc9",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/ROADMAP-UPDATE-20260420.md",
+      "archive": "docs/archive/pre-revival/docs/ROADMAP-UPDATE-20260420.md",
+      "sha256": "1aa74c6373285cd1c21ff1ff3747194e34154428cb81714ada11cce49e6cd548",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/dev-plan/SPRINT_PLAN_v1.md",
+      "archive": "docs/archive/pre-revival/docs/dev-plan/SPRINT_PLAN_v1.md",
+      "sha256": "d493def4f111fb2357d7c49452cdaee266a27cd1909ba8435d54ebdabec1ea2a",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    },
+    {
+      "path": "docs/specs/HOMENEST_v1_SPEC.md",
+      "archive": "docs/archive/pre-revival/docs/specs/HOMENEST_v1_SPEC.md",
+      "sha256": "acc45160f3a8ff3b4025565ffcfff1fe5f820ca454cfbc563b2fa5ab5253ad83",
+      "disposition": "Historical text archived; original path is now a redirect, not active instructions"
+    }
+  ],
+  "runtime_disposition": "Preserved pending characterization; no provider/runtime tree deleted."
+}

@@ -21,7 +21,12 @@ _PRESENTATION_MODES = {"auto", "kiosk", "desktop"}
 
 
 def _playback_queue_path() -> Path:
-    return get_repo_root() / "memory" / "bank" / "uhome" / "playback_queue.json"
+    from uhome_server.config import get_homenest_state_dir
+    primary = get_homenest_state_dir() / "playback" / "playback_queue.json"
+    legacy = get_repo_root() / "memory" / "bank" / "uhome" / "playback_queue.json"
+    if primary.exists():
+        return primary
+    return legacy if legacy.exists() else primary
 
 
 def _load_json_list(path: Path) -> list[dict[str, Any]]:
@@ -157,6 +162,8 @@ class PlaybackService:
             _save_json_list(_playback_queue_path(), queue)
             return {
                 "success": True,
+                "status": "queued",
+                "acknowledged": False,
                 "item_id": item_id.strip(),
                 "target_client": resolved_target,
                 "source": default_target_source if use_default_target else "request",

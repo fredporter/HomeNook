@@ -1,0 +1,889 @@
+{
+  "date": "2026-09-12",
+  "source_head": "1408cafef2aaff848d4e19d32cb4dee52997c01a",
+  "note": "Hashes identify current sources, not verified behavior. Identical files can still have different import/entrypoint context.",
+  "candidates": [
+    {
+      "path": "matter/.github/CODEOWNERS",
+      "sha256": "92253c5fdf53a0689dd2b5b1da8fff53484ccff49a582f4fa4d0d76fb142b870",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/ISSUE_TEMPLATE/binder-backed-work-item.yml",
+      "sha256": "1b3e92286efe4ee072c789a43a3e253771de10b3d0f019649bea9a682f61007f",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/ISSUE_TEMPLATE/cross-repo-boundary-change.yml",
+      "sha256": "1593907a2edc03cbb4bd4efd52c78e4ae1ff003ffb66db8aaa601b02a3161666",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "63797de7b6c796a84e070f10abe557a147061cedae385dfa160e9ab86d1c39b9",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/PULL_REQUEST_TEMPLATE/release-promotion.md",
+      "sha256": "0b33021ec57d323fc4fee77810fe2a61a4b0ed18a68f655cae88a08c56f02623",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/workflows/family-policy-check.yml",
+      "sha256": "1ff7285c5fc22c622b46def88315455af815f00d577608dc757438d1bff4676e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/workflows/promote.yml",
+      "sha256": "fb5756b68ec4be46952cbe9a4c83cbfa94a0097bdb58e5fa61e457936e91028d",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/workflows/release.yml",
+      "sha256": "1d94577e28b690c91ebb499ae71ead8d7045564ac5176c0d473250c11783214d",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/.github/workflows/validate.yml",
+      "sha256": "e2f4391c6195380e9b16f832002f4bdc18b417687fbf82215543ba13e0b5d1eb",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/CHANGELOG.md",
+      "sha256": "8aef650ff56eff4ad3227dcd9810d3eee1a1b2bd871e56b08ca98b993e287d27",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/README.md",
+      "sha256": "c9672688c89ab66a324e4c7f90c6717ab2f75cdb1ebeda6dea6016c8446516bc",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/VERSION",
+      "sha256": "a42caf4a54bbbe27aa45b6efbc6356c5e299b19763e728b6cdb7201b02ebbe36",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/config/README.md",
+      "sha256": "ea4c5b199ea86a2e0adf2fc3bfd2fbb6afdb7898106cb7d714615a8043c8f5b2",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/config/bridge-targets.example.json",
+      "sha256": "909acd9338e55ae05d9a92045b70b76f1fd03c080177107bdf292904a4073fd8",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/config/matter-bridge-home-assistant-definition.json",
+      "sha256": "ec6b77ef6bdebd6d981445d8f7186728c42f5179ee1638f4fd157ad427a7c724",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/activation.md",
+      "sha256": "aa58bf89927e3b6a1a7a8d83f58ed7ab6f323ee3d642756ad7cdb82c95e4db80",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/architecture.md",
+      "sha256": "94baa25a9b0e63f3f0d3d99b767ace9a41011c5caef5fa755734c3f6fa03da9a",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/boundary.md",
+      "sha256": "cc6df23ec200c1c04d8c79e81c9dc733fddf6434240ec5ec4dbf46a9b96af45a",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/examples.md",
+      "sha256": "cf2399589400486dcb5071bda8c2c5b24b1eac2dfec78034a2ca9f198f5c08ba",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/getting-started.md",
+      "sha256": "4fd4c70cf3a57c77f76bf9aaca1a20ad61d053d7f6d6aeacb4356a4909b5ddc7",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/release-policy.md",
+      "sha256": "0eb4fe9c0f68f3c4ff08cc64b4b07b3b3b31aa48182bd2d43c06f29f3368ba53",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/docs/server-runtime-handoff.md",
+      "sha256": "d385db1beca77fbee09c8223d871b8aa35a3943b7f92804888a54db65103af8f",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/examples/README.md",
+      "sha256": "e2af47499052af14717c47a1936c3bd42f1cc74b4f4199c370c3c55055a5edac",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/examples/basic-home-assistant-clone.json",
+      "sha256": "bca0e5267cd6bc76524b8ebd5e595b522f1c8399539bc88dfc52e23a5fc4313c",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/examples/basic-matter-bridge.json",
+      "sha256": "d701fb11b7b15075beac9945e9f95418932808b3cbedec7f706e4fe4cc8326dd",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/scripts/README.md",
+      "sha256": "bd404e0d7d95e1a81c20c17ec3036d174466a7f1b0be418a67c075451868334c",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/scripts/run-uhome-matter-checks.sh",
+      "sha256": "fec609cb02f2091c892024f23c1a9ba90cda8ab55ba53540976b3ebb595eb8ce",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/src/README.md",
+      "sha256": "b6d042ecd9df9601c079c6c82f7feb6625985ec02ed54326e181d35a99422665",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/src/home-assistant-bridge-definition.json",
+      "sha256": "cf0d32530cc28345033ee767544768f76cfde2ac633446da2b551dd09818cb2a",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/src/matter-bridge-contract.json",
+      "sha256": "bb0fbb1cf5ec3fbe7401acbdb27b5fe7e42167fc5bf0c1c86baa023e1b7108f0",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/src/matter-clone-catalog.json",
+      "sha256": "8a50b58c9a6774c96b6c7ab997ec29b091092d5b785a9a1ee10eac26a8bebce6",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/tests/README.md",
+      "sha256": "791f8f7d62def1f8eb9b1d1ac1a61303a5172a0eec84de76976bdc6ceb4db16e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "matter/wiki/README.md",
+      "sha256": "282b6b99c7c890989c633b98fb444312bf4a52ddd512c4eae1ed4f192696026c",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/modules/home_assistant_bridge/README.md",
+      "sha256": "99a66c03d4a22c37bf2e486089a77f72140d416e312211eb6919c672cf0e4da2",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/modules/home_assistant_bridge/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/modules/home_assistant_bridge/client.py",
+      "sha256": "8b891a1b0993f40480d24cd74a7150dc06270def62e76fc31c54a6347718e92e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/automation_store.py",
+      "sha256": "ed19cae7f893e147cac2fd418de9c3b6dac0fc36a7687cdb810bc9d563170450",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/routes/home_assistant.py",
+      "sha256": "3a3110fa75e50f1635d5b6c6f8211122d7aaee54288690b2ee46ee78d246164e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/__init__.py",
+      "sha256": "1bc0bfb3f5cfc3e203ea00bfcc6a8f3069cc70508f8dc7cd8e21005cd8105607",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/__main__.py",
+      "sha256": "f3d0925e5d0d5d7d9916cffb233b547df4d4b2338f728e614437ba6c71ccb8b6",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/api/__init__.py",
+      "sha256": "8d755df091f85ce24bb400d3266e5fe496346f16c657ca0274d3f61023b0285b",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/api/rest.py",
+      "sha256": "63b2c542580781c146ca9c68984af8abc5632ba0da08d34659b3c70c94ca9b54",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/api/websocket.py",
+      "sha256": "dd26aad862123f23ea6fe34971e48dee2b1f3a725cb5059bb39e9eaa80c64ee0",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/devices.py",
+      "sha256": "9b88e481e3dc60aec14f547765cab98c071f6dfec30d5354c5c47801a476b87e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/gateway/__init__.py",
+      "sha256": "84a28ccc0c51b7b1b2fcfb6fce6b3578ef919b73a3837e18507b967e383f9200",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/gateway/manager.py",
+      "sha256": "b8d44d5adbb98a6fecffd6c8a2e6e5546930079be6db7f6eaef427255731a98b",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/schemas/__init__.py",
+      "sha256": "bf8a4916e6895d34a6db10a3897c7a3b18869dc72268d8e234180c0180684ad1",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/schemas/device.py",
+      "sha256": "e96445a83e69f5d9aa6cb449e10b8dcb91d65cd55284ae774e61cd4b667bea21",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/schemas/entity.py",
+      "sha256": "a8d7813e14f55a093d4e5cd96f1f06063ce7091c89db8a64ea53e8fa35a99c45",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/schemas/gateway.py",
+      "sha256": "0a6bc794fb6865570b855e84c7cc56b2b4d2c66a1b5a7fea85ad6e64a095b127",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant/service.py",
+      "sha256": "b4b26414dc94d671dde502aa8000adefcff03ba90399e04aee2edd6edbe60e29",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/home_assistant_service.py",
+      "sha256": "4b1fc0be0737dceafd899b2762ab80f82a7bfea24c4313cc2d42ef5f4a85c3d2",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/src/uhome_server/services/rules_engine.py",
+      "sha256": "df93998af75acc61f29e296e67b5808365f62f8dbc6e23e25f04458b58745b73",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_home_assistant_bridge_definition.py",
+      "sha256": "a7d0bcc43e2bde1f0becd7e2c6e5b2901687e72145535474f95c2a1b2f03c125",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_home_assistant_routes.py",
+      "sha256": "000dcfa186bb6ae7920f8fce442f0ba0a5bef8df6345cc3a959e49a242ef8f18",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_rules_engine_integration.py",
+      "sha256": "42f4de32759675ed36501f92ddbab35abf59a76e6a92acf280d76dc68b7ad670",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_rules_engine_integration_health.py",
+      "sha256": "1e602c5ede25122270a64736dc31736c945445c62138d1b53ae1d7591b20d5ea",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_rules_engine_integration_mission_control.py",
+      "sha256": "855a65704304203a7ed2aac39ed35702ffccd173dfb65e0731561a9812189712",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "server/tests/test_rules_engine_integration_other.py",
+      "sha256": "0927fd78f2ae33fd5fc7596826f5532fa4d768ba56e2fe66ebf057e218dd791b",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/__pycache__/automation_store.cpython-311.pyc",
+      "sha256": "39a0660c75e11ecb950ff03509e34696ffc4be5bf5d37db435a81e98cdf5c865",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/automation_store.py",
+      "sha256": "ed19cae7f893e147cac2fd418de9c3b6dac0fc36a7687cdb810bc9d563170450",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/installer/__init__.py",
+      "sha256": "aab77f9e7c942a47e5020622cd9df9d178966fb1c96e0ed636c7f8610f5e8c39",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/bundle.py",
+      "sha256": "66736e5fed41f4856ebaebd07af8daf20f6f584c3d781c73a5fd6909aeebcee3",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/executor.py",
+      "sha256": "0c2a067e57b26563aaafa693dff793e9c99dcd7f47f97251f8c37e8dd10789a6",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/health.py",
+      "sha256": "7cfc076b456fd9d8ac67829558291792c297e021cb8199686aeccd3225b27567",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/linux_assets.py",
+      "sha256": "c5092f9497e75dffa187050ef26d0171049cf1bc180c745291f8f8f9b20d72d5",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/live_apply.py",
+      "sha256": "7e79a9c2242dd67a19013b72617e5bfb22e482ddf4a4e88d8bb7c685695b49e3",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/plan.py",
+      "sha256": "5946e46861550aa96592b6cd7df92ccc31c6bbdf7c7b422e1721fbb7b1d72d69",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/preflight.py",
+      "sha256": "e994ca641797044ce132df44ff4e079352e03658e9cf5cce8a91bd5e5487c01c",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/prerequisites.py",
+      "sha256": "eb680ee65c7166ce17c6b9772ac1eabd250958d27a45768343fbc07fb872c203",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/promotion.py",
+      "sha256": "a7ecd4d1cc73f7cccea423a382007cd01ef27df797a3a6f08061976133ed2295",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/service_manifest.py",
+      "sha256": "38dcb4832b95ad639fdef4786bdf25cd06509c7fa049af9705177db4163dc3ae",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/installer/staging.py",
+      "sha256": "ffd9fdcc4e810323cf2ab2e0b29842a3cf88327d7c4857f8eca685bb00c0dd87",
+      "disposition": "compare generic installer behavior with Sonic; retain app payload ownership"
+    },
+    {
+      "path": "src/uhome_server/routes/__pycache__/home_assistant.cpython-311.pyc",
+      "sha256": "f69be80b32f950aa6271fb1bb5eaf89e19bd060ea036efe7207be6984c28d450",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/routes/home_assistant.py",
+      "sha256": "3a3110fa75e50f1635d5b6c6f8211122d7aaee54288690b2ee46ee78d246164e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/__pycache__/home_assistant_service.cpython-311.pyc",
+      "sha256": "db1f147936067a374f6a89de5be132104ffb09c2e77821010f8065a5b78a8575",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/__init__.py",
+      "sha256": "1bc0bfb3f5cfc3e203ea00bfcc6a8f3069cc70508f8dc7cd8e21005cd8105607",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/__main__.py",
+      "sha256": "f3d0925e5d0d5d7d9916cffb233b547df4d4b2338f728e614437ba6c71ccb8b6",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/api/__init__.py",
+      "sha256": "8d755df091f85ce24bb400d3266e5fe496346f16c657ca0274d3f61023b0285b",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/api/rest.py",
+      "sha256": "63b2c542580781c146ca9c68984af8abc5632ba0da08d34659b3c70c94ca9b54",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/api/websocket.py",
+      "sha256": "dd26aad862123f23ea6fe34971e48dee2b1f3a725cb5059bb39e9eaa80c64ee0",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/devices.py",
+      "sha256": "9b88e481e3dc60aec14f547765cab98c071f6dfec30d5354c5c47801a476b87e",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/gateway/__init__.py",
+      "sha256": "84a28ccc0c51b7b1b2fcfb6fce6b3578ef919b73a3837e18507b967e383f9200",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/gateway/manager.py",
+      "sha256": "b8d44d5adbb98a6fecffd6c8a2e6e5546930079be6db7f6eaef427255731a98b",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/schemas/__init__.py",
+      "sha256": "bf8a4916e6895d34a6db10a3897c7a3b18869dc72268d8e234180c0180684ad1",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/schemas/device.py",
+      "sha256": "e96445a83e69f5d9aa6cb449e10b8dcb91d65cd55284ae774e61cd4b667bea21",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/schemas/entity.py",
+      "sha256": "a8d7813e14f55a093d4e5cd96f1f06063ce7091c89db8a64ea53e8fa35a99c45",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/schemas/gateway.py",
+      "sha256": "0a6bc794fb6865570b855e84c7cc56b2b4d2c66a1b5a7fea85ad6e64a095b127",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant/service.py",
+      "sha256": "b4b26414dc94d671dde502aa8000adefcff03ba90399e04aee2edd6edbe60e29",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/home_assistant_service.py",
+      "sha256": "4b1fc0be0737dceafd899b2762ab80f82a7bfea24c4313cc2d42ef5f4a85c3d2",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/rules_engine.py",
+      "sha256": "58b3fa3f717e073df026ac33fc95ada383292b7b3574859715a406c3e7245c73",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/rules_engine_events.py",
+      "sha256": "8510c04d1c8d2d638fe98421f337454c4358bed46eddac5ff57548fb283d92c0",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/rules_engine_health.py",
+      "sha256": "96b2f0124b6cf1e83e9d81d8f21a8774d8e101fe8ac2cbc45a86ebfdeaf4aa04",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/rules_engine_mission_control.py",
+      "sha256": "71ec8f6f9dfb0670f5411e35b349a2c3ecb8326bbab2c789da89637181d4b2ce",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "src/uhome_server/services/rules_engine_other.py",
+      "sha256": "4f8e78db7f58e5726c4081831780c83e33553863783816b87c747fee6c458c02",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "tests/test_home_assistant_bridge_definition.py",
+      "sha256": "a7d0bcc43e2bde1f0becd7e2c6e5b2901687e72145535474f95c2a1b2f03c125",
+      "disposition": "review for separate HA adapter"
+    },
+    {
+      "path": "tests/test_home_assistant_routes.py",
+      "sha256": "000dcfa186bb6ae7920f8fce442f0ba0a5bef8df6345cc3a959e49a242ef8f18",
+      "disposition": "review for separate HA adapter"
+    }
+  ],
+  "backend_pairs": [
+    {
+      "primary": "src/uhome_server/backup.py",
+      "duplicate": "server/src/uhome_server/backup.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/config.py",
+      "duplicate": "server/src/uhome_server/config.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/automation_store.py",
+      "duplicate": "server/src/uhome_server/automation_store.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sync_store.py",
+      "duplicate": "server/src/uhome_server/sync_store.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/__init__.py",
+      "duplicate": "server/src/uhome_server/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/thin_pages.py",
+      "duplicate": "server/src/uhome_server/thin_pages.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/cli.py",
+      "duplicate": "server/src/uhome_server/cli.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/app.py",
+      "duplicate": "server/src/uhome_server/app.py",
+      "identical": false
+    },
+    {
+      "primary": "src/uhome_server/workspace.py",
+      "duplicate": "server/src/uhome_server/workspace.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sync_records.py",
+      "duplicate": "server/src/uhome_server/sync_records.py",
+      "identical": false
+    },
+    {
+      "primary": "src/uhome_server/__main__.py",
+      "duplicate": "server/src/uhome_server/__main__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/uhome_network_policy.py",
+      "duplicate": "server/src/uhome_server/uhome_network_policy.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/migrations/__init__.py",
+      "duplicate": "server/src/uhome_server/migrations/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/migrations/wizard_to_kiosk.py",
+      "duplicate": "server/src/uhome_server/migrations/wizard_to_kiosk.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/cluster/registry.py",
+      "duplicate": "server/src/uhome_server/cluster/registry.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/cluster/__init__.py",
+      "duplicate": "server/src/uhome_server/cluster/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/library/catalog.py",
+      "duplicate": "server/src/uhome_server/library/catalog.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/library/clone_manager.py",
+      "duplicate": "server/src/uhome_server/library/clone_manager.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/library/__init__.py",
+      "duplicate": "server/src/uhome_server/library/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/service_manifest.py",
+      "duplicate": "server/src/uhome_server/installer/service_manifest.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/bundle.py",
+      "duplicate": "server/src/uhome_server/installer/bundle.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/plan.py",
+      "duplicate": "server/src/uhome_server/installer/plan.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/live_apply.py",
+      "duplicate": "server/src/uhome_server/installer/live_apply.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/prerequisites.py",
+      "duplicate": "server/src/uhome_server/installer/prerequisites.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/promotion.py",
+      "duplicate": "server/src/uhome_server/installer/promotion.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/health.py",
+      "duplicate": "server/src/uhome_server/installer/health.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/__init__.py",
+      "duplicate": "server/src/uhome_server/installer/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/linux_assets.py",
+      "duplicate": "server/src/uhome_server/installer/linux_assets.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/staging.py",
+      "duplicate": "server/src/uhome_server/installer/staging.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/executor.py",
+      "duplicate": "server/src/uhome_server/installer/executor.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/installer/preflight.py",
+      "duplicate": "server/src/uhome_server/installer/preflight.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/uhome_bundle.py",
+      "duplicate": "server/src/uhome_server/sonic/uhome_bundle.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/live_apply.py",
+      "duplicate": "server/src/uhome_server/sonic/live_apply.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/promotion.py",
+      "duplicate": "server/src/uhome_server/sonic/promotion.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/health.py",
+      "duplicate": "server/src/uhome_server/sonic/health.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/__init__.py",
+      "duplicate": "server/src/uhome_server/sonic/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/uhome_installer.py",
+      "duplicate": "server/src/uhome_server/sonic/uhome_installer.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/linux_assets.py",
+      "duplicate": "server/src/uhome_server/sonic/linux_assets.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/staging.py",
+      "duplicate": "server/src/uhome_server/sonic/staging.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/executor.py",
+      "duplicate": "server/src/uhome_server/sonic/executor.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/sonic/uhome_preflight.py",
+      "duplicate": "server/src/uhome_server/sonic/uhome_preflight.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/usx.py",
+      "duplicate": "server/src/uhome_server/routes/usx.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/playback.py",
+      "duplicate": "server/src/uhome_server/routes/playback.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/library.py",
+      "duplicate": "server/src/uhome_server/routes/library.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/health.py",
+      "duplicate": "server/src/uhome_server/routes/health.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/containers.py",
+      "duplicate": "server/src/uhome_server/routes/containers.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/client.py",
+      "duplicate": "server/src/uhome_server/routes/client.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/__init__.py",
+      "duplicate": "server/src/uhome_server/routes/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/runtime.py",
+      "duplicate": "server/src/uhome_server/routes/runtime.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/platform.py",
+      "duplicate": "server/src/uhome_server/routes/platform.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/dashboard.py",
+      "duplicate": "server/src/uhome_server/routes/dashboard.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/household.py",
+      "duplicate": "server/src/uhome_server/routes/household.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/network.py",
+      "duplicate": "server/src/uhome_server/routes/network.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/launcher.py",
+      "duplicate": "server/src/uhome_server/routes/launcher.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/channels.py",
+      "duplicate": "server/src/uhome_server/routes/channels.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/routes/home_assistant.py",
+      "duplicate": "server/src/uhome_server/routes/home_assistant.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/uhome_presentation_service.py",
+      "duplicate": "server/src/uhome_server/services/uhome_presentation_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/uhome_command_handlers.py",
+      "duplicate": "server/src/uhome_server/services/uhome_command_handlers.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/channel_service.py",
+      "duplicate": "server/src/uhome_server/services/channel_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant_service.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/client_capability_service.py",
+      "duplicate": "server/src/uhome_server/services/client_capability_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/__init__.py",
+      "duplicate": "server/src/uhome_server/services/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/playback_service.py",
+      "duplicate": "server/src/uhome_server/services/playback_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/rules_engine.py",
+      "duplicate": "server/src/uhome_server/services/rules_engine.py",
+      "identical": false
+    },
+    {
+      "primary": "src/uhome_server/services/household_service.py",
+      "duplicate": "server/src/uhome_server/services/household_service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/job_queue.py",
+      "duplicate": "server/src/uhome_server/services/job_queue.py",
+      "identical": false
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/service.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/service.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/__init__.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/devices.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/devices.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/__main__.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/__main__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/schemas/gateway.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/schemas/gateway.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/schemas/device.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/schemas/device.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/schemas/__init__.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/schemas/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/schemas/entity.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/schemas/entity.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/api/rest.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/api/rest.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/api/__init__.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/api/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/api/websocket.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/api/websocket.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/gateway/__init__.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/gateway/__init__.py",
+      "identical": true
+    },
+    {
+      "primary": "src/uhome_server/services/home_assistant/gateway/manager.py",
+      "duplicate": "server/src/uhome_server/services/home_assistant/gateway/manager.py",
+      "identical": true
+    }
+  ]
+}

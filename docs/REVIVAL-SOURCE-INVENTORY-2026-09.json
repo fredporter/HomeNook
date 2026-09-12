@@ -1,0 +1,1591 @@
+{
+  "date": "2026-09-10",
+  "git_head": "1408cafef2aaff848d4e19d32cb4dee52997c01a",
+  "scope": "Tracked documentation, contracts and configuration before revival edits; hashes are provenance, not proof of implementation. Untracked/generated artifacts excluded.",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/binder-backed-work-item.yml",
+      "sha256": "d4d85f6510ba93a87f2a55f5c8b148eb62f63f0df6818e17de7a977ab93e03e7"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/cross-repo-boundary-change.yml",
+      "sha256": "e6c4f045b373247566f741b3043eb54680504980db3f8de574075d12d7c6d7a0"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE/release-promotion.md",
+      "sha256": "0b33021ec57d323fc4fee77810fe2a61a4b0ed18a68f655cae88a08c56f02623"
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "sha256": "63797de7b6c796a84e070f10abe557a147061cedae385dfa160e9ab86d1c39b9"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "e94c2570d4c04e9ab032657a6542593ee43fac233b907f25ca33f6d736fa2f48"
+    },
+    {
+      "path": ".github/workflows/family-policy-check.yml",
+      "sha256": "1ff7285c5fc22c622b46def88315455af815f00d577608dc757438d1bff4676e"
+    },
+    {
+      "path": ".github/workflows/promote.yml",
+      "sha256": "fb5756b68ec4be46952cbe9a4c83cbfa94a0097bdb58e5fa61e457936e91028d"
+    },
+    {
+      "path": ".github/workflows/python-ci.yml",
+      "sha256": "d05ef2645300d5c72199061ff0e056eb8b073eaab1b6ee62e5f6422d84f6a230"
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha256": "d25d8029b76b75a6e2e1d0f02e20cce8ff7ba6f61a428a212d5ba3f21345333d"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "e2f4391c6195380e9b16f832002f4bdc18b417687fbf82215543ba13e0b5d1eb"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "25d4fa09581dd2d068093486644db9b394073d764ca9cfb7a0e667fe92ded966"
+    },
+    {
+      "path": "FIRST-TIME-INSTALL.md",
+      "sha256": "cc18da4832cdb9970f0e2c4a0ba54fee8bc56849b3e2c4cbb24db922b07e8af1"
+    },
+    {
+      "path": "HOMENEST_README.md",
+      "sha256": "81b485a238709f55a063d7cc9429a352d990500ae639dccb50fdf099a1fe8da6"
+    },
+    {
+      "path": "QUICKSTART.md",
+      "sha256": "9d0b154b6078168172dfa9982f4449676aaf417d1f0132fa7e1ceac8c390ee90"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3583e23c2f7facb009c01dd9f7c9ddd6695f1c2e22a0530cc3c2928060de7983"
+    },
+    {
+      "path": "TASKS.md",
+      "sha256": "a233261adc6bcea307e71e858493f8b69709df355256bbb1467bd13af3766d49"
+    },
+    {
+      "path": "apps/README.md",
+      "sha256": "c04740e75325836c3cc3c6feed4a24b6bda3e01d30bf3edcde81e62847d87d4a"
+    },
+    {
+      "path": "apps/console/package-lock.json",
+      "sha256": "448af7ef1c738f26fb71b75774da14a262eb2dd22df098cad733c452384fbf3c"
+    },
+    {
+      "path": "apps/console/package.json",
+      "sha256": "978a47b723f298556aa0e8ac13351954e8217a58b81e45fa25e642c974074040"
+    },
+    {
+      "path": "apps/console/tsconfig.json",
+      "sha256": "768138e41aab7d395fe8cdfb84253c75807e81d84f9c22e10f2817041f3c112b"
+    },
+    {
+      "path": "apps/dashboard/README.md",
+      "sha256": "ebb061b37cd058076561c0f420dc14b82d95cfde97426e3b17018f590ffe6f1e"
+    },
+    {
+      "path": "apps/tablet-kiosk/README.md",
+      "sha256": "af386ee7af2433bb24490aa39ef413a15761479aa29b08748d01445e6d7ab73b"
+    },
+    {
+      "path": "config/README.md",
+      "sha256": "81c93e5e2d60d0976cf6296eef62220bca09ceddd7e1eb12e474d0aee89a3bb6"
+    },
+    {
+      "path": "config/base-runtime-profile.example.json",
+      "sha256": "3d38ce6032114890d2704b6863089dcce312fd5c3105a9544656bf337f73585b"
+    },
+    {
+      "path": "config/ci-config.example.yml",
+      "sha256": "a089948056b84b3a09acd5df536cbc6d3f6cada51b37cf741106f0b9df66d627"
+    },
+    {
+      "path": "contracts/README.md",
+      "sha256": "8844f82da75c4607bb101ff10973d08dea3657676c30c13e12d0dbdae49ec3ca"
+    },
+    {
+      "path": "contracts/udos_automation_job.json",
+      "sha256": "19248cad1deca99395f61e5b7bc360df6e1f257a6c50d4f253798f64637fb712"
+    },
+    {
+      "path": "defaults/README.md",
+      "sha256": "d8a5b00452e59424bd8217ded7caea259ecc45c76e4a1005f33a2d7a125dc894"
+    },
+    {
+      "path": "defaults/workspace/settings/settings-uhome.json",
+      "sha256": "a86a2db0f4550307f964e671a3b141cc1fa9cee37595633ab03ed7d88b81d5f8"
+    },
+    {
+      "path": "docs/CI-CD-SETUP-GUIDE.md",
+      "sha256": "6205489ddc749bf3d8e01632686d57f298740d8f28a01106985e242196c9e2eb"
+    },
+    {
+      "path": "docs/DEPLOYMENT-UHOME-SERVER.md",
+      "sha256": "c0766e1891e53530bb2038f98e3724d018ee4ad1592d84b420993f0f15eabe27"
+    },
+    {
+      "path": "docs/DEPLOYMENT-UHOMENEST.md",
+      "sha256": "52e0f21ddb7f2f50c2ca8a2dcd6233df5ac57449730a54de1397548e32e714e1"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "4bccc744052e6d41be2d12bab59553091eed55703c81f95e57abecb96cde9cdf"
+    },
+    {
+      "path": "docs/ENVIRONMENT-CONFIGURATION.md",
+      "sha256": "b762069c7a8acb997c0ff27f60eba01699302b1519c1861b220f0c676c22be99"
+    },
+    {
+      "path": "docs/EXAMPLES_GUIDE.md",
+      "sha256": "666efd427992f9ed49a74318fde2f5b2e73a38dac2d0364c8912dd97cae1b367"
+    },
+    {
+      "path": "docs/FIRST-TIME-LAUNCH-GUIDE.md",
+      "sha256": "b1043938fb92384cd90e000630069d4ba36de0d223169c45b48279a7871e8dac"
+    },
+    {
+      "path": "docs/INSTALLER.md",
+      "sha256": "d18820ed83d3285c31a31b38a06267ecd156fc03f022c09ec907520c0fe1dce2"
+    },
+    {
+      "path": "docs/MEDIA_VAULT.md",
+      "sha256": "72a66bf3e220357e61a84f83b60115a51905c45c255a61ff3a0c32d50b6c3895"
+    },
+    {
+      "path": "docs/MONOREPO.md",
+      "sha256": "0f3353969faa3f433b3d29f0ff8c583f6f5329783ee3d3b61639b3c7c17d7575"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "963ebdff60ec54fb2a6ccf371b64d6381f93e0d6945a922fccad40c879b1ddf9"
+    },
+    {
+      "path": "docs/RELEASE-POLICY.md",
+      "sha256": "1e9a514c0b0c7dd35589435923d6b6efaab7ac47b5138be36054ac3e9bd92566"
+    },
+    {
+      "path": "docs/RESET_AND_RESCAFFOLD_PLAN.md",
+      "sha256": "183bc403bc234689aa92237d272c1ffe194f9dc0f03000a5ca196752ad0ce733"
+    },
+    {
+      "path": "docs/ROADMAP-UPDATE-20260420.md",
+      "sha256": "1aa74c6373285cd1c21ff1ff3747194e34154428cb81714ada11cce49e6cd548"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "sha256": "23229518396e30de44330962c3dab48b3cc2b70b5a2a6abdb919f3a0a9364fc9"
+    },
+    {
+      "path": "docs/SETUP.md",
+      "sha256": "21ff4a79b937058527cab609ff71d14e3aef61647d199ab73cd0d9457560d041"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "sha256": "9da8959038c8b6780335d237aac8ed103e30f3916ee24c68260b5d3710372271"
+    },
+    {
+      "path": "docs/THIN-UI-USAGE-GUIDE.md",
+      "sha256": "4fee6b1a0c632d100774ad2eca4ec4a7fadcb61ee24b6ba4acc92711936cb783"
+    },
+    {
+      "path": "docs/UCODE3_GETTING_STARTED.md",
+      "sha256": "ff16eb592e209bfe4cc2c2205ee28d7afaaf197e76ae7ea84a517b0e5cef2af1"
+    },
+    {
+      "path": "docs/UDN-SONIC-001.md",
+      "sha256": "79884575770c22dda3b1ada104338d84b084c9d57092eb6934454f952cdc14ab"
+    },
+    {
+      "path": "docs/UHOME-DEV-ROADMAP.md",
+      "sha256": "b7d79549c512591caed6b599f32966bd7787d0033a52c99471cbba0ff4e177cb"
+    },
+    {
+      "path": "docs/USX-NPM-STRUCTURE.md",
+      "sha256": "8f73702b5eaf9db473f899f6d520420750b5126bf1cc3eebf6dca8cf7a2a72cd"
+    },
+    {
+      "path": "docs/USXD_GUIDE.md",
+      "sha256": "7a55350d9d626c272703b3e1e69197f0dc093bfc8dea7473844ce7826b5d5a15"
+    },
+    {
+      "path": "docs/activation.md",
+      "sha256": "fb9c4780255a128bcc86fb5ad3d58ef4b272f4b40fd12478a55263e8cb356cc3"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "b27bb7521bd8cb597aa1ac30a2175c7cf4fdf267364a3c2fc0fbca9725a3ae31"
+    },
+    {
+      "path": "docs/architecture/UHOME-SERVER-DEV-PLAN.md",
+      "sha256": "70b366d4ab20587ea1f977fde8bd6879266223e9c2fd5c7675324f1becc85636"
+    },
+    {
+      "path": "docs/architecture/media/DVR-DESIGN.md",
+      "sha256": "6dc03deb35123bf36d068a7a825ab6e90a4574c78aabf0c6c5e2d91ab8c2e693"
+    },
+    {
+      "path": "docs/base-runtime-boundary.md",
+      "sha256": "649fc36c23fed746efaa0d120298c7ae27495c36939a0dcd89bebfe95cc1b16e"
+    },
+    {
+      "path": "docs/boundary.md",
+      "sha256": "6476001619ce35ba60c955a7aa8f4cc909aa5d92cb4e3b7eab6679e3833f57c5"
+    },
+    {
+      "path": "docs/clients/BEACON-ACTIVATE.md",
+      "sha256": "c814b9ee25a09a141c375beba2e809a9eca3c0311faa11eebf58635c8ab01087"
+    },
+    {
+      "path": "docs/clients/CLIENT-CAPABILITIES.md",
+      "sha256": "91f91c6ada6be6beac33fd2f9871beb55164dbeecf25ee8384c0b8164f5a2898"
+    },
+    {
+      "path": "docs/clients/HOUSEHOLD-API.md",
+      "sha256": "46ff1e76bfaba40aaeb4748367f75875aa333969f1c1d1b8981e678aa51c5917"
+    },
+    {
+      "path": "docs/clients/INTEGRATION-GUIDE.md",
+      "sha256": "994259c9a972a917c767cd0bcb0f41fb5f3336cb27cb05387f2e1422137763f4"
+    },
+    {
+      "path": "docs/clients/LAUNCHER-API.md",
+      "sha256": "2a69f7d8058bd1178b05e206a522b66ed04ec787efbbfc70bcefe6cc55baac4b"
+    },
+    {
+      "path": "docs/clients/PLAYBACK-API.md",
+      "sha256": "a6322d35e821d3faef721543a591860792593e4fc55f42b92f203c47d12611bd"
+    },
+    {
+      "path": "docs/clients/README.md",
+      "sha256": "dd9da01dd193f7527835b0f6e8e0f95fc8fd5eebd21a2bcaaf9d552fbe15c723"
+    },
+    {
+      "path": "docs/contributor-dev-brief.md",
+      "sha256": "3ae919832c0a730aa5983c9a5e4cc052c38721e24cebe7701e53a132ae887010"
+    },
+    {
+      "path": "docs/courses/README.md",
+      "sha256": "1a059c31abc21284940f6a3657e30ec1b20ec399d728a02875e645c219ee4347"
+    },
+    {
+      "path": "docs/decisions/HOME-ASSISTANT-BRIDGE.md",
+      "sha256": "18758b91907eb6b627b57935106c3c92414c97a27da28ada91eca0c1586d8d25"
+    },
+    {
+      "path": "docs/decisions/UHOME-home-profile-decision.md",
+      "sha256": "4d542a06a44f4fd07f55f69ebe8984afaacaae8ab04c9dd11baf51767e86d1b3"
+    },
+    {
+      "path": "docs/decisions/v1-5-3-UHOME-KIOSK.md",
+      "sha256": "148a08224a7564bb63eb436b6543b4a396fb6f00e71cf2b592b848d68148cad8"
+    },
+    {
+      "path": "docs/dev-plan/SPRINT_PLAN_v1.md",
+      "sha256": "d493def4f111fb2357d7c49452cdaee266a27cd1909ba8435d54ebdabec1ea2a"
+    },
+    {
+      "path": "docs/education-dev-brief.md",
+      "sha256": "5b518d00d037ae835d57489db835795757cc681103c874a935d637b3357e2932"
+    },
+    {
+      "path": "docs/examples/DVR-EXAMPLES.md",
+      "sha256": "9ce7b24389f84bca04d2fb0238d80d9ad8cbd0dfcb5142b5545b64221a8db98d"
+    },
+    {
+      "path": "docs/feeds/README.md",
+      "sha256": "cbee2204a579ede0fcb6e61c29808da0d6e41378508632cf360f917e4eed1872"
+    },
+    {
+      "path": "docs/home-assistant/README.md",
+      "sha256": "b2fc7e83e53889820237dcf81f6391f702b6bf1dd9e06c6a821b68c4ad0acb5e"
+    },
+    {
+      "path": "docs/howto/DEPENDENCY-MANAGEMENT.md",
+      "sha256": "f52ee8c008b70194736d4a30a0e6ce2dacb9f8d98fc4aa1d070cbb230496d90c"
+    },
+    {
+      "path": "docs/howto/JELLYFIN-INTEGRATION.md",
+      "sha256": "4f30465535b3b309729829756e39dccada090ea0301f07459d2f049f51532423"
+    },
+    {
+      "path": "docs/howto/SONIC-STANDALONE-RELEASE-AND-INSTALL.md",
+      "sha256": "83ab38b27b1507cb3a29a43363c70cba8b59445d14906b40d5f11005fca2da5a"
+    },
+    {
+      "path": "docs/howto/UHOME-INSTALL-LANES.md",
+      "sha256": "95d3053e8234bb0b9cd36bceaec74d59f7b90bfe34801f55292610544a8d3ed1"
+    },
+    {
+      "path": "docs/installer/SONIC-HOME-INSTALLER-GUIDE.md",
+      "sha256": "b64e14d911c6fb783797995ee77b59392bf529eccc95da35f00c904e3f6e1fe8"
+    },
+    {
+      "path": "docs/matter-extension-handoff.md",
+      "sha256": "f4f7c6d73c5aa2ffd9dc91361bae0dc40479ddb573511b8e32ca68f047987099"
+    },
+    {
+      "path": "docs/media-player/README.md",
+      "sha256": "6fb121711fcbd7fed7b9307ecab93c97d9dc80d6f4e68ed8148ec0f6a549ea34"
+    },
+    {
+      "path": "docs/operations/CLEAN-SHUTDOWN-RUNBOOK.md",
+      "sha256": "708a6b420608df0519f731122496a5e316af32686fd0e43c2e6e3ff1971519be"
+    },
+    {
+      "path": "docs/operations/GRACEFUL-DEGRADATION-RUNBOOK.md",
+      "sha256": "ca34c592ea87b770f33e4f01efdb47b5c75760d33d9dfe2a4712c5a22a8db884"
+    },
+    {
+      "path": "docs/operations/LIBRARY-CACHE-REBUILD-RUNBOOK.md",
+      "sha256": "9d22f97bb76bd3bf310b2e06e5707c44cedaee032fb5b5e6e2a2b8f321704b60"
+    },
+    {
+      "path": "docs/operations/OBSERVABILITY-GUIDE.md",
+      "sha256": "e54896e48b77c5cc82784279947042f2e4a339c07f5a1bdec700dfe4d7e83325"
+    },
+    {
+      "path": "docs/operations/OFFLINE-NODE-RUNBOOK.md",
+      "sha256": "1da680e94a13942dc6ae583e540c6972d0d86f3fd77f9c8c482daa335f5335d1"
+    },
+    {
+      "path": "docs/operations/README.md",
+      "sha256": "cc43f3be7b38f9185fc52efaa892448296f1814aaec1514b4603433c2082a7f2"
+    },
+    {
+      "path": "docs/operations/REGISTRY-CORRUPTION-RUNBOOK.md",
+      "sha256": "a611e7bc61b13490c0d30508b464b44830e87328f1f04720e05991b0af9e126f"
+    },
+    {
+      "path": "docs/operations/STORAGE-DEGRADATION-RUNBOOK.md",
+      "sha256": "09353297734b0a9be0db910aa36af8b29747ac4f569c1b8b914a4ea727084468"
+    },
+    {
+      "path": "docs/operations/UHOME-CONSOLE-LAUNCH-PATH.md",
+      "sha256": "b02b3c266e925aae0717dcdf15e666e514e8f60518f9a80fecf2c9b772a375bc"
+    },
+    {
+      "path": "docs/pathway/BUILD.md",
+      "sha256": "73b85ce8b479bb574b5b3e6c97b0a6df72579339f176bcbcd29448b74ba409d3"
+    },
+    {
+      "path": "docs/pathway/LEARN.md",
+      "sha256": "05dd1f6be3855bef9b9a33ac2684527df298fcea6a9b3f22f2afdfcaf13f37b9"
+    },
+    {
+      "path": "docs/pathway/README.md",
+      "sha256": "081be4af0e873b4e40cf192e0c95b1ffdccd7d08c06a2da58ef22dbb159d77d1"
+    },
+    {
+      "path": "docs/pathway/REPO-FAMILY.md",
+      "sha256": "ba2c5c0b2f69aeac77d9e4c98246d774325948240183d8b493d4bf4bcbcdaee4"
+    },
+    {
+      "path": "docs/pathway/USE.md",
+      "sha256": "346d7a929b6ad68d4966a48bbbf10de5d3992253d88bd2a161ae4958a030e107"
+    },
+    {
+      "path": "docs/services/home-assistant/PROVISIONING-SUMMARY.md",
+      "sha256": "86a16513ad9a9037f96170552777ee045a5007f61336bde104d247ee6ffcef1d"
+    },
+    {
+      "path": "docs/services/home-assistant/README.md",
+      "sha256": "6acb798a24391e25a23fd4b4e8bd6cd9746c2f841de82bbfab3bcc4b89235499"
+    },
+    {
+      "path": "docs/specs/HOMENEST_v1_SPEC.md",
+      "sha256": "f80996ef33f9d2d8f5272cfb7b0ca9847d3ba19f94ba534d0c460516f18d74de"
+    },
+    {
+      "path": "docs/specs/UHOME-v1.5.md",
+      "sha256": "b59d110355fc7fc39e124feca20fa819f14f8998e4bdba7556e61a3b93d2360a"
+    },
+    {
+      "path": "docs/specs/surfaces/JOTION_SURFACE_SPEC.md",
+      "sha256": "8dc92f3e9ee39ddb0a134e45bcf184d8d274d1e0cead85811c26e66df1438032"
+    },
+    {
+      "path": "docs/surfaces/JOTION_SURFACE_INTEGRATION.md",
+      "sha256": "524c2e3a5efb2bbad503afc4c5e8325de1df694fecd27aba12e67dda9e14212b"
+    },
+    {
+      "path": "docs/surfaces/README.md",
+      "sha256": "2bc9ffa92a8b6a269e686028b242d56da8814f0ad4f140c00ec846420518fd32"
+    },
+    {
+      "path": "docs/thin-ui-feature-completion.md",
+      "sha256": "e8087d68d0d0ce2077009497cc034cd860d62c62b957c8e3b1e00be71239b816"
+    },
+    {
+      "path": "docs/uHOME-server-dev-brief.md",
+      "sha256": "b5e8791540295995078bae4aba08eb1e91e70a6e848e0bc718a814d08c52e0a7"
+    },
+    {
+      "path": "docs/uHOME-server-education-dev-brief.md",
+      "sha256": "0583036929ed48af18ccbc130554095fbc0248bc2cc6c654df62e6294edd7489"
+    },
+    {
+      "path": "docs/uHOME-spec.md",
+      "sha256": "69d743b1f1ca2c5ddb7e6d4751dc3467253f45c50794d22657db54bf403ad93d"
+    },
+    {
+      "path": "docs/uhome-console/README.md",
+      "sha256": "080fae53385bfb95de0d0e48bc3aa6d2f5cf352405a7c0d7ec149ca90994bd01"
+    },
+    {
+      "path": "docs/ui/UHOME-DASHBOARD.md",
+      "sha256": "2b5c2c229b30895e0a4727212ed19966a9716742a0eca5adf48953a831053cc8"
+    },
+    {
+      "path": "docs/workspace/instructions/uhome.md",
+      "sha256": "5e1742edfd8d1703a6b4705feac0fb59f445e8fcde16dd570412d88e5bf69efd"
+    },
+    {
+      "path": "docs/workspace/settings/UHOME_SETTINGS.md",
+      "sha256": "e2382af0517d58c5cb7206bf67586e5ecd818db2d6e5701db0ba36fbbf335d2e"
+    },
+    {
+      "path": "examples/README.md",
+      "sha256": "b8bc9ef9d936364ece3f1721dd0180a8cfe9825c03e633e2eac6c7c46c76b554"
+    },
+    {
+      "path": "examples/basic-base-runtime-profile.json",
+      "sha256": "1b34414eb36b0c115905db85fb20b6eefb318241a528c6a06fc86463741bf43b"
+    },
+    {
+      "path": "examples/basic-uhome-server-session.md",
+      "sha256": "501867289c8cf6e31eff99923a393e5ad63349e9a8ab07c8ac8d887586cbb627"
+    },
+    {
+      "path": "examples/installer/bundles/dual-boot/rollback/rollback.json",
+      "sha256": "6b6f5ccb0c1ebe33c0961690b74185aa5307771efd32c894483e8b703e1385d9"
+    },
+    {
+      "path": "examples/installer/bundles/dual-boot/uhome-bundle.json",
+      "sha256": "7887e98c5baba71583c961f3e813ed6baef2ca70e60f421a973a0dd08e8216f8"
+    },
+    {
+      "path": "examples/installer/bundles/standalone/rollback/rollback.json",
+      "sha256": "84a9d8c2d66d775f7fd2357c4ca34ab0d7341d0ee0bf59d7d660bf0e89eda161"
+    },
+    {
+      "path": "examples/installer/bundles/standalone/uhome-bundle.json",
+      "sha256": "99caffb0492409ef286f1f911c1381a56b23df7713f09e38fa5f5419dad4f839"
+    },
+    {
+      "path": "examples/installer/probes/dual-boot-steam-node.json",
+      "sha256": "8e1d8b205c9ebe08e502e6244ae0aff63b1b927476acf4cc75196c01d4d4901e"
+    },
+    {
+      "path": "examples/installer/probes/standalone-linux.json",
+      "sha256": "f7481868ec3b67b68f39f4d1ee7facc525b0ef28da732eb8649c35208ce4568d"
+    },
+    {
+      "path": "examples/usx/goodnight.usx.json",
+      "sha256": "91526833c52bd38457d31fdc2626a0dad3d6b0bf56a7d9635baeed423538fe8c"
+    },
+    {
+      "path": "host/.github/ISSUE_TEMPLATE/binder-backed-work-item.yml",
+      "sha256": "d4d85f6510ba93a87f2a55f5c8b148eb62f63f0df6818e17de7a977ab93e03e7"
+    },
+    {
+      "path": "host/.github/ISSUE_TEMPLATE/cross-repo-boundary-change.yml",
+      "sha256": "e6c4f045b373247566f741b3043eb54680504980db3f8de574075d12d7c6d7a0"
+    },
+    {
+      "path": "host/.github/PULL_REQUEST_TEMPLATE/release-promotion.md",
+      "sha256": "0b33021ec57d323fc4fee77810fe2a61a4b0ed18a68f655cae88a08c56f02623"
+    },
+    {
+      "path": "host/.github/pull_request_template.md",
+      "sha256": "63797de7b6c796a84e070f10abe557a147061cedae385dfa160e9ab86d1c39b9"
+    },
+    {
+      "path": "host/.github/workflows/family-policy-check.yml",
+      "sha256": "1ff7285c5fc22c622b46def88315455af815f00d577608dc757438d1bff4676e"
+    },
+    {
+      "path": "host/.github/workflows/promote.yml",
+      "sha256": "fb5756b68ec4be46952cbe9a4c83cbfa94a0097bdb58e5fa61e457936e91028d"
+    },
+    {
+      "path": "host/.github/workflows/release.yml",
+      "sha256": "1d94577e28b690c91ebb499ae71ead8d7045564ac5176c0d473250c11783214d"
+    },
+    {
+      "path": "host/.github/workflows/validate.yml",
+      "sha256": "e2f4391c6195380e9b16f832002f4bdc18b417687fbf82215543ba13e0b5d1eb"
+    },
+    {
+      "path": "host/CHANGELOG.md",
+      "sha256": "f698e6012d1abbb83aa69dfed860b63218863d3658f0698347efc6fb51c1fc6e"
+    },
+    {
+      "path": "host/README.md",
+      "sha256": "addb30271573a393d3199750830a01d07a092ab104cc8c3dd3f98bec39312040"
+    },
+    {
+      "path": "host/config/README.md",
+      "sha256": "a2ef8dd8f93e687510ddc002b68b097869ca4c8a21319560bc8cf144aa1d7861"
+    },
+    {
+      "path": "host/docs/activation.md",
+      "sha256": "db0e8016059e0d8e23dcba839ffc42d4e79b285d69d149c52cc71840f397ac90"
+    },
+    {
+      "path": "host/docs/architecture.md",
+      "sha256": "23656a2665bb9b0ff696c7ec88c874389fb4fe42b4cf09344ff2ba5cce9a8077"
+    },
+    {
+      "path": "host/docs/boundary.md",
+      "sha256": "59d8070f76c6fda4c17ea598f164427cda33282b9aef16e1f248d6093e0ea8cb"
+    },
+    {
+      "path": "host/docs/examples.md",
+      "sha256": "b11420cc5f0e7003590972ae0c42eb335b70faeb4ad4280007dea4d4b1266fcf"
+    },
+    {
+      "path": "host/docs/getting-started.md",
+      "sha256": "d7d7664129fca6f6f9deda37fc65139e250f4a8b63fe397d54ab9d417a4b4d75"
+    },
+    {
+      "path": "host/docs/v2.0.1-client-alignment.md",
+      "sha256": "100e07d18c9c44c211da52412aed5efc14dc5d0c8955d236a5f9f719319db8e3"
+    },
+    {
+      "path": "host/examples/README.md",
+      "sha256": "d9508215c90dc80f4bffd3e2ab2034265a2d14bdc2ad764e215c7b6b520b9a2a"
+    },
+    {
+      "path": "host/examples/basic-client-runtime.json",
+      "sha256": "b017456e73d310e680ffd57fae6341830785326f58ddcbf43870ad21438f528e"
+    },
+    {
+      "path": "host/scripts/README.md",
+      "sha256": "f51d6095bd622ef5700e37d8b35ba9ea65de0cbe730da2e6d2fe613e475bf2a3"
+    },
+    {
+      "path": "host/src/README.md",
+      "sha256": "a3d3f54b656777572c849011d5a21ec0db35fe3008eb34e5d5d88fd1a56e88b6"
+    },
+    {
+      "path": "host/src/runtime-profile-contract.json",
+      "sha256": "8bb024c07989eb74824e2b7426d42c361c5802904652faf9c22c83d64b026280"
+    },
+    {
+      "path": "host/src/runtime-profile-map.json",
+      "sha256": "0553879b14ee68ecd56b2656aa41946d5966f8183882366246b49b9c2f90b7b1"
+    },
+    {
+      "path": "host/src/runtime-services.json",
+      "sha256": "7de264b1e22eae61fb8e930c5120949c93d93415edd420c6d64e71c79dbbf469"
+    },
+    {
+      "path": "host/tests/README.md",
+      "sha256": "4b1c5a7dd421b206eb32dfb76c181952548875ba3a8500e5f0896eceba1457d7"
+    },
+    {
+      "path": "host/wiki/README.md",
+      "sha256": "de34439be45252d7b6c7dd610db231aee4da6c346842f3d03b0b1024da276d13"
+    },
+    {
+      "path": "installer/README.md",
+      "sha256": "1bbfef26d9372a85286c84df9810aac1295ab06d3f1aa1fa461f078381e263c3"
+    },
+    {
+      "path": "installer/preseed/default.yaml",
+      "sha256": "e7b8bcdddacf391589914a8f02890af8140cfc40c1ea9230b10317eca26a61eb"
+    },
+    {
+      "path": "matter/.github/ISSUE_TEMPLATE/binder-backed-work-item.yml",
+      "sha256": "1b3e92286efe4ee072c789a43a3e253771de10b3d0f019649bea9a682f61007f"
+    },
+    {
+      "path": "matter/.github/ISSUE_TEMPLATE/cross-repo-boundary-change.yml",
+      "sha256": "1593907a2edc03cbb4bd4efd52c78e4ae1ff003ffb66db8aaa601b02a3161666"
+    },
+    {
+      "path": "matter/.github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "63797de7b6c796a84e070f10abe557a147061cedae385dfa160e9ab86d1c39b9"
+    },
+    {
+      "path": "matter/.github/PULL_REQUEST_TEMPLATE/release-promotion.md",
+      "sha256": "0b33021ec57d323fc4fee77810fe2a61a4b0ed18a68f655cae88a08c56f02623"
+    },
+    {
+      "path": "matter/.github/workflows/family-policy-check.yml",
+      "sha256": "1ff7285c5fc22c622b46def88315455af815f00d577608dc757438d1bff4676e"
+    },
+    {
+      "path": "matter/.github/workflows/promote.yml",
+      "sha256": "fb5756b68ec4be46952cbe9a4c83cbfa94a0097bdb58e5fa61e457936e91028d"
+    },
+    {
+      "path": "matter/.github/workflows/release.yml",
+      "sha256": "1d94577e28b690c91ebb499ae71ead8d7045564ac5176c0d473250c11783214d"
+    },
+    {
+      "path": "matter/.github/workflows/validate.yml",
+      "sha256": "e2f4391c6195380e9b16f832002f4bdc18b417687fbf82215543ba13e0b5d1eb"
+    },
+    {
+      "path": "matter/CHANGELOG.md",
+      "sha256": "8aef650ff56eff4ad3227dcd9810d3eee1a1b2bd871e56b08ca98b993e287d27"
+    },
+    {
+      "path": "matter/README.md",
+      "sha256": "6667489e69f23d2320f1d8657a50d2f14df502cb30b72c85df98f6f296f5aee7"
+    },
+    {
+      "path": "matter/config/README.md",
+      "sha256": "ea4c5b199ea86a2e0adf2fc3bfd2fbb6afdb7898106cb7d714615a8043c8f5b2"
+    },
+    {
+      "path": "matter/config/bridge-targets.example.json",
+      "sha256": "909acd9338e55ae05d9a92045b70b76f1fd03c080177107bdf292904a4073fd8"
+    },
+    {
+      "path": "matter/config/matter-bridge-home-assistant-definition.json",
+      "sha256": "ec6b77ef6bdebd6d981445d8f7186728c42f5179ee1638f4fd157ad427a7c724"
+    },
+    {
+      "path": "matter/docs/activation.md",
+      "sha256": "aa58bf89927e3b6a1a7a8d83f58ed7ab6f323ee3d642756ad7cdb82c95e4db80"
+    },
+    {
+      "path": "matter/docs/architecture.md",
+      "sha256": "94baa25a9b0e63f3f0d3d99b767ace9a41011c5caef5fa755734c3f6fa03da9a"
+    },
+    {
+      "path": "matter/docs/boundary.md",
+      "sha256": "cc6df23ec200c1c04d8c79e81c9dc733fddf6434240ec5ec4dbf46a9b96af45a"
+    },
+    {
+      "path": "matter/docs/examples.md",
+      "sha256": "cf2399589400486dcb5071bda8c2c5b24b1eac2dfec78034a2ca9f198f5c08ba"
+    },
+    {
+      "path": "matter/docs/getting-started.md",
+      "sha256": "4fd4c70cf3a57c77f76bf9aaca1a20ad61d053d7f6d6aeacb4356a4909b5ddc7"
+    },
+    {
+      "path": "matter/docs/release-policy.md",
+      "sha256": "0eb4fe9c0f68f3c4ff08cc64b4b07b3b3b31aa48182bd2d43c06f29f3368ba53"
+    },
+    {
+      "path": "matter/docs/server-runtime-handoff.md",
+      "sha256": "d385db1beca77fbee09c8223d871b8aa35a3943b7f92804888a54db65103af8f"
+    },
+    {
+      "path": "matter/examples/README.md",
+      "sha256": "e2af47499052af14717c47a1936c3bd42f1cc74b4f4199c370c3c55055a5edac"
+    },
+    {
+      "path": "matter/examples/basic-home-assistant-clone.json",
+      "sha256": "bca0e5267cd6bc76524b8ebd5e595b522f1c8399539bc88dfc52e23a5fc4313c"
+    },
+    {
+      "path": "matter/examples/basic-matter-bridge.json",
+      "sha256": "d701fb11b7b15075beac9945e9f95418932808b3cbedec7f706e4fe4cc8326dd"
+    },
+    {
+      "path": "matter/scripts/README.md",
+      "sha256": "bd404e0d7d95e1a81c20c17ec3036d174466a7f1b0be418a67c075451868334c"
+    },
+    {
+      "path": "matter/src/README.md",
+      "sha256": "b6d042ecd9df9601c079c6c82f7feb6625985ec02ed54326e181d35a99422665"
+    },
+    {
+      "path": "matter/src/home-assistant-bridge-definition.json",
+      "sha256": "cf0d32530cc28345033ee767544768f76cfde2ac633446da2b551dd09818cb2a"
+    },
+    {
+      "path": "matter/src/matter-bridge-contract.json",
+      "sha256": "bb0fbb1cf5ec3fbe7401acbdb27b5fe7e42167fc5bf0c1c86baa023e1b7108f0"
+    },
+    {
+      "path": "matter/src/matter-clone-catalog.json",
+      "sha256": "8a50b58c9a6774c96b6c7ab997ec29b091092d5b785a9a1ee10eac26a8bebce6"
+    },
+    {
+      "path": "matter/tests/README.md",
+      "sha256": "791f8f7d62def1f8eb9b1d1ac1a61303a5172a0eec84de76976bdc6ceb4db16e"
+    },
+    {
+      "path": "matter/wiki/README.md",
+      "sha256": "282b6b99c7c890989c633b98fb444312bf4a52ddd512c4eae1ed4f192696026c"
+    },
+    {
+      "path": "modules/README.md",
+      "sha256": "3296910b368f09ec11699fb9e90bb53b241489aa73d97296e10e1ec37dbc6db4"
+    },
+    {
+      "path": "modules/dvr/README.md",
+      "sha256": "281b1b729d3d81390258dc5659a1c8623f826870846ae539eb0cb500688432f1"
+    },
+    {
+      "path": "modules/home-assistant-bridge/README.md",
+      "sha256": "99a66c03d4a22c37bf2e486089a77f72140d416e312211eb6919c672cf0e4da2"
+    },
+    {
+      "path": "modules/home-ops/README.md",
+      "sha256": "5920e37be17c0ac12dc60045e465b6a6b2124f1b67d0646eec162ea9254fe816"
+    },
+    {
+      "path": "modules/home-ops/udos-home/README.md",
+      "sha256": "628675e8d29cf2e0d7f81902dfee0f31597dbd5031ee5962f664310bf43e405f"
+    },
+    {
+      "path": "modules/home-ops/udos-home/ucore-extension.json",
+      "sha256": "78c9ba9d580cccdea9b9f85d5e3cd52bb92b4a2d1c36377a2264e37e6cb750d6"
+    },
+    {
+      "path": "modules/media/README.md",
+      "sha256": "15bb6d3f57088a6d7c28ca892e5e3ae14b1a0051f41fb26958ddec03eb8e8814"
+    },
+    {
+      "path": "modules/steam-surface/README.md",
+      "sha256": "2df8f2a6518fb7f0658a745af75fb699a796a13e5f98f2e7a295ec36e899cd04"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "06ac2e7235183869d86d2951f48ceb842a7479b7982b3b55a28312950de26d69"
+    },
+    {
+      "path": "package.json",
+      "sha256": "440fe71378afa0e06e2553de954c47ca1287b5306e8dda1f3b2b9015dd511645"
+    },
+    {
+      "path": "packages/usx-tokens/PUBLISH.md",
+      "sha256": "44a3ab26a9074b22d65e0a99dcbea7761075013415639d4511c21a92e9606cc4"
+    },
+    {
+      "path": "packages/usx-tokens/README.md",
+      "sha256": "b27f4e43e039adfb901689a01091b6b4a2d66ac45afa0ee662082d8e72a80803"
+    },
+    {
+      "path": "packages/usx-tokens/package.json",
+      "sha256": "9cf98b243840f09f6ce441d09a7d9cafdbcbe957c3da84af8f70e8bbe613c4e2"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "a2ffd1acef4dd6cb7fbfb979f61dbbf6c30ce97db0ac6b5ac44b74337cbbb9a6"
+    },
+    {
+      "path": "scripts/README.md",
+      "sha256": "3ad37ce50a05bdc0b4b4709cdaf44a15685f57602367dab585bc412a24ae5231"
+    },
+    {
+      "path": "scripts/linux/README.md",
+      "sha256": "553e8037d9e9a43672880d32083c3f8f9ae6b53805aeea591806692a9d469148"
+    },
+    {
+      "path": "server/.github/ISSUE_TEMPLATE/binder-backed-work-item.yml",
+      "sha256": "d4d85f6510ba93a87f2a55f5c8b148eb62f63f0df6818e17de7a977ab93e03e7"
+    },
+    {
+      "path": "server/.github/ISSUE_TEMPLATE/cross-repo-boundary-change.yml",
+      "sha256": "e6c4f045b373247566f741b3043eb54680504980db3f8de574075d12d7c6d7a0"
+    },
+    {
+      "path": "server/.github/PULL_REQUEST_TEMPLATE/release-promotion.md",
+      "sha256": "0b33021ec57d323fc4fee77810fe2a61a4b0ed18a68f655cae88a08c56f02623"
+    },
+    {
+      "path": "server/.github/pull_request_template.md",
+      "sha256": "63797de7b6c796a84e070f10abe557a147061cedae385dfa160e9ab86d1c39b9"
+    },
+    {
+      "path": "server/.github/workflows/ci.yml",
+      "sha256": "1dc91fc5f0d35ed6ae68db372ca68aa6a2434518a8fe098e6a56d96449f1f2bb"
+    },
+    {
+      "path": "server/.github/workflows/family-policy-check.yml",
+      "sha256": "1ff7285c5fc22c622b46def88315455af815f00d577608dc757438d1bff4676e"
+    },
+    {
+      "path": "server/.github/workflows/promote.yml",
+      "sha256": "fb5756b68ec4be46952cbe9a4c83cbfa94a0097bdb58e5fa61e457936e91028d"
+    },
+    {
+      "path": "server/.github/workflows/release.yml",
+      "sha256": "1d94577e28b690c91ebb499ae71ead8d7045564ac5176c0d473250c11783214d"
+    },
+    {
+      "path": "server/.github/workflows/validate.yml",
+      "sha256": "e2f4391c6195380e9b16f832002f4bdc18b417687fbf82215543ba13e0b5d1eb"
+    },
+    {
+      "path": "server/CHANGELOG.md",
+      "sha256": "c8c74e2f119ae98f45fe91f1ef049737cf74c1f10b6f61ff7edbe4a9007eb86b"
+    },
+    {
+      "path": "server/FIRST-TIME-INSTALL.md",
+      "sha256": "cc18da4832cdb9970f0e2c4a0ba54fee8bc56849b3e2c4cbb24db922b07e8af1"
+    },
+    {
+      "path": "server/QUICKSTART.md",
+      "sha256": "4ca10236e50da33475aaf07fdf8dc1b2fffdc15f96ca06697875abeb64014035"
+    },
+    {
+      "path": "server/README.md",
+      "sha256": "61118ed7360207ae68309f125b706401434605557a33c5f7a9a14c567c487af3"
+    },
+    {
+      "path": "server/api/handlers/README.md",
+      "sha256": "a21f6cc6e5e2edbe2f8f64df5fcad0a50d6a273b95980858426a8708523b3dff"
+    },
+    {
+      "path": "server/api/middleware/README.md",
+      "sha256": "4e0884fb2960cd0b3f99504273677daeea68af1670bbd534e20453005281af98"
+    },
+    {
+      "path": "server/apps/README.md",
+      "sha256": "c04740e75325836c3cc3c6feed4a24b6bda3e01d30bf3edcde81e62847d87d4a"
+    },
+    {
+      "path": "server/apps/dashboard/README.md",
+      "sha256": "ebb061b37cd058076561c0f420dc14b82d95cfde97426e3b17018f590ffe6f1e"
+    },
+    {
+      "path": "server/apps/tablet-kiosk/README.md",
+      "sha256": "af386ee7af2433bb24490aa39ef413a15761479aa29b08748d01445e6d7ab73b"
+    },
+    {
+      "path": "server/config/README.md",
+      "sha256": "81c93e5e2d60d0976cf6296eef62220bca09ceddd7e1eb12e474d0aee89a3bb6"
+    },
+    {
+      "path": "server/config/base-runtime-profile.example.json",
+      "sha256": "3d38ce6032114890d2704b6863089dcce312fd5c3105a9544656bf337f73585b"
+    },
+    {
+      "path": "server/courses/01-local-network-systems/README.md",
+      "sha256": "fad81e8249dbbf9d0e1d251d2c4820dfd89e1330d7fc39374e2fee492b552e1c"
+    },
+    {
+      "path": "server/courses/02-media-infrastructure/README.md",
+      "sha256": "19b26464d5e9e4f864384a88b1a38a16c061c401196b38c0fc0861bc58202d7a"
+    },
+    {
+      "path": "server/courses/03-home-automation/README.md",
+      "sha256": "5bba7395ce58dbe06f5d7da1db244d03772e8d3976068becda8082dcac7a548c"
+    },
+    {
+      "path": "server/courses/04-multi-device-systems/README.md",
+      "sha256": "6ed6cbf13ce844528bf7a7a12a4ab0ee9f2ff50a41284abca09eaa1807c669d5"
+    },
+    {
+      "path": "server/courses/05-configurable-webhook-server/README.md",
+      "sha256": "deb4a3b84b8a815c4eb9cecb70c8ddf83ea35595d3785eb65a0fafff5c3ae05f"
+    },
+    {
+      "path": "server/courses/README.md",
+      "sha256": "ca23df5a0cb42c75a6244d80aaf25a17286193700f71b2dc55088fd6f2b76999"
+    },
+    {
+      "path": "server/defaults/README.md",
+      "sha256": "d8a5b00452e59424bd8217ded7caea259ecc45c76e4a1005f33a2d7a125dc894"
+    },
+    {
+      "path": "server/defaults/workspace/settings/settings-uhome.json",
+      "sha256": "a86a2db0f4550307f964e671a3b141cc1fa9cee37595633ab03ed7d88b81d5f8"
+    },
+    {
+      "path": "server/dev/README.md",
+      "sha256": "5dba1c4532e34560263707167a602f68e1ba36059b6fe9b5499fb1a7e41ad4a8"
+    },
+    {
+      "path": "server/docs/CHANGES-TASK-13.md",
+      "sha256": "3c2028ed30d0877692820b48fa081b006718109b9e661098f0bca721cbf81b82"
+    },
+    {
+      "path": "server/docs/DEPLOYMENT-GUIDE.md",
+      "sha256": "15c5e6e928c17f6ba3d295c4c203f32b9d034fe71a783e1568bb679a2c3e0daa"
+    },
+    {
+      "path": "server/docs/ENVIRONMENT-CONFIGURATION.md",
+      "sha256": "1cbe1418bf7b912ccc75bde414be192f87c07bc806822b1063cfbedfd23cc65b"
+    },
+    {
+      "path": "server/docs/INTEGRATION-PLAN.md",
+      "sha256": "145fa0a68ae27d2013269336009d84c7dbe6ccbca3a54e161e45e1046be865ff"
+    },
+    {
+      "path": "server/docs/README.md",
+      "sha256": "d77e246056b40eb6e9d5d16fc1a329a8c5040b900692c6a1252b3a253bfec7e9"
+    },
+    {
+      "path": "server/docs/RELEASE-POLICY.md",
+      "sha256": "394538bb0d5801bbdbf55d08b39921c66e2f4c783099ce226d3c522598dd63d7"
+    },
+    {
+      "path": "server/docs/STATUS.md",
+      "sha256": "2d8acc382dd147a22c050194cdf9907b98ecd7a54d91bbe39cd8c71f7c5bcc22"
+    },
+    {
+      "path": "server/docs/TASK-13-SUMMARY.md",
+      "sha256": "dfeccce89032600c5d40122227aedcaf4474b187705311c5d69f4068e8ac09f4"
+    },
+    {
+      "path": "server/docs/UHOME-DEV-ROADMAP.md",
+      "sha256": "97a136f4327564d4d69eb8b63860032fbc3ea3b24fa774a90dc5a0d5aacff8c3"
+    },
+    {
+      "path": "server/docs/activation.md",
+      "sha256": "f603d8e0a2fa086f46362a26b929bc0530c0f69875ae24b7f4c0095f43b5a952"
+    },
+    {
+      "path": "server/docs/architecture.md",
+      "sha256": "beb1c75c81ba99cf93c82736f913bf5ccb549500c374b20e77235de0da45d101"
+    },
+    {
+      "path": "server/docs/architecture/UHOME-SERVER-DEV-PLAN.md",
+      "sha256": "9836f9e89b4556ec055c94e19b292e7300f3cdf5116c2f12b632196b20c430b2"
+    },
+    {
+      "path": "server/docs/base-runtime-boundary.md",
+      "sha256": "9e05eafcd84c76614ecfd783567466670ff438458b7e098fe4ac7779448d4d8e"
+    },
+    {
+      "path": "server/docs/boundary.md",
+      "sha256": "52b2f241ab2ef77d5c8b3be74da98add7c4e84a478e648fbecd6bb8e029d4db5"
+    },
+    {
+      "path": "server/docs/clients/BEACON-ACTIVATE.md",
+      "sha256": "8e47c98728f98e17d0399a507001719e1de4ae8272406ca944df9bb5edc708d2"
+    },
+    {
+      "path": "server/docs/clients/CLIENT-CAPABILITIES.md",
+      "sha256": "f3773105b0cff30ebdc9ede0f134805b2471adad1b5301c1d6e4af5aeb2bc188"
+    },
+    {
+      "path": "server/docs/clients/HOUSEHOLD-API.md",
+      "sha256": "33406e8b77fb4c01681971b7990b174d59873c1bcf562ce96594109b900e18a4"
+    },
+    {
+      "path": "server/docs/clients/INTEGRATION-GUIDE.md",
+      "sha256": "28a0a9f45d2cb6c3b67239db71393d2ef1a57c9130f497c01e6d48f028096252"
+    },
+    {
+      "path": "server/docs/clients/LAUNCHER-API.md",
+      "sha256": "ba3311721c22301312e779249ab2875fc627d4dbb4bef658e0da3dd9a5df500b"
+    },
+    {
+      "path": "server/docs/clients/PLAYBACK-API.md",
+      "sha256": "42c8b587ffd85ab2f9da4cc842bd5d0a84367f5bb9b894e1e2ea30940e187dcb"
+    },
+    {
+      "path": "server/docs/clients/README.md",
+      "sha256": "ab5d849992a877f89042984f59428114073efba201a84f7e0c31057e54dbbfd3"
+    },
+    {
+      "path": "server/docs/contributor-dev-brief.md",
+      "sha256": "c2b75a6c2b7b28eb2d058180af3c1eb48a77a14fcf255f05a93d755b5f02a63a"
+    },
+    {
+      "path": "server/docs/courses/README.md",
+      "sha256": "b2166e1f7b82056f90521bf3f49d06c485c8f9c6ff4edb6cdc53350c482383dc"
+    },
+    {
+      "path": "server/docs/decisions/HOME-ASSISTANT-BRIDGE.md",
+      "sha256": "c2d97fbd32e761d8003f63b3cbe7a3cfd8fe859d5bfa815702240209cabc438d"
+    },
+    {
+      "path": "server/docs/decisions/UHOME-home-profile-decision.md",
+      "sha256": "1bd15474e1182b3cb05ba8c9c22a9869832ad870f081d3526fe98995271bfb22"
+    },
+    {
+      "path": "server/docs/decisions/v1-5-3-UHOME-KIOSK.md",
+      "sha256": "f0c9ff7ac54a481462ebce365cfe4b065535dc44459da895a0bb68a8206cdadc"
+    },
+    {
+      "path": "server/docs/education-dev-brief.md",
+      "sha256": "61380cc2de47bf9e4a37af75b6cc4b3f8cc079fa1d870f2459e029fce48708fc"
+    },
+    {
+      "path": "server/docs/examples.md",
+      "sha256": "af4b5634c1dde39256640f37e6bf9e8bc85a27c4467af5ad6d3892bd1e7b1c32"
+    },
+    {
+      "path": "server/docs/getting-started.md",
+      "sha256": "e478f78269d981d6ea948e08e57dd40d89149420506ea82fc5ca993dbcdc1b3c"
+    },
+    {
+      "path": "server/docs/howto/DEPENDENCY-MANAGEMENT.md",
+      "sha256": "ba63d8482f91c1a312e90541036a1dd53f3d315f712ef75d506a394816211fad"
+    },
+    {
+      "path": "server/docs/howto/JELLYFIN-INTEGRATION.md",
+      "sha256": "629f86869eba294d2c1899350c897443cccc9f68a1b611520551e5c8fe39f2aa"
+    },
+    {
+      "path": "server/docs/howto/SONIC-STANDALONE-RELEASE-AND-INSTALL.md",
+      "sha256": "bfd37721d75ac7953225f2c3f9737c7eb8693774405f3aff66046a604deb5d33"
+    },
+    {
+      "path": "server/docs/howto/UHOME-INSTALL-LANES.md",
+      "sha256": "2282076789082577afdaa5a019e7d0875b750cd17b1db79fc61fd9ae9f54dedf"
+    },
+    {
+      "path": "server/docs/matter-extension-handoff.md",
+      "sha256": "d285a8f649bb80629827108cb7bee6ef391cacd8b90a00b83e359ba89c72e40e"
+    },
+    {
+      "path": "server/docs/operations/CLEAN-SHUTDOWN-RUNBOOK.md",
+      "sha256": "c5f44640ee09512e6369edb7e94ea2e25c2c160e53cab396e1de120989ac9ad5"
+    },
+    {
+      "path": "server/docs/operations/GRACEFUL-DEGRADATION-RUNBOOK.md",
+      "sha256": "1b5bd0b3b8eada856046fbcd5f7a7bdda871cac21178d5c15c682b427e7f9fd5"
+    },
+    {
+      "path": "server/docs/operations/LIBRARY-CACHE-REBUILD-RUNBOOK.md",
+      "sha256": "97ba2e0fabe0a17b9011da256552339ebe7a75d31adf6f07842c687533877e49"
+    },
+    {
+      "path": "server/docs/operations/OBSERVABILITY-GUIDE.md",
+      "sha256": "c724ae67bb33fbd07544c17691d1f02d63fe38e043749b8ca02d4dceba533dbd"
+    },
+    {
+      "path": "server/docs/operations/OFFLINE-NODE-RUNBOOK.md",
+      "sha256": "ad12e0329a471573f7d72ad3f42df089e86dbece87d10b6cdf2f5c2737270e5a"
+    },
+    {
+      "path": "server/docs/operations/README.md",
+      "sha256": "e7cb4f5f036b71d5c9b1e027f6ce47e25c60b37eb600752bbfae3d621a179efa"
+    },
+    {
+      "path": "server/docs/operations/REGISTRY-CORRUPTION-RUNBOOK.md",
+      "sha256": "21170f3f52a6fcaff1752eb91ac39c60baa899b8beeb082ca490a7537ecb4248"
+    },
+    {
+      "path": "server/docs/operations/STORAGE-DEGRADATION-RUNBOOK.md",
+      "sha256": "f128c1aa93ad3edef27d77f63a4bd34a52f6532ad65ca4bec3a1982f6b5b98f4"
+    },
+    {
+      "path": "server/docs/operations/UHOME-CONSOLE-LAUNCH-PATH.md",
+      "sha256": "bdc926ac77de376c63adeee2f15a092bcc7ae663d70ed67ee082bf315d2226dc"
+    },
+    {
+      "path": "server/docs/pathway/BUILD.md",
+      "sha256": "69b1d0571a165c271ff36623fc84c8826385b47e6feacdec8511efa1a093bb4e"
+    },
+    {
+      "path": "server/docs/pathway/LEARN.md",
+      "sha256": "39861fb14f9295b513f6342f744f3176d8f6abe5eb592d83972e257885dd320d"
+    },
+    {
+      "path": "server/docs/pathway/README.md",
+      "sha256": "a8199f1e896af92b8b1ecae9ead45282260296d9e4d34157566e428a77041ff3"
+    },
+    {
+      "path": "server/docs/pathway/REPO-FAMILY.md",
+      "sha256": "1c96a740a1cd607ab2657dfd86fb57e89d9732d686f9133cc46ead612dc810f2"
+    },
+    {
+      "path": "server/docs/pathway/USE.md",
+      "sha256": "f088fe35b05208795bb462f90f8db47c45fb6bbc41967aa1cd4680b85ca7e88d"
+    },
+    {
+      "path": "server/docs/services/home-assistant/PROVISIONING-SUMMARY.md",
+      "sha256": "710a31043dcb2fc6cb9a2f4fcb494b104ef10668b0a17320dd22a0e853cf7fc5"
+    },
+    {
+      "path": "server/docs/services/home-assistant/README.md",
+      "sha256": "4bf7aa758baad88eb8d4f612474efe1c39ecef156815a332d73727f528f57ffa"
+    },
+    {
+      "path": "server/docs/specs/RULES-ENGINE-SPECIFICATION.md",
+      "sha256": "314701d6307e14cc949b26536384acf75a388c9209ca5720275cfb714f43ad92"
+    },
+    {
+      "path": "server/docs/specs/UHOME-v1.5.md",
+      "sha256": "c7958c6c97c436372beae9198fd28264a03aa2ed5c391772deb0a86e2d21374b"
+    },
+    {
+      "path": "server/docs/thin-ui-feature-completion.md",
+      "sha256": "df9890be38937175c26d0ba6fe0d3e6176df73a9fbef4fdfd01b11c6681ce064"
+    },
+    {
+      "path": "server/docs/uHOME-server-dev-brief.md",
+      "sha256": "4c57eb966946c54149fdc719135601c70950bcc2f30b17394ec404c7e441167e"
+    },
+    {
+      "path": "server/docs/uHOME-server-education-dev-brief.md",
+      "sha256": "19e2f2fb52d31baa0f000a84e14a569cf6d63c24da13ccdcfdf9121e63f5c1d5"
+    },
+    {
+      "path": "server/docs/uHOME-spec.md",
+      "sha256": "3b7efd5cf0c2ab68f0e12c71fbd00fa9587f08b991f0293099499eb75bb418a6"
+    },
+    {
+      "path": "server/docs/ui/UHOME-DASHBOARD.md",
+      "sha256": "19168ad50e4ad3b7202cbac39e870a9806f254c1a9d75528c7be030492091e11"
+    },
+    {
+      "path": "server/docs/workspace/instructions/uhome.md",
+      "sha256": "5f9940eb482c905557f1836daee1c19616118a50d71432b827a7579a60007f71"
+    },
+    {
+      "path": "server/docs/workspace/settings/uhome.md",
+      "sha256": "7d6778386d7c69684e0b828d7b4c9d888046dfa87301198614d3595162312d8f"
+    },
+    {
+      "path": "server/examples/README.md",
+      "sha256": "b8bc9ef9d936364ece3f1721dd0180a8cfe9825c03e633e2eac6c7c46c76b554"
+    },
+    {
+      "path": "server/examples/basic-base-runtime-profile.json",
+      "sha256": "1b34414eb36b0c115905db85fb20b6eefb318241a528c6a06fc86463741bf43b"
+    },
+    {
+      "path": "server/examples/basic-uhome-server-session.md",
+      "sha256": "501867289c8cf6e31eff99923a393e5ad63349e9a8ab07c8ac8d887586cbb627"
+    },
+    {
+      "path": "server/examples/installer/bundles/dual-boot/rollback/rollback.json",
+      "sha256": "6b6f5ccb0c1ebe33c0961690b74185aa5307771efd32c894483e8b703e1385d9"
+    },
+    {
+      "path": "server/examples/installer/bundles/dual-boot/uhome-bundle.json",
+      "sha256": "7887e98c5baba71583c961f3e813ed6baef2ca70e60f421a973a0dd08e8216f8"
+    },
+    {
+      "path": "server/examples/installer/bundles/standalone/rollback/rollback.json",
+      "sha256": "84a9d8c2d66d775f7fd2357c4ca34ab0d7341d0ee0bf59d7d660bf0e89eda161"
+    },
+    {
+      "path": "server/examples/installer/bundles/standalone/uhome-bundle.json",
+      "sha256": "99caffb0492409ef286f1f911c1381a56b23df7713f09e38fa5f5419dad4f839"
+    },
+    {
+      "path": "server/examples/installer/probes/dual-boot-steam-node.json",
+      "sha256": "8e1d8b205c9ebe08e502e6244ae0aff63b1b927476acf4cc75196c01d4d4901e"
+    },
+    {
+      "path": "server/examples/installer/probes/standalone-linux.json",
+      "sha256": "f7481868ec3b67b68f39f4d1ee7facc525b0ef28da732eb8649c35208ce4568d"
+    },
+    {
+      "path": "server/learning/README.md",
+      "sha256": "0f0cafb06249deaf896299f331284e223dc9c3ac72bc2c6a4c30da9c997fa81f"
+    },
+    {
+      "path": "server/library/README.md",
+      "sha256": "40ace60c1b4c1f3d22eb0574eb423c71baea4eb32d5bf2368fba20e201afc383"
+    },
+    {
+      "path": "server/library/container.schema.json",
+      "sha256": "3a20c2401c8240c7368c2fb0f6f5111c3c33fb53b0fda156721c0d16af8c4edc"
+    },
+    {
+      "path": "server/library/home-assistant/bridge.json",
+      "sha256": "266c0113372d5ff88deafd2a40c2b9de76d7e480775303cf894a90c1baab877a"
+    },
+    {
+      "path": "server/library/home-assistant/container.json",
+      "sha256": "e5e04d79a7cbe7d86b3cf590b812d42dc05ebe4e6fc9fd1f63dbaa3b443d46bc"
+    },
+    {
+      "path": "server/modules/README.md",
+      "sha256": "f70aecd09249d1e0c97c64cef55a1a51a3a9f0021f2cfb110d34ae3f296f0d1d"
+    },
+    {
+      "path": "server/modules/dvr/README.md",
+      "sha256": "281b1b729d3d81390258dc5659a1c8623f826870846ae539eb0cb500688432f1"
+    },
+    {
+      "path": "server/modules/home-assistant-bridge/README.md",
+      "sha256": "99a66c03d4a22c37bf2e486089a77f72140d416e312211eb6919c672cf0e4da2"
+    },
+    {
+      "path": "server/modules/home-ops/README.md",
+      "sha256": "5920e37be17c0ac12dc60045e465b6a6b2124f1b67d0646eec162ea9254fe816"
+    },
+    {
+      "path": "server/modules/home_assistant_bridge/README.md",
+      "sha256": "99a66c03d4a22c37bf2e486089a77f72140d416e312211eb6919c672cf0e4da2"
+    },
+    {
+      "path": "server/modules/media/README.md",
+      "sha256": "15bb6d3f57088a6d7c28ca892e5e3ae14b1a0051f41fb26958ddec03eb8e8814"
+    },
+    {
+      "path": "server/modules/steam-surface/README.md",
+      "sha256": "2df8f2a6518fb7f0658a745af75fb699a796a13e5f98f2e7a295ec36e899cd04"
+    },
+    {
+      "path": "server/pyproject.toml",
+      "sha256": "0d8cab56353eb79d6d3168e29d6d0858c9f7cff1796b39aa0bdf1d1138e63d9b"
+    },
+    {
+      "path": "server/scheduling/README.md",
+      "sha256": "f1c9291bd1cdec823ae0d712364ba77aeffa4392deeaadd6a735d3561f14427e"
+    },
+    {
+      "path": "server/scripts/README.md",
+      "sha256": "38d2ef7a69b0c010d1c8badba44aaba01124b0145eb4ab1ee9c6d0cb7c2a0e1f"
+    },
+    {
+      "path": "server/scripts/linux/README.md",
+      "sha256": "3ef39dfe603e2a9a90c78d797666256e158763534df71ec16eba263e78fe80bc"
+    },
+    {
+      "path": "server/services/README.md",
+      "sha256": "58c61acbfb972ebdaa85f116a4f08b36923b8b8ca35a243acb3bf0f94b9fedc2"
+    },
+    {
+      "path": "server/services/bridge/README.md",
+      "sha256": "1fd6962b4f44104a231eda87aa6ccf1d9d4ab714401a59aa647825d633d4dc14"
+    },
+    {
+      "path": "server/services/lan-discovery/README.md",
+      "sha256": "6ed1f479a86cc6b3daa1b658f4138d71d8b9cfed116e10abd599b4d15b5649c9"
+    },
+    {
+      "path": "server/services/launcher/README.md",
+      "sha256": "436775595a3ca045265b3d74993db90f0d90b8f81bb0baf0e89f30c87da10806"
+    },
+    {
+      "path": "server/services/playback/README.md",
+      "sha256": "1d8afec0adb5bfc8d1cd33a71e8702e93c50da92b2c24eb7b8afed683ea76387"
+    },
+    {
+      "path": "server/services/scheduling/README.md",
+      "sha256": "3070bf6f471de44babaf5d4e9fdf950ca43a96b426a553ed7be4cb8835b1abe9"
+    },
+    {
+      "path": "server/src/README.md",
+      "sha256": "ce3d0beb434dc0fe7659b49e52310b90ae013c51ac0a9d46cb5c01176453ba83"
+    },
+    {
+      "path": "server/src/uhome_server/contracts/sync-record-contract.json",
+      "sha256": "56e4e0e76f49a88606ccff6df73e0efdee2e0fc914bf74e5ba92f60e5cd0c732"
+    },
+    {
+      "path": "server/src/uhome_server/contracts/sync-record-contract.schema.json",
+      "sha256": "fd7a5368b64dc4179df099fd0d6b71f10645d940b2f772dd4e8f49998e3f7c03"
+    },
+    {
+      "path": "server/src/uhome_server/contracts/uhome-network-policy-contract.json",
+      "sha256": "0032e72df047e531ab0b9ceecd975a506aaad2c4adc913795a2584a757dc3b30"
+    },
+    {
+      "path": "server/src/uhome_server/contracts/uhome-network-policy.schema.json",
+      "sha256": "d7c71cb563e7b1f6756539e836c2fdce6f0be886cdb0245a0f687402300a823b"
+    },
+    {
+      "path": "server/tests/README.md",
+      "sha256": "6c3a3b2e9c1735018873400c926033f031cd537fc8bbd527a1abb6ce0458586f"
+    },
+    {
+      "path": "server/thin-prose-build/README.md",
+      "sha256": "a53a714095588fe59cbe6963d067234c047349c540a9329981d4f7f247b649fd"
+    },
+    {
+      "path": "server/thin-prose-build/package-lock.json",
+      "sha256": "d3e24a484b948e254fb36b151561f11b3cca9bb2c7c91a081b9a4b4eca23eb08"
+    },
+    {
+      "path": "server/thin-prose-build/package.json",
+      "sha256": "552b3d21b533007bbb64a249d54e45e04f3376aba54dcda8c51452dd7f7d1c5f"
+    },
+    {
+      "path": "server/vault/README.md",
+      "sha256": "edb34a10c1ad7099a0a57a732cf937c3c4cee98dd538f467d3acc28b99d0c56f"
+    },
+    {
+      "path": "server/vault/devices/living-room-tv.md",
+      "sha256": "31ff83d2cbae6cb1ca6d41e033ebaa9c54b42b7133aa6b759c9761ca5e4f7619"
+    },
+    {
+      "path": "server/vault/homes/example-home.md",
+      "sha256": "ceedcec1b1b2f683461f90f6297b603bb0992b73e0f6db65e77de3eab0f2fa6a"
+    },
+    {
+      "path": "server/vault/media/family-library.md",
+      "sha256": "11a051f1ecd68e547a8b4b542d2fe81dcc313f5f8c8c61fa0e45e2ab659b2ae0"
+    },
+    {
+      "path": "server/vault/notes/topology.md",
+      "sha256": "21cd8aea06051ca34f18583b0356f9563a0f26eec3bb2b554006715689d01786"
+    },
+    {
+      "path": "server/vault/rooms/lounge.md",
+      "sha256": "41b5613465ba05265d537216ad58510cf8d09818eb9c66f5eaf0965b2022bcc8"
+    },
+    {
+      "path": "server/vault/schedules/movie-night.md",
+      "sha256": "f65a519b5a7fe9993159ceeb760443004604191e6078bd2f323eae90493ef4d6"
+    },
+    {
+      "path": "server/wiki/README.md",
+      "sha256": "5f9543960f553f18db331f861336dd7a769609a1136612819f35270cdd8e26b2"
+    },
+    {
+      "path": "server/wiki/unit-01-uhome-basics.md",
+      "sha256": "538916c2ea1537eb4219371451ac3c3a347d67bc284bcaa1fff5d4082277fede"
+    },
+    {
+      "path": "services/README.md",
+      "sha256": "58c61acbfb972ebdaa85f116a4f08b36923b8b8ca35a243acb3bf0f94b9fedc2"
+    },
+    {
+      "path": "services/bridge/README.md",
+      "sha256": "1fd6962b4f44104a231eda87aa6ccf1d9d4ab714401a59aa647825d633d4dc14"
+    },
+    {
+      "path": "services/lan-discovery/README.md",
+      "sha256": "6ed1f479a86cc6b3daa1b658f4138d71d8b9cfed116e10abd599b4d15b5649c9"
+    },
+    {
+      "path": "services/launcher/README.md",
+      "sha256": "436775595a3ca045265b3d74993db90f0d90b8f81bb0baf0e89f30c87da10806"
+    },
+    {
+      "path": "services/playback/README.md",
+      "sha256": "1d8afec0adb5bfc8d1cd33a71e8702e93c50da92b2c24eb7b8afed683ea76387"
+    },
+    {
+      "path": "services/scheduling/README.md",
+      "sha256": "3070bf6f471de44babaf5d4e9fdf950ca43a96b426a553ed7be4cb8835b1abe9"
+    },
+    {
+      "path": "skills/homenest-skill/README.md",
+      "sha256": "79f4dd83f0e200d7439ae3ed4d97a70f375314fc7b05d41fb45c70ada56d7997"
+    },
+    {
+      "path": "skills/homenest-skill/skill.yaml",
+      "sha256": "a878ea49eede5b1793112f2420a6380729eddf1e365d828693f6eee1b0f58b1f"
+    },
+    {
+      "path": "specs/usx/PHASE0_SUMMARY.md",
+      "sha256": "22524659877dec2bfd0e3be8e7dca5b70d01f7865f03d1ddb084dbd7632f8648"
+    },
+    {
+      "path": "specs/usx/PHASE1_SUMMARY.md",
+      "sha256": "4b30c23cba6222b651a64673f1306d78acb4576c58c52afb37914e5010bcf192"
+    },
+    {
+      "path": "specs/usx/PHASE2_SUMMARY.md",
+      "sha256": "a4db38d6b684126ea18cbeb3384c4a9ccb76d3e18eb1e603522cf9becaeb0591"
+    },
+    {
+      "path": "specs/usx/PHASE3_SUMMARY.md",
+      "sha256": "35404d666875b420467e4979c287248910dca4ec4e0c4585150d3162c64b2674"
+    },
+    {
+      "path": "specs/usx/USX_BUNDLE_FORMAT.md",
+      "sha256": "c2cb265433fccc7cd37efd51f772974339beffbea4129939e668aaf4aaac388a"
+    },
+    {
+      "path": "specs/usx/bundle.schema.json",
+      "sha256": "92dac7add4b7e45d86e492ca7a8431d470fcd41f0278ed86e48ad9c137398490"
+    },
+    {
+      "path": "specs/usx/converter-core/package.json",
+      "sha256": "f440a0779a3eaa64e8e5f634531c915a0345bfb711ed28dad7a0456a191c4812"
+    },
+    {
+      "path": "specs/usx/figma-plugin/manifest.json",
+      "sha256": "a8cff387130e9e8527d90478d6badf7e3787e4708daafa118cad1bcddf95cd72"
+    },
+    {
+      "path": "specs/usx/layout.schema.json",
+      "sha256": "ffdbf4a157cd1eb41cd1e56bf5ea83b606803b3532302f994d775bbb749a1fe9"
+    },
+    {
+      "path": "specs/usx/lens.schema.json",
+      "sha256": "af7c0235492368d93e7ecee9817f6ff02bb3ea8f3f862631cc765fd6a5b6a3fd"
+    },
+    {
+      "path": "specs/usx/registry/package.json",
+      "sha256": "2a03398e7b30958b44e285e77e827bca249c40f3807c01de329a4cff30158751"
+    },
+    {
+      "path": "specs/usx/renderer/package.json",
+      "sha256": "33fd12da419516ee21ac3c56c11b3a8ab4b89c3ba2b7f12e13e362b6f7edb192"
+    },
+    {
+      "path": "specs/usx/skin.schema.json",
+      "sha256": "e5b706d0e36a02fcbbb1988f07765147aede8a9f436e132cc876cb03f88efc4b"
+    },
+    {
+      "path": "specs/usx/udos-loader/package.json",
+      "sha256": "415ee04c3ca04bd58e17d9a9c6374e157bc4cbd02764198e72c157974b2d97c8"
+    },
+    {
+      "path": "specs/usx/udos-vector-core/Cargo.toml",
+      "sha256": "bde9edd7c35a817ddf252a0fa7f679d4bae2fbd7d618640a3151d65b5f3f68c7"
+    },
+    {
+      "path": "src/README.md",
+      "sha256": "ce3d0beb434dc0fe7659b49e52310b90ae013c51ac0a9d46cb5c01176453ba83"
+    },
+    {
+      "path": "src/uhome_server/contracts/sync-record-contract.json",
+      "sha256": "56e4e0e76f49a88606ccff6df73e0efdee2e0fc914bf74e5ba92f60e5cd0c732"
+    },
+    {
+      "path": "src/uhome_server/contracts/sync-record-contract.schema.json",
+      "sha256": "fd7a5368b64dc4179df099fd0d6b71f10645d940b2f772dd4e8f49998e3f7c03"
+    },
+    {
+      "path": "src/uhome_server/contracts/uhome-network-policy-contract.json",
+      "sha256": "0032e72df047e531ab0b9ceecd975a506aaad2c4adc913795a2584a757dc3b30"
+    },
+    {
+      "path": "src/uhome_server/contracts/uhome-network-policy.schema.json",
+      "sha256": "d7c71cb563e7b1f6756539e836c2fdce6f0be886cdb0245a0f687402300a823b"
+    },
+    {
+      "path": "surfaces/homenest/surface-definition.json",
+      "sha256": "7af1294d8ba1622d0cc5446f3d746dfb4d82364e9809d38fc16c24cca927003a"
+    },
+    {
+      "path": "surfaces/jotion/docker-compose.jotion.yml",
+      "sha256": "d3106ced21df60ab00658dfd262639105a7cf0479d9ec2bcd5107d5e2f598ed2"
+    },
+    {
+      "path": "surfaces/jotion/lens/jotion-schema.json",
+      "sha256": "755b1402b8ce95d4c62d5e8a4c0708c781aaf5ef84c8fa23be91be50a9b39325"
+    },
+    {
+      "path": "surfaces/jotion/package.json",
+      "sha256": "3004eb8900e1942c27158118992554e31c334ef965325582ec964f64a9197cdb"
+    },
+    {
+      "path": "surfaces/jotion/router/jotion-router.json",
+      "sha256": "fe0df3b4cc5260f88707ec5bc148896d80a39776ba485bdb63b5bad6f8203076"
+    },
+    {
+      "path": "surfaces/jotion/skin/jotion-skin.json",
+      "sha256": "4f0078ff50e09fb020e280ea0a18463717aa14cf000d8d7f77ea92c7fab65468"
+    },
+    {
+      "path": "surfaces/jotion/surface-definition.json",
+      "sha256": "687e9003c0ffc20e8094d08c759b8de1e58823f553482313347e828e0f3c10d9"
+    },
+    {
+      "path": "surfaces/jotion/tsconfig.json",
+      "sha256": "1c739283a10f88279fe8dc936de18d9e2737b76db8a12cb00869cf628ed0e9d8"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "6c3a3b2e9c1735018873400c926033f031cd537fc8bbd527a1abb6ce0458586f"
+    },
+    {
+      "path": "tinshed/Cargo.toml",
+      "sha256": "a5d5a542425ce98710b6e4a759095210f86b2ff1484aa1650e60d7a18778a50d"
+    },
+    {
+      "path": "tinshed/beta2-core/Cargo.toml",
+      "sha256": "991c22e0c46f5cb60b35bed1e9efdc839c4afa643bd1e6b96df7585264b99426"
+    },
+    {
+      "path": "tinshed/beta2-core/market.yaml",
+      "sha256": "6b1dccb8fbfe44805267f3c7501eaa32b712f3ab15a124fd9ae59b958efd1a49"
+    },
+    {
+      "path": "tinshed/beta2-mcp/Cargo.toml",
+      "sha256": "91d166a17fb7347f1fb374237eaab2c5f6d5e305f2bd2cf3cd85aba26f429ed7"
+    },
+    {
+      "path": "tinshed/beta2-mcp/market.yaml",
+      "sha256": "4dd6a93cfcfccae1f46bc7f2977ae6ca1907010dad1429deeebd1a1660ef1578"
+    },
+    {
+      "path": "tinshed/beta2-spatial/Cargo.toml",
+      "sha256": "0581f53b7132b61f73c6f7768b2d99b1f01fadb87c0dbf24958cc2cd0fde0119"
+    },
+    {
+      "path": "tinshed/beta2-spatial/market.yaml",
+      "sha256": "06a22e4791ebf7a3c33bb6c97220c5ee4f65ff3f725355384daaf100f37fc218"
+    },
+    {
+      "path": "tinshed/beta2-vault-bridge/Cargo.toml",
+      "sha256": "05b26fb41226805f32e49ae3e6b4865692e0053f0444e23fd71a4f295ecf3345"
+    },
+    {
+      "path": "tinshed/beta2-vault-bridge/SQLITE_IMPLEMENTATION.md",
+      "sha256": "fbcfb3bce12081a8a96646d83d25bae5a1c2c1ea68155d419ab78d9403007e6e"
+    },
+    {
+      "path": "tinshed/beta2-vault-bridge/market.yaml",
+      "sha256": "7c9fd3b3b3d0c1476cbcd8b81d90ab267ab57c4df68afb9f6d2b460d42072e17"
+    },
+    {
+      "path": "tinshed/homenest-automation/Cargo.toml",
+      "sha256": "8c91ba3f973916e055ced603febb6e5c0d2237c18b7711c1ade5e1f6d984c725"
+    },
+    {
+      "path": "tinshed/homenest-debian/Cargo.toml",
+      "sha256": "a5a4740a66bf5bd9235baca1daa63be52595f73e33e7e60a8545d2a9658599f9"
+    },
+    {
+      "path": "tinshed/homenest-docs/Cargo.toml",
+      "sha256": "f92af9a59eab9919ed3d856e655fe631b86aa62f1e10a24c30016e24ad177a45"
+    },
+    {
+      "path": "tinshed/homenest-feed/Cargo.toml",
+      "sha256": "79db7d6916c8155cd6eadecd47e73656d3b845f08cf5348cfdcf3b114a304d83"
+    },
+    {
+      "path": "tinshed/homenest-flatpak/Cargo.toml",
+      "sha256": "6204967a211934c88e546aec5cd5b9126262209ef04204cc93bead1f558fb438"
+    },
+    {
+      "path": "tinshed/homenest-grid/Cargo.toml",
+      "sha256": "a3cffe9cc97150e9202096ba97aadaeeb1a233cbf78b63ce6c700ad4b0dad757"
+    },
+    {
+      "path": "tinshed/homenest-mcp/Cargo.toml",
+      "sha256": "860cf9ab0164b98cfb292ea19a4d67bedfb2cf3824d834f4190a642b0df5aafc"
+    },
+    {
+      "path": "tinshed/homenest-media/Cargo.toml",
+      "sha256": "bef54b23b6f16d746f680c674c411edd19c807b1e261bb3cc9bbec1a51e6951c"
+    },
+    {
+      "path": "tinshed/homenest-spec/Cargo.toml",
+      "sha256": "d9bef767b30f77ce41227a65a216e38d3e02203efebb3f6952554d074088fd2e"
+    },
+    {
+      "path": "tinshed/homenest-tv/Cargo.toml",
+      "sha256": "ffac9a74ce9c8faa4ee345df779a5e4c8fe0418230cfc070b34758ea08ca44d6"
+    },
+    {
+      "path": "tinshed/homenest-voice/Cargo.toml",
+      "sha256": "57125d020b32df3773b9bafe522e61debaf7d7fa744c2f64ed68d95cacb707fc"
+    },
+    {
+      "path": "tinshed/target/.rustc_info.json",
+      "sha256": "33bb70cbf0f43b06e14a33232a79d228da9a84e42106b67b5aa084eccfa36fe3"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "797f0733980eb825ce9983a416036d10a9bef5f26e183c0ea8934713d326ea35"
+    },
+    {
+      "path": "ui/usxd/launcher.json",
+      "sha256": "ab49956def471e8af3e7e3ecca709dc5c6edb99b2ecd70caae7ff5f746786955"
+    },
+    {
+      "path": "ui/usxd/media-browser.json",
+      "sha256": "d52f8f3bed6ea680aafdcc9caaac575b6531db4f909fe5c7a771ca8e5182ccea"
+    },
+    {
+      "path": "ui/usxd/now-playing.json",
+      "sha256": "dbb55a49afd2ddc70ca06beac55dfafa71afc552b3e1779d4fd1eb1c2921853e"
+    },
+    {
+      "path": "ui/usxd/usx-schema.json",
+      "sha256": "f0415d3a41bdeb3eea0892046c51bc22776df53380d4a5724c20954bf344add8"
+    }
+  ]
+}

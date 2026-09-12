@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import os
+import signal
 from pathlib import Path
 from typing import Any
 
-from uhome_server.config import read_json_file, utc_now_iso_z, write_json_file
+from uhome_server.config import get_homenest_state_dir, read_json_file, utc_now_iso_z, write_json_file
 from uhome_server.workspace import get_template_workspace_service
 
 SUPPORTED_PRESENTATIONS = ("thin-gui", "steam-console")
@@ -13,11 +15,15 @@ SUPPORTED_NODE_ROLES = ("server", "tv-node")
 
 
 class UHomePresentationService:
-    def __init__(self, repo_root: Path):
+    def __init__(self, repo_root: Path, state_dir: Path | None = None):
         self.repo_root = repo_root
-        self._primary_state_dir = self.repo_root / "memory" / "kiosk" / "uhome"
-        self._legacy_state_dir = self.repo_root / "memory" / "wizard" / "uhome"
-        self._primary_state_dir.mkdir(parents=True, exist_ok=True)
+        if state_dir:
+            self._primary_state_dir = state_dir
+        elif "UDOS_HOME" in os.environ:
+            self._primary_state_dir = get_homenest_state_dir() / "presentation"
+        else:
+            self._primary_state_dir = self.repo_root / ".udos" / "homenest" / "presentation"
+        self._legacy_state_dir = self.repo_root / "memory" / "kiosk" / "uhome"
 
     @property
     def state_path(self) -> Path:
@@ -30,7 +36,7 @@ class UHomePresentationService:
     def _read_state(self) -> dict[str, Any]:
         return read_json_file(
             self.state_path,
-            default={"active_presentation": None, "updated_at": None, "node_role": "server"},
+            default={"active_presentation": None, "updated_at": None, "node_role": "server", "lifecycle_state": "idle"},
         )
 
     def _write_state(self, payload: dict[str, Any]) -> None:
@@ -56,15 +62,46 @@ class UHomePresentationService:
             return SUPPORTED_NODE_ROLES[0], "template_workspace_invalid"
         return SUPPORTED_NODE_ROLES[0], "default"
 
+    def _is_process_alive(self, pid: int | None) -> bool:
+        if not pid or pid <= 0:
+            return False
+        try:
+            os.kill(pid, 0)
+            return True
+        except (ProcessLookupError, PermissionError):
+            return False
+
     def get_status(self) -> dict[str, Any]:
         state = self._read_state()
         preferred_presentation, preferred_presentation_source = self._preferred_presentation()
         node_role, node_role_source = self._node_role()
+
+        active_presentation = state.get("active_presentation")
+        pid = state.get("pid")
+        lifecycle = state.get("lifecycle_state", "idle")
+
+        if active_presentation:
+            if pid is not None:
+                if self._is_process_alive(pid):
+                    running = True
+                    lifecycle = "running"
+                else:
+                    running = False
+                    lifecycle = "exited"
+            else:
+                running = lifecycle == "running"
+        else:
+            running = False
+            lifecycle = "idle"
+
         return {
             "supported_presentations": list(SUPPORTED_PRESENTATIONS),
             "supported_node_roles": list(SUPPORTED_NODE_ROLES),
-            "active_presentation": state.get("active_presentation"),
-            "running": bool(state.get("active_presentation")),
+            "active_presentation": active_presentation,
+            "running": running,
+            "lifecycle_state": lifecycle,
+            "pid": pid,
+            "focus": "console" if not running else active_presentation,
             "preferred_presentation": preferred_presentation,
             "preferred_presentation_source": preferred_presentation_source,
             "node_role": node_role,
@@ -93,15 +130,21 @@ class UHomePresentationService:
             "status": "ready" if action == "start" else "stopped",
         }
 
-    def start(self, presentation: str) -> dict[str, Any]:
+    def start(self, presentation: str, pid: int | None = None) -> dict[str, Any]:
         normalized = (presentation or "").strip().lower()
         if not normalized:
             normalized, _ = self._preferred_presentation()
         if normalized not in SUPPORTED_PRESENTATIONS:
             raise ValueError(f"Unsupported uHOME presentation: {presentation}")
         node_role, _ = self._node_role()
+
+        is_alive = self._is_process_alive(pid) if pid else (pid is None)
+        lifecycle = "running" if (pid and is_alive) else ("launching" if not pid else "failed")
+
         payload = {
             "active_presentation": normalized,
+            "lifecycle_state": lifecycle,
+            "pid": pid,
             "node_role": node_role,
             "updated_at": utc_now_iso_z(),
             "last_action": "start",
@@ -112,11 +155,21 @@ class UHomePresentationService:
 
     def stop(self) -> dict[str, Any]:
         node_role, _ = self._node_role()
+        old_state = self._read_state()
+        old_pid = old_state.get("pid")
+        if old_pid and self._is_process_alive(old_pid):
+            try:
+                os.kill(old_pid, signal.SIGTERM)
+            except Exception:
+                pass
         payload = {
             "active_presentation": None,
+            "lifecycle_state": "idle",
+            "pid": None,
             "node_role": node_role,
             "updated_at": utc_now_iso_z(),
             "last_action": "stop",
+            "focus": "uhome-console",
             "thin_gui": self._intent_payload(None, node_role, "stop"),
         }
         self._write_state(payload)

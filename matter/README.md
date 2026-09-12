@@ -1,3 +1,5 @@
+> Historical/superseded scope (2026-09-10). See the [canonical revival plan](../docs/REVIVAL-PLAN-2026-09.md). HA/Matter is a separate product integration; prior release/install claims remain unqualified.
+
 # uHOME-matter (`matter/` in uHomeNest)
 
 This package lives at **`matter/`** inside the **[uHomeNest](../README.md)** monorepo (standalone repo was **`uHOME-matter`**).

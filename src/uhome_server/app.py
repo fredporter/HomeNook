@@ -11,7 +11,7 @@ from uhome_server.routes.containers import router as containers_router
 from uhome_server.routes.client import create_client_routes
 from uhome_server.routes.dashboard import create_dashboard_routes
 from uhome_server.routes.health import router as health_router
-from uhome_server.routes.home_assistant import create_ha_routes
+import os
 from uhome_server.routes.household import create_household_routes
 from uhome_server.routes.launcher import create_launcher_routes
 from uhome_server.routes.library import router as library_router
@@ -36,7 +36,14 @@ def create_app() -> FastAPI:
         app.mount("/static/thin", StaticFiles(directory=str(thin_static)), name="thin_static")
     app.include_router(health_router)
     app.include_router(create_dashboard_routes())
-    app.include_router(create_ha_routes())
+
+    # Optional Home Assistant integration: decoupled from standalone media server
+    if os.environ.get("HOMENEST_ENABLE_HA", "0").lower() in ("1", "true", "yes"):
+        try:
+            from uhome_server.routes.home_assistant import create_ha_routes
+            app.include_router(create_ha_routes())
+        except Exception:
+            pass
     app.include_router(create_household_routes())
     app.include_router(create_launcher_routes())
     app.include_router(create_platform_routes())

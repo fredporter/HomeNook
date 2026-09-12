@@ -19,6 +19,17 @@ def get_repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def get_udos_home() -> Path:
+    explicit = os.environ.get("UDOS_HOME")
+    if explicit:
+        return Path(explicit)
+    return Path.home() / "Code" / ".udos"
+
+
+def get_homenest_state_dir() -> Path:
+    return get_udos_home() / "homenest"
+
+
 def get_code_root() -> Path:
     return get_repo_root().parents[1]
 

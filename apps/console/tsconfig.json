@@ -16,5 +16,6 @@
     },
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "env.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "env.d.ts"],
+  "exclude": ["src/views/**", "src/stores/homenestStore.ts", "src/App.tsx", "node_modules", "dist"]
 }
