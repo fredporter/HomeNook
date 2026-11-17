@@ -5,8 +5,6 @@
   "version": "0.1.0",
   "description": "Standalone media player and Steam living-room console",
   "optional": true,
-  "route": "/homenest",
-  "icon": "tv",
   "api_prefix": "/api/playback",
   "dependencies": ["ucore-core"]
 }
