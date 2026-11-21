@@ -23,7 +23,7 @@ Sonic Home Express has been separated into its own experimental lane/project and
 
 ```bash
 # Clone the repo
-git clone https://github.com/fredporter/HomeNest.git
+git clone https://github.com/fredporter/HomeNook.git
 cd HomeNest
 
 # Install (requires sudo)
