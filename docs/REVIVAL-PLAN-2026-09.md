@@ -1,4 +1,24 @@
-# HomeNest revival — canonical plan
+# HomeNook revival — canonical plan
+
+## HomeNook rename and integration ownership
+
+The checkout and Git remote already use `HomeNook`. Complete the rename across
+active docs and UI labels, workspace files, package and artifact names, CI and
+installer references, and discovery metadata. Audit existing CLI commands,
+environment variables, endpoints, configuration and data paths before changing
+those contracts. Document any compatibility aliases, migrations and rollback
+steps. Keep historical records searchable under the names used at the time.
+
+HomeNook owns the uDOS-facing Home Assistant gateway, Matter bridge contracts,
+deployment guidance and integration tests. This replaces the separate adapter
+ownership proposed in the September plan below. Upstream Home Assistant and
+Matter Server own commissioning and device control. uFlow owns cross-product
+workflows, grants and run receipts. HomeNook's media and Steam functions remain
+independently usable while the automation pilot is delivered.
+
+Validate the rename with a clean install and an upgrade from an existing
+installation. Exercise the gateway against the uFlow automation pilot and
+verify media startup with the gateway disabled.
 
 Date: 2026-09-10. Status: assessed and planned; implementation sprint not started.
 This supersedes the August reset where it assigned HA/Matter to HomeNest, the

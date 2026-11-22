@@ -1,10 +1,14 @@
-# HomeNest
+# HomeNook
 
 Standalone Linux Steam gaming and media server with a controller-friendly
-living-room console. HomeNest is its own product, not uCode3.
+living-room console. HomeNook is an independently released uDOS product.
 
 **Status: Independent Product Track.**
-Steam gaming, local media library (films/music/TV), and controller-friendly living room console is the confirmed focus for Release 1. Home automation (Home Assistant / Matter) has been deferred beyond the first release. uCore/uCode integration is optional; Sonic provisions the host and installs independently versioned artifacts.
+Steam gaming, local media, and a controller-friendly living-room console are
+the focus for Release 1. HomeNook owns the uDOS-facing Home Assistant and
+Matter integration for the automation pilot. The gateway, bridge contracts,
+deployment guidance, and tests live in this repository. See the
+[HomeNook rename and integration plan](docs/REVIVAL-PLAN-2026-09.md#homenook-rename-and-integration-ownership).
 
 - [Canonical revival plan](docs/REVIVAL-PLAN-2026-09.md)
 - [Evidence, retained work and backlog disposition](docs/REVIVAL-ASSESSMENT-2026-09.md)
