@@ -4,7 +4,7 @@
    Device-ready: large touch targets, 10-foot view optimized.
    ═══════════════════════════════════════════════════════════════════ */
 import { useEffect } from 'react'
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 export default function Media() {
   const {

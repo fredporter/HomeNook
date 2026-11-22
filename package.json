@@ -1,9 +1,9 @@
 {
-  "name": "homenest",
+  "name": "homenook",
   "version": "0.1.0-dev",
   "private": true,
   "type": "module",
-  "description": "HomeNest — Linux-first decentralized home stream server with Jellyfin backbone, Home Assistant bridge, and controller-first 10-foot UI",
+  "description": "HomeNook — Linux-first decentralized home stream server with Jellyfin backbone, Home Assistant bridge, and controller-first 10-foot UI",
   "scripts": {
     "dev": "npm run dev:api & npm run dev:console",
     "dev:mock": "MOCK_JELLYFIN=1 MOCK_HA=1 npm run dev:api & npm run dev:console",

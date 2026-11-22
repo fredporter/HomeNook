@@ -4,7 +4,7 @@
    ═══════════════════════════════════════════════════════════════════ */
 import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
-import { useHomenestStore } from './stores/homenestStore'
+import { useHomenookStore } from './stores/homenookStore'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 // Views
@@ -40,9 +40,9 @@ export default function App() {
   const servicesTotal = systemStatus.services.length
 
   return (
-    <div className="homenest-app">
+    <div className="homenook-app">
       {/* ─── Sidebar ──────────────────────────────────────────── */}
-      <aside className={`homenest-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
+      <aside className={`homenook-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <div className="sidebar-brand">
             <svg className="sidebar-brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -88,7 +88,7 @@ export default function App() {
       </aside>
 
       {/* ─── Main Content ─────────────────────────────────────── */}
-      <main className="homenest-main">
+      <main className="homenook-main">
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/media" element={<Media />} />

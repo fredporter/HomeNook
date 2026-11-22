@@ -2,7 +2,7 @@
    HomeNest Console — Settings View
    System configuration, connection info, and preferences.
    ═══════════════════════════════════════════════════════════════════ */
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 export default function Settings() {
   const { systemStatus } = useHomenestStore()

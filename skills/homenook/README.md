@@ -1,4 +1,4 @@
-# HomeNest Skill
+# HomeNook Skill
 
 The `udo home` CLI command for managing HomeNest — media playback, automation, TV/DVR, and system status.
 
@@ -29,6 +29,6 @@ udo home compile <path/to/bundle.usx.json>
 
 ## Architecture
 
-- Communicates with `homenest-mcp` via Unix socket (`/tmp/homenest-mcp.sock`)
+- Communicates with `homenook-mcp` via Unix socket (`/tmp/homenook-mcp.sock`)
 - Uses JSON-RPC over the MCP protocol
 - Integrates with `udo` CLI via the skill system

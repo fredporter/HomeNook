@@ -137,7 +137,7 @@ export const useHomenestStore = create<HomenestState>((set, get) => ({
         systemStatus: {
           version: '0.1.0',
           services: [
-            { name: 'homenest-mcp', status: 'running', uptime: '0:05:30' },
+            { name: 'homenook-mcp', status: 'running', uptime: '0:05:30' },
             { name: 'media-server', status: 'running', uptime: null },
             { name: 'home-assistant', status: 'stopped', uptime: null },
             { name: 'feed-spool', status: 'running', uptime: '1:15:00' },

@@ -1,6 +1,6 @@
 {
-  "id": "homenest",
-  "name": "HomeNest Console",
+  "id": "homenook",
+  "name": "HomeNook Console",
   "kind": "surface",
   "version": "0.1.0",
   "description": "Standalone media player and Steam living-room console",

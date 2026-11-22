@@ -1,8 +1,8 @@
 {
-  "surface": "homenest",
+  "surface": "homenook",
   "version": "1.0.0",
-  "title": "HomeNest Surface",
-  "description": "HomeNest USX/UDO/UDX surface for media, automation, and system control",
+  "title": "HomeNook Surface",
+  "description": "HomeNook USX/UDO/UDX surface for media, automation, and system control",
   "type": "usxd-surface",
   "port": 5182,
   "routes": {

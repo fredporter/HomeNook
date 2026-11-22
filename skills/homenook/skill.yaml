@@ -1,5 +1,5 @@
-name: homenest
-description: "HomeNest — media playback, automation, TV/DVR control"
+name: homenook
+description: "HomeNook — media playback, automation, TV/DVR control"
 version: "0.1.0"
 commands:
   - name: status

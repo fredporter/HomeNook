@@ -3,7 +3,7 @@
    Channel list with EPG data, live channel tuning.
    ═══════════════════════════════════════════════════════════════════ */
 import { useEffect } from 'react'
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 export default function TvEpg() {
   const { epgChannels, liveChannel, getEpg, tuneChannel } = useHomenestStore()

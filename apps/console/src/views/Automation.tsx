@@ -3,7 +3,7 @@
    Scene triggers, recent actions, and automation status.
    ═══════════════════════════════════════════════════════════════════ */
 import { useEffect } from 'react'
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 const SCENE_DESCRIPTIONS: Record<string, string> = {
   goodnight: 'Lights off, doors locked, media paused',

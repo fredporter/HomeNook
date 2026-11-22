@@ -123,7 +123,7 @@ export function HomeNestSurface() {
 
   const handleNavigate = useCallback((target: string) => {
     if (target === 'home') {
-      window.dispatchEvent(new CustomEvent('homenest:navigate', { detail: { target: 'home' } }));
+      window.dispatchEvent(new CustomEvent('homenook:navigate', { detail: { target: 'home' } }));
     } else {
       const found = SURFACE_PAGES.find(p => p.id === target);
       if (found) setPage(found.id);
@@ -131,9 +131,9 @@ export function HomeNestSurface() {
   }, []);
 
   return (
-    <div className="homenest-surface min-h-screen bg-gray-900 text-gray-100">
+    <div className="homenook-surface min-h-screen bg-gray-900 text-gray-100">
       {/* Navigation */}
-      <header className="homenest-nav border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm sticky top-0 z-50">
+      <header className="homenook-nav border-b border-gray-800 bg-gray-900/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button

@@ -3,7 +3,7 @@
    System overview with service status, uptime, and quick actions.
    ═══════════════════════════════════════════════════════════════════ */
 import { useEffect } from 'react'
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 export default function Dashboard() {
   const { systemStatus, loading, connectMcp } = useHomenestStore()

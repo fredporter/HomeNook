@@ -3,7 +3,7 @@
    List of recorded media with playback and management actions.
    ═══════════════════════════════════════════════════════════════════ */
 import { useEffect } from 'react'
-import { useHomenestStore } from '../stores/homenestStore'
+import { useHomenookStore } from '../stores/homenookStore'
 
 export default function Recordings() {
   const { recordings, getRecordings, playMedia } = useHomenestStore()
