@@ -30,11 +30,21 @@ jobs:
         run: mypy src/uhome_server/
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        # Same alignment as python-ci.yml: 3.9/3.10 are not published for the
+        # newest Ubuntu image, so those lanes pin ubuntu-22.04.
+        include:
+          - python-version: "3.9"
+            os: ubuntu-22.04
+          - python-version: "3.10"
+            os: ubuntu-22.04
+          - python-version: "3.11"
+            os: ubuntu-latest
+          - python-version: "3.12"
+            os: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
