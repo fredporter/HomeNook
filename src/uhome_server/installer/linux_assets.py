@@ -33,11 +33,17 @@ class LinuxServiceAsset:
             after=tuple(payload.get("after", [])),
             wants=tuple(payload.get("wants", [])),
             exec_start=str(payload["exec_start"]),
-            environment={str(key): str(value) for key, value in dict(payload.get("environment", {})).items()},
+            environment={
+                str(key): str(value) for key, value in dict(payload.get("environment", {})).items()
+            },
             wanted_by=str(payload.get("wanted_by", "multi-user.target")),
             working_directory_var=str(payload.get("working_directory_var", "UHOME_INSTALL_ROOT")),
             restart=str(payload.get("restart", "on-failure")),
-            health_check=payload.get("health_check") if isinstance(payload.get("health_check"), dict) else None,
+            health_check=(
+                payload.get("health_check")
+                if isinstance(payload.get("health_check"), dict)
+                else None
+            ),
         )
 
 

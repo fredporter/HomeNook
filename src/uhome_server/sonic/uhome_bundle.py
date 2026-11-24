@@ -1,6 +1,5 @@
 """Compatibility wrapper for legacy Sonic-facing uHOME bundle imports."""
 
-from uhome_server.sonic import _warn_legacy_import
 from uhome_server.installer.bundle import (
     BUNDLE_MANIFEST_FILENAME,
     BUNDLE_SCHEMA_VERSION,
@@ -18,6 +17,7 @@ from uhome_server.installer.bundle import (
     write_bundle_manifest,
     write_rollback_record,
 )
+from uhome_server.sonic import _warn_legacy_import
 
 _warn_legacy_import("uhome_server.sonic.uhome_bundle", "uhome_server.installer.bundle")
 

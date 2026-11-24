@@ -8,11 +8,26 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 EXPECTED_KEYS = {
     "runtime_ready": {"checks", "ok", "status", "summary", "timestamp"},
-    "runtime_info": {"app", "cwd", "platform", "platform_release", "python_version", "repo_root", "settings", "timestamp"},
-    "dashboard_summary": {"bridge", "ok", "subsystems", "summary", "timestamp", "workspace_runtime"},
+    "runtime_info": {
+        "app",
+        "cwd",
+        "platform",
+        "platform_release",
+        "python_version",
+        "repo_root",
+        "settings",
+        "timestamp",
+    },
+    "dashboard_summary": {
+        "bridge",
+        "ok",
+        "subsystems",
+        "summary",
+        "timestamp",
+        "workspace_runtime",
+    },
     "launcher_status": {
         "active_presentation",
         "node_role",
@@ -27,7 +42,15 @@ EXPECTED_KEYS = {
         "updated_at",
     },
     "launcher_start": {"active_presentation", "node_role", "session_id", "status", "updated_at"},
-    "household_browse": {"count", "hidden_count", "items", "query", "safe_mode", "timestamp", "total"},
+    "household_browse": {
+        "count",
+        "hidden_count",
+        "items",
+        "query",
+        "safe_mode",
+        "timestamp",
+        "total",
+    },
     "household_status": {
         "active_media",
         "active_media_count",
@@ -77,10 +100,16 @@ def main() -> int:
             raise RuntimeError(f"{name} missing keys: {missing}")
 
     if seen != set(EXPECTED_KEYS):
-        raise RuntimeError(f"probe coverage mismatch: expected {sorted(EXPECTED_KEYS)}, got {sorted(seen)}")
+        raise RuntimeError(
+            f"probe coverage mismatch: expected {sorted(EXPECTED_KEYS)}, got {sorted(seen)}"
+        )
 
     brief = payload.get("runtime_session_brief", {})
-    if brief.get("recommended_action") not in {"start_launcher", "maintain_session", "inspect_runtime"}:
+    if brief.get("recommended_action") not in {
+        "start_launcher",
+        "maintain_session",
+        "inspect_runtime",
+    }:
         raise RuntimeError("runtime_session_brief missing valid recommended_action")
 
     print(json.dumps({"status": "PASS", "checked": sorted(seen)}, indent=2))

@@ -1,5 +1,6 @@
 """FastAPI application for the standalone uHOME server."""
 
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -7,17 +8,16 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from uhome_server.config import bootstrap_runtime
-from uhome_server.routes.containers import router as containers_router
+from uhome_server.routes.channels import create_channel_routes
 from uhome_server.routes.client import create_client_routes
+from uhome_server.routes.containers import router as containers_router
 from uhome_server.routes.dashboard import create_dashboard_routes
 from uhome_server.routes.health import router as health_router
-import os
 from uhome_server.routes.household import create_household_routes
 from uhome_server.routes.launcher import create_launcher_routes
 from uhome_server.routes.library import router as library_router
 from uhome_server.routes.network import router as network_router
 from uhome_server.routes.platform import create_platform_routes
-from uhome_server.routes.channels import create_channel_routes
 from uhome_server.routes.playback import create_playback_routes
 from uhome_server.routes.runtime import create_runtime_routes
 from uhome_server.routes.usx import router as usx_router
@@ -41,6 +41,7 @@ def create_app() -> FastAPI:
     if os.environ.get("HOMENEST_ENABLE_HA", "0").lower() in ("1", "true", "yes"):
         try:
             from uhome_server.routes.home_assistant import create_ha_routes
+
             app.include_router(create_ha_routes())
         except Exception:
             pass

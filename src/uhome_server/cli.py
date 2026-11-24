@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from pydantic import ValidationError
+
 from uhome_server.backup import create_backup, list_backups, restore_backup
 from uhome_server.config import (
     get_repo_root,
@@ -37,7 +39,6 @@ from uhome_server.sync_records import (
     load_sync_record_envelope,
     validation_error_payload,
 )
-from pydantic import ValidationError
 
 
 def _read_json(path: str) -> dict[str, Any]:
@@ -62,15 +63,21 @@ def _launcher_repo_root(value: str | None) -> Path:
 
 
 def launcher_main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="uhome-launcher", description="Manage local uHOME presentation launchers.")
-    parser.add_argument("--repo-root", help="Override the repository root for state and workspace access.")
+    parser = argparse.ArgumentParser(
+        prog="uhome-launcher", description="Manage local uHOME presentation launchers."
+    )
+    parser.add_argument(
+        "--repo-root", help="Override the repository root for state and workspace access."
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     subparsers.add_parser("status", help="Show current launcher status.")
     subparsers.add_parser("menu", help="Show console action menu for launcher and stream controls.")
 
     start_parser = subparsers.add_parser("start", help="Start a launcher presentation.")
-    start_parser.add_argument("--presentation", default="", help="Presentation to start: thin-gui or steam-console.")
+    start_parser.add_argument(
+        "--presentation", default="", help="Presentation to start: thin-gui or steam-console."
+    )
 
     subparsers.add_parser("stop", help="Stop the active launcher presentation.")
 
@@ -98,11 +105,17 @@ def launcher_main(argv: list[str] | None = None) -> int:
 
 
 def installer_main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="uhome-installer", description="Build and inspect uHOME install plans.")
+    parser = argparse.ArgumentParser(
+        prog="uhome-installer", description="Build and inspect uHOME install plans."
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    preflight_parser = subparsers.add_parser("preflight", help="Run hardware preflight against a JSON probe.")
-    preflight_parser.add_argument("--probe", required=True, help="Path to a hardware probe JSON object.")
+    preflight_parser = subparsers.add_parser(
+        "preflight", help="Run hardware preflight against a JSON probe."
+    )
+    preflight_parser.add_argument(
+        "--probe", required=True, help="Path to a hardware probe JSON object."
+    )
     preflight_parser.add_argument(
         "--host-profile",
         choices=["standalone-linux", "dual-boot-steam-node"],
@@ -110,16 +123,28 @@ def installer_main(argv: list[str] | None = None) -> int:
     )
     preflight_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    verify_parser = subparsers.add_parser("verify-bundle", help="Verify bundle artifacts against the manifest.")
-    verify_parser.add_argument("--bundle-dir", required=True, help="Directory containing uhome-bundle.json.")
+    verify_parser = subparsers.add_parser(
+        "verify-bundle", help="Verify bundle artifacts against the manifest."
+    )
+    verify_parser.add_argument(
+        "--bundle-dir", required=True, help="Directory containing uhome-bundle.json."
+    )
     verify_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    plan_parser = subparsers.add_parser("plan", help="Build a uHOME install plan from a bundle and hardware probe.")
-    plan_parser.add_argument("--bundle-dir", required=True, help="Directory containing uhome-bundle.json.")
+    plan_parser = subparsers.add_parser(
+        "plan", help="Build a uHOME install plan from a bundle and hardware probe."
+    )
+    plan_parser.add_argument(
+        "--bundle-dir", required=True, help="Directory containing uhome-bundle.json."
+    )
     plan_parser.add_argument("--probe", required=True, help="Path to a hardware probe JSON object.")
-    plan_parser.add_argument("--install-root", default="/opt/uhome", help="Install root used for the generated plan.")
+    plan_parser.add_argument(
+        "--install-root", default="/opt/uhome", help="Install root used for the generated plan."
+    )
     plan_parser.add_argument("--kiosk-user", default="uhome", help="Autologin kiosk user.")
-    plan_parser.add_argument("--enable-ha-bridge", action="store_true", help="Enable Home Assistant bridge config steps.")
+    plan_parser.add_argument(
+        "--enable-ha-bridge", action="store_true", help="Enable Home Assistant bridge config steps."
+    )
     plan_parser.add_argument(
         "--disable-autologin-kiosk",
         action="store_true",
@@ -129,43 +154,83 @@ def installer_main(argv: list[str] | None = None) -> int:
     plan_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
     stage_parser = subparsers.add_parser("stage", help="Materialize a staged installer directory.")
-    stage_parser.add_argument("--bundle-dir", required=True, help="Directory containing uhome-bundle.json.")
-    stage_parser.add_argument("--probe", required=True, help="Path to a hardware probe JSON object.")
-    stage_parser.add_argument("--stage-dir", required=True, help="Output directory for staged artifacts.")
-    stage_parser.add_argument("--install-root", default="/opt/uhome", help="Install root used for the staged artifacts.")
+    stage_parser.add_argument(
+        "--bundle-dir", required=True, help="Directory containing uhome-bundle.json."
+    )
+    stage_parser.add_argument(
+        "--probe", required=True, help="Path to a hardware probe JSON object."
+    )
+    stage_parser.add_argument(
+        "--stage-dir", required=True, help="Output directory for staged artifacts."
+    )
+    stage_parser.add_argument(
+        "--install-root", default="/opt/uhome", help="Install root used for the staged artifacts."
+    )
     stage_parser.add_argument("--kiosk-user", default="uhome", help="Autologin kiosk user.")
-    stage_parser.add_argument("--enable-ha-bridge", action="store_true", help="Enable Home Assistant bridge config artifacts.")
+    stage_parser.add_argument(
+        "--enable-ha-bridge",
+        action="store_true",
+        help="Enable Home Assistant bridge config artifacts.",
+    )
     stage_parser.add_argument(
         "--disable-autologin-kiosk",
         action="store_true",
         help="Skip kiosk autologin enablement artifacts.",
     )
-    stage_parser.add_argument("--dry-run", action="store_true", help="Mark the generated plan as a dry run.")
+    stage_parser.add_argument(
+        "--dry-run", action="store_true", help="Mark the generated plan as a dry run."
+    )
     stage_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    execute_parser = subparsers.add_parser("execute-stage", help="Apply a staged installer directory into a target root.")
-    execute_parser.add_argument("--stage-dir", required=True, help="Staged installer directory produced by the stage command.")
-    execute_parser.add_argument("--target-root", required=True, help="Target root for applied installer artifacts.")
+    execute_parser = subparsers.add_parser(
+        "execute-stage", help="Apply a staged installer directory into a target root."
+    )
+    execute_parser.add_argument(
+        "--stage-dir",
+        required=True,
+        help="Staged installer directory produced by the stage command.",
+    )
+    execute_parser.add_argument(
+        "--target-root", required=True, help="Target root for applied installer artifacts."
+    )
     execute_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    apply_parser = subparsers.add_parser("apply-target", help="Promote an executed target root into a host-style filesystem root.")
-    apply_parser.add_argument("--target-root", required=True, help="Executed target root produced by execute-stage.")
+    apply_parser = subparsers.add_parser(
+        "apply-target", help="Promote an executed target root into a host-style filesystem root."
+    )
+    apply_parser.add_argument(
+        "--target-root", required=True, help="Executed target root produced by execute-stage."
+    )
     apply_parser.add_argument("--host-root", required=True, help="Destination host-style root.")
     apply_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    rollback_parser = subparsers.add_parser("rollback-target", help="Restore the latest promoted snapshot onto a host-style root.")
-    rollback_parser.add_argument("--host-root", required=True, help="Host-style root that has a promotion snapshot.")
+    rollback_parser = subparsers.add_parser(
+        "rollback-target", help="Restore the latest promoted snapshot onto a host-style root."
+    )
+    rollback_parser.add_argument(
+        "--host-root", required=True, help="Host-style root that has a promotion snapshot."
+    )
     rollback_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    verify_target_parser = subparsers.add_parser("verify-target", help="Verify promoted host assets under a host-style root.")
-    verify_target_parser.add_argument("--host-root", required=True, help="Host-style root to verify.")
+    verify_target_parser = subparsers.add_parser(
+        "verify-target", help="Verify promoted host assets under a host-style root."
+    )
+    verify_target_parser.add_argument(
+        "--host-root", required=True, help="Host-style root to verify."
+    )
     verify_target_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    health_target_parser = subparsers.add_parser("health-check-target", help="Run promoted host health checks from the generated plan.")
-    health_target_parser.add_argument("--host-root", required=True, help="Host-style root to health-check.")
+    health_target_parser = subparsers.add_parser(
+        "health-check-target", help="Run promoted host health checks from the generated plan."
+    )
+    health_target_parser.add_argument(
+        "--host-root", required=True, help="Host-style root to health-check."
+    )
     health_target_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    prereq_parser = subparsers.add_parser("check-prereqs", help="Check Ubuntu-class host prerequisites for uHOME-server.")
+    prereq_parser = subparsers.add_parser(
+        "check-prereqs", help="Check Ubuntu-class host prerequisites for uHOME-server."
+    )
     prereq_parser.add_argument(
         "--storage-path",
         action="append",
@@ -179,15 +244,25 @@ def installer_main(argv: list[str] | None = None) -> int:
     )
     prereq_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
-    live_apply_parser = subparsers.add_parser("apply-live", help="Run the generated Ubuntu apply plan. Dry-run unless --execute is set.")
-    live_apply_parser.add_argument("--host-root", required=True, help="Host-style root containing ubuntu-apply-plan.sh.")
-    live_apply_parser.add_argument("--execute", action="store_true", help="Actually execute the plan commands instead of reporting them.")
+    live_apply_parser = subparsers.add_parser(
+        "apply-live", help="Run the generated Ubuntu apply plan. Dry-run unless --execute is set."
+    )
+    live_apply_parser.add_argument(
+        "--host-root", required=True, help="Host-style root containing ubuntu-apply-plan.sh."
+    )
+    live_apply_parser.add_argument(
+        "--execute",
+        action="store_true",
+        help="Actually execute the plan commands instead of reporting them.",
+    )
     live_apply_parser.add_argument("--output", help="Optional path to write the JSON result.")
 
     args = parser.parse_args(argv)
 
     if args.command == "preflight":
-        result = preflight_check(_read_json(args.probe), host_profile=get_host_profile(args.host_profile))
+        result = preflight_check(
+            _read_json(args.probe), host_profile=get_host_profile(args.host_profile)
+        )
         _write_output(result.to_dict(), args.output)
         return 0 if result.passed else 1
 
@@ -195,11 +270,19 @@ def installer_main(argv: list[str] | None = None) -> int:
         bundle_dir = Path(args.bundle_dir).expanduser().resolve()
         manifest = read_bundle_manifest(bundle_dir)
         if manifest is None:
-            _write_output({"valid": False, "missing": ["uhome-bundle.json"], "corrupt": [], "warnings": []}, args.output)
+            _write_output(
+                {"valid": False, "missing": ["uhome-bundle.json"], "corrupt": [], "warnings": []},
+                args.output,
+            )
             return 1
         result = verify_bundle(manifest, bundle_dir)
         _write_output(
-            {"valid": result.valid, "missing": result.missing, "corrupt": result.corrupt, "warnings": result.warnings},
+            {
+                "valid": result.valid,
+                "missing": result.missing,
+                "corrupt": result.corrupt,
+                "warnings": result.warnings,
+            },
             args.output,
         )
         return 0 if result.valid else 1
@@ -236,7 +319,9 @@ def installer_main(argv: list[str] | None = None) -> int:
         except ValueError as exc:
             _write_output({"ready": False, "error": str(exc)}, args.output)
             return 1
-        _write_output({"ready": plan.ready, "plan": plan.to_dict(), "staged": staged.to_dict()}, args.output)
+        _write_output(
+            {"ready": plan.ready, "plan": plan.to_dict(), "staged": staged.to_dict()}, args.output
+        )
         return 0
 
     if args.command == "execute-stage":
@@ -316,13 +401,17 @@ def installer_main(argv: list[str] | None = None) -> int:
 
 def backup_main(argv: list[str] | None = None) -> int:
     """CLI for backup and restore operations."""
-    parser = argparse.ArgumentParser(prog="uhome-backup", description="Backup and restore uHOME Server state.")
+    parser = argparse.ArgumentParser(
+        prog="uhome-backup", description="Backup and restore uHOME Server state."
+    )
     parser.add_argument("--repo-root", help="Override the repository root.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # Create backup command
     create_parser = subparsers.add_parser("create", help="Create a new backup.")
-    create_parser.add_argument("--backup-dir", help="Directory to store backups (default: repo_root/backups).")
+    create_parser.add_argument(
+        "--backup-dir", help="Directory to store backups (default: repo_root/backups)."
+    )
     create_parser.add_argument(
         "--no-workspace",
         action="store_true",
@@ -332,13 +421,17 @@ def backup_main(argv: list[str] | None = None) -> int:
 
     # List backups command
     list_parser = subparsers.add_parser("list", help="List available backups.")
-    list_parser.add_argument("--backup-dir", help="Directory containing backups (default: repo_root/backups).")
+    list_parser.add_argument(
+        "--backup-dir", help="Directory containing backups (default: repo_root/backups)."
+    )
     list_parser.add_argument("--output", help="Optional path to write JSON result.")
 
     # Restore backup command
     restore_parser = subparsers.add_parser("restore", help="Restore from a backup.")
     restore_parser.add_argument("--backup-path", required=True, help="Path to backup directory.")
-    restore_parser.add_argument("--dry-run", action="store_true", help="Validate backup without restoring.")
+    restore_parser.add_argument(
+        "--dry-run", action="store_true", help="Validate backup without restoring."
+    )
     restore_parser.add_argument("--output", help="Optional path to write JSON result.")
 
     args = parser.parse_args(argv)
@@ -355,7 +448,11 @@ def backup_main(argv: list[str] | None = None) -> int:
         return 0 if result.success else 1
 
     if args.command == "list":
-        backup_dir = Path(args.backup_dir).expanduser().resolve() if args.backup_dir else repo_root / "backups"
+        backup_dir = (
+            Path(args.backup_dir).expanduser().resolve()
+            if args.backup_dir
+            else repo_root / "backups"
+        )
         backups = list_backups(backup_dir)
         _write_output({"backups": backups, "count": len(backups)}, args.output)
         return 0
@@ -375,13 +472,21 @@ def backup_main(argv: list[str] | None = None) -> int:
 
 
 def contracts_main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="uhome-contracts", description="Inspect shared contract assets.")
+    parser = argparse.ArgumentParser(
+        prog="uhome-contracts", description="Inspect shared contract assets."
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    sync_parser = subparsers.add_parser("sync-record", help="Show the uHOME-bundled sync-record contract metadata.")
+    sync_parser = subparsers.add_parser(
+        "sync-record", help="Show the uHOME-bundled sync-record contract metadata."
+    )
     sync_parser.add_argument("--output", help="Optional path to write JSON result.")
-    validate_parser = subparsers.add_parser("validate-sync-record", help="Validate a sync-record envelope JSON file.")
-    validate_parser.add_argument("--input", required=True, help="Path to the sync-record envelope JSON file.")
+    validate_parser = subparsers.add_parser(
+        "validate-sync-record", help="Validate a sync-record envelope JSON file."
+    )
+    validate_parser.add_argument(
+        "--input", required=True, help="Path to the sync-record envelope JSON file."
+    )
     validate_parser.add_argument("--output", help="Optional path to write JSON result.")
 
     args = parser.parse_args(argv)
@@ -424,7 +529,9 @@ def contracts_main(argv: list[str] | None = None) -> int:
 
 
 def migrate_main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="uhome-migrate", description="uHOME data and layout migrations.")
+    parser = argparse.ArgumentParser(
+        prog="uhome-migrate", description="uHOME data and layout migrations."
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     w2k = subparsers.add_parser(
@@ -433,14 +540,24 @@ def migrate_main(argv: list[str] | None = None) -> int:
     )
     w2k.add_argument("--repo-root", help="Repository root (default: installed uHOME-server repo).")
     w2k.add_argument("--dry-run", action="store_true", help="Print actions without writing files.")
-    w2k.add_argument("--force", action="store_true", help="Overwrite memory/kiosk/uhome/presentation.json if it exists.")
+    w2k.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite memory/kiosk/uhome/presentation.json if it exists.",
+    )
     w2k.add_argument(
         "--remove-legacy",
         action="store_true",
         help="After a successful copy, delete the legacy wizard presentation.json.",
     )
-    w2k.add_argument("--skip-presentation", action="store_true", help="Only process library/**/container.json files.")
-    w2k.add_argument("--skip-manifests", action="store_true", help="Only process presentation state.")
+    w2k.add_argument(
+        "--skip-presentation",
+        action="store_true",
+        help="Only process library/**/container.json files.",
+    )
+    w2k.add_argument(
+        "--skip-manifests", action="store_true", help="Only process presentation state."
+    )
     w2k.add_argument("--output", help="Optional path to write JSON result.")
 
     args = parser.parse_args(argv)

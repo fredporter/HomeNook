@@ -93,7 +93,9 @@ class HouseholdService:
         """Return living-room-safe runtime status."""
         blocked_terms = _blocked_terms()
         playback = get_playback_service(self._repo_root).get_status()
-        workspace_fields = get_template_workspace_service(self._repo_root).read_fields("settings", "uhome")
+        workspace_fields = get_template_workspace_service(self._repo_root).read_fields(
+            "settings", "uhome"
+        )
 
         active_sessions = playback.get("active_sessions") or []
         safe_sessions: list[dict[str, Any]] = []

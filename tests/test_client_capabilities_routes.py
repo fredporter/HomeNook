@@ -17,7 +17,9 @@ def app_client(tmp_path: Path, monkeypatch):
     bootstrap_runtime(tmp_path)
     monkeypatch.setattr("uhome_server.config.get_repo_root", lambda: tmp_path)
     monkeypatch.setattr("uhome_server.routes.client.get_repo_root", lambda: tmp_path)
-    monkeypatch.setattr("uhome_server.services.client_capability_service.get_repo_root", lambda: tmp_path)
+    monkeypatch.setattr(
+        "uhome_server.services.client_capability_service.get_repo_root", lambda: tmp_path
+    )
 
     import uhome_server.services.client_capability_service as client_svc
 

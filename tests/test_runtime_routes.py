@@ -80,9 +80,17 @@ def test_runtime_readiness_degrades_when_required_check_fails(monkeypatch):
         lambda: (_ for _ in ()).throw(RuntimeError("repo layout missing")),
     )
     monkeypatch.setattr(runtime_routes, "_config_status", lambda: {"active_config_exists": False})
-    monkeypatch.setattr(runtime_routes, "_workspace_status", lambda: {"workspace_ref": "@memory/workspace/settings"})
-    monkeypatch.setattr(runtime_routes, "_ha_bridge_status", lambda: {"enabled": True, "status": "ok"})
-    monkeypatch.setattr(runtime_routes, "_jellyfin_status", lambda: {"jellyfin_configured": True, "jellyfin_reachable": True})
+    monkeypatch.setattr(
+        runtime_routes, "_workspace_status", lambda: {"workspace_ref": "@memory/workspace/settings"}
+    )
+    monkeypatch.setattr(
+        runtime_routes, "_ha_bridge_status", lambda: {"enabled": True, "status": "ok"}
+    )
+    monkeypatch.setattr(
+        runtime_routes,
+        "_jellyfin_status",
+        lambda: {"jellyfin_configured": True, "jellyfin_reachable": True},
+    )
     app = FastAPI()
     app.include_router(runtime_routes.create_runtime_routes())
     client = TestClient(app)
@@ -231,7 +239,11 @@ def test_uhome_network_policy_validation_route_accepts_and_rejects_payloads(monk
                 "runtime_owner": "uHOME-server",
                 "policy_owner": "uHOME-server",
                 "consumer_repos": payload.get("consumer_repos", []),
-                "error": None if payload["profile_id"] == "beacon" else "uhome-network-policy-validation-failed",
+                "error": (
+                    None
+                    if payload["profile_id"] == "beacon"
+                    else "uhome-network-policy-validation-failed"
+                ),
             },
             200 if payload["profile_id"] == "beacon" else 400,
         ),

@@ -65,7 +65,9 @@ class LibraryCloneManager:
         if (repo_path / "requirements.txt").exists():
             dependencies["pip"] = [
                 line.strip()
-                for line in (repo_path / "requirements.txt").read_text(encoding="utf-8").splitlines()
+                for line in (repo_path / "requirements.txt")
+                .read_text(encoding="utf-8")
+                .splitlines()
                 if line.strip() and not line.startswith("#")
             ]
         if (repo_path / "package.json").exists():

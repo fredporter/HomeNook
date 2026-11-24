@@ -79,7 +79,11 @@ class UHOMEBundleManifest:
             sonic_version=data["sonic_version"],
             schema_version=data.get("schema_version", BUNDLE_SCHEMA_VERSION),
             created_at=data["created_at"],
-            host_profile=None if not isinstance(host_profile_data, dict) else UHOMEHostProfileRef(**host_profile_data),
+            host_profile=(
+                None
+                if not isinstance(host_profile_data, dict)
+                else UHOMEHostProfileRef(**host_profile_data)
+            ),
             components=components,
             rollback_token=data.get("rollback_token", ""),
             notes=data.get("notes", ""),
@@ -148,7 +152,9 @@ def verify_bundle(manifest: UHOMEBundleManifest, bundle_dir: Path) -> BundleVeri
     corrupt: list[str] = []
     warnings: list[str] = []
     if manifest.host_profile is None:
-        warnings.append("Bundle manifest does not declare a host_profile; default profile resolution will be used.")
+        warnings.append(
+            "Bundle manifest does not declare a host_profile; default profile resolution will be used."
+        )
     for component in manifest.components:
         artifact = bundle_dir / component.artifact_path
         if not artifact.exists():
@@ -161,4 +167,6 @@ def verify_bundle(manifest: UHOMEBundleManifest, bundle_dir: Path) -> BundleVeri
             continue
         if component.sha256 and not verify_checksum(artifact, component.sha256):
             corrupt.append(component.component_id)
-    return BundleVerifyResult(valid=(not missing and not corrupt), missing=missing, corrupt=corrupt, warnings=warnings)
+    return BundleVerifyResult(
+        valid=(not missing and not corrupt), missing=missing, corrupt=corrupt, warnings=warnings
+    )

@@ -51,7 +51,9 @@ class WebSocketManager:
             topics = data.get("topics", [])
             for topic in topics:
                 self.subscriptions.setdefault(topic, set()).add(websocket)
-            await self._send_message(websocket, {"type": "subscribed", "topics": topics, "timestamp": utc_now_iso_z()})
+            await self._send_message(
+                websocket, {"type": "subscribed", "topics": topics, "timestamp": utc_now_iso_z()}
+            )
             return True
         if msg_type == "ping":
             await self._send_message(websocket, {"type": "pong"})
@@ -60,10 +62,14 @@ class WebSocketManager:
         return False
 
     async def broadcast_state_change(self, device_id: str, state: dict[str, Any]) -> None:
-        await self._broadcast_to_all({"type": "state_changed", "device_id": device_id, "state": state})
+        await self._broadcast_to_all(
+            {"type": "state_changed", "device_id": device_id, "state": state}
+        )
 
     async def broadcast_discovery(self, devices: list[dict[str, Any]]) -> None:
-        await self._broadcast_to_all({"type": "discovery", "devices": devices, "count": len(devices)})
+        await self._broadcast_to_all(
+            {"type": "discovery", "devices": devices, "count": len(devices)}
+        )
 
     async def _send_message(self, websocket: WebSocket, message: dict[str, Any]) -> bool:
         try:
@@ -74,7 +80,9 @@ class WebSocketManager:
             return False
 
     async def _send_error(self, websocket: WebSocket, error: str) -> None:
-        await self._send_message(websocket, {"type": "error", "message": error, "timestamp": utc_now_iso_z()})
+        await self._send_message(
+            websocket, {"type": "error", "message": error, "timestamp": utc_now_iso_z()}
+        )
 
     async def _broadcast_to_all(self, message: dict[str, Any]) -> None:
         disconnected = set()

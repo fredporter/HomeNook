@@ -1,14 +1,15 @@
 """Unprivileged desktop session runner for HomeNest presentations."""
+
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 import os
-from pathlib import Path
 import signal
 import subprocess
-from typing import Any, Callable
 import uuid
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Callable
 
 from uhome_server.config import get_homenest_state_dir, utc_now_iso_z
 

@@ -15,7 +15,9 @@ class PlaybackHandoffRequest(BaseModel):
     """Request to hand off playback to a target client."""
 
     item_id: str = Field(..., description="Media item ID to play")
-    target_client: Optional[str] = Field(None, description="Target client name (optional, uses default if not set)")
+    target_client: Optional[str] = Field(
+        None, description="Target client name (optional, uses default if not set)"
+    )
     params: Optional[dict[str, Any]] = Field(None, description="Additional playback parameters")
 
 
@@ -61,7 +63,9 @@ def create_playback_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
         """Clear the playback queue."""
         result = playback.clear_queue()
         if not result.get("success"):
-            raise HTTPException(status_code=500, detail=result.get("error", "Failed to clear queue"))
+            raise HTTPException(
+                status_code=500, detail=result.get("error", "Failed to clear queue")
+            )
         result["timestamp"] = utc_now_iso_z()
         return result
 

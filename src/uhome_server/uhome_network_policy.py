@@ -82,7 +82,9 @@ def validate_uhome_network_policy_payload(payload: dict[str, Any]) -> dict[str, 
             f"profile {model.profile_id} allows consumer_repos in {sorted(allowed_consumers)}"
         )
 
-    invalid_secret_refs = [item for item in model.secret_refs if item and not item.startswith("secret://")]
+    invalid_secret_refs = [
+        item for item in model.secret_refs if item and not item.startswith("secret://")
+    ]
     if invalid_secret_refs:
         issues.append("secret_refs must use symbolic secret:// references only")
 

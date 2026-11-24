@@ -126,59 +126,95 @@ def _evaluate_host_capabilities(
         storage_ready = probe.get("storage_ready", True) is not False
         media_storage = float(probe.get("media_storage_gb") or 0)
         passed = storage_ready and media_storage >= host_profile.hardware.min_media_storage_gb
-        detail = "Storage lane can support media-server workloads." if passed else "Storage lane does not meet media-server requirements."
+        detail = (
+            "Storage lane can support media-server workloads."
+            if passed
+            else "Storage lane does not meet media-server requirements."
+        )
         _add_capability_check(checks, "storage_ready", passed, detail, "media-server")
         if not passed:
             issues.append("Host profile: storage_ready requirements not met for media-server role.")
         media_volume_ids = probe.get("media_volume_ids")
-        storage_identity_ok = bool(probe.get("os_disk_id")) and isinstance(media_volume_ids, list) and bool(media_volume_ids)
+        storage_identity_ok = (
+            bool(probe.get("os_disk_id"))
+            and isinstance(media_volume_ids, list)
+            and bool(media_volume_ids)
+        )
         detail = (
             "OS disk and media volume identities are present."
             if storage_identity_ok
             else "OS disk or media volume identity evidence is missing."
         )
-        _add_capability_check(checks, "storage_identity_present", storage_identity_ok, detail, "media-server")
+        _add_capability_check(
+            checks, "storage_identity_present", storage_identity_ok, detail, "media-server"
+        )
         if not storage_identity_ok:
-            issues.append("Host profile: storage identity evidence is required for media-server role.")
+            issues.append(
+                "Host profile: storage identity evidence is required for media-server role."
+            )
 
     if "dvr" in roles:
         tuner_count = int(probe.get("tuner_count") or 0)
         dvr_ready = probe.get("dvr_ready", True) is not False
         passed = dvr_ready and tuner_count >= host_profile.hardware.min_tuner_count
-        detail = "Host can support DVR ingest and recording workflows." if passed else "Host cannot satisfy DVR role requirements."
+        detail = (
+            "Host can support DVR ingest and recording workflows."
+            if passed
+            else "Host cannot satisfy DVR role requirements."
+        )
         _add_capability_check(checks, "dvr_ready", passed, detail, "dvr")
         if not passed:
             issues.append("Host profile: dvr_ready requirements not met for DVR role.")
 
     if "launcher" in roles:
         passed = bool(probe.get("has_hdmi", False))
-        detail = "Display output available for local launcher flows." if passed else "Display output missing for launcher role."
+        detail = (
+            "Display output available for local launcher flows."
+            if passed
+            else "Display output missing for launcher role."
+        )
         _add_capability_check(checks, "launcher_ready", passed, detail, "launcher")
         if not passed:
             issues.append("Host profile: launcher_ready requirements not met for launcher role.")
 
     if "steam-console" in roles:
         passed = bool(probe.get("has_hdmi", False)) and bool(probe.get("steam_console_ready"))
-        detail = "Steam console lane is available." if passed else "Steam console lane requirements are not satisfied."
+        detail = (
+            "Steam console lane is available."
+            if passed
+            else "Steam console lane requirements are not satisfied."
+        )
         _add_capability_check(checks, "steam_console_ready", passed, detail, "steam-console")
         if not passed:
-            issues.append("Host profile: steam_console_ready requirements not met for steam-console role.")
+            issues.append(
+                "Host profile: steam_console_ready requirements not met for steam-console role."
+            )
 
     if "windows-gaming" in roles:
         passed = bool(probe.get("supports_windows_dual_boot"))
-        detail = "Windows dual-boot handoff is supported." if passed else "Windows dual-boot capability is not available."
+        detail = (
+            "Windows dual-boot handoff is supported."
+            if passed
+            else "Windows dual-boot capability is not available."
+        )
         _add_capability_check(checks, "windows_dual_boot_ready", passed, detail, "windows-gaming")
         if not passed:
-            issues.append("Host profile: supports_windows_dual_boot requirements not met for windows-gaming role.")
+            issues.append(
+                "Host profile: supports_windows_dual_boot requirements not met for windows-gaming role."
+            )
         dual_boot_layout_ok = bool(probe.get("windows_disk_id")) and bool(probe.get("os_disk_id"))
         detail = (
             "Linux and Windows disk identities are present."
             if dual_boot_layout_ok
             else "Linux or Windows disk identity evidence is missing."
         )
-        _add_capability_check(checks, "dual_boot_disk_layout_present", dual_boot_layout_ok, detail, "windows-gaming")
+        _add_capability_check(
+            checks, "dual_boot_disk_layout_present", dual_boot_layout_ok, detail, "windows-gaming"
+        )
         if not dual_boot_layout_ok:
-            issues.append("Host profile: disk identity evidence is required for windows-gaming role.")
+            issues.append(
+                "Host profile: disk identity evidence is required for windows-gaming role."
+            )
 
     return checks
 
@@ -196,20 +232,28 @@ def preflight_check(
         if cpu < active_profile.min_cpu_cores:
             issues.append(f"CPU: {cpu} cores < minimum {active_profile.min_cpu_cores}.")
         elif cpu < active_profile.rec_cpu_cores:
-            warnings.append(f"CPU: {cpu} cores meets minimum but {active_profile.rec_cpu_cores}+ recommended.")
+            warnings.append(
+                f"CPU: {cpu} cores meets minimum but {active_profile.rec_cpu_cores}+ recommended."
+            )
     ram = probe.get("ram_gb")
     if ram is not None:
         if ram < active_profile.min_ram_gb:
             issues.append(f"RAM: {ram:.1f} GB < minimum {active_profile.min_ram_gb:.0f} GB.")
         elif ram < active_profile.rec_ram_gb:
-            warnings.append(f"RAM: {ram:.1f} GB meets minimum but {active_profile.rec_ram_gb:.0f} GB recommended.")
+            warnings.append(
+                f"RAM: {ram:.1f} GB meets minimum but {active_profile.rec_ram_gb:.0f} GB recommended."
+            )
     storage = probe.get("storage_gb")
     if storage is not None and storage < active_profile.min_storage_gb:
-        issues.append(f"OS storage: {storage:.0f} GB < minimum {active_profile.min_storage_gb:.0f} GB.")
+        issues.append(
+            f"OS storage: {storage:.0f} GB < minimum {active_profile.min_storage_gb:.0f} GB."
+        )
     media = probe.get("media_storage_gb")
     if media is not None:
         if media < active_profile.min_media_storage_gb:
-            issues.append(f"Media storage: {media:.0f} GB < minimum {active_profile.min_media_storage_gb:.0f} GB.")
+            issues.append(
+                f"Media storage: {media:.0f} GB < minimum {active_profile.min_media_storage_gb:.0f} GB."
+            )
         elif media < active_profile.rec_media_storage_gb:
             warnings.append(
                 f"Media storage: {media:.0f} GB, {active_profile.rec_media_storage_gb:.0f} GB recommended."
@@ -223,9 +267,13 @@ def preflight_check(
     tuners = probe.get("tuner_count")
     if tuners is not None:
         if tuners < active_profile.min_tuner_count:
-            issues.append(f"Tuner: {tuners} found, at least {active_profile.min_tuner_count} required.")
+            issues.append(
+                f"Tuner: {tuners} found, at least {active_profile.min_tuner_count} required."
+            )
         elif tuners < active_profile.rec_tuner_count:
-            warnings.append(f"Tuner: {tuners} found, {active_profile.rec_tuner_count}+ recommended.")
+            warnings.append(
+                f"Tuner: {tuners} found, {active_profile.rec_tuner_count}+ recommended."
+            )
     usb = probe.get("has_usb_ports")
     if usb is not None and usb < active_profile.min_usb_ports:
         warnings.append(f"USB: {usb} port(s), {active_profile.min_usb_ports}+ recommended.")
@@ -238,7 +286,9 @@ def preflight_check(
                 issues.append(f"Host profile: required capability '{flag}' not detected.")
         for field_name in host_profile.recommended_probe_fields:
             if field_name not in probe:
-                warnings.append(f"Host profile: recommended probe field '{field_name}' not provided.")
+                warnings.append(
+                    f"Host profile: recommended probe field '{field_name}' not provided."
+                )
         if host_profile.profile_id == "dual-boot-steam-node":
             game_storage = probe.get("game_storage_gb")
             if game_storage is not None and game_storage < 500:
@@ -250,6 +300,8 @@ def preflight_check(
         warnings=warnings,
         probe=probe,
         profile_id=host_profile.profile_id if host_profile is not None else "default",
-        profile_label=host_profile.display_name if host_profile is not None else "Default uHOME Host",
+        profile_label=(
+            host_profile.display_name if host_profile is not None else "Default uHOME Host"
+        ),
         capability_checks=capability_checks,
     )

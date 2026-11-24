@@ -16,9 +16,9 @@ from uhome_server.installer.bundle import (
 )
 from uhome_server.installer.preflight import (
     DEFAULT_PROFILE,
-    get_host_profile,
     UHOMEHardwareProfile,
     UHOMEPreflightResult,
+    get_host_profile,
     preflight_check,
 )
 
@@ -58,14 +58,16 @@ class UHOMEInstallPlan:
             "ready": self.ready,
             "host_profile_id": self.host_profile_id,
             "preflight": self.preflight_result.to_dict(),
-            "verify": None
-            if self.verify_result is None
-            else {
-                "valid": self.verify_result.valid,
-                "missing": self.verify_result.missing,
-                "corrupt": self.verify_result.corrupt,
-                "warnings": self.verify_result.warnings,
-            },
+            "verify": (
+                None
+                if self.verify_result is None
+                else {
+                    "valid": self.verify_result.valid,
+                    "missing": self.verify_result.missing,
+                    "corrupt": self.verify_result.corrupt,
+                    "warnings": self.verify_result.warnings,
+                }
+            ),
             "steps": [
                 {
                     "phase": step.phase.value,
@@ -99,8 +101,12 @@ def _preflight_steps(result: UHOMEPreflightResult) -> list[UHOMEInstallStep]:
     ]
 
 
-def _verify_steps(manifest: UHOMEBundleManifest, result: BundleVerifyResult) -> list[UHOMEInstallStep]:
-    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
+def _verify_steps(
+    manifest: UHOMEBundleManifest, result: BundleVerifyResult
+) -> list[UHOMEInstallStep]:
+    host_profile_id = (
+        manifest.host_profile.profile_id if manifest.host_profile is not None else None
+    )
     return [
         UHOMEInstallStep(
             phase=InstallPhase.VERIFY,
@@ -135,8 +141,12 @@ def _stage_steps(manifest: UHOMEBundleManifest, bundle_dir: Path) -> list[UHOMEI
     ]
 
 
-def _configure_steps(manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions) -> list[UHOMEInstallStep]:
-    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
+def _configure_steps(
+    manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions
+) -> list[UHOMEInstallStep]:
+    host_profile_id = (
+        manifest.host_profile.profile_id if manifest.host_profile is not None else None
+    )
     steps = [
         UHOMEInstallStep(
             phase=InstallPhase.CONFIGURE,
@@ -174,8 +184,12 @@ def _configure_steps(manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions) -
     return steps
 
 
-def _enable_steps(opts: UHOMEInstallOptions, manifest: UHOMEBundleManifest) -> list[UHOMEInstallStep]:
-    host_profile_id = manifest.host_profile.profile_id if manifest.host_profile is not None else None
+def _enable_steps(
+    opts: UHOMEInstallOptions, manifest: UHOMEBundleManifest
+) -> list[UHOMEInstallStep]:
+    host_profile_id = (
+        manifest.host_profile.profile_id if manifest.host_profile is not None else None
+    )
     steps = [
         UHOMEInstallStep(
             phase=InstallPhase.ENABLE,
@@ -205,19 +219,29 @@ def _enable_steps(opts: UHOMEInstallOptions, manifest: UHOMEBundleManifest) -> l
                 phase=InstallPhase.ENABLE,
                 action="enable_kiosk_autologin",
                 description=f"Configure autologin for user '{opts.kiosk_user}' and enable uhome-kiosk.service.",
-                params={"kiosk_user": opts.kiosk_user, "service": "uhome-kiosk", "host_profile_id": host_profile_id},
+                params={
+                    "kiosk_user": opts.kiosk_user,
+                    "service": "uhome-kiosk",
+                    "host_profile_id": host_profile_id,
+                },
             )
         )
     return steps
 
 
-def _finalize_steps(manifest: UHOMEBundleManifest, rollback: UHOMERollbackRecord | None) -> list[UHOMEInstallStep]:
+def _finalize_steps(
+    manifest: UHOMEBundleManifest, rollback: UHOMERollbackRecord | None
+) -> list[UHOMEInstallStep]:
     steps = [
         UHOMEInstallStep(
             phase=InstallPhase.FINALIZE,
             action="write_install_receipt",
             description="Record install receipt with bundle and component versions.",
-            params={"bundle_id": manifest.bundle_id, "uhome_version": manifest.uhome_version, "sonic_version": manifest.sonic_version},
+            params={
+                "bundle_id": manifest.bundle_id,
+                "uhome_version": manifest.uhome_version,
+                "sonic_version": manifest.sonic_version,
+            },
         )
     ]
     if rollback:
@@ -241,7 +265,11 @@ def build_uhome_install_plan(
 ) -> UHOMEInstallPlan:
     opts = opts or UHOMEInstallOptions()
     manifest = read_bundle_manifest(bundle_dir)
-    host_profile = None if manifest is None or manifest.host_profile is None else get_host_profile(manifest.host_profile.profile_id)
+    host_profile = (
+        None
+        if manifest is None or manifest.host_profile is None
+        else get_host_profile(manifest.host_profile.profile_id)
+    )
     preflight_result = preflight_check(probe, profile=profile, host_profile=host_profile)
     steps: list[UHOMEInstallStep] = []
     steps.extend(_preflight_steps(preflight_result))
@@ -251,7 +279,11 @@ def build_uhome_install_plan(
             dry_run=opts.dry_run,
             preflight_result=preflight_result,
             verify_result=None,
-            host_profile_id=None if manifest is None or manifest.host_profile is None else manifest.host_profile.profile_id,
+            host_profile_id=(
+                None
+                if manifest is None or manifest.host_profile is None
+                else manifest.host_profile.profile_id
+            ),
             steps=steps,
             ready=False,
         )
@@ -283,7 +315,9 @@ def build_uhome_install_plan(
             dry_run=opts.dry_run,
             preflight_result=preflight_result,
             verify_result=verify_result,
-            host_profile_id=manifest.host_profile.profile_id if manifest.host_profile is not None else None,
+            host_profile_id=(
+                manifest.host_profile.profile_id if manifest.host_profile is not None else None
+            ),
             steps=steps,
             ready=False,
         )
@@ -297,7 +331,9 @@ def build_uhome_install_plan(
         dry_run=opts.dry_run,
         preflight_result=preflight_result,
         verify_result=verify_result,
-        host_profile_id=manifest.host_profile.profile_id if manifest.host_profile is not None else None,
+        host_profile_id=(
+            manifest.host_profile.profile_id if manifest.host_profile is not None else None
+        ),
         steps=steps,
         ready=True,
     )

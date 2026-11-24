@@ -79,4 +79,6 @@ def run_ubuntu_apply_plan(
             "commands": commands,
         },
     )
-    return LiveApplyResult(host_root=host_root, execute=execute, ok=ok, commands=commands, report_path=report_path)
+    return LiveApplyResult(
+        host_root=host_root, execute=execute, ok=ok, commands=commands, report_path=report_path
+    )

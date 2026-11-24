@@ -4,17 +4,17 @@ import hashlib
 import json
 from pathlib import Path
 
-from uhome_server.installer.staging import stage_install_artifacts
 from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
     UHOMEHostProfileRef,
+    UHOMERollbackRecord,
     write_bundle_manifest,
     write_rollback_record,
-    UHOMERollbackRecord,
 )
 from uhome_server.installer.plan import UHOMEInstallOptions
+from uhome_server.installer.staging import stage_install_artifacts
 
 
 def _probe() -> dict:

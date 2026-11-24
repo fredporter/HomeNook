@@ -82,7 +82,9 @@ class ContainerCatalogService:
                 if kiosk_exclusive
                 else str(policy.get("runtime_owner") or "shared").strip().lower()
             )
-            resolved_repo_path = self._resolve_repo_path(payload.get("repo_path"), fallback=candidate)
+            resolved_repo_path = self._resolve_repo_path(
+                payload.get("repo_path"), fallback=candidate
+            )
             raw_callable = (
                 payload.get("callable_from")
                 or metadata.get("callable_from")
@@ -99,7 +101,9 @@ class ContainerCatalogService:
                 ContainerCatalogEntry(
                     entry_id=entry_id,
                     label=str(container.get("name") or entry_id).strip(),
-                    summary=str(container.get("description") or metadata.get("documentation") or "").strip(),
+                    summary=str(
+                        container.get("description") or metadata.get("documentation") or ""
+                    ).strip(),
                     path=str(candidate.relative_to(self.repo_root)),
                     kind="library",
                     available=True,
@@ -108,7 +112,9 @@ class ContainerCatalogService:
                     wrapper_route=self._coerce_optional_str(integration.get("wrapper_path")),
                     category=str(metadata.get("category") or "container").strip(),
                     execution=ContainerExecutionRules(
-                        execution_model=str(policy.get("execution_model") or "container-library-v1").strip(),
+                        execution_model=str(
+                            policy.get("execution_model") or "container-library-v1"
+                        ).strip(),
                         runtime_owner=runtime_owner,
                         callable_from=callable_from,
                         library_root="library",
@@ -133,7 +139,9 @@ class ContainerCatalogService:
                         "container_type": str(container.get("type") or "local").strip(),
                         "git_source": self._coerce_optional_str(container.get("source")),
                         "git_ref": self._coerce_optional_str(container.get("ref")),
-                        "git_cloned": bool(container.get("cloned_at") or (resolved_repo_path / ".git").exists()),
+                        "git_cloned": bool(
+                            container.get("cloned_at") or (resolved_repo_path / ".git").exists()
+                        ),
                         "documentation": self._coerce_optional_str(metadata.get("documentation")),
                         "source_url": container.get("source"),
                         "browser_route": service.get("browser_route"),

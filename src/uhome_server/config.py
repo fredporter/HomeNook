@@ -164,7 +164,9 @@ class JSONConfigStore:
     def __init__(self, path: Path | None = None):
         settings = get_runtime_settings()
         self.path = path or settings.config_path
-        self.legacy_path = self.path.with_name("wizard.json") if path is not None else settings.legacy_config_path
+        self.legacy_path = (
+            self.path.with_name("wizard.json") if path is not None else settings.legacy_config_path
+        )
 
     def _config_candidates(self) -> list[Path]:
         return [self.path, self.path.with_name("legacy-uhome.json"), self.legacy_path]

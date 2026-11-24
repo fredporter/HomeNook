@@ -196,7 +196,9 @@ class StorageRegistry(_BaseRegistry):
         for index, item in enumerate(items):
             if item.get("volume_id") == record.volume_id:
                 previous_status = str(item.get("status") or "")
-                payload["recovery_state"] = _volume_recovery_state(previous_status, payload["status"])
+                payload["recovery_state"] = _volume_recovery_state(
+                    previous_status, payload["status"]
+                )
                 payload["transitioned_at"] = (
                     utc_now_iso_z()
                     if previous_status != payload["status"]
@@ -236,7 +238,9 @@ def get_storage_registry(repo_root: Path | None = None) -> StorageRegistry:
     return StorageRegistry(repo_root=repo_root)
 
 
-def summarize_topology(nodes: list[dict[str, Any]], volumes: list[dict[str, Any]]) -> dict[str, Any]:
+def summarize_topology(
+    nodes: list[dict[str, Any]], volumes: list[dict[str, Any]]
+) -> dict[str, Any]:
     online_nodes = [item for item in nodes if item.get("status") == "online"]
     degraded_nodes = [item for item in nodes if item.get("status") == "degraded"]
     offline_nodes = [item for item in nodes if item.get("status") == "offline"]
@@ -274,9 +278,7 @@ def summarize_topology(nodes: list[dict[str, Any]], volumes: list[dict[str, Any]
         if item.get("node_id") and item.get("status") in {"offline", "unknown"}
     }
     detached_volumes = [
-        item
-        for item in volumes
-        if item.get("node_id") and item.get("node_id") not in node_ids
+        item for item in volumes if item.get("node_id") and item.get("node_id") not in node_ids
     ]
     volumes_on_unavailable_nodes = [
         item
@@ -343,7 +345,9 @@ def _volume_library_keys(volume: dict[str, Any]) -> list[str]:
     return sorted(set(keys))
 
 
-def build_library_index(nodes: list[dict[str, Any]], volumes: list[dict[str, Any]]) -> dict[str, Any]:
+def build_library_index(
+    nodes: list[dict[str, Any]], volumes: list[dict[str, Any]]
+) -> dict[str, Any]:
     node_map = {
         item.get("node_id"): item
         for item in nodes

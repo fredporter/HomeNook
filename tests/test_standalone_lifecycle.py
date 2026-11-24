@@ -1,6 +1,8 @@
 """Tests for HomeNest standalone lifecycle, decoupling from HA, and state compliance."""
+
 import os
 from pathlib import Path
+
 import pytest
 
 from uhome_server.config import get_homenest_state_dir

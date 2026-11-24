@@ -77,7 +77,9 @@ def mock_urlopen(jellyfin_sessions_response):
     return _urlopen
 
 
-def test_jellyfin_status_configured_and_reachable(tmp_path, monkeypatch, mock_config_store, mock_urlopen):
+def test_jellyfin_status_configured_and_reachable(
+    tmp_path, monkeypatch, mock_config_store, mock_urlopen
+):
     """Test Jellyfin status when configured and reachable."""
     from uhome_server.services import playback_service, uhome_command_handlers
 
@@ -187,7 +189,9 @@ def test_jellyfin_status_no_active_sessions(tmp_path, monkeypatch, mock_config_s
     assert len(result["active_sessions"]) == 0
 
 
-def test_runtime_readiness_includes_jellyfin_check(tmp_path, monkeypatch, mock_config_store, mock_urlopen):
+def test_runtime_readiness_includes_jellyfin_check(
+    tmp_path, monkeypatch, mock_config_store, mock_urlopen
+):
     """Test runtime readiness probe includes Jellyfin health check."""
     from uhome_server.app import create_app
 

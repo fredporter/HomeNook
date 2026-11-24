@@ -69,7 +69,9 @@ def rebuild(bundle_dir: Path) -> None:
 
 
 def main() -> None:
-    bundles = sorted(path for path in BUNDLES_ROOT.iterdir() if (path / "uhome-bundle.json").is_file())
+    bundles = sorted(
+        path for path in BUNDLES_ROOT.iterdir() if (path / "uhome-bundle.json").is_file()
+    )
     if not bundles:
         raise SystemExit(f"No example bundles found under {BUNDLES_ROOT}")
     for bundle_dir in bundles:

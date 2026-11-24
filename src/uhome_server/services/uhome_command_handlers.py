@@ -144,7 +144,12 @@ def dvr_cancel(params: dict[str, Any]) -> dict[str, Any]:
     remaining = [rule for rule in rules if rule.get("id") != rule_id]
     _save_json_list(_dvr_schedule_path(), remaining)
     removed = before - len(remaining)
-    return {"command": "uhome.dvr.cancel", "success": removed > 0, "removed": removed, "id": rule_id}
+    return {
+        "command": "uhome.dvr.cancel",
+        "success": removed > 0,
+        "removed": removed,
+        "id": rule_id,
+    }
 
 
 _AD_MODE_KEY = "uhome_ad_processing_mode"
@@ -196,7 +201,12 @@ def ad_set_mode(params: dict[str, Any]) -> dict[str, Any]:
         _config.set(_AD_MODE_KEY, mode)
     except Exception as exc:
         return {"command": "uhome.ad_processing.set_mode", "success": False, "error": str(exc)}
-    return {"command": "uhome.ad_processing.set_mode", "success": True, "mode": mode, "source": "template_workspace"}
+    return {
+        "command": "uhome.ad_processing.set_mode",
+        "success": True,
+        "mode": mode,
+        "source": "template_workspace",
+    }
 
 
 def _jellyfin_base_url() -> str:

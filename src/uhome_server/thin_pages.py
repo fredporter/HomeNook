@@ -21,7 +21,9 @@ _PROSE_PAGE_CLASSES = (
 _THIN_SHELL_MAIN = "mx-auto flex min-h-screen max-w-5xl flex-col gap-6 px-4 py-8 text-stone-100"
 
 
-def thin_reading_page_html(title: str, inner_html: str, *, static_prefix: str = "/static/thin") -> str:
+def thin_reading_page_html(
+    title: str, inner_html: str, *, static_prefix: str = "/static/thin"
+) -> str:
     """Wrap document HTML in a prose column; loads compiled Tailwind+typography CSS."""
     safe_title = html.escape(title, quote=True)
     return f"""<!doctype html>

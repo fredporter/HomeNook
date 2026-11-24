@@ -3,9 +3,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from uhome_server.installer.executor import execute_staged_install
-from uhome_server.installer.staging import stage_install_artifacts
-from uhome_server.installer.plan import UHOMEInstallOptions
 from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
@@ -13,6 +10,9 @@ from uhome_server.installer.bundle import (
     UHOMEHostProfileRef,
     write_bundle_manifest,
 )
+from uhome_server.installer.executor import execute_staged_install
+from uhome_server.installer.plan import UHOMEInstallOptions
+from uhome_server.installer.staging import stage_install_artifacts
 
 
 def _probe() -> dict:
@@ -71,7 +71,9 @@ def test_execute_staged_install_writes_target_outputs(tmp_path):
     stage_dir = tmp_path / "stage"
     target_root = tmp_path / "target"
     _bundle(bundle_dir)
-    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    stage_install_artifacts(
+        bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True)
+    )
     result = execute_staged_install(stage_dir, target_root)
     assert "jellyfin" in result.installed_components
     assert (target_root / "install-root" / "jellyfin" / "payload.tar.gz").exists()
@@ -79,13 +81,17 @@ def test_execute_staged_install_writes_target_outputs(tmp_path):
     assert (target_root / "etc" / "uhome" / "jellyfin.env").exists()
     assert (target_root / "systemd" / "system" / "jellyfin.service").exists()
     assert (target_root / "systemd" / "multi-user.target.wants" / "jellyfin.service").exists()
-    unit_text = (target_root / "systemd" / "system" / "jellyfin.service").read_text(encoding="utf-8")
+    unit_text = (target_root / "systemd" / "system" / "jellyfin.service").read_text(
+        encoding="utf-8"
+    )
     assert "EnvironmentFile=/etc/uhome/jellyfin.env" in unit_text
     assert "ExecStart=/usr/bin/env sh -lc 'exec jellyfin" in unit_text
     assert (target_root / "receipts" / "install-receipt.json").exists()
     assert (target_root / "receipts" / "service-manifest.json").exists()
     assert (target_root / "bin" / "systemctl-apply.sh").exists()
-    receipt = json.loads((target_root / "receipts" / "install-receipt.json").read_text(encoding="utf-8"))
+    receipt = json.loads(
+        (target_root / "receipts" / "install-receipt.json").read_text(encoding="utf-8")
+    )
     assert receipt["host_profile_id"] == "standalone-linux"
     assert receipt["rollback_evidence"]["rollback_supported"] is True
     state = json.loads((target_root / "state" / "install-state.json").read_text(encoding="utf-8"))
@@ -96,7 +102,9 @@ def test_execute_staged_install_rejects_unready_stage(tmp_path):
     stage_dir = tmp_path / "stage"
     stage_dir.mkdir(parents=True, exist_ok=True)
     (stage_dir / "install-plan.json").write_text(json.dumps({"ready": False}), encoding="utf-8")
-    (stage_dir / "install-receipt.json").write_text(json.dumps({"install_root": "/opt/uhome"}), encoding="utf-8")
+    (stage_dir / "install-receipt.json").write_text(
+        json.dumps({"install_root": "/opt/uhome"}), encoding="utf-8"
+    )
     try:
         execute_staged_install(stage_dir, tmp_path / "target")
     except ValueError as exc:
@@ -110,7 +118,9 @@ def test_execute_staged_install_requires_service_manifest(tmp_path):
     target_root = tmp_path / "target"
     stage_dir.mkdir(parents=True, exist_ok=True)
     (stage_dir / "install-plan.json").write_text(json.dumps({"ready": True}), encoding="utf-8")
-    (stage_dir / "install-receipt.json").write_text(json.dumps({"install_root": "/opt/uhome"}), encoding="utf-8")
+    (stage_dir / "install-receipt.json").write_text(
+        json.dumps({"install_root": "/opt/uhome"}), encoding="utf-8"
+    )
     (stage_dir / "config").mkdir(parents=True, exist_ok=True)
     try:
         execute_staged_install(stage_dir, target_root)

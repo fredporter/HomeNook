@@ -63,8 +63,16 @@ def test_dashboard_summary_shape(monkeypatch):
     assert response.status_code == 200
     body = response.json()
     assert body["ok"] is True
-    assert set(body["subsystems"].keys()) == {"ha_bridge", "workspace_runtime", "network", "library"}
-    assert body["workspace_runtime"]["components"]["uhome"]["defaults"]["presentation"]["value"] == "thin-gui"
+    assert set(body["subsystems"].keys()) == {
+        "ha_bridge",
+        "workspace_runtime",
+        "network",
+        "library",
+    }
+    assert (
+        body["workspace_runtime"]["components"]["uhome"]["defaults"]["presentation"]["value"]
+        == "thin-gui"
+    )
     assert body["subsystems"]["network"]["nodes"]["count"] == 2
     assert body["subsystems"]["network"]["status"] == "degraded"
 
@@ -72,8 +80,12 @@ def test_dashboard_summary_shape(monkeypatch):
 def test_dashboard_summary_degraded(monkeypatch):
     import uhome_server.routes.dashboard as mod
 
-    monkeypatch.setattr(mod, "_ha_status", lambda: (_ for _ in ()).throw(RuntimeError("bridge down")))
-    monkeypatch.setattr(mod, "_workspace_runtime_status", lambda: {"workspace_ref": "@memory/workspace/settings"})
+    monkeypatch.setattr(
+        mod, "_ha_status", lambda: (_ for _ in ()).throw(RuntimeError("bridge down"))
+    )
+    monkeypatch.setattr(
+        mod, "_workspace_runtime_status", lambda: {"workspace_ref": "@memory/workspace/settings"}
+    )
     monkeypatch.setattr(
         mod,
         "_network_status",

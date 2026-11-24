@@ -4,16 +4,15 @@ import sys
 import unittest
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from client_adapter import (
     attach_runtime_targets,
     attach_wizard_targets,
+    build_offer,
     build_remote_runtime_bridge_brief,
     build_runtime_session_brief,
-    build_offer,
     probe_local_server_app,
     probe_runtime_targets,
 )
@@ -100,7 +99,10 @@ class SessionOfferTests(unittest.TestCase):
                         }
                     },
                 },
-                {"name": "launcher_status", "payload": {"running": False, "preferred_presentation": "thin-gui"}},
+                {
+                    "name": "launcher_status",
+                    "payload": {"running": False, "preferred_presentation": "thin-gui"},
+                },
             ],
         }
         brief = build_runtime_session_brief(offer)["runtime_session_brief"]
@@ -229,7 +231,10 @@ class SessionOfferTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         payload = json.loads(proc.stdout)
         self.assertIn("remote_runtime_bridge_brief", payload)
-        self.assertEqual(payload["remote_runtime_bridge_brief"]["recommended_action"], "orchestration_unavailable")
+        self.assertEqual(
+            payload["remote_runtime_bridge_brief"]["recommended_action"],
+            "orchestration_unavailable",
+        )
 
 
 if __name__ == "__main__":

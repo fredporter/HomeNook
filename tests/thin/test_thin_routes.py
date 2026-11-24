@@ -4,13 +4,14 @@ Integration tests for uHomeNest Thin UI routes.
 Tests the thin UI endpoints including home, media, and automation views.
 """
 
-import pytest
-from fastapi.testclient import TestClient
+from datetime import datetime, timedelta
 from pathlib import Path
 
+import pytest
+from fastapi.testclient import TestClient
+
 from uhome_server.app import create_app
-from uhome_server.services.job_queue import get_job_queue, JobType, JobStatus, RecordingJob
-from datetime import datetime, timedelta
+from uhome_server.services.job_queue import JobStatus, JobType, RecordingJob, get_job_queue
 
 
 @pytest.fixture
@@ -121,15 +122,15 @@ def test_automation_jobs_route(client, job_queue):
         channel_id="test-channel",
         start_time=datetime.now() + timedelta(minutes=5),
         end_time=datetime.now() + timedelta(minutes=35),
-        quality_profile="hd"
+        quality_profile="hd",
     )
     job_queue.add_job(test_job)
-    
+
     response = client.get("/api/runtime/thin/automation/jobs")
     assert response.status_code == 200
     assert "Job Queue Monitor" in response.text
     assert "Active Jobs" in response.text
-    
+
     # Clean up
     job_queue.cancel_job("test_job_001")
 
@@ -160,7 +161,7 @@ def test_thin_routes_content_type(client):
         "/api/runtime/thin/automation/",
         "/api/runtime/thin/automation/status",
     ]
-    
+
     for route in routes:
         response = client.get(route)
         assert response.status_code == 200
@@ -178,13 +179,8 @@ def test_thin_routes_navigation_links(client):
 def test_thin_routes_templates_exist():
     """Test that all required templates exist."""
     templates_dir = Path(__file__).parent.parent / "server" / "templates" / "thin"
-    required_templates = [
-        "home.html",
-        "media.html", 
-        "automation.html",
-        "status.html"
-    ]
-    
+    required_templates = ["home.html", "media.html", "automation.html", "status.html"]
+
     for template in required_templates:
         template_path = templates_dir / template
         assert template_path.exists(), f"Template {template} not found"
@@ -194,7 +190,7 @@ def test_thin_routes_templates_exist():
 def test_thin_routes_kiosk_features(client):
     """Test that thin routes include kiosk-specific features."""
     response = client.get("/api/runtime/thin/home/")
-    
+
     # Check for kiosk-specific features
     assert "touch-target" in response.text  # Large touch targets
     assert "user-select: none" in response.text  # Disable text selection
@@ -205,7 +201,7 @@ def test_thin_routes_kiosk_features(client):
 def test_thin_routes_responsive_design(client):
     """Test that thin routes include responsive design elements."""
     response = client.get("/api/runtime/thin/media/")
-    
+
     # Check for responsive design classes
     assert "container mx-auto" in response.text
     assert "grid-cols" in response.text
@@ -216,7 +212,7 @@ def test_thin_routes_responsive_design(client):
 def test_thin_routes_icon_usage(client):
     """Test that thin routes use appropriate icons."""
     response = client.get("/api/runtime/thin/home/")
-    
+
     # Check for icon usage
     assert "🏠" in response.text  # Home icon
     assert "🎬" in response.text  # Media icon
@@ -229,7 +225,7 @@ def test_thin_routes_error_handling(client):
     # Test non-existent route
     response = client.get("/api/runtime/thin/nonexistent")
     assert response.status_code == 404
-    
+
     # Test invalid navigation target
     response = client.get("/api/runtime/thin/home/navigate?target=invalid")
     assert response.status_code == 200  # Should show navigation page, not error
@@ -239,11 +235,11 @@ def test_job_queue_integration_in_automation(client, job_queue):
     """Test that automation views properly integrate with job queue."""
     # Clear any existing jobs
     job_queue.clear_completed_jobs()
-    
+
     # Get initial status
     response = client.get("/api/runtime/thin/automation/")
     initial_content = response.text
-    
+
     # Add a test job
     test_job = RecordingJob(
         job_id="integration_test_job",
@@ -257,17 +253,17 @@ def test_job_queue_integration_in_automation(client, job_queue):
         channel_id="test_channel",
         start_time=datetime.now() + timedelta(minutes=10),
         end_time=datetime.now() + timedelta(minutes=40),
-        quality_profile="hd"
+        quality_profile="hd",
     )
     job_queue.add_job(test_job)
-    
+
     # Get updated status
     response = client.get("/api/runtime/thin/automation/")
     updated_content = response.text
-    
+
     # Clean up
     job_queue.cancel_job("integration_test_job")
-    
+
     # Verify content changed (job count updated)
     assert response.status_code == 200
     assert "Automation Center" in updated_content

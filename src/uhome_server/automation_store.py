@@ -58,8 +58,14 @@ class AutomationStore:
             "policy_flags": payload.get("policy_flags") or {},
             "queued_at": payload.get("queued_at") or utc_now_iso_z(),
         }
-        workflow_id = item["policy_flags"].get("workflow_id") if isinstance(item["policy_flags"], dict) else None
-        step_id = item["policy_flags"].get("step_id") if isinstance(item["policy_flags"], dict) else None
+        workflow_id = (
+            item["policy_flags"].get("workflow_id")
+            if isinstance(item["policy_flags"], dict)
+            else None
+        )
+        step_id = (
+            item["policy_flags"].get("step_id") if isinstance(item["policy_flags"], dict) else None
+        )
         if workflow_id:
             item["workflow_id"] = workflow_id
         if step_id:
@@ -112,14 +118,22 @@ class AutomationStore:
         result = self.record_result(
             {
                 "job_id": job_id,
-                "workflow_id": next((item.get("workflow_id") for item in items if item.get("job_id") == job_id), None),
+                "workflow_id": next(
+                    (item.get("workflow_id") for item in items if item.get("job_id") == job_id),
+                    None,
+                ),
                 "status": "cancelled",
                 "output_refs": [],
                 "event_refs": [f"event://automation/{job_id}/cancelled"],
                 "suggested_workflow_action": "pause",
             }
         )
-        return {"contract_version": "v2.0.4", "status": "cancelled", "job_id": job_id, "result": result}
+        return {
+            "contract_version": "v2.0.4",
+            "status": "cancelled",
+            "job_id": job_id,
+            "result": result,
+        }
 
     def retry_job(self, job_id: str) -> dict[str, Any]:
         results = self._load_results()
@@ -134,7 +148,11 @@ class AutomationStore:
         retry_payload = {
             "job_id": f"{job_id}:retry",
             "requested_capability": "retry-task",
-            "payload_ref": prior.get("output_refs", ["memory://retry"])[0] if prior.get("output_refs") else "memory://retry",
+            "payload_ref": (
+                prior.get("output_refs", ["memory://retry"])[0]
+                if prior.get("output_refs")
+                else "memory://retry"
+            ),
             "origin_surface": "uHOME-server",
             "policy_flags": {
                 "workflow_id": prior.get("workflow_id"),
@@ -142,7 +160,12 @@ class AutomationStore:
             },
         }
         queued = self.queue_job(retry_payload)
-        return {"contract_version": "v2.0.4", "status": "queued", "job": queued, "retried_from": job_id}
+        return {
+            "contract_version": "v2.0.4",
+            "status": "queued",
+            "job": queued,
+            "retried_from": job_id,
+        }
 
     def process_next_job(self, payload: dict[str, Any] | None = None) -> dict[str, Any]:
         jobs = self._load_jobs()
@@ -161,9 +184,11 @@ class AutomationStore:
             "status": (payload or {}).get("status") or "completed",
             "output_refs": (payload or {}).get("output_refs")
             or [f"memory://automation/results/{job['job_id']}"],
-            "event_refs": (payload or {}).get("event_refs") or [f"event://automation/{job['job_id']}"],
+            "event_refs": (payload or {}).get("event_refs")
+            or [f"event://automation/{job['job_id']}"],
             "completed_at": (payload or {}).get("completed_at") or utc_now_iso_z(),
-            "suggested_workflow_action": (payload or {}).get("suggested_workflow_action") or "advance",
+            "suggested_workflow_action": (payload or {}).get("suggested_workflow_action")
+            or "advance",
         }
         result = self.record_result(result_payload)
         return {"contract_version": "v2.0.4", "status": "processed", "job": job, "result": result}

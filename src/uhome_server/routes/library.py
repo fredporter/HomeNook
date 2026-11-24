@@ -32,10 +32,14 @@ def _normalize_repo_input(repo: str) -> dict[str, str]:
         }
     parsed = urlparse(raw)
     if parsed.scheme != "https" or not parsed.netloc:
-        raise HTTPException(status_code=400, detail="Repository must be owner/name or a valid https URL")
+        raise HTTPException(
+            status_code=400, detail="Repository must be owner/name or a valid https URL"
+        )
     path_parts = [part for part in parsed.path.split("/") if part]
     if len(path_parts) < 2:
-        raise HTTPException(status_code=400, detail="Repository URL must include owner and repository name")
+        raise HTTPException(
+            status_code=400, detail="Repository URL must include owner and repository name"
+        )
     owner = path_parts[-2]
     name = path_parts[-1].removesuffix(".git")
     return {

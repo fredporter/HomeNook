@@ -51,17 +51,25 @@ async def health_check() -> dict[str, Any]:
 @router.get("/discover")
 async def discover_devices() -> dict[str, Any]:
     devices = await get_gateway_manager().discover_devices()
-    return {"success": True, "data": {"devices": [device.to_dict() for device in devices], "count": len(devices)}}
+    return {
+        "success": True,
+        "data": {"devices": [device.to_dict() for device in devices], "count": len(devices)},
+    }
 
 
 @router.get("/devices")
-async def list_devices(type_filter: DeviceType | None = Query(None), manufacturer: str | None = Query(None)) -> dict[str, Any]:
+async def list_devices(
+    type_filter: DeviceType | None = Query(None), manufacturer: str | None = Query(None)
+) -> dict[str, Any]:
     devices = await get_gateway_manager().get_devices()
     if type_filter:
         devices = [device for device in devices if device.type == type_filter]
     if manufacturer:
         devices = [device for device in devices if device.manufacturer == manufacturer]
-    return {"success": True, "data": {"devices": [device.to_dict() for device in devices], "count": len(devices)}}
+    return {
+        "success": True,
+        "data": {"devices": [device.to_dict() for device in devices], "count": len(devices)},
+    }
 
 
 @router.get("/devices/{device_id}")
@@ -71,20 +79,30 @@ async def get_device(device_id: str) -> dict[str, Any]:
     if not device:
         raise HTTPException(status_code=404, detail="Device not found")
     state = await manager.get_device_state(device_id)
-    return {"success": True, "data": {"device": device.to_dict(), "state": state.to_dict() if state else None}}
+    return {
+        "success": True,
+        "data": {"device": device.to_dict(), "state": state.to_dict() if state else None},
+    }
 
 
 @router.get("/entities")
-async def list_entities(domain: str | None = Query(None), device_id: str | None = Query(None)) -> dict[str, Any]:
+async def list_entities(
+    domain: str | None = Query(None), device_id: str | None = Query(None)
+) -> dict[str, Any]:
     entities = list(get_gateway_manager().entities.values())
     if domain:
         entities = [entity for entity in entities if entity.domain == domain]
     if device_id:
         entities = [entity for entity in entities if entity.device_id == device_id]
-    return {"success": True, "data": {"entities": [entity.to_dict() for entity in entities], "count": len(entities)}}
+    return {
+        "success": True,
+        "data": {"entities": [entity.to_dict() for entity in entities], "count": len(entities)},
+    }
 
 
 @router.post("/services/{domain}/{service}")
 async def call_service(domain: str, service: str, payload: ServiceCallRequest) -> dict[str, Any]:
-    success = await get_gateway_manager().call_service(domain, service, payload.entity_ids, payload.data)
+    success = await get_gateway_manager().call_service(
+        domain, service, payload.entity_ids, payload.data
+    )
     return {"success": success, "data": {"domain": domain, "service": service}}

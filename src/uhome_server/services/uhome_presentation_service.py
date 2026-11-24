@@ -7,7 +7,12 @@ import signal
 from pathlib import Path
 from typing import Any
 
-from uhome_server.config import get_homenest_state_dir, read_json_file, utc_now_iso_z, write_json_file
+from uhome_server.config import (
+    get_homenest_state_dir,
+    read_json_file,
+    utc_now_iso_z,
+    write_json_file,
+)
 from uhome_server.workspace import get_template_workspace_service
 
 SUPPORTED_PRESENTATIONS = ("thin-gui", "steam-console")
@@ -36,7 +41,12 @@ class UHomePresentationService:
     def _read_state(self) -> dict[str, Any]:
         return read_json_file(
             self.state_path,
-            default={"active_presentation": None, "updated_at": None, "node_role": "server", "lifecycle_state": "idle"},
+            default={
+                "active_presentation": None,
+                "updated_at": None,
+                "node_role": "server",
+                "lifecycle_state": "idle",
+            },
         )
 
     def _write_state(self, payload: dict[str, Any]) -> None:
@@ -47,7 +57,9 @@ class UHomePresentationService:
         return get_template_workspace_service(self.repo_root).read_fields("settings", "uhome")
 
     def _preferred_presentation(self) -> tuple[str, str]:
-        workspace_value = str(self._workspace_fields().get("presentation_mode") or "").strip().lower()
+        workspace_value = (
+            str(self._workspace_fields().get("presentation_mode") or "").strip().lower()
+        )
         if workspace_value in SUPPORTED_PRESENTATIONS:
             return workspace_value, "template_workspace"
         if workspace_value:
@@ -55,7 +67,9 @@ class UHomePresentationService:
         return SUPPORTED_PRESENTATIONS[0], "default"
 
     def _node_role(self) -> tuple[str, str]:
-        workspace_value = str(self._workspace_fields().get("node_role") or "").strip().lower().replace("_", "-")
+        workspace_value = (
+            str(self._workspace_fields().get("node_role") or "").strip().lower().replace("_", "-")
+        )
         if workspace_value in SUPPORTED_NODE_ROLES:
             return workspace_value, "template_workspace"
         if workspace_value:
@@ -111,7 +125,9 @@ class UHomePresentationService:
             "session_id": state.get("session_id"),
         }
 
-    def _intent_payload(self, presentation: str | None, node_role: str, action: str) -> dict[str, Any]:
+    def _intent_payload(
+        self, presentation: str | None, node_role: str, action: str
+    ) -> dict[str, Any]:
         launcher = presentation or self._preferred_presentation()[0]
         return {
             "intent": {

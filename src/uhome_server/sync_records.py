@@ -13,7 +13,6 @@ from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-
 ContactRefId = str
 ActivityRefId = str
 BinderRefId = str
@@ -109,7 +108,9 @@ class CanonicalContact(SyncRecordModel):
 class Activity(SyncRecordModel):
     activity_id: str = Field(pattern=r"^activity:[a-z0-9][a-z0-9._-]*$")
     entity_type: Literal["activity"]
-    activity_kind: Literal["task", "note", "email", "meeting", "reminder", "issue", "event", "webhook"]
+    activity_kind: Literal[
+        "task", "note", "email", "meeting", "reminder", "issue", "event", "webhook"
+    ]
     title: str = Field(min_length=1)
     body: Optional[str] = None
     status: Literal["open", "queued", "in_progress", "done", "cancelled", "failed"]

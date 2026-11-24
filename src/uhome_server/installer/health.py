@@ -64,7 +64,9 @@ def run_promoted_health_checks(
             continue
         command = str(probe.get("command") or "").strip()
         if not command:
-            results.append({"service": service, "ok": False, "error": "missing command", "health_check": probe})
+            results.append(
+                {"service": service, "ok": False, "error": "missing command", "health_check": probe}
+            )
             continue
         completed = runner(command, shell=True, text=True, capture_output=True)
         results.append(

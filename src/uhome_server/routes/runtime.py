@@ -9,7 +9,9 @@ from typing import Any, Callable, Optional
 
 from fastapi import APIRouter, Body, Depends, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
+from pydantic import ValidationError
 
+from uhome_server.automation_store import get_automation_store
 from uhome_server.config import (
     get_repo_root,
     get_runtime_settings,
@@ -23,25 +25,23 @@ from uhome_server.config import (
     load_uhome_network_policy_schema,
     utc_now_iso_z,
 )
-from uhome_server.automation_store import get_automation_store
+from uhome_server.services.home_assistant_service import get_ha_service
+from uhome_server.services.uhome_command_handlers import playback_status
 from uhome_server.sync_records import (
     validate_sync_record_envelope,
     validation_error_payload,
 )
 from uhome_server.sync_store import get_sync_record_store
-from uhome_server.uhome_network_policy import (
-    uhome_network_policy_validation_error,
-    validate_uhome_network_policy_payload,
-)
-from pydantic import ValidationError
-from uhome_server.services.home_assistant_service import get_ha_service
-from uhome_server.services.uhome_command_handlers import playback_status
-from uhome_server.workspace import get_template_workspace_service
 from uhome_server.thin_pages import (
     thin_automation_status_html,
     thin_read_mode_from_path,
     thin_read_mode_html,
 )
+from uhome_server.uhome_network_policy import (
+    uhome_network_policy_validation_error,
+    validate_uhome_network_policy_payload,
+)
+from uhome_server.workspace import get_template_workspace_service
 
 
 def _probe(fn: Callable[[], dict[str, Any]], label: str, required: bool = True) -> dict[str, Any]:
@@ -331,7 +331,11 @@ def create_runtime_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
         return HTMLResponse(thin_read_mode_html())
 
     @router.get("/thin/browse", response_class=HTMLResponse)
-    async def thin_browse(rel: str = Query(..., min_length=1, description="Path under repo docs/, e.g. pathway/README.md")):
+    async def thin_browse(
+        rel: str = Query(
+            ..., min_length=1, description="Path under repo docs/, e.g. pathway/README.md"
+        )
+    ):
         docs_root = get_repo_root() / "docs"
         raw = rel.replace("\\", "/").lstrip("/")
         if ".." in raw.split("/"):

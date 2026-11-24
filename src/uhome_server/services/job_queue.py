@@ -507,9 +507,7 @@ class JobQueue:
         try:
             data = {
                 "queue": [self._serialize_job(job) for _, _, job in self._queue],
-                "active": [
-                    self._serialize_job(job) for job in self._active_jobs.values()
-                ],
+                "active": [self._serialize_job(job) for job in self._active_jobs.values()],
                 "completed": [self._serialize_job(job) for job in self._completed_jobs],
                 "failed": [self._serialize_job(job) for job in self._failed_jobs],
             }

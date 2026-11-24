@@ -58,7 +58,10 @@ class HomeAssistantService:
         if command == "system.info":
             return {"command": "system.info", "result": {"bridge_version": self._bridge_version()}}
         if command == "system.capabilities":
-            return {"command": "system.capabilities", "result": {"allowlist": sorted(command_allowlist)}}
+            return {
+                "command": "system.capabilities",
+                "result": {"allowlist": sorted(command_allowlist)},
+            }
         if command.startswith("uhome."):
             from uhome_server.services.uhome_command_handlers import dispatch
 

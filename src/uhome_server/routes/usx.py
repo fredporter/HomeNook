@@ -37,11 +37,13 @@ async def list_usx_files() -> JSONResponse:
     if not USX_EXAMPLES_DIR.exists():
         return JSONResponse({"files": [], "directory": str(USX_EXAMPLES_DIR)})
     files = sorted(f.stem for f in USX_EXAMPLES_DIR.iterdir() if f.suffix == ".usx")
-    return JSONResponse({
-        "files": files,
-        "count": len(files),
-        "directory": str(USX_EXAMPLES_DIR),
-    })
+    return JSONResponse(
+        {
+            "files": files,
+            "count": len(files),
+            "directory": str(USX_EXAMPLES_DIR),
+        }
+    )
 
 
 @router.get("/{name}")
@@ -73,7 +75,7 @@ async def get_udx(name: str) -> JSONResponse:
 async def evaluate_action(name: str, request: Request) -> JSONResponse:
     """
     Evaluate a USX action against the uHome server API.
-    
+
     Body should contain the action to evaluate:
     ```json
     {
@@ -91,7 +93,7 @@ async def evaluate_action(name: str, request: Request) -> JSONResponse:
     # Validate the action against the USX file
     usx = _load_usx(name)
     actions = usx.get("actions", {})
-    
+
     # Check if this action exists in the USX file
     found = False
     for section in ["on_load", "on_select", "on_timer"]:
@@ -100,11 +102,15 @@ async def evaluate_action(name: str, request: Request) -> JSONResponse:
                 found = True
                 break
 
-    return JSONResponse({
-        "evaluated": True,
-        "type": action_type,
-        "command": command,
-        "parameters": parameters,
-        "valid": found,
-        "message": "Action validated against USX schema" if found else "Action not found in USX file",
-    })
+    return JSONResponse(
+        {
+            "evaluated": True,
+            "type": action_type,
+            "command": command,
+            "parameters": parameters,
+            "valid": found,
+            "message": (
+                "Action validated against USX schema" if found else "Action not found in USX file"
+            ),
+        }
+    )

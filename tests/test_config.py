@@ -36,7 +36,9 @@ def test_json_config_store_uses_wizard_fallback(tmp_path):
 def test_json_config_store_prefers_legacy_uhome_over_wizard(tmp_path):
     base = tmp_path / "memory" / "config"
     base.mkdir(parents=True, exist_ok=True)
-    (base / "legacy-uhome.json").write_text(json.dumps({"ha_bridge_enabled": True}), encoding="utf-8")
+    (base / "legacy-uhome.json").write_text(
+        json.dumps({"ha_bridge_enabled": True}), encoding="utf-8"
+    )
     (base / "wizard.json").write_text(json.dumps({"ha_bridge_enabled": False}), encoding="utf-8")
     store = JSONConfigStore(path=base / "uhome.json")
     assert store.get("ha_bridge_enabled", False) is True

@@ -57,6 +57,17 @@ pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "-v --tb=short"
 
+[tool.black]
+line-length = 100
+# `server/` is the stale pre-restructure mirror; formatting it would add noise
+# without touching the shipped package.
+extend-exclude = '''/(\.venv|node_modules|server|tests_archived_stale)/'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+extend_skip = [".venv", "node_modules", "server", "tests_archived_stale"]
+
 [tool.ruff]
 target-version = "py39"
 line-length = 100

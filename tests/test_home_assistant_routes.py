@@ -145,7 +145,11 @@ class TestUHomeAdProcessing:
         import uhome_server.services.uhome_command_handlers as handlers
 
         monkeypatch.setattr(handlers, "_config", FakeConfig())
-        monkeypatch.setattr(handlers, "get_template_workspace_service", lambda repo_root=None: FakeWorkspaceService())
+        monkeypatch.setattr(
+            handlers,
+            "get_template_workspace_service",
+            lambda repo_root=None: FakeWorkspaceService(),
+        )
         self._store = store
         self._workspace_store = workspace_store
 
@@ -166,15 +170,24 @@ class TestUHomePlayback:
         import uhome_server.services.playback_service as playback_svc
         import uhome_server.services.uhome_command_handlers as handlers
 
-        workspace_store = {"presentation_mode": "thin-gui", "preferred_target_client": "living-room"}
+        workspace_store = {
+            "presentation_mode": "thin-gui",
+            "preferred_target_client": "living-room",
+        }
         queue_file = tmp_path / "playback_queue.json"
 
         class FakeWorkspaceService:
             def read_fields(self, section, component_id):
                 return dict(workspace_store)
 
-        monkeypatch.setattr(handlers, "get_template_workspace_service", lambda repo_root=None: FakeWorkspaceService())
-        monkeypatch.setattr(playback_svc, "get_template_workspace_service", lambda: FakeWorkspaceService())
+        monkeypatch.setattr(
+            handlers,
+            "get_template_workspace_service",
+            lambda repo_root=None: FakeWorkspaceService(),
+        )
+        monkeypatch.setattr(
+            playback_svc, "get_template_workspace_service", lambda: FakeWorkspaceService()
+        )
         monkeypatch.setattr(handlers, "_playback_queue_path", lambda: queue_file)
         monkeypatch.setattr(playback_svc, "_playback_queue_path", lambda: queue_file)
         self._workspace_store = workspace_store
@@ -186,13 +199,15 @@ class TestUHomePlayback:
 
         # Clear singleton and patch before creating app/client
         playback_svc._service = None
-        
+
         monkeypatch.setattr(handlers, "_jellyfin_base_url", lambda: "")
         monkeypatch.setattr(playback_svc, "_jellyfin_base_url", lambda: "")
-        
+
         _monkeypatch_enabled(monkeypatch, True)
         client = _app()
-        result = client.post("/api/ha/command", json={"command": "uhome.playback.status"}).json()["result"]
+        result = client.post("/api/ha/command", json={"command": "uhome.playback.status"}).json()[
+            "result"
+        ]
         assert result["jellyfin_configured"] is False
         # Note: presentation_mode is 'auto' (default) because the test fixture's fake workspace isn't being used
         # This is expected behavior - the actual workspace file doesn't exist in the test environment
@@ -203,7 +218,10 @@ class TestUHomePlayback:
         client = _app()
         result = client.post(
             "/api/ha/command",
-            json={"command": "uhome.playback.handoff", "params": {"item_id": "abc123", "target_client": "tv"}},
+            json={
+                "command": "uhome.playback.handoff",
+                "params": {"item_id": "abc123", "target_client": "tv"},
+            },
         ).json()["result"]
         assert result["success"] is True
         queue = json.loads(self._queue_file.read_text(encoding="utf-8"))
@@ -213,9 +231,9 @@ class TestUHomePlayback:
 class TestUHomeLauncher:
     @pytest.fixture(autouse=True)
     def _patch_launcher_repo(self, monkeypatch, tmp_path):
-        from uhome_server.config import bootstrap_runtime
         import uhome_server.services.uhome_command_handlers as handlers
         import uhome_server.services.uhome_presentation_service as presentation_svc
+        from uhome_server.config import bootstrap_runtime
 
         bootstrap_runtime(tmp_path)
 
@@ -233,7 +251,9 @@ class TestUHomeLauncher:
     def test_launcher_menu_command(self, monkeypatch):
         _monkeypatch_enabled(monkeypatch, True)
         client = _app()
-        result = client.post("/api/ha/command", json={"command": "uhome.launcher.menu"}).json()["result"]
+        result = client.post("/api/ha/command", json={"command": "uhome.launcher.menu"}).json()[
+            "result"
+        ]
         assert result["command"] == "uhome.launcher.menu"
         assert result["menu_id"] == "uhome-console-main"
         item_ids = {item["id"] for item in result["items"]}
@@ -251,9 +271,13 @@ class TestUHomeLauncher:
         assert started["success"] is True
         assert started["active_presentation"] == "steam-console"
 
-        status = client.post("/api/ha/command", json={"command": "uhome.launcher.status"}).json()["result"]
+        status = client.post("/api/ha/command", json={"command": "uhome.launcher.status"}).json()[
+            "result"
+        ]
         assert status["active_presentation"] == "steam-console"
 
-        stopped = client.post("/api/ha/command", json={"command": "uhome.launcher.stop"}).json()["result"]
+        stopped = client.post("/api/ha/command", json={"command": "uhome.launcher.stop"}).json()[
+            "result"
+        ]
         assert stopped["success"] is True
         assert stopped["active_presentation"] is None

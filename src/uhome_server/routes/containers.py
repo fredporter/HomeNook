@@ -53,7 +53,8 @@ class ContainerLauncher:
             "port": entry.metadata.get("port"),
             "health_check_url": entry.metadata.get("health_check_url"),
             "browser_route": entry.metadata.get("browser_route") or f"/ui/{container_id}",
-            "container_path": entry.metadata.get("resolved_repo_path") or str(self.repo_root / entry.path),
+            "container_path": entry.metadata.get("resolved_repo_path")
+            or str(self.repo_root / entry.path),
             "manifest_path": entry.metadata.get("manifest_path"),
         }
 
@@ -82,7 +83,11 @@ class ContainerLauncher:
     def _resolve_runtime_path(self, container_id: str) -> Path:
         config = self.get_container_config(container_id) or {}
         runtime_path = config.get("container_path")
-        return Path(runtime_path) if isinstance(runtime_path, str) else self.library_root / container_id
+        return (
+            Path(runtime_path)
+            if isinstance(runtime_path, str)
+            else self.library_root / container_id
+        )
 
     def _container_state(self, container_id: str) -> str:
         config = self.get_container_config(container_id)
@@ -95,7 +100,11 @@ class ContainerLauncher:
         if container_section.get("type", "local") == "git":
             git_dir_inplace = self.library_root / container_id / ".git"
             git_dir_clone = self.library_root / "containers" / container_id / ".git"
-            if not container_section.get("cloned_at") and not git_dir_inplace.exists() and not git_dir_clone.exists():
+            if (
+                not container_section.get("cloned_at")
+                and not git_dir_inplace.exists()
+                and not git_dir_clone.exists()
+            ):
                 return "not_cloned"
         if self.is_running(container_id):
             return "running"
@@ -104,10 +113,14 @@ class ContainerLauncher:
     def _get_clone_params(self, container_id: str) -> tuple[str, str, Path]:
         metadata = self._read_container_metadata(container_id)
         if metadata is None:
-            raise HTTPException(status_code=404, detail=f"container.json missing for {container_id}")
+            raise HTTPException(
+                status_code=404, detail=f"container.json missing for {container_id}"
+            )
         container_section = metadata.get("container", {})
         if container_section.get("type", "local") != "git":
-            raise HTTPException(status_code=400, detail=f"Container {container_id} is not type 'git'")
+            raise HTTPException(
+                status_code=400, detail=f"Container {container_id} is not type 'git'"
+            )
         source = container_section.get("source", "")
         ref = container_section.get("ref") or "main"
         clone_dest = self.library_root / "containers" / container_id
@@ -118,14 +131,21 @@ class ContainerLauncher:
         if not manifest_path.exists():
             return
         payload = json.loads(manifest_path.read_text(encoding="utf-8"))
-        payload.setdefault("container", {})["cloned_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        payload.setdefault("container", {})["cloned_at"] = (
+            datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        )
         manifest_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     async def clone_container(self, container_id: str) -> dict[str, Any]:
         source, ref, clone_dest = self._get_clone_params(container_id)
         if clone_dest.exists() and (clone_dest / ".git").exists():
             self._stamp_cloned_at(container_id)
-            return {"success": True, "container_id": container_id, "clone_path": str(clone_dest), "status": "already_cloned"}
+            return {
+                "success": True,
+                "container_id": container_id,
+                "clone_path": str(clone_dest),
+                "status": "already_cloned",
+            }
         try:
             result = subprocess.run(
                 ["git", "clone", "--depth", "1", "--branch", ref, source, str(clone_dest)],
@@ -136,11 +156,20 @@ class ContainerLauncher:
         except FileNotFoundError as exc:
             raise HTTPException(status_code=500, detail="git not found in PATH") from exc
         except subprocess.TimeoutExpired as exc:
-            raise HTTPException(status_code=504, detail=f"git clone timed out for {source}") from exc
+            raise HTTPException(
+                status_code=504, detail=f"git clone timed out for {source}"
+            ) from exc
         if result.returncode != 0:
-            raise HTTPException(status_code=500, detail=f"git clone failed: {result.stderr.strip()[:200]}")
+            raise HTTPException(
+                status_code=500, detail=f"git clone failed: {result.stderr.strip()[:200]}"
+            )
         self._stamp_cloned_at(container_id)
-        return {"success": True, "container_id": container_id, "clone_path": str(clone_dest), "status": "cloned"}
+        return {
+            "success": True,
+            "container_id": container_id,
+            "clone_path": str(clone_dest),
+            "status": "cloned",
+        }
 
     async def stream_clone(self, container_id: str):
         source, ref, clone_dest = self._get_clone_params(container_id)
@@ -180,7 +209,9 @@ class ContainerLauncher:
 
         return StreamingResponse(generate(), media_type="text/event-stream")
 
-    async def launch_container(self, container_id: str, background_tasks: BackgroundTasks) -> dict[str, Any]:
+    async def launch_container(
+        self, container_id: str, background_tasks: BackgroundTasks
+    ) -> dict[str, Any]:
         config = self.get_container_config(container_id)
         if not config:
             raise HTTPException(status_code=404, detail=f"Container not found: {container_id}")
@@ -188,11 +219,15 @@ class ContainerLauncher:
         if state == "running":
             return {"success": True, "status": "already_running", "container_id": container_id}
         if state == "not_cloned":
-            raise HTTPException(status_code=409, detail=f"Container {container_id} has not been cloned yet.")
+            raise HTTPException(
+                status_code=409, detail=f"Container {container_id} has not been cloned yet."
+            )
         metadata = self._read_container_metadata(container_id) or {}
         launch_config = metadata.get("launch_config", {})
         runtime_path = self._resolve_runtime_path(container_id)
-        background_tasks.add_task(self._launch_service, container_id, config, launch_config, runtime_path)
+        background_tasks.add_task(
+            self._launch_service, container_id, config, launch_config, runtime_path
+        )
         return {
             "success": True,
             "status": "launching",
@@ -201,7 +236,13 @@ class ContainerLauncher:
             "browser_route": config["browser_route"],
         }
 
-    async def _launch_service(self, container_id: str, config: dict[str, Any], launch_config: dict[str, Any], runtime_path: Path):
+    async def _launch_service(
+        self,
+        container_id: str,
+        config: dict[str, Any],
+        launch_config: dict[str, Any],
+        runtime_path: Path,
+    ):
         launch_cwd = runtime_path
         custom_cwd = launch_config.get("cwd")
         if custom_cwd:
@@ -209,8 +250,14 @@ class ContainerLauncher:
             if not cwd_path.is_absolute():
                 cwd_path = self.repo_root / cwd_path
             launch_cwd = cwd_path
-        cmd = launch_config.get("command") or ["python", "-m", f"uhome_server.services.{container_id.replace('-', '_')}"]
-        proc = subprocess.Popen(cmd, cwd=str(launch_cwd), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        cmd = launch_config.get("command") or [
+            "python",
+            "-m",
+            f"uhome_server.services.{container_id.replace('-', '_')}",
+        ]
+        proc = subprocess.Popen(
+            cmd, cwd=str(launch_cwd), stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
         self.processes[container_id] = proc
         await self._wait_for_health(config)
 

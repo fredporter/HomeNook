@@ -69,7 +69,9 @@ def app_client(tmp_path, monkeypatch):
     return TestClient(app)
 
 
-def test_playback_status_route(app_client, monkeypatch, mock_config_store, mock_workspace, jellyfin_sessions):
+def test_playback_status_route(
+    app_client, monkeypatch, mock_config_store, mock_workspace, jellyfin_sessions
+):
     """Test GET /api/playback/status."""
     from uhome_server.services import playback_service
 

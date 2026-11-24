@@ -33,7 +33,9 @@ def test_storage_runbook_validation_missing_volume_then_recovery(monkeypatch, tm
     monkeypatch.setattr(health_routes, "get_node_registry", lambda: nodes)
     monkeypatch.setattr(health_routes, "get_storage_registry", lambda: volumes)
 
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
     volumes.upsert_volume(
         StorageVolumeRecord(
             volume_id="vol-a",
@@ -92,8 +94,14 @@ def test_offline_node_runbook_validation_primary_failover(monkeypatch, tmp_path)
     monkeypatch.setattr(health_routes, "get_node_registry", lambda: nodes)
     monkeypatch.setattr(health_routes, "get_storage_registry", lambda: volumes)
 
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
-    nodes.upsert_node(NodeRecord(node_id="node-b", hostname="uhome-b.local", authority="secondary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
+    nodes.upsert_node(
+        NodeRecord(
+            node_id="node-b", hostname="uhome-b.local", authority="secondary", status="online"
+        )
+    )
     volumes.upsert_volume(
         StorageVolumeRecord(
             volume_id="vol-a",

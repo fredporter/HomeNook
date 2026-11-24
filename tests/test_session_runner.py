@@ -1,8 +1,9 @@
 """Tests for DesktopSessionRunner unprivileged session management."""
+
 import json
 import os
-from pathlib import Path
 import subprocess
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
@@ -97,7 +98,9 @@ def test_session_lifecycle_with_mock_process(tmp_path: Path):
     # 4. Verify telemetry events log
     log_file = tmp_path / "sessions" / "session_events.jsonl"
     assert log_file.exists()
-    events = [json.loads(line) for line in log_file.read_text(encoding="utf-8").splitlines() if line]
+    events = [
+        json.loads(line) for line in log_file.read_text(encoding="utf-8").splitlines() if line
+    ]
     event_names = [e["event"] for e in events]
     assert "session_started" in event_names
     assert "session_terminated" in event_names
@@ -108,7 +111,9 @@ def test_dead_pid_detection_restores_focus(tmp_path: Path):
     mock_proc = MagicMock()
     mock_proc.pid = 99999999  # Non-existent PID
 
-    runner = DesktopSessionRunner(state_dir=tmp_path / "sessions", process_spawner=lambda *a, **kw: mock_proc)
+    runner = DesktopSessionRunner(
+        state_dir=tmp_path / "sessions", process_spawner=lambda *a, **kw: mock_proc
+    )
     runner.launch_session("steam-console")
 
     # Active session should notice dead PID on check and restore focus

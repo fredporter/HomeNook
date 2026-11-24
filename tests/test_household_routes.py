@@ -68,7 +68,9 @@ def test_household_browse_filters_blocked_terms(household_client: TestClient, mo
         ),
     ]
 
-    monkeypatch.setattr(household_service, "get_container_catalog_service", lambda repo_root=None: _Catalog(entries))
+    monkeypatch.setattr(
+        household_service, "get_container_catalog_service", lambda repo_root=None: _Catalog(entries)
+    )
 
     response = household_client.get("/api/household/browse")
     assert response.status_code == 200
@@ -105,7 +107,9 @@ def test_household_browse_query_and_limit(household_client: TestClient, monkeypa
         ),
     ]
 
-    monkeypatch.setattr(household_service, "get_container_catalog_service", lambda repo_root=None: _Catalog(entries))
+    monkeypatch.setattr(
+        household_service, "get_container_catalog_service", lambda repo_root=None: _Catalog(entries)
+    )
 
     response = household_client.get("/api/household/browse?q=home&limit=1")
     assert response.status_code == 200
@@ -145,8 +149,14 @@ def test_household_status_filters_session_titles(household_client: TestClient, m
         def read_fields(self, section: str, component_id: str) -> dict[str, str]:
             return {"node_role": "tv-node"}
 
-    monkeypatch.setattr(household_service, "get_playback_service", lambda repo_root=None: _Playback(playback_payload))
-    monkeypatch.setattr(household_service, "get_template_workspace_service", lambda repo_root=None: _Workspace())
+    monkeypatch.setattr(
+        household_service,
+        "get_playback_service",
+        lambda repo_root=None: _Playback(playback_payload),
+    )
+    monkeypatch.setattr(
+        household_service, "get_template_workspace_service", lambda repo_root=None: _Workspace()
+    )
 
     response = household_client.get("/api/household/status")
     assert response.status_code == 200
@@ -177,8 +187,14 @@ def test_household_status_handles_unconfigured_jellyfin(household_client: TestCl
         def read_fields(self, section: str, component_id: str) -> dict[str, str]:
             return {"node_role": "server"}
 
-    monkeypatch.setattr(household_service, "get_playback_service", lambda repo_root=None: _Playback(playback_payload))
-    monkeypatch.setattr(household_service, "get_template_workspace_service", lambda repo_root=None: _Workspace())
+    monkeypatch.setattr(
+        household_service,
+        "get_playback_service",
+        lambda repo_root=None: _Playback(playback_payload),
+    )
+    monkeypatch.setattr(
+        household_service, "get_template_workspace_service", lambda repo_root=None: _Workspace()
+    )
 
     response = household_client.get("/api/household/status")
     assert response.status_code == 200

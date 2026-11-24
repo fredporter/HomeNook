@@ -78,7 +78,15 @@ def _passing_probe() -> dict:
 
 
 def _failing_probe() -> dict:
-    return {"cpu_cores": 2, "ram_gb": 4.0, "storage_gb": 128.0, "media_storage_gb": 500.0, "has_gigabit": False, "has_hdmi": False, "tuner_count": 0}
+    return {
+        "cpu_cores": 2,
+        "ram_gb": 4.0,
+        "storage_gb": 128.0,
+        "media_storage_gb": 500.0,
+        "has_gigabit": False,
+        "has_hdmi": False,
+        "tuner_count": 0,
+    }
 
 
 def test_compute_checksum(tmp_path):
@@ -107,7 +115,9 @@ def test_write_and_read_bundle_manifest(tmp_path):
 
 
 def test_write_and_read_rollback_record(tmp_path):
-    record = UHOMERollbackRecord(rollback_token="tok-abc123", snapshot_paths=["/opt/uhome/jellyfin"])
+    record = UHOMERollbackRecord(
+        rollback_token="tok-abc123", snapshot_paths=["/opt/uhome/jellyfin"]
+    )
     write_rollback_record(tmp_path, record)
     loaded = read_rollback_record(tmp_path)
     assert loaded is not None
@@ -140,7 +150,9 @@ def test_verify_bundle_missing_artifact(tmp_path):
 def test_install_plan_ready(tmp_path):
     manifest = _minimal_manifest(tmp_path)
     write_bundle_manifest(tmp_path, manifest)
-    plan = build_uhome_install_plan(tmp_path, _passing_probe(), UHOMEInstallOptions(enable_autologin_kiosk=False))
+    plan = build_uhome_install_plan(
+        tmp_path, _passing_probe(), UHOMEInstallOptions(enable_autologin_kiosk=False)
+    )
     assert plan.ready is True
     assert plan.verify_result is not None
     assert plan.host_profile_id == "standalone-linux"

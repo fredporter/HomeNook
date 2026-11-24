@@ -69,7 +69,9 @@ class ExecutionResult:
             "environment_paths": self.environment_paths,
             "service_unit_paths": self.service_unit_paths,
             "enabled_service_links": self.enabled_service_links,
-            "service_manifest_path": None if self.service_manifest_path is None else str(self.service_manifest_path),
+            "service_manifest_path": (
+                None if self.service_manifest_path is None else str(self.service_manifest_path)
+            ),
             "receipt_path": str(self.receipt_path),
             "state_path": str(self.state_path),
             "rollback_path": None if self.rollback_path is None else str(self.rollback_path),
@@ -101,7 +103,15 @@ def execute_staged_install(stage_dir: Path, target_root: Path) -> ExecutionResul
     bin_root = target_root / "bin"
     receipts_root = target_root / "receipts"
     rollback_root = target_root / "rollback"
-    for path in (install_root, state_root, config_root, env_root, services_root, receipts_root, bin_root):
+    for path in (
+        install_root,
+        state_root,
+        config_root,
+        env_root,
+        services_root,
+        receipts_root,
+        bin_root,
+    ):
         path.mkdir(parents=True, exist_ok=True)
 
     installed_components: list[str] = []
@@ -140,7 +150,9 @@ def execute_staged_install(stage_dir: Path, target_root: Path) -> ExecutionResul
             render_service_unit(asset),
         )
         service_unit_paths.append(str(unit_path))
-        wants_root = wants_graphical_root if asset.wanted_by == "graphical.target" else wants_multi_root
+        wants_root = (
+            wants_graphical_root if asset.wanted_by == "graphical.target" else wants_multi_root
+        )
         enabled_link = _enable_service(unit_path, wants_root)
         enabled_service_links.append(str(enabled_link))
 

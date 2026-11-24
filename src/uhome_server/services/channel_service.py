@@ -124,7 +124,9 @@ class SessionController:
         """Create a new session for a room on the given channel."""
         session_id = str(uuid.uuid4())
         devices = [device_id] if device_id else []
-        session = ChannelSession(session_id=session_id, room=room, channel_id=channel_id, device_ids=devices)
+        session = ChannelSession(
+            session_id=session_id, room=room, channel_id=channel_id, device_ids=devices
+        )
         self._sessions[session_id] = session
         _log.debug("Created session %s for room=%s channel=%s", session_id, room, channel_id)
         return session
@@ -206,7 +208,11 @@ def resolve_gateway_mode(channel_id: str, client_hint: Optional[str] = None) -> 
         return {"error": f"Unknown channel: {channel_id}"}
 
     # Client hint may request audio-first; otherwise follow channel default.
-    effective_mode = client_hint if client_hint in (MEDIA_MODE_AUDIO_FIRST, MEDIA_MODE_VIDEO, MEDIA_MODE_AUDIO_VIDEO) else channel["media_mode"]
+    effective_mode = (
+        client_hint
+        if client_hint in (MEDIA_MODE_AUDIO_FIRST, MEDIA_MODE_VIDEO, MEDIA_MODE_AUDIO_VIDEO)
+        else channel["media_mode"]
+    )
 
     # Gateway mode selection: proxy-assisted for all known channels in v2.0.7 baseline.
     gateway_mode = GATEWAY_MODE_PROXY_ASSISTED
@@ -252,7 +258,9 @@ class _ChannelService:
 
     # --- session lifecycle -----------------------------------------------------
 
-    def create_session(self, room: str, channel_id: str, device_id: Optional[str] = None) -> Optional[dict[str, Any]]:
+    def create_session(
+        self, room: str, channel_id: str, device_id: Optional[str] = None
+    ) -> Optional[dict[str, Any]]:
         if get_channel(channel_id) is None:
             return None
         return self._ctrl.create(room, channel_id, device_id).to_dict()

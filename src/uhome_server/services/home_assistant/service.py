@@ -8,9 +8,15 @@ from typing import Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
 from uhome_server.config import get_logger
-from uhome_server.services.home_assistant.api.rest import router as rest_router, set_gateway_manager
+from uhome_server.services.home_assistant.api.rest import router as rest_router
+from uhome_server.services.home_assistant.api.rest import set_gateway_manager
 from uhome_server.services.home_assistant.api.websocket import WebSocketManager
-from uhome_server.services.home_assistant.devices import DeviceController, DeviceMonitor, DeviceRegistry, DiscoveryService
+from uhome_server.services.home_assistant.devices import (
+    DeviceController,
+    DeviceMonitor,
+    DeviceRegistry,
+    DiscoveryService,
+)
 from uhome_server.services.home_assistant.gateway.manager import GatewayManager
 from uhome_server.services.home_assistant.schemas.gateway import GatewayConfigSchema
 
@@ -97,4 +103,6 @@ class HomeAssistantService:
 
     async def _on_state_changed(self, state_data) -> None:
         if self.ws_manager and isinstance(state_data, dict):
-            await self.ws_manager.broadcast_state_change(state_data.get("device_id", "unknown"), state_data)
+            await self.ws_manager.broadcast_state_change(
+                state_data.get("device_id", "unknown"), state_data
+            )

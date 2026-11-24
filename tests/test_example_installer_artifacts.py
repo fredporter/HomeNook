@@ -45,7 +45,11 @@ def test_example_dual_boot_bundle_builds_dual_boot_plan():
 def test_example_standalone_flow_records_reinstall_context(tmp_path):
     repo_root = get_repo_root()
     bundle_dir = repo_root / "examples" / "installer" / "bundles" / "standalone"
-    probe = json.loads((repo_root / "examples" / "installer" / "probes" / "standalone-linux.json").read_text(encoding="utf-8"))
+    probe = json.loads(
+        (repo_root / "examples" / "installer" / "probes" / "standalone-linux.json").read_text(
+            encoding="utf-8"
+        )
+    )
     stage_dir = tmp_path / "stage"
     target_root = tmp_path / "target"
     host_root = tmp_path / "host"
@@ -74,14 +78,20 @@ def test_example_standalone_flow_records_reinstall_context(tmp_path):
 def test_example_dual_boot_flow_records_profile_evidence(tmp_path):
     repo_root = get_repo_root()
     bundle_dir = repo_root / "examples" / "installer" / "bundles" / "dual-boot"
-    probe = json.loads((repo_root / "examples" / "installer" / "probes" / "dual-boot-steam-node.json").read_text(encoding="utf-8"))
+    probe = json.loads(
+        (repo_root / "examples" / "installer" / "probes" / "dual-boot-steam-node.json").read_text(
+            encoding="utf-8"
+        )
+    )
     stage_dir = tmp_path / "stage"
     plan, staged = stage_install_artifacts(bundle_dir, stage_dir, probe)
     assert plan.ready is True
     assert plan.host_profile_id == "dual-boot-steam-node"
     receipt = json.loads(staged.receipt_path.read_text(encoding="utf-8"))
     assert receipt["host_profile"]["boot_mode"] == "dual-boot"
-    assert receipt["preflight"]["capability_checks"]["dual_boot_disk_layout_present"]["passed"] is True
+    assert (
+        receipt["preflight"]["capability_checks"]["dual_boot_disk_layout_present"]["passed"] is True
+    )
     assert receipt["storage_identity_evidence"]["windows_disk_id"] == "disk-windows-root-002"
 
 

@@ -20,11 +20,15 @@ class ClientRegisterRequest(BaseModel):
     capability_profile: Literal["controller", "remote", "touch"] = Field(
         ..., description="Base capability profile"
     )
-    capabilities: dict[str, Any] = Field(default_factory=dict, description="Extended capability map")
+    capabilities: dict[str, Any] = Field(
+        default_factory=dict, description="Extended capability map"
+    )
 
 
 class ClientCapabilitiesUpdateRequest(BaseModel):
-    capabilities: dict[str, Any] = Field(default_factory=dict, description="Partial capability updates")
+    capabilities: dict[str, Any] = Field(
+        default_factory=dict, description="Partial capability updates"
+    )
 
 
 def create_client_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
@@ -61,7 +65,9 @@ def create_client_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
         }
 
     @router.post("/{client_id}/capabilities", dependencies=dependencies)
-    async def update_client_capabilities(client_id: str, payload: ClientCapabilitiesUpdateRequest) -> dict[str, Any]:
+    async def update_client_capabilities(
+        client_id: str, payload: ClientCapabilitiesUpdateRequest
+    ) -> dict[str, Any]:
         result = svc.update_capabilities(client_id, payload.capabilities)
         if result is None:
             raise HTTPException(status_code=404, detail=f"Client not found: {client_id}")

@@ -1,7 +1,7 @@
 """Compatibility wrapper for legacy Sonic-facing health-check imports."""
 
-from uhome_server.sonic import _warn_legacy_import
 from uhome_server.installer import health as _health
+from uhome_server.sonic import _warn_legacy_import
 
 _warn_legacy_import("uhome_server.sonic.health", "uhome_server.installer.health")
 

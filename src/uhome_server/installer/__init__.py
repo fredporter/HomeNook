@@ -6,9 +6,9 @@ from uhome_server.installer.bundle import (
     ROLLBACK_FILENAME,
     UHOME_COMPONENT_IDS,
     BundleVerifyResult,
-    UHOMEHostProfileRef,
     UHOMEBundleComponent,
     UHOMEBundleManifest,
+    UHOMEHostProfileRef,
     UHOMERollbackRecord,
     compute_checksum,
     read_bundle_manifest,
@@ -21,7 +21,13 @@ from uhome_server.installer.bundle import (
 from uhome_server.installer.executor import ExecutionResult, execute_staged_install
 from uhome_server.installer.health import HealthCheckRunResult, run_promoted_health_checks
 from uhome_server.installer.live_apply import LiveApplyResult, run_ubuntu_apply_plan
-from uhome_server.installer.plan import InstallPhase, UHOMEInstallOptions, UHOMEInstallPlan, UHOMEInstallStep, build_uhome_install_plan
+from uhome_server.installer.plan import (
+    InstallPhase,
+    UHOMEInstallOptions,
+    UHOMEInstallPlan,
+    UHOMEInstallStep,
+    build_uhome_install_plan,
+)
 from uhome_server.installer.preflight import (
     DEFAULT_PROFILE,
     DUAL_BOOT_STEAM_NODE_PROFILE,
@@ -33,7 +39,14 @@ from uhome_server.installer.preflight import (
     get_host_profile,
     preflight_check,
 )
-from uhome_server.installer.promotion import PromotionResult, RollbackResult, VerificationResult, promote_target_root, rollback_promoted_target, verify_promoted_target
+from uhome_server.installer.promotion import (
+    PromotionResult,
+    RollbackResult,
+    VerificationResult,
+    promote_target_root,
+    rollback_promoted_target,
+    verify_promoted_target,
+)
 from uhome_server.installer.service_manifest import StagedServiceManifest, StagedServiceRecord
 from uhome_server.installer.staging import UHOMEStagedArtifacts, stage_install_artifacts
 

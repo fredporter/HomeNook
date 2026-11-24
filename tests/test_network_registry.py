@@ -3,7 +3,6 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from uhome_server.routes import network as network_routes
 from uhome_server.cluster.registry import (
     NodeRecord,
     NodeRegistry,
@@ -12,6 +11,7 @@ from uhome_server.cluster.registry import (
     build_library_index,
     summarize_topology,
 )
+from uhome_server.routes import network as network_routes
 
 
 def _client(monkeypatch):
@@ -52,7 +52,9 @@ def _client(monkeypatch):
                     for candidate in node_store.values()
                 )
                 if not has_other_active_primary:
-                    raise ValueError("Cannot demote the active primary without promoting a replacement")
+                    raise ValueError(
+                        "Cannot demote the active primary without promoting a replacement"
+                    )
             item["authority"] = authority
             return item
 
@@ -110,11 +112,21 @@ def test_handoff_primary_authority(monkeypatch):
     client = _client(monkeypatch)
     client.post(
         "/api/network/nodes",
-        json={"node_id": "node-a", "hostname": "uhome-a.local", "authority": "primary", "status": "online"},
+        json={
+            "node_id": "node-a",
+            "hostname": "uhome-a.local",
+            "authority": "primary",
+            "status": "online",
+        },
     )
     client.post(
         "/api/network/nodes",
-        json={"node_id": "node-b", "hostname": "uhome-b.local", "authority": "secondary", "status": "online"},
+        json={
+            "node_id": "node-b",
+            "hostname": "uhome-b.local",
+            "authority": "secondary",
+            "status": "online",
+        },
     )
     response = client.post("/api/network/nodes/node-b/authority", json={"authority": "primary"})
     assert response.status_code == 200
@@ -128,7 +140,12 @@ def test_reject_promoting_offline_primary(monkeypatch):
     client = _client(monkeypatch)
     client.post(
         "/api/network/nodes",
-        json={"node_id": "node-a", "hostname": "uhome-a.local", "authority": "secondary", "status": "offline"},
+        json={
+            "node_id": "node-a",
+            "hostname": "uhome-a.local",
+            "authority": "secondary",
+            "status": "offline",
+        },
     )
     response = client.post("/api/network/nodes/node-a/authority", json={"authority": "primary"})
     assert response.status_code == 400
@@ -200,7 +217,12 @@ def test_library_index_reports_partial_availability(monkeypatch):
     client = _client(monkeypatch)
     client.post(
         "/api/network/nodes",
-        json={"node_id": "node-a", "hostname": "uhome-a.local", "authority": "primary", "status": "online"},
+        json={
+            "node_id": "node-a",
+            "hostname": "uhome-a.local",
+            "authority": "primary",
+            "status": "online",
+        },
     )
     client.post(
         "/api/network/volumes",
@@ -273,8 +295,12 @@ def test_network_capabilities_combines_streaming_launcher_and_client_profiles(mo
 
     monkeypatch.setattr(network_routes, "get_repo_root", lambda: Path("/tmp/uhome-server"))
     monkeypatch.setattr(network_routes, "get_channel_service", lambda: _Channels())
-    monkeypatch.setattr(network_routes, "get_client_capability_service", lambda repo_root=None: _Clients())
-    monkeypatch.setattr(network_routes, "get_uhome_presentation_service", lambda repo_root=None: _Launcher())
+    monkeypatch.setattr(
+        network_routes, "get_client_capability_service", lambda repo_root=None: _Clients()
+    )
+    monkeypatch.setattr(
+        network_routes, "get_uhome_presentation_service", lambda repo_root=None: _Launcher()
+    )
     monkeypatch.setattr(
         network_routes,
         "playback_status",
@@ -338,7 +364,9 @@ def test_registry_persists_and_summarizes_topology(tmp_path):
 def test_volume_recovery_and_library_index(tmp_path):
     nodes = NodeRegistry(repo_root=tmp_path)
     volumes = StorageRegistry(repo_root=tmp_path)
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
     volumes.upsert_volume(
         StorageVolumeRecord(
             volume_id="vol-1",
@@ -375,7 +403,9 @@ def test_registry_rejects_invalid_status_values(tmp_path):
 
     volumes = StorageRegistry(repo_root=tmp_path)
     try:
-        volumes.upsert_volume(StorageVolumeRecord(volume_id="vol-1", label="Media A", status="ghost"))
+        volumes.upsert_volume(
+            StorageVolumeRecord(volume_id="vol-1", label="Media A", status="ghost")
+        )
     except ValueError as exc:
         assert "Invalid status" in str(exc)
     else:
@@ -385,7 +415,9 @@ def test_registry_rejects_invalid_status_values(tmp_path):
 def test_library_index_can_stay_healthy_with_multiple_online_volumes(tmp_path):
     nodes = NodeRegistry(repo_root=tmp_path)
     volumes = StorageRegistry(repo_root=tmp_path)
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
     volumes.upsert_volume(
         StorageVolumeRecord(
             volume_id="vol-1",
@@ -413,8 +445,14 @@ def test_library_index_can_stay_healthy_with_multiple_online_volumes(tmp_path):
 
 def test_registry_primary_handoff_demotes_previous_primary(tmp_path):
     nodes = NodeRegistry(repo_root=tmp_path)
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
-    nodes.upsert_node(NodeRecord(node_id="node-b", hostname="uhome-b.local", authority="secondary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
+    nodes.upsert_node(
+        NodeRecord(
+            node_id="node-b", hostname="uhome-b.local", authority="secondary", status="online"
+        )
+    )
     promoted = nodes.set_node_authority("node-b", "primary")
     assert promoted is not None
     listed = {item["node_id"]: item for item in nodes.list_nodes()}
@@ -424,7 +462,9 @@ def test_registry_primary_handoff_demotes_previous_primary(tmp_path):
 
 def test_registry_rejects_demoting_last_active_primary(tmp_path):
     nodes = NodeRegistry(repo_root=tmp_path)
-    nodes.upsert_node(NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online"))
+    nodes.upsert_node(
+        NodeRecord(node_id="node-a", hostname="uhome-a.local", authority="primary", status="online")
+    )
     try:
         nodes.set_node_authority("node-a", "secondary")
     except ValueError as exc:

@@ -73,7 +73,11 @@ def evaluate_host_prerequisites(
     linux_ok = system_name == "Linux"
     checks["platform"] = PrerequisiteCheck(
         ok=linux_ok,
-        detail="Linux host detected." if linux_ok else "uHOME-server operational deployment targets Linux hosts.",
+        detail=(
+            "Linux host detected."
+            if linux_ok
+            else "uHOME-server operational deployment targets Linux hosts."
+        ),
         expected="Linux",
         actual=system_name,
     )
@@ -83,9 +87,11 @@ def evaluate_host_prerequisites(
     kernel_ok = bool(kernel_version) and _version_at_least(kernel_version, kernel_minimum)
     checks["kernel"] = PrerequisiteCheck(
         ok=kernel_ok,
-        detail="Kernel release satisfies Ubuntu 20.04+ baseline."
-        if kernel_ok
-        else "Kernel release is below the Ubuntu 20.04+ baseline.",
+        detail=(
+            "Kernel release satisfies Ubuntu 20.04+ baseline."
+            if kernel_ok
+            else "Kernel release is below the Ubuntu 20.04+ baseline."
+        ),
         expected=">= 5.4",
         actual=kernel_release,
     )
@@ -94,7 +100,11 @@ def evaluate_host_prerequisites(
     python_ok = _version_at_least(python_version, python_minimum)
     checks["python"] = PrerequisiteCheck(
         ok=python_ok,
-        detail="Python runtime is suitable for uHOME-server." if python_ok else "Python 3.9+ is required.",
+        detail=(
+            "Python runtime is suitable for uHOME-server."
+            if python_ok
+            else "Python 3.9+ is required."
+        ),
         expected=">= 3.9",
         actual=".".join(str(part) for part in python_version[:3]),
     )
@@ -102,7 +112,11 @@ def evaluate_host_prerequisites(
     systemctl_ok = bool(command_paths.get("systemctl"))
     checks["systemctl"] = PrerequisiteCheck(
         ok=systemctl_ok,
-        detail="systemctl is available." if systemctl_ok else "systemctl is required for service management.",
+        detail=(
+            "systemctl is available."
+            if systemctl_ok
+            else "systemctl is required for service management."
+        ),
         expected="command available",
         actual=command_paths.get("systemctl") or "missing",
     )
@@ -110,7 +124,11 @@ def evaluate_host_prerequisites(
     systemd_ok = systemctl_ok and systemd_runtime_present
     checks["systemd_runtime"] = PrerequisiteCheck(
         ok=systemd_ok,
-        detail="systemd runtime is active." if systemd_ok else "systemd runtime not detected on this host.",
+        detail=(
+            "systemd runtime is active."
+            if systemd_ok
+            else "systemd runtime not detected on this host."
+        ),
         expected="/run/systemd/system present",
         actual="present" if systemd_runtime_present else "missing",
     )
@@ -132,11 +150,15 @@ def evaluate_host_prerequisites(
             actual=str(storage_path),
         )
         if storage_exists and not os_access_writable(storage_path):
-            warnings.append(f"Storage path {storage_path} exists but is not writable by the current user.")
+            warnings.append(
+                f"Storage path {storage_path} exists but is not writable by the current user."
+            )
 
     for optional_command in ("curl", "jq", "journalctl"):
         if not command_paths.get(optional_command):
-            warnings.append(f"Optional command '{optional_command}' not found; some operator scripts will be less useful.")
+            warnings.append(
+                f"Optional command '{optional_command}' not found; some operator scripts will be less useful."
+            )
 
     passed = all(check.ok for check in checks.values())
     return HostPrerequisiteReport(passed=passed, checks=checks, warnings=warnings)
@@ -155,7 +177,9 @@ def collect_host_prerequisites(
     storage_paths: list[str] | None = None,
     workspace_path: str | None = None,
 ) -> HostPrerequisiteReport:
-    resolved_storage_paths = [Path(value).expanduser().resolve() for value in (storage_paths or ["/media/library"])]
+    resolved_storage_paths = [
+        Path(value).expanduser().resolve() for value in (storage_paths or ["/media/library"])
+    ]
     resolved_workspace_path = Path(workspace_path or "~/.workspace").expanduser().resolve()
     command_paths = {name: shutil.which(name) for name in ("systemctl", "journalctl", "curl", "jq")}
     return evaluate_host_prerequisites(

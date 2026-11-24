@@ -26,7 +26,11 @@ class _UHomeSvc:
         if presentation not in {"thin-gui", "steam-console"}:
             raise ValueError("Unsupported uHOME presentation")
         self.active_presentation = presentation
-        return {"active_presentation": presentation, "node_role": self.node_role, "last_action": "start"}
+        return {
+            "active_presentation": presentation,
+            "node_role": self.node_role,
+            "last_action": "start",
+        }
 
     def stop(self):
         self.active_presentation = None
@@ -34,7 +38,9 @@ class _UHomeSvc:
 
 
 def _client(monkeypatch):
-    monkeypatch.setattr(platform_routes, "get_uhome_presentation_service", lambda repo_root=None: _UHomeSvc())
+    monkeypatch.setattr(
+        platform_routes, "get_uhome_presentation_service", lambda repo_root=None: _UHomeSvc()
+    )
     monkeypatch.setattr(
         platform_routes,
         "get_template_workspace_service",
@@ -42,8 +48,14 @@ def _client(monkeypatch):
             "_Svc",
             (),
             {
-                "component_contract": lambda self, component_id: {"component_id": component_id, "workspace_ref": "@memory/workspace/settings"},
-                "component_snapshot": lambda self, component_id: {"component_id": component_id, "settings": {}},
+                "component_contract": lambda self, component_id: {
+                    "component_id": component_id,
+                    "workspace_ref": "@memory/workspace/settings",
+                },
+                "component_snapshot": lambda self, component_id: {
+                    "component_id": component_id,
+                    "settings": {},
+                },
             },
         )(),
     )

@@ -17,7 +17,11 @@ from uhome_server.installer.bundle import (
     write_rollback_record,
 )
 from uhome_server.installer.linux_assets import LinuxServiceAsset, service_asset
-from uhome_server.installer.plan import UHOMEInstallOptions, UHOMEInstallPlan, build_uhome_install_plan
+from uhome_server.installer.plan import (
+    UHOMEInstallOptions,
+    UHOMEInstallPlan,
+    build_uhome_install_plan,
+)
 from uhome_server.installer.service_manifest import StagedServiceManifest, StagedServiceRecord
 
 
@@ -58,18 +62,24 @@ def _read_json(path: Path) -> dict[str, Any]:
     return payload
 
 
-def _copy_bundle_artifacts(manifest: UHOMEBundleManifest, bundle_dir: Path, stage_dir: Path) -> list[str]:
+def _copy_bundle_artifacts(
+    manifest: UHOMEBundleManifest, bundle_dir: Path, stage_dir: Path
+) -> list[str]:
     copied: list[str] = []
     for component in manifest.components:
         source = bundle_dir / component.artifact_path
-        target = stage_dir / "components" / component.component_id / Path(component.artifact_path).name
+        target = (
+            stage_dir / "components" / component.component_id / Path(component.artifact_path).name
+        )
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
         copied.append(str(target))
     return copied
 
 
-def _write_config_artifacts(stage_dir: Path, manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions) -> list[str]:
+def _write_config_artifacts(
+    stage_dir: Path, manifest: UHOMEBundleManifest, opts: UHOMEInstallOptions
+) -> list[str]:
     config_dir = stage_dir / "config"
     config_paths = [
         _write_json(
@@ -159,19 +169,21 @@ def _write_service_manifest(stage_dir: Path, config_paths: list[str]) -> Path:
     return manifest.write(stage_dir / "service-manifest.json")
 
 
-def _storage_identity_evidence(probe: dict[str, Any], host_profile_id: str | None) -> dict[str, Any]:
+def _storage_identity_evidence(
+    probe: dict[str, Any], host_profile_id: str | None
+) -> dict[str, Any]:
     return {
         "host_profile_id": host_profile_id,
         "os_disk_id": probe.get("os_disk_id"),
         "windows_disk_id": probe.get("windows_disk_id"),
-        "media_volume_ids": list(probe.get("media_volume_ids", []))
-        if isinstance(probe.get("media_volume_ids"), list)
-        else [],
+        "media_volume_ids": (
+            list(probe.get("media_volume_ids", []))
+            if isinstance(probe.get("media_volume_ids"), list)
+            else []
+        ),
         "game_storage_gb": probe.get("game_storage_gb"),
         "complete": bool(probe.get("os_disk_id"))
-        and (
-            not host_profile_id == "dual-boot-steam-node" or bool(probe.get("windows_disk_id"))
-        )
+        and (not host_profile_id == "dual-boot-steam-node" or bool(probe.get("windows_disk_id")))
         and isinstance(probe.get("media_volume_ids"), list)
         and bool(probe.get("media_volume_ids")),
     }
@@ -196,15 +208,17 @@ def _write_install_receipt(
             "dry_run": opts.dry_run,
             "ready": plan.ready,
             "host_profile_id": plan.host_profile_id,
-            "host_profile": None
-            if manifest.host_profile is None
-            else {
-                "profile_id": manifest.host_profile.profile_id,
-                "display_name": manifest.host_profile.display_name,
-                "boot_mode": manifest.host_profile.boot_mode,
-                "target_roles": list(manifest.host_profile.target_roles),
-                "notes": manifest.host_profile.notes,
-            },
+            "host_profile": (
+                None
+                if manifest.host_profile is None
+                else {
+                    "profile_id": manifest.host_profile.profile_id,
+                    "display_name": manifest.host_profile.display_name,
+                    "boot_mode": manifest.host_profile.boot_mode,
+                    "target_roles": list(manifest.host_profile.target_roles),
+                    "notes": manifest.host_profile.notes,
+                }
+            ),
             "preflight": {
                 "profile_id": plan.preflight_result.profile_id,
                 "profile_label": plan.preflight_result.profile_label,
@@ -214,7 +228,9 @@ def _write_install_receipt(
             },
             "rollback_evidence": {
                 "rollback_supported": rollback is not None or bool(manifest.rollback_token),
-                "rollback_token": rollback.rollback_token if rollback is not None else manifest.rollback_token,
+                "rollback_token": (
+                    rollback.rollback_token if rollback is not None else manifest.rollback_token
+                ),
                 "snapshot_paths": [] if rollback is None else list(rollback.snapshot_paths),
             },
             "storage_identity_evidence": _storage_identity_evidence(probe, plan.host_profile_id),
@@ -253,7 +269,9 @@ def _write_install_state(stage_dir: Path, plan: UHOMEInstallPlan) -> Path:
     )
 
 
-def _stage_rollback(stage_dir: Path, bundle_dir: Path, manifest: UHOMEBundleManifest) -> Path | None:
+def _stage_rollback(
+    stage_dir: Path, bundle_dir: Path, manifest: UHOMEBundleManifest
+) -> Path | None:
     rollback = read_rollback_record(bundle_dir)
     if rollback is None and manifest.rollback_token:
         rollback = UHOMERollbackRecord(rollback_token=manifest.rollback_token)
@@ -272,7 +290,9 @@ def stage_install_artifacts(
     rollback = read_rollback_record(bundle_dir)
     plan = build_uhome_install_plan(bundle_dir, probe, opts, rollback=rollback)
     if not plan.ready:
-        raise ValueError("Install plan is not ready; staging requires passing preflight and a valid bundle.")
+        raise ValueError(
+            "Install plan is not ready; staging requires passing preflight and a valid bundle."
+        )
 
     manifest = read_bundle_manifest(bundle_dir)
     if manifest is None:

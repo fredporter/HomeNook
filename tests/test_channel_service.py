@@ -8,16 +8,15 @@ from fastapi.testclient import TestClient
 from uhome_server.app import create_app
 from uhome_server.config import bootstrap_runtime
 from uhome_server.services.channel_service import (
+    GATEWAY_MODE_PROXY_ASSISTED,
+    MEDIA_MODE_AUDIO_FIRST,
+    MEDIA_MODE_AUDIO_VIDEO,
     SessionController,
     get_channel,
     get_channel_service,
     list_channels,
     resolve_gateway_mode,
-    GATEWAY_MODE_PROXY_ASSISTED,
-    MEDIA_MODE_AUDIO_FIRST,
-    MEDIA_MODE_AUDIO_VIDEO,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures

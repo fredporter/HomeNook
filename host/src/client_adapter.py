@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Callable
 from urllib.request import Request, urlopen
-import sys
 
 
 def load_json(path: Path) -> dict:
@@ -14,7 +14,13 @@ def load_json(path: Path) -> dict:
 
 def get_code_root(repo_root: Path) -> Path:
     candidate = repo_root.resolve()
-    if candidate.name in {"uHOME-client", "uHOME-server", "uHOME-matter", "uHOME-app-android", "uHOME-app-ios"}:
+    if candidate.name in {
+        "uHOME-client",
+        "uHOME-server",
+        "uHOME-matter",
+        "uHOME-app-android",
+        "uHOME-app-ios",
+    }:
         return candidate.parents[1]
     if candidate.name in {"uHOME-family", "uDOS-family", "sonic-family"}:
         return candidate.parent
@@ -83,7 +89,9 @@ def build_offer(repo_root: Path, surface_name: str | None = None) -> dict:
             if item["profile"] == surface_name or item.get("surface_key") == surface_name
         )
 
-    capabilities = sorted(set(runtime_contract["capability_profile"]) | set(profile["capability_profile"]))
+    capabilities = sorted(
+        set(runtime_contract["capability_profile"]) | set(profile["capability_profile"])
+    )
 
     return {
         "version": runtime_manifest["version"],
@@ -113,7 +121,9 @@ def attach_runtime_targets(offer: dict, base_url: str) -> dict:
 
     capabilities = set(offer["capabilities"])
     if "session.launch" in capabilities:
-        endpoints.append({"name": "launcher_status", "url": f"{base_url}/api/launcher/status", "method": "GET"})
+        endpoints.append(
+            {"name": "launcher_status", "url": f"{base_url}/api/launcher/status", "method": "GET"}
+        )
         endpoints.append(
             {
                 "name": "launcher_start",
@@ -123,8 +133,12 @@ def attach_runtime_targets(offer: dict, base_url: str) -> dict:
             }
         )
     if {"media.browse", "controller.navigate"} & capabilities:
-        endpoints.append({"name": "household_browse", "url": f"{base_url}/api/household/browse", "method": "GET"})
-        endpoints.append({"name": "household_status", "url": f"{base_url}/api/household/status", "method": "GET"})
+        endpoints.append(
+            {"name": "household_browse", "url": f"{base_url}/api/household/browse", "method": "GET"}
+        )
+        endpoints.append(
+            {"name": "household_status", "url": f"{base_url}/api/household/status", "method": "GET"}
+        )
 
     enriched = dict(offer)
     enriched["runtime_targets"] = endpoints
@@ -286,7 +300,9 @@ def build_runtime_session_brief(offer: dict, probe_key: str = "runtime_probe") -
 
 def build_remote_runtime_bridge_brief(offer: dict, probe_key: str = "local_wizard_probe") -> dict:
     probes = {item["name"]: item for item in offer.get(probe_key, [])}
-    dispatch = probes.get("orchestration_dispatch", probes.get("wizard_dispatch", {})).get("payload", {})
+    dispatch = probes.get("orchestration_dispatch", probes.get("wizard_dispatch", {})).get(
+        "payload", {}
+    )
     workflow_plan = probes.get(
         "orchestration_workflow_plan",
         probes.get("wizard_workflow_plan", {}),
@@ -295,12 +311,16 @@ def build_remote_runtime_bridge_brief(offer: dict, probe_key: str = "local_wizar
     bridge_brief = {
         "profile": offer.get("profile", offer.get("surface", "remote-runtime-bridge")),
         "surface": offer.get("surface", "remote-control"),
-        "recommended_action": "request_remote_dispatch" if dispatch else "orchestration_unavailable",
+        "recommended_action": (
+            "request_remote_dispatch" if dispatch else "orchestration_unavailable"
+        ),
         "dispatch_version": dispatch.get("dispatch_version", "unknown"),
         "provider": dispatch.get("provider", "unknown"),
         "executor": dispatch.get("executor", "unknown"),
         "transport": dispatch.get("transport", "unknown"),
-        "surface_route": dispatch.get("route_contract", {}).get("surface", dispatch.get("surface", "remote-control")),
+        "surface_route": dispatch.get("route_contract", {}).get(
+            "surface", dispatch.get("surface", "remote-control")
+        ),
         "workflow_plan_version": workflow_plan.get("plan_version", "unknown"),
         "workflow_step_count": workflow_plan.get("step_count", 0),
         "orchestration_contract_source": contract_src,

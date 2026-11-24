@@ -9,7 +9,10 @@ from typing import Any, Callable
 from uhome_server.config import get_logger
 from uhome_server.services.home_assistant.schemas.device import DeviceSchema, DeviceStateSchema
 from uhome_server.services.home_assistant.schemas.entity import EntitySchema, EntityStateSchema
-from uhome_server.services.home_assistant.schemas.gateway import GatewayConfigSchema, GatewayStatusSchema
+from uhome_server.services.home_assistant.schemas.gateway import (
+    GatewayConfigSchema,
+    GatewayStatusSchema,
+)
 
 logger = get_logger("ha-gateway-manager")
 
@@ -93,8 +96,12 @@ class GatewayManager:
     async def get_entity_state(self, entity_id: str) -> EntityStateSchema | None:
         return self.entity_states.get(entity_id)
 
-    async def call_service(self, domain: str, service: str, entity_ids: list[str], data: dict[str, Any]) -> bool:
-        result = await self._ha_client.call_service(domain, service, entity_ids=entity_ids, data=data)
+    async def call_service(
+        self, domain: str, service: str, entity_ids: list[str], data: dict[str, Any]
+    ) -> bool:
+        result = await self._ha_client.call_service(
+            domain, service, entity_ids=entity_ids, data=data
+        )
         return result.get("success", False)
 
     def on_event(self, event_type: str, handler: Callable) -> None:
@@ -103,7 +110,9 @@ class GatewayManager:
 
     def get_status(self) -> GatewayStatusSchema:
         self.status.uptime_seconds = int((datetime.now() - self.start_time).total_seconds())
-        self.status.active_connections = len([state for state in self.device_states.values() if state.is_available])
+        self.status.active_connections = len(
+            [state for state in self.device_states.values() if state.is_available]
+        )
         self.status.available_devices = self.status.active_connections
         self.status.total_entities = len(self.entities)
         return self.status
@@ -149,7 +158,9 @@ class MockHAClient:
     async def get_devices(self) -> list[dict[str, Any]]:
         return []
 
-    async def call_service(self, domain: str, service: str, entity_ids: list[str], data: dict[str, Any]) -> dict[str, Any]:
+    async def call_service(
+        self, domain: str, service: str, entity_ids: list[str], data: dict[str, Any]
+    ) -> dict[str, Any]:
         return {"success": True}
 
     async def close(self) -> None:

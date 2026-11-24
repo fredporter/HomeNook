@@ -165,9 +165,7 @@ class Rule(BaseModel):
     dependencies: List[str] = field(default_factory=list)
     conditions: List[Condition] = field(default_factory=list)
     actions: List[Action] = field(default_factory=list)
-    conflict_resolution: ConflictResolutionStrategy = (
-        ConflictResolutionStrategy.PRIORITY
-    )
+    conflict_resolution: ConflictResolutionStrategy = ConflictResolutionStrategy.PRIORITY
     quality_profile: QualityProfile = QualityProfile.HD
     retention_policy: Optional[Dict[str, Any]] = None
     notification_settings: Optional[Dict[str, Any]] = None
@@ -336,9 +334,7 @@ class RuleEngine:
             # Load execution history
             self.execution_history = data.get("execution_history", [])
 
-            _log.info(
-                f"Loaded {len(self.rules)} rules, {len(self.schedule)} schedule entries"
-            )
+            _log.info(f"Loaded {len(self.rules)} rules, {len(self.schedule)} schedule entries")
             self._initialized = True
 
         except Exception as e:
@@ -400,18 +396,14 @@ class RuleEngine:
         # Remove from type index
         if rule.rule_type.value in self.rule_index["type"]:
             self.rule_index["type"][rule.rule_type.value] = [
-                rid
-                for rid in self.rule_index["type"][rule.rule_type.value]
-                if rid != rule.rule_id
+                rid for rid in self.rule_index["type"][rule.rule_type.value] if rid != rule.rule_id
             ]
 
         # Remove from priority index
         priority_key = str(rule.priority.value)
         if priority_key in self.rule_index["priority"]:
             self.rule_index["priority"][priority_key] = [
-                rid
-                for rid in self.rule_index["priority"][priority_key]
-                if rid != rule.rule_id
+                rid for rid in self.rule_index["priority"][priority_key] if rid != rule.rule_id
             ]
 
         # Remove from lifecycle index
@@ -427,9 +419,7 @@ class RuleEngine:
             channel_id = getattr(rule, "channel_id", None)
             if channel_id and channel_id in self.rule_index["channel"]:
                 self.rule_index["channel"][channel_id] = [
-                    rid
-                    for rid in self.rule_index["channel"][channel_id]
-                    if rid != rule.rule_id
+                    rid for rid in self.rule_index["channel"][channel_id] if rid != rule.rule_id
                 ]
 
     def _serialize_rule(self, rule: Rule) -> Dict[str, Any]:
@@ -583,9 +573,7 @@ class RuleEngine:
             del self.rules[rule_id]
 
             # Remove associated schedule entries
-            self.schedule = [
-                entry for entry in self.schedule if entry.rule_id != rule_id
-            ]
+            self.schedule = [entry for entry in self.schedule if entry.rule_id != rule_id]
 
             # Save to persistence
             if self.persistence_path:
@@ -631,9 +619,7 @@ class RuleEngine:
             _log.info(f"{'Enabled' if enabled else 'Disabled'} rule {rule.rule_id}")
             return True
 
-    def transition_lifecycle_state(
-        self, rule_id: str, new_state: RuleLifecycleState
-    ) -> bool:
+    def transition_lifecycle_state(self, rule_id: str, new_state: RuleLifecycleState) -> bool:
         """Transition a rule to a new lifecycle state."""
         with self._lock:
             rule = self.rules.get(rule_id)
@@ -642,9 +628,7 @@ class RuleEngine:
 
             # Validate transition
             if not self._is_valid_transition(rule.lifecycle_state, new_state):
-                _log.error(
-                    f"Invalid lifecycle transition: {rule.lifecycle_state} -> {new_state}"
-                )
+                _log.error(f"Invalid lifecycle transition: {rule.lifecycle_state} -> {new_state}")
                 return False
 
             # Update state
@@ -666,9 +650,7 @@ class RuleEngine:
             if self.persistence_path:
                 self._save_data()
 
-            _log.info(
-                f"Transitioned rule {rule.rule_id} from {old_state} to {new_state}"
-            )
+            _log.info(f"Transitioned rule {rule.rule_id} from {old_state} to {new_state}")
             return True
 
     def _is_valid_transition(
@@ -722,15 +704,9 @@ class RuleEngine:
             if rule.rule_type == RuleType.CONDITIONAL:
                 conditional_rule = rule
                 if conditional_rule.condition_logic.upper() == "AND":
-                    return all(
-                        self._evaluate_condition(cond, context)
-                        for cond in rule.conditions
-                    )
+                    return all(self._evaluate_condition(cond, context) for cond in rule.conditions)
                 elif conditional_rule.condition_logic.upper() == "OR":
-                    return any(
-                        self._evaluate_condition(cond, context)
-                        for cond in rule.conditions
-                    )
+                    return any(self._evaluate_condition(cond, context) for cond in rule.conditions)
                 else:
                     # Complex expression evaluation would go here
                     return self._evaluate_complex_expression(
@@ -738,13 +714,9 @@ class RuleEngine:
                     )
             else:
                 # Default: AND logic for all conditions
-                return all(
-                    self._evaluate_condition(cond, context) for cond in rule.conditions
-                )
+                return all(self._evaluate_condition(cond, context) for cond in rule.conditions)
 
-    def _evaluate_condition(
-        self, condition: Condition, context: Dict[str, Any]
-    ) -> bool:
+    def _evaluate_condition(self, condition: Condition, context: Dict[str, Any]) -> bool:
         """Evaluate a single condition."""
         try:
             # Get field value from context
@@ -834,9 +806,7 @@ class RuleEngine:
     # Scheduling Methods
     # ========================================================================
 
-    def schedule_rules(
-        self, start_time: datetime, end_time: datetime
-    ) -> List[ScheduleEntry]:
+    def schedule_rules(self, start_time: datetime, end_time: datetime) -> List[ScheduleEntry]:
         """Schedule rules within the given time range."""
         with self._lock:
             new_schedule = []
@@ -907,8 +877,7 @@ class RuleEngine:
                 while current_date <= end_time.date():
                     # Apply days of week filter if specified
                     if not rule.days_of_week or any(
-                        DayOfWeek(current_date.strftime("%a").lower())
-                        in rule.days_of_week
+                        DayOfWeek(current_date.strftime("%a").lower()) in rule.days_of_week
                         for day in rule.days_of_week
                     ):
                         schedule_time = datetime.combine(current_date, base_time)
@@ -991,9 +960,7 @@ class RuleEngine:
                 for channel_id, conflicting_entries in channel_entries.items():
                     if len(conflicting_entries) > 1:
                         conflict_id = f"conflict_{uuid.uuid4().hex[:8]}"
-                        affected_rules = [
-                            entry.rule_id for entry in conflicting_entries
-                        ]
+                        affected_rules = [entry.rule_id for entry in conflicting_entries]
 
                         conflict = Conflict(
                             conflict_id=conflict_id,
@@ -1024,9 +991,7 @@ class RuleEngine:
         """Resolve a scheduling conflict."""
         # Get affected rules
         affected_rules = [
-            self.rules[rule_id]
-            for rule_id in conflict.affected_rules
-            if rule_id in self.rules
+            self.rules[rule_id] for rule_id in conflict.affected_rules if rule_id in self.rules
         ]
 
         if not affected_rules:
@@ -1063,19 +1028,13 @@ class RuleEngine:
         # Cancel other rules' schedule entries
         for rule in sorted_rules[1:]:
             for entry in self.schedule:
-                if (
-                    entry.rule_id == rule.rule_id
-                    and entry.conflict_id == conflict.conflict_id
-                ):
+                if entry.rule_id == rule.rule_id and entry.conflict_id == conflict.conflict_id:
                     entry.status = "canceled"
                     entry.conflict_id = conflict.conflict_id
 
         # Keep winner rule's entry
         for entry in self.schedule:
-            if (
-                entry.rule_id == winner_rule.rule_id
-                and entry.conflict_id == conflict.conflict_id
-            ):
+            if entry.rule_id == winner_rule.rule_id and entry.conflict_id == conflict.conflict_id:
                 entry.status = "scheduled"
                 entry.conflict_id = None
 
@@ -1083,9 +1042,7 @@ class RuleEngine:
         conflict.resolution_data["winner"] = winner_rule.rule_id
         conflict.resolution_data["canceled"] = [r.rule_id for r in sorted_rules[1:]]
 
-    def _resolve_by_canceling_lower_priority(
-        self, conflict: Conflict, rules: List[Rule]
-    ):
+    def _resolve_by_canceling_lower_priority(self, conflict: Conflict, rules: List[Rule]):
         """Resolve conflict by canceling lower priority rules."""
         # This is similar to priority resolution but more explicit
         self._resolve_by_priority(conflict, rules)
@@ -1146,9 +1103,7 @@ class RuleEngine:
                     execution_results.append(history_entry)
                     executed_entries.append(entry)
 
-                    _log.info(
-                        f"Executed schedule entry {entry.entry_id} for rule {entry.rule_id}"
-                    )
+                    _log.info(f"Executed schedule entry {entry.entry_id} for rule {entry.rule_id}")
 
                 except Exception as e:
                     entry.status = "failed"
@@ -1165,9 +1120,7 @@ class RuleEngine:
                     self.execution_history.append(history_entry)
                     execution_results.append(history_entry)
 
-                    _log.error(
-                        f"Failed to execute schedule entry {entry.entry_id}: {e}"
-                    )
+                    _log.error(f"Failed to execute schedule entry {entry.entry_id}: {e}")
 
             # Save to persistence
             if self.persistence_path:
@@ -1175,9 +1128,7 @@ class RuleEngine:
 
             return execution_results
 
-    def _execute_rule(
-        self, rule_id: str, schedule_entry: ScheduleEntry
-    ) -> Dict[str, Any]:
+    def _execute_rule(self, rule_id: str, schedule_entry: ScheduleEntry) -> Dict[str, Any]:
         """Execute a rule and return the result."""
         rule = self.rules.get(rule_id)
         if not rule:
@@ -1236,9 +1187,7 @@ class RuleEngine:
                 action_result.update(
                     {
                         "input_file": action.parameters.get("input", "unknown"),
-                        "output_file": action.parameters.get(
-                            "output", "transcoded.mp4"
-                        ),
+                        "output_file": action.parameters.get("output", "transcoded.mp4"),
                         "format": action.parameters.get("format", "h264"),
                     }
                 )
@@ -1256,15 +1205,11 @@ class RuleEngine:
     # Utility Methods
     # ========================================================================
 
-    def get_schedule(
-        self, start_time: datetime, end_time: datetime
-    ) -> List[ScheduleEntry]:
+    def get_schedule(self, start_time: datetime, end_time: datetime) -> List[ScheduleEntry]:
         """Get schedule entries within a time range."""
         with self._lock:
             return [
-                entry
-                for entry in self.schedule
-                if start_time <= entry.scheduled_time < end_time
+                entry for entry in self.schedule if start_time <= entry.scheduled_time < end_time
             ]
 
     def get_conflicts(self, status: Optional[str] = None) -> List[Conflict]:
@@ -1292,9 +1237,7 @@ class RuleEngine:
                 "rules_count": len(self.rules),
                 "active_rules": sum(1 for r in self.rules.values() if r.enabled),
                 "schedule_count": len(self.schedule),
-                "upcoming_executions": sum(
-                    1 for e in self.schedule if e.status == "scheduled"
-                ),
+                "upcoming_executions": sum(1 for e in self.schedule if e.status == "scheduled"),
                 "conflicts_detected": sum(
                     1 for c in self.conflicts.values() if c.status == "detected"
                 ),

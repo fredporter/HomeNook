@@ -22,6 +22,7 @@ _PRESENTATION_MODES = {"auto", "kiosk", "desktop"}
 
 def _playback_queue_path() -> Path:
     from uhome_server.config import get_homenest_state_dir
+
     primary = get_homenest_state_dir() / "playback" / "playback_queue.json"
     legacy = get_repo_root() / "memory" / "bank" / "uhome" / "playback_queue.json"
     if primary.exists():
@@ -84,7 +85,10 @@ class PlaybackService:
         """Get current playback status including active Jellyfin sessions."""
         workspace_fields = _uhome_workspace_fields()
         presentation_mode, presentation_mode_source = _workspace_choice(
-            workspace_fields, "presentation_mode", _DEFAULT_PRESENTATION_MODE, valid_values=_PRESENTATION_MODES
+            workspace_fields,
+            "presentation_mode",
+            _DEFAULT_PRESENTATION_MODE,
+            valid_values=_PRESENTATION_MODES,
         )
         preferred_target_client, preferred_target_client_source = _workspace_choice(
             workspace_fields, "preferred_target_client", _DEFAULT_TARGET_CLIENT
@@ -106,7 +110,9 @@ class PlaybackService:
         }
         if not jellyfin_configured:
             if not jellyfin_url_configured and not jellyfin_api_key_configured:
-                result["note"] = "Set JELLYFIN_URL and JELLYFIN_API_KEY to enable live playback status."
+                result["note"] = (
+                    "Set JELLYFIN_URL and JELLYFIN_API_KEY to enable live playback status."
+                )
             elif not jellyfin_url_configured:
                 result["note"] = "Set JELLYFIN_URL to enable live playback status."
             else:
@@ -134,7 +140,10 @@ class PlaybackService:
         return result
 
     def handoff(
-        self, item_id: str, target_client: Optional[str] = None, params: Optional[dict[str, Any]] = None
+        self,
+        item_id: str,
+        target_client: Optional[str] = None,
+        params: Optional[dict[str, Any]] = None,
     ) -> dict[str, Any]:
         """Queue a playback handoff to a target client."""
         if not item_id or not item_id.strip():

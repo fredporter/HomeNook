@@ -146,7 +146,7 @@ def _write_ubuntu_apply_plan(host_root: Path, service_names: list[str]) -> Path:
         "#!/usr/bin/env sh",
         "set -eu",
         f'HOST_ROOT="{host_root}"',
-        'sudo mkdir -p /opt/uhome /etc/uhome /etc/systemd/system /var/lib/uhome',
+        "sudo mkdir -p /opt/uhome /etc/uhome /etc/systemd/system /var/lib/uhome",
         'sudo rsync -a --delete "$HOST_ROOT/opt/uhome/" "/opt/uhome/"',
         'sudo rsync -a --delete "$HOST_ROOT/etc/uhome/" "/etc/uhome/"',
         'sudo rsync -a --delete "$HOST_ROOT/etc/systemd/system/" "/etc/systemd/system/"',
@@ -186,20 +186,30 @@ def _component_versions(payload: dict[str, Any] | None) -> dict[str, str]:
     return result
 
 
-def _compute_upgrade_diff(previous_receipt: dict[str, Any] | None, install_receipt: dict[str, Any]) -> dict[str, Any]:
-    previous_versions = _component_versions(previous_receipt.get("install_receipt") if isinstance(previous_receipt, dict) else None)
+def _compute_upgrade_diff(
+    previous_receipt: dict[str, Any] | None, install_receipt: dict[str, Any]
+) -> dict[str, Any]:
+    previous_versions = _component_versions(
+        previous_receipt.get("install_receipt") if isinstance(previous_receipt, dict) else None
+    )
     current_versions = _component_versions(install_receipt)
-    added = sorted(component for component in current_versions if component not in previous_versions)
-    removed = sorted(component for component in previous_versions if component not in current_versions)
+    added = sorted(
+        component for component in current_versions if component not in previous_versions
+    )
+    removed = sorted(
+        component for component in previous_versions if component not in current_versions
+    )
     changed = sorted(
         component
         for component in current_versions
-        if component in previous_versions and current_versions[component] != previous_versions[component]
+        if component in previous_versions
+        and current_versions[component] != previous_versions[component]
     )
     unchanged = sorted(
         component
         for component in current_versions
-        if component in previous_versions and current_versions[component] == previous_versions[component]
+        if component in previous_versions
+        and current_versions[component] == previous_versions[component]
     )
     return {
         "added": added,
@@ -211,10 +221,18 @@ def _compute_upgrade_diff(previous_receipt: dict[str, Any] | None, install_recei
     }
 
 
-def _compute_reinstall_context(previous_receipt: dict[str, Any] | None, install_receipt: dict[str, Any]) -> dict[str, Any]:
-    previous_install = previous_receipt.get("install_receipt") if isinstance(previous_receipt, dict) else None
-    previous_bundle_id = None if not isinstance(previous_install, dict) else previous_install.get("bundle_id")
-    previous_host_profile_id = None if not isinstance(previous_install, dict) else previous_install.get("host_profile_id")
+def _compute_reinstall_context(
+    previous_receipt: dict[str, Any] | None, install_receipt: dict[str, Any]
+) -> dict[str, Any]:
+    previous_install = (
+        previous_receipt.get("install_receipt") if isinstance(previous_receipt, dict) else None
+    )
+    previous_bundle_id = (
+        None if not isinstance(previous_install, dict) else previous_install.get("bundle_id")
+    )
+    previous_host_profile_id = (
+        None if not isinstance(previous_install, dict) else previous_install.get("host_profile_id")
+    )
     current_bundle_id = install_receipt.get("bundle_id")
     current_host_profile_id = install_receipt.get("host_profile_id")
     rollback_evidence = install_receipt.get("rollback_evidence", {})
@@ -222,13 +240,22 @@ def _compute_reinstall_context(previous_receipt: dict[str, Any] | None, install_
     return {
         "previous_bundle_id": previous_bundle_id,
         "current_bundle_id": current_bundle_id,
-        "same_bundle_id": previous_bundle_id == current_bundle_id if previous_bundle_id is not None else False,
+        "same_bundle_id": (
+            previous_bundle_id == current_bundle_id if previous_bundle_id is not None else False
+        ),
         "previous_host_profile_id": previous_host_profile_id,
         "current_host_profile_id": current_host_profile_id,
-        "same_host_profile_id": previous_host_profile_id == current_host_profile_id if previous_host_profile_id is not None else False,
-        "rollback_supported": bool(isinstance(rollback_evidence, dict) and rollback_evidence.get("rollback_supported")),
+        "same_host_profile_id": (
+            previous_host_profile_id == current_host_profile_id
+            if previous_host_profile_id is not None
+            else False
+        ),
+        "rollback_supported": bool(
+            isinstance(rollback_evidence, dict) and rollback_evidence.get("rollback_supported")
+        ),
         "storage_identity_complete": bool(
-            isinstance(storage_identity_evidence, dict) and storage_identity_evidence.get("complete")
+            isinstance(storage_identity_evidence, dict)
+            and storage_identity_evidence.get("complete")
         ),
     }
 
@@ -265,11 +292,23 @@ def verify_promoted_target(host_root: Path) -> VerificationResult:
     env_root = host_root / "etc" / "uhome"
     receipt_root = host_root / "var" / "lib" / "uhome" / "receipts"
     state_root = host_root / "var" / "lib" / "uhome" / "state"
-    install_receipt = _read_json(receipt_root / "install-receipt.json") if (receipt_root / "install-receipt.json").exists() else {}
-    service_units = sorted(path.name for path in service_root.glob("*.service")) if service_root.exists() else []
+    install_receipt = (
+        _read_json(receipt_root / "install-receipt.json")
+        if (receipt_root / "install-receipt.json").exists()
+        else {}
+    )
+    service_units = (
+        sorted(path.name for path in service_root.glob("*.service"))
+        if service_root.exists()
+        else []
+    )
     env_files = sorted(path.name for path in env_root.glob("*.env")) if env_root.exists() else []
     checks = {
-        "service_units": {"ok": bool(service_units), "count": len(service_units), "items": service_units},
+        "service_units": {
+            "ok": bool(service_units),
+            "count": len(service_units),
+            "items": service_units,
+        },
         "environment_files": {"ok": bool(env_files), "count": len(env_files), "items": env_files},
         "receipt_present": {"ok": (receipt_root / "install-receipt.json").exists()},
         "state_present": {"ok": (state_root / "install-state.json").exists()},
@@ -278,7 +317,10 @@ def verify_promoted_target(host_root: Path) -> VerificationResult:
             "ok": bool(isinstance(install_receipt.get("rollback_evidence"), dict)),
         },
         "storage_identity_evidence_present": {
-            "ok": bool(isinstance(install_receipt.get("storage_identity_evidence"), dict) and install_receipt.get("storage_identity_evidence", {}).get("complete")),
+            "ok": bool(
+                isinstance(install_receipt.get("storage_identity_evidence"), dict)
+                and install_receipt.get("storage_identity_evidence", {}).get("complete")
+            ),
         },
     }
     ok = all(item.get("ok", False) for item in checks.values())

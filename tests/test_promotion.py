@@ -3,10 +3,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from uhome_server.installer.executor import execute_staged_install
-from uhome_server.installer.health import run_promoted_health_checks
-from uhome_server.installer.promotion import promote_target_root, rollback_promoted_target, verify_promoted_target
-from uhome_server.installer.staging import stage_install_artifacts
 from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
@@ -14,7 +10,15 @@ from uhome_server.installer.bundle import (
     UHOMEHostProfileRef,
     write_bundle_manifest,
 )
+from uhome_server.installer.executor import execute_staged_install
+from uhome_server.installer.health import run_promoted_health_checks
 from uhome_server.installer.plan import UHOMEInstallOptions
+from uhome_server.installer.promotion import (
+    promote_target_root,
+    rollback_promoted_target,
+    verify_promoted_target,
+)
+from uhome_server.installer.staging import stage_install_artifacts
 
 
 def _probe() -> dict:
@@ -74,7 +78,9 @@ def test_promote_and_rollback_target_root(tmp_path):
     target_root = tmp_path / "target"
     host_root = tmp_path / "host"
     _bundle(bundle_dir)
-    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    stage_install_artifacts(
+        bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True)
+    )
     execute_staged_install(stage_dir, target_root)
 
     original_host_env = host_root / "etc" / "uhome" / "jellyfin.env"
@@ -134,7 +140,9 @@ def test_promote_target_root_detects_reapply(tmp_path):
     target_root = tmp_path / "target"
     host_root = tmp_path / "host"
     _bundle(bundle_dir)
-    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    stage_install_artifacts(
+        bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True)
+    )
     execute_staged_install(stage_dir, target_root)
     first = promote_target_root(target_root, host_root)
     second = promote_target_root(target_root, host_root)
@@ -149,7 +157,9 @@ def test_run_promoted_health_checks(tmp_path):
     target_root = tmp_path / "target"
     host_root = tmp_path / "host"
     _bundle(bundle_dir)
-    stage_install_artifacts(bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True))
+    stage_install_artifacts(
+        bundle_dir, stage_dir, _probe(), UHOMEInstallOptions(enable_ha_bridge=True)
+    )
     execute_staged_install(stage_dir, target_root)
     promote_target_root(target_root, host_root)
 

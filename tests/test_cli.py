@@ -107,7 +107,15 @@ def test_installer_preflight_cli_with_host_profile(tmp_path):
     _write_probe(probe_path)
     output_path = tmp_path / "preflight.json"
     code = installer_main(
-        ["preflight", "--probe", str(probe_path), "--host-profile", "standalone-linux", "--output", str(output_path)]
+        [
+            "preflight",
+            "--probe",
+            str(probe_path),
+            "--host-profile",
+            "standalone-linux",
+            "--output",
+            str(output_path),
+        ]
     )
     assert code == 0
     payload = json.loads(output_path.read_text(encoding="utf-8"))
@@ -175,7 +183,9 @@ def test_installer_plan_cli(tmp_path):
 
 def test_installer_verify_bundle_cli_missing_manifest(tmp_path):
     output_path = tmp_path / "verify.json"
-    code = installer_main(["verify-bundle", "--bundle-dir", str(tmp_path), "--output", str(output_path)])
+    code = installer_main(
+        ["verify-bundle", "--bundle-dir", str(tmp_path), "--output", str(output_path)]
+    )
     assert code == 1
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["valid"] is False
@@ -210,7 +220,9 @@ def test_contracts_validate_sync_record_cli(tmp_path):
     input_path = tmp_path / "envelope.json"
     input_path.write_text(json.dumps(payload), encoding="utf-8")
     output_path = tmp_path / "validate.json"
-    code = contracts_main(["validate-sync-record", "--input", str(input_path), "--output", str(output_path)])
+    code = contracts_main(
+        ["validate-sync-record", "--input", str(input_path), "--output", str(output_path)]
+    )
     assert code == 0
     result = json.loads(output_path.read_text(encoding="utf-8"))
     assert result["ok"] is True
@@ -221,7 +233,9 @@ def test_contracts_validate_sync_record_cli_rejects_invalid_payload(tmp_path):
     input_path = tmp_path / "bad-envelope.json"
     input_path.write_text(json.dumps({"contract_version": "bad"}), encoding="utf-8")
     output_path = tmp_path / "validate.json"
-    code = contracts_main(["validate-sync-record", "--input", str(input_path), "--output", str(output_path)])
+    code = contracts_main(
+        ["validate-sync-record", "--input", str(input_path), "--output", str(output_path)]
+    )
     assert code == 1
     result = json.loads(output_path.read_text(encoding="utf-8"))
     assert result["ok"] is False
@@ -306,33 +320,72 @@ def test_installer_apply_and_rollback_cli(tmp_path):
     host_root = tmp_path / "host"
     _write_probe(probe_path)
     _write_bundle(bundle_dir)
-    assert installer_main(
-        ["stage", "--bundle-dir", str(bundle_dir), "--probe", str(probe_path), "--stage-dir", str(stage_dir)]
-    ) == 0
-    assert installer_main(["execute-stage", "--stage-dir", str(stage_dir), "--target-root", str(target_root)]) == 0
+    assert (
+        installer_main(
+            [
+                "stage",
+                "--bundle-dir",
+                str(bundle_dir),
+                "--probe",
+                str(probe_path),
+                "--stage-dir",
+                str(stage_dir),
+            ]
+        )
+        == 0
+    )
+    assert (
+        installer_main(
+            ["execute-stage", "--stage-dir", str(stage_dir), "--target-root", str(target_root)]
+        )
+        == 0
+    )
 
     original_env = host_root / "etc" / "uhome" / "jellyfin.env"
     original_env.parent.mkdir(parents=True, exist_ok=True)
     original_env.write_text('JELLYFIN_DATA_DIR="/srv/original"\n', encoding="utf-8")
 
     apply_output = tmp_path / "apply-output.json"
-    assert installer_main(
-        ["apply-target", "--target-root", str(target_root), "--host-root", str(host_root), "--output", str(apply_output)]
-    ) == 0
+    assert (
+        installer_main(
+            [
+                "apply-target",
+                "--target-root",
+                str(target_root),
+                "--host-root",
+                str(host_root),
+                "--output",
+                str(apply_output),
+            ]
+        )
+        == 0
+    )
     apply_payload = json.loads(apply_output.read_text(encoding="utf-8"))
     assert apply_payload["success"] is True
     assert (host_root / "etc" / "systemd" / "system" / "jellyfin.service").exists()
     assert Path(apply_payload["result"]["ubuntu_apply_plan_path"]).exists()
 
     rollback_output = tmp_path / "rollback-output.json"
-    assert installer_main(["rollback-target", "--host-root", str(host_root), "--output", str(rollback_output)]) == 0
+    assert (
+        installer_main(
+            ["rollback-target", "--host-root", str(host_root), "--output", str(rollback_output)]
+        )
+        == 0
+    )
     rollback_payload = json.loads(rollback_output.read_text(encoding="utf-8"))
     assert rollback_payload["success"] is True
     assert 'JELLYFIN_DATA_DIR="/srv/original"' in original_env.read_text(encoding="utf-8")
 
     verify_output = tmp_path / "verify-output.json"
-    assert installer_main(["apply-target", "--target-root", str(target_root), "--host-root", str(host_root)]) == 0
-    verify_code = installer_main(["verify-target", "--host-root", str(host_root), "--output", str(verify_output)])
+    assert (
+        installer_main(
+            ["apply-target", "--target-root", str(target_root), "--host-root", str(host_root)]
+        )
+        == 0
+    )
+    verify_code = installer_main(
+        ["verify-target", "--host-root", str(host_root), "--output", str(verify_output)]
+    )
     assert verify_code == 0
     verify_payload = json.loads(verify_output.read_text(encoding="utf-8"))
     assert verify_payload["success"] is True
@@ -347,14 +400,18 @@ def test_installer_apply_and_rollback_cli(tmp_path):
         return type("_Completed", (), {"returncode": 0, "stdout": f"ok: {command}", "stderr": ""})()
 
     with patch("uhome_server.installer.health.subprocess.run", side_effect=_runner):
-        health_code = installer_main(["health-check-target", "--host-root", str(host_root), "--output", str(health_output)])
+        health_code = installer_main(
+            ["health-check-target", "--host-root", str(host_root), "--output", str(health_output)]
+        )
     assert health_code == 0
     health_payload = json.loads(health_output.read_text(encoding="utf-8"))
     assert health_payload["success"] is True
     assert any(item["service"] == "jellyfin" for item in health_payload["result"]["checks"])
 
     live_apply_output = tmp_path / "live-apply-output.json"
-    dry_run_code = installer_main(["apply-live", "--host-root", str(host_root), "--output", str(live_apply_output)])
+    dry_run_code = installer_main(
+        ["apply-live", "--host-root", str(host_root), "--output", str(live_apply_output)]
+    )
     assert dry_run_code == 0
     dry_run_payload = json.loads(live_apply_output.read_text(encoding="utf-8"))
     assert dry_run_payload["success"] is True
@@ -362,7 +419,14 @@ def test_installer_apply_and_rollback_cli(tmp_path):
 
     with patch("uhome_server.installer.live_apply.subprocess.run", side_effect=_runner):
         live_code = installer_main(
-            ["apply-live", "--host-root", str(host_root), "--execute", "--output", str(live_apply_output)]
+            [
+                "apply-live",
+                "--host-root",
+                str(host_root),
+                "--execute",
+                "--output",
+                str(live_apply_output),
+            ]
         )
     assert live_code == 0
     live_payload = json.loads(live_apply_output.read_text(encoding="utf-8"))

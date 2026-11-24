@@ -103,7 +103,9 @@ class ClientCapabilityService:
     def get_client(self, client_id: str) -> Optional[dict[str, Any]]:
         return self._load().get(client_id)
 
-    def update_capabilities(self, client_id: str, capabilities: dict[str, Any]) -> Optional[dict[str, Any]]:
+    def update_capabilities(
+        self, client_id: str, capabilities: dict[str, Any]
+    ) -> Optional[dict[str, Any]]:
         clients = self._load()
         record = clients.get(client_id)
         if record is None:

@@ -23,9 +23,28 @@ def _valid_envelope() -> dict:
                 "phones": [{"label": "mobile", "value": "+61400000000", "primary": True}],
                 "addresses": [{"label": "work", "city": "Brisbane", "country": "Australia"}],
                 "websites": [{"label": "company", "value": "https://example.com", "primary": True}],
-                "social_profiles": [{"platform": "linkedin", "handle": "jane-smith", "url": "https://linkedin.com/in/jane-smith"}],
-                "external_refs": [{"system": "vault_contacts_db", "ref": "vault-contact-001", "matched": True, "merge_confidence": 1}],
-                "source_provenance": [{"source": "vault", "observed_at": "2026-03-15T00:00:00Z", "note": "Imported from local vault."}],
+                "social_profiles": [
+                    {
+                        "platform": "linkedin",
+                        "handle": "jane-smith",
+                        "url": "https://linkedin.com/in/jane-smith",
+                    }
+                ],
+                "external_refs": [
+                    {
+                        "system": "vault_contacts_db",
+                        "ref": "vault-contact-001",
+                        "matched": True,
+                        "merge_confidence": 1,
+                    }
+                ],
+                "source_provenance": [
+                    {
+                        "source": "vault",
+                        "observed_at": "2026-03-15T00:00:00Z",
+                        "note": "Imported from local vault.",
+                    }
+                ],
                 "first_seen_at": "2026-03-01T00:00:00Z",
                 "last_seen_at": "2026-03-15T00:00:00Z",
             }
@@ -59,7 +78,10 @@ def _valid_envelope() -> dict:
                 "status": "active",
                 "contact_refs": [{"kind": "contact", "id": "contact:jane-smith"}],
                 "company_refs": [{"kind": "company", "id": "company:acme-co"}],
-                "routing": {"projection_targets": ["hubspot-activity", "google-doc"], "automation_labels": ["followup"]},
+                "routing": {
+                    "projection_targets": ["hubspot-activity", "google-doc"],
+                    "automation_labels": ["followup"],
+                },
                 "source_provenance": [{"source": "vault", "observed_at": "2026-03-15T00:00:00Z"}],
                 "sync": {"state": "pending", "last_attempt_at": "2026-03-15T00:00:00Z"},
             }
