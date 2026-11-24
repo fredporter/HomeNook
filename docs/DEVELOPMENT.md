@@ -99,9 +99,12 @@ HomeNest/
 ├── config/                Environment templates
 ├── scripts/               Install, uninstall, first-run
 ├── installer/             Cinnamon desktop integration
-├── packages/usx-tokens/   USX design tokens (canonical home: uCore)
 └── docs/                  Architecture, setup, roadmap
 ```
+
+USX tokens are **not** vendored here. The console imports the canonical package from
+`../uCore/packages/usx-tokens` through the `@udos/usx-tokens` Vite alias
+(`apps/console/vite.config.ts`). Edit tokens in uCore only.
 
 ---
 

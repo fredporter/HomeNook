@@ -19,10 +19,10 @@ const clock = ref('')
 let clockInterval: ReturnType<typeof setInterval> | null = null
 
 const tiles = [
-  { id: 'media', icon: 'movie', label: 'Media Library', color: '#03A9F4', path: '/media', hint: 'Movies, TV, Music' },
-  { id: 'tv', icon: 'live_tv', label: 'TV Guide', color: '#4CAF50', path: '/tv', hint: 'Live TV & DVR' },
-  { id: 'automation', icon: 'bolt', label: 'Automation', color: '#FF9800', path: '/automation', hint: 'Scenes & Devices' },
-  { id: 'settings', icon: 'settings', label: 'Settings', color: '#9C27B0', path: '/settings', hint: 'Network, Display, Audio' },
+  { id: 'media', icon: 'movie', label: 'Media Library', color: 'var(--usx-color-info)', path: '/media', hint: 'Movies, TV, Music' },
+  { id: 'tv', icon: 'live_tv', label: 'TV Guide', color: 'var(--usx-color-success)', path: '/tv', hint: 'Live TV & DVR' },
+  { id: 'automation', icon: 'bolt', label: 'Automation', color: 'var(--usx-color-warning)', path: '/automation', hint: 'Scenes & Devices' },
+  { id: 'settings', icon: 'settings', label: 'Settings', color: 'var(--usx-color-accent)', path: '/settings', hint: 'Network, Display, Audio' },
 ]
 
 function updateClock() {
@@ -74,7 +74,6 @@ onUnmounted(() => {
         :key="tile.id"
         class="hn-launcher__tile"
         @click="router.push(tile.path)"
-        :style="{ borderColor: tile.color + '44' }"
       >
         <div class="hn-launcher__tile-icon" :style="{ color: tile.color }">
           <UIcon :name="tile.icon" />
