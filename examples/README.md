@@ -19,3 +19,10 @@ Phase 1 rule:
 
 - keep examples stable for runtime and test use
 - point courses and pathway docs at these examples rather than duplicating them
+
+Example bundle payloads are deterministic fixtures, not vendor binaries: each
+component is a small `payload.tar.gz` whose bytes depend only on the component
+identity. `python3 scripts/build_example_bundles.py` rewrites them and updates the
+committed SHA-256 values in each `uhome-bundle.json`, so the bundles verify on a
+fresh clone and a copied (Depot-shaped) bundle installs standalone without the
+repository present.

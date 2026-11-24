@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 from uhome_server.config import get_repo_root
@@ -82,3 +83,51 @@ def test_example_dual_boot_flow_records_profile_evidence(tmp_path):
     assert receipt["host_profile"]["boot_mode"] == "dual-boot"
     assert receipt["preflight"]["capability_checks"]["dual_boot_disk_layout_present"]["passed"] is True
     assert receipt["storage_identity_evidence"]["windows_disk_id"] == "disk-windows-root-002"
+
+
+def test_example_standalone_installs_from_a_copied_bundle(tmp_path):
+    """A bundle copied out of the repo — a Depot-shaped path — installs standalone."""
+    repo_root = get_repo_root()
+    source = repo_root / "examples" / "installer" / "bundles" / "standalone"
+    copy_dir = tmp_path / "depot" / "bundles" / "standalone"
+    shutil.copytree(source, copy_dir)
+
+    manifest = read_bundle_manifest(copy_dir)
+    assert manifest is not None
+    assert verify_bundle(manifest, copy_dir).valid is True
+
+    probe = json.loads(
+        (repo_root / "examples" / "installer" / "probes" / "standalone-linux.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    plan, _staged = stage_install_artifacts(copy_dir, tmp_path / "stage", probe)
+    assert plan.ready is True
+
+    execution = execute_staged_install(tmp_path / "stage", tmp_path / "target")
+    assert set(execution.installed_components) == {
+        "jellyfin",
+        "comskip",
+        "hdhomerun_config",
+        "udos_uhome",
+    }
+
+    promotion = promote_target_root(tmp_path / "target", tmp_path / "host")
+    receipt = json.loads(promotion.receipt_path.read_text(encoding="utf-8"))
+    assert receipt["reinstall_context"]["current_host_profile_id"] == "standalone-linux"
+    assert receipt["reinstall_context"]["rollback_supported"] is True
+
+
+def test_copied_bundle_with_a_tampered_component_is_rejected(tmp_path):
+    repo_root = get_repo_root()
+    source = repo_root / "examples" / "installer" / "bundles" / "standalone"
+    copy_dir = tmp_path / "depot" / "bundles" / "standalone"
+    shutil.copytree(source, copy_dir)
+    payload = copy_dir / "components" / "comskip" / "payload.tar.gz"
+    payload.write_bytes(payload.read_bytes() + b"tampered")
+
+    manifest = read_bundle_manifest(copy_dir)
+    assert manifest is not None
+    result = verify_bundle(manifest, copy_dir)
+    assert result.valid is False
+    assert result.corrupt == ["comskip"]

@@ -8,7 +8,11 @@
     "profile_id": "dual-boot-steam-node",
     "display_name": "Dual-Boot Steam Node",
     "boot_mode": "dual-boot",
-    "target_roles": ["media-server", "steam-console", "windows-gaming"],
+    "target_roles": [
+      "media-server",
+      "steam-console",
+      "windows-gaming"
+    ],
     "notes": "Reference dual-boot Linux uHOME plus Windows gaming host lane."
   },
   "rollback_token": "rb-dual-boot-example-001",
@@ -19,7 +23,7 @@
       "display_name": "Jellyfin",
       "version": "10.9.0",
       "artifact_path": "components/jellyfin/payload.tar.gz",
-      "sha256": "b1236d4520a8f502f3fb103ef1210e9cbd28378b6b5ba3c5982e8ad4c443deca",
+      "sha256": "10dbfb9064382a5788c231af6285c41f336118e3d8775005eb9565a1c071f47d",
       "install_target": "/opt/uhome/jellyfin",
       "optional": false
     },
@@ -28,7 +32,7 @@
       "display_name": "Comskip",
       "version": "0.82.0",
       "artifact_path": "components/comskip/payload.tar.gz",
-      "sha256": "cd63f5ad3d7b958fdf20bc663f68bfdb1b281bb96a8ffc16f398716cf5b82c00",
+      "sha256": "a87e9fd0010b754a7ece95036813d7d3fb2628871d3185901e772fcfee6ffd89",
       "install_target": "/opt/uhome/comskip",
       "optional": false
     },
@@ -37,7 +41,7 @@
       "display_name": "HDHomeRun Config",
       "version": "1.0.0",
       "artifact_path": "components/hdhomerun_config/payload.tar.gz",
-      "sha256": "3e354dc572588223b44e124ebf116cf6f424413ab64d6e717c3bda4e308ac46f",
+      "sha256": "f685a8733b9940726cad27d07e44ed2e9bd8d857f9d30f4313efa36e9befee43",
       "install_target": "/opt/uhome/hdhomerun_config",
       "optional": false
     },
@@ -46,7 +50,7 @@
       "display_name": "uHOME Runtime",
       "version": "1.0.0",
       "artifact_path": "components/udos_uhome/payload.tar.gz",
-      "sha256": "1bc7d4628401992e948a2756b1283fb3479ed39c00a273aaac85cf22f891a625",
+      "sha256": "165d27bda8e5e6e933d1f5f379276aed57706956ae1ea70fd8a6260c957e2c95",
       "install_target": "/opt/uhome/udos_uhome",
       "optional": false
     }

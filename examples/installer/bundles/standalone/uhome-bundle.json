@@ -8,7 +8,11 @@
     "profile_id": "standalone-linux",
     "display_name": "Standalone Linux Host",
     "boot_mode": "standalone",
-    "target_roles": ["media-server", "dvr", "launcher"],
+    "target_roles": [
+      "media-server",
+      "dvr",
+      "launcher"
+    ],
     "notes": "Reference standalone Linux install lane for uHOME."
   },
   "rollback_token": "rb-standalone-example-001",
@@ -19,7 +23,7 @@
       "display_name": "Jellyfin",
       "version": "10.9.0",
       "artifact_path": "components/jellyfin/payload.tar.gz",
-      "sha256": "e5040b77ea02977dba32b2cd69966b650dfbae94e13f3e394f24484e9b9e1f25",
+      "sha256": "7dcc6a0d5ca45bb21cf9abbe102e992a367b46741a12f3d3ec36c0ae9d9dddd3",
       "install_target": "/opt/uhome/jellyfin",
       "optional": false
     },
@@ -28,7 +32,7 @@
       "display_name": "Comskip",
       "version": "0.82.0",
       "artifact_path": "components/comskip/payload.tar.gz",
-      "sha256": "9f9eb3bd3f3d3b08dc28f2b5c8ae6cf000250a3166654aeffc6bad0a9731e5a6",
+      "sha256": "9794b43284d96ea89a7e7665e23b3726aba9b829e0a9b9fdd9e276919b6c96ad",
       "install_target": "/opt/uhome/comskip",
       "optional": false
     },
@@ -37,7 +41,7 @@
       "display_name": "HDHomeRun Config",
       "version": "1.0.0",
       "artifact_path": "components/hdhomerun_config/payload.tar.gz",
-      "sha256": "fca83b9b1147f3f17159f61164e2858302a4180f3e2107bbdae5756ab10dfcb3",
+      "sha256": "7224701f8bf6383fc214298afcc5f10e069057c4a4292a8a48c506ce269a8337",
       "install_target": "/opt/uhome/hdhomerun_config",
       "optional": false
     },
@@ -46,7 +50,7 @@
       "display_name": "uHOME Runtime",
       "version": "1.0.0",
       "artifact_path": "components/udos_uhome/payload.tar.gz",
-      "sha256": "b5272c6940f9e64faa0dbd16eaf0c35bbd9767dc4bddeb64752a28c8254e6d7b",
+      "sha256": "a026881b70b4aea7090cd286aae43b204cdfca05aba299be2a9ce313b0e77610",
       "install_target": "/opt/uhome/udos_uhome",
       "optional": false
     }
