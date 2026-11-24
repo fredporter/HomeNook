@@ -7,7 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
-from uhome_server.config import bootstrap_runtime
+from uhome_server.config import bootstrap_runtime, get_homenest_state_dir
 
 
 @pytest.fixture
@@ -19,7 +19,8 @@ def launcher_test_workspace(tmp_path: Path):
 
 @pytest.fixture
 def launcher_api_client(launcher_test_workspace: Path, monkeypatch):
-    """FastAPI test client with mocked repo_root."""
+    """FastAPI test client with mocked repo_root and isolated state."""
+    monkeypatch.setenv("UDOS_HOME", str(launcher_test_workspace / "udos"))
     monkeypatch.setattr("uhome_server.config.get_repo_root", lambda: launcher_test_workspace)
     monkeypatch.setattr(
         "uhome_server.routes.launcher.get_repo_root", lambda: launcher_test_workspace
@@ -77,10 +78,13 @@ def test_launcher_start_default_presentation(launcher_api_client):
     assert "updated_at" in data
     assert "node_role" in data
 
-    # Verify status reflects the started session
+    # Verify status reflects the started session. A start without a verified
+    # process records launch intent, so the lifecycle is "launching" rather than
+    # a running process (see tests/test_standalone_lifecycle.py).
     status_response = launcher_api_client.get("/api/launcher/status")
     status_data = status_response.json()
-    assert status_data["running"] is True
+    assert status_data["lifecycle_state"] == "launching"
+    assert status_data["running"] is False
     assert status_data["active_presentation"] == data["active_presentation"]
 
 
@@ -134,8 +138,8 @@ def test_launcher_session_persistence(launcher_api_client, launcher_test_workspa
     )
     start_data = start_response.json()
 
-    # Verify state file was created
-    state_path = launcher_test_workspace / "memory" / "kiosk" / "uhome" / "presentation.json"
+    # Verify state file was created under UDOS_HOME
+    state_path = get_homenest_state_dir() / "presentation" / "presentation.json"
     assert state_path.exists()
 
     # Verify state file content
@@ -147,7 +151,9 @@ def test_launcher_session_persistence(launcher_api_client, launcher_test_workspa
     status_response = launcher_api_client.get("/api/launcher/status")
     status_data = status_response.json()
     assert status_data["active_presentation"] == "steam-console"
-    assert status_data["running"] is True
+    # Persisted launch intent, with no verified process behind it.
+    assert status_data["lifecycle_state"] == "launching"
+    assert status_data["running"] is False
 
 
 def test_launcher_restart_changes_presentation(launcher_api_client):

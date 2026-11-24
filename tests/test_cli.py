@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from uhome_server.cli import contracts_main, installer_main, launcher_main, main
+from uhome_server.config import get_homenest_state_dir
 from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
@@ -68,10 +69,11 @@ def _write_bundle(bundle_dir: Path) -> None:
     write_bundle_manifest(bundle_dir, manifest)
 
 
-def test_launcher_cli_writes_state(tmp_path):
+def test_launcher_cli_writes_state(tmp_path, monkeypatch):
+    monkeypatch.setenv("UDOS_HOME", str(tmp_path / "udos"))
     code = launcher_main(["--repo-root", str(tmp_path), "start", "--presentation", "thin-gui"])
     assert code == 0
-    state_path = tmp_path / "memory" / "kiosk" / "uhome" / "presentation.json"
+    state_path = get_homenest_state_dir() / "presentation" / "presentation.json"
     payload = json.loads(state_path.read_text(encoding="utf-8"))
     assert payload["active_presentation"] == "thin-gui"
 

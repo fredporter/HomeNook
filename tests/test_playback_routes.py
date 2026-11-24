@@ -8,7 +8,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
-from uhome_server.config import bootstrap_runtime
+from uhome_server.config import bootstrap_runtime, get_homenest_state_dir
 
 
 @pytest.fixture
@@ -61,8 +61,9 @@ def jellyfin_sessions():
 
 @pytest.fixture
 def app_client(tmp_path, monkeypatch):
-    """Create test client with mocked dependencies."""
+    """Create test client with mocked dependencies and isolated state."""
     bootstrap_runtime(tmp_path)
+    monkeypatch.setenv("UDOS_HOME", str(tmp_path / "udos"))
     monkeypatch.setattr("uhome_server.config.get_repo_root", lambda: tmp_path)
     monkeypatch.setattr("uhome_server.services.playback_service.get_repo_root", lambda: tmp_path)
     app = create_app()
@@ -168,8 +169,8 @@ def test_playback_handoff_route(app_client, tmp_path, monkeypatch, mock_workspac
     assert data["source"] == "request"
     assert "timestamp" in data
 
-    # Verify queue was updated
-    queue_file = tmp_path / "memory" / "bank" / "uhome" / "playback_queue.json"
+    # Verify queue was updated (state belongs under UDOS_HOME, not the repo)
+    queue_file = get_homenest_state_dir() / "playback" / "playback_queue.json"
     assert queue_file.exists()
     queue = json.loads(queue_file.read_text())
     assert len(queue) == 1
@@ -279,8 +280,8 @@ def test_playback_handoff_with_extra_params(app_client, tmp_path, monkeypatch, m
     data = response.json()
     assert data["success"] is True
 
-    # Verify params were stored
-    queue_file = tmp_path / "memory" / "bank" / "uhome" / "playback_queue.json"
+    # Verify params were stored (state belongs under UDOS_HOME, not the repo)
+    queue_file = get_homenest_state_dir() / "playback" / "playback_queue.json"
     queue = json.loads(queue_file.read_text())
     assert queue[0]["params"]["start_position"] == 120
     assert queue[0]["params"]["audio_track"] == "en"
