@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from uhome_server.config import get_repo_root, read_json_file, utc_now_iso_z, write_json_file
-from uhome_server.sync_records import SyncRecordEnvelope, validate_sync_record_envelope
+from uhome_server.sync_records import validate_sync_record_envelope
 
 
 class SyncRecordStore:

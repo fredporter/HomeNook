@@ -50,8 +50,20 @@ def get_workspace_root() -> Path:
 
 
 def get_uhome_matter_root(workspace_root: Path | None = None) -> Path:
-    root = workspace_root or get_uhome_family_root()
-    return root / "uHOME-matter"
+    """Resolve the uHOME matter extension root.
+
+    The extension now lives inside this repository (`matter/`), so that wins
+    unless an explicit workspace root or family root is configured.
+    """
+    if workspace_root is not None:
+        return workspace_root / "uHOME-matter"
+    explicit = os.environ.get("UHOME_FAMILY_ROOT") or os.environ.get("UDOS_UHOME_FAMILY_ROOT")
+    if explicit:
+        return Path(explicit) / "uHOME-matter"
+    bundled = get_repo_root() / "matter"
+    if bundled.is_dir():
+        return bundled
+    return get_uhome_family_root() / "uHOME-matter"
 
 
 def _uhome_bundled_contracts_dir() -> Path:

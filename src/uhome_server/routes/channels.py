@@ -27,7 +27,6 @@ class MoveSessionRequest(BaseModel):
 
 def create_channel_routes(auth_guard: Optional[Callable] = None) -> APIRouter:
     """Create channel API routes."""
-    dependencies = []
     router = APIRouter(prefix="/api/channels", tags=["channels"])
     svc = get_channel_service()
 

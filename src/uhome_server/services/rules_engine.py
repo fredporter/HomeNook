@@ -10,18 +10,15 @@ This module implements a comprehensive rules engine with support for:
 - Performance optimization
 """
 
-import heapq
 import json
 import re
 import threading
-import time
 import uuid
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field
+from dataclasses import field
 from datetime import datetime, timedelta
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, validator
 
@@ -925,7 +922,7 @@ class RuleEngine:
             if ":" in time_str:
                 hours, minutes = map(int, time_str.split(":"))
                 return datetime.now().time().replace(hour=hours, minute=minutes)
-        except:
+        except (ValueError, TypeError):
             pass
         return datetime.now().time()
 

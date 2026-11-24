@@ -56,7 +56,7 @@ class ContainerCatalogEntry:
 class ContainerCatalogService:
     def __init__(self, repo_root: Path | None = None):
         self.repo_root = repo_root or get_repo_root()
-        self.library_root = self.repo_root / "library"
+        self.library_root = self.repo_root / "library" / "containers"
 
     def list_entries(self) -> list[ContainerCatalogEntry]:
         if not self.library_root.exists():

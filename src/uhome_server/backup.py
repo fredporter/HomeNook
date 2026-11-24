@@ -203,7 +203,7 @@ def restore_backup(
             )
 
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            json.loads(manifest_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as e:
             errors.append(f"Invalid backup manifest JSON: {str(e)}")
             return RestoreResult(

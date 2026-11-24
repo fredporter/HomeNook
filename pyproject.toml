@@ -76,6 +76,9 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
+# Line width is owned by black (same 100-column setting); long URLs and strings
+# that black cannot split are not a lint defect.
+ignore = ["E501"]
 
 [tool.mypy]
 python_version = "3.9"

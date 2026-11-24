@@ -16,7 +16,7 @@ from uhome_server.installer.bundle import (
     read_rollback_record,
     write_rollback_record,
 )
-from uhome_server.installer.linux_assets import LinuxServiceAsset, service_asset
+from uhome_server.installer.linux_assets import service_asset
 from uhome_server.installer.plan import (
     UHOMEInstallOptions,
     UHOMEInstallPlan,

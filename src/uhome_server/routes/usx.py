@@ -6,8 +6,6 @@ evaluation of USX actions against the uHome server API.
 """
 
 import json
-from pathlib import Path
-from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
