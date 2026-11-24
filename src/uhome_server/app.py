@@ -20,6 +20,7 @@ from uhome_server.routes.network import router as network_router
 from uhome_server.routes.platform import create_platform_routes
 from uhome_server.routes.playback import create_playback_routes
 from uhome_server.routes.runtime import create_runtime_routes
+from uhome_server.routes.thin import router as thin_router
 from uhome_server.routes.usx import router as usx_router
 
 
@@ -52,6 +53,7 @@ def create_app() -> FastAPI:
     app.include_router(create_channel_routes())
     app.include_router(create_playback_routes())
     app.include_router(create_runtime_routes())
+    app.include_router(thin_router)
     app.include_router(library_router)
     app.include_router(containers_router)
     app.include_router(network_router)

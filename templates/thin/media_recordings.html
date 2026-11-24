@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-6 text-3xl font-bold">{{ page_title }}</h1>
+
+        <section class="mb-8 overflow-x-auto">
+            <h2 class="mb-3 text-xl font-semibold">Available recordings</h2>
+            <table class="w-full min-w-[40rem] text-left text-sm">
+                <thead class="text-slate-400">
+                    <tr>
+                        <th class="py-2">Title</th>
+                        <th class="py-2">Channel</th>
+                        <th class="py-2">Date</th>
+                        <th class="py-2">Duration</th>
+                        <th class="py-2">Size</th>
+                        <th class="py-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    {% for recording in recordings %}
+                    <tr>
+                        <td class="py-2">{{ recording.title }}</td>
+                        <td class="py-2">{{ recording.channel }}</td>
+                        <td class="py-2">{{ recording.date }} {{ recording.time }}</td>
+                        <td class="py-2">{{ recording.duration }}</td>
+                        <td class="py-2">{{ recording.size }}</td>
+                        <td class="py-2">{{ recording.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 class="mb-3 text-xl font-semibold">Upcoming</h2>
+            <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                {% for item in upcoming_recordings %}
+                <li class="flex items-center justify-between px-4 py-3">
+                    <span>{{ item.title }} · {{ item.channel }}</span>
+                    <span class="text-sm text-slate-400">{{ item.date }} {{ item.time }} · {{ item.duration }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/media">Media</a>
+            <span aria-hidden="true"> · </span>
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>

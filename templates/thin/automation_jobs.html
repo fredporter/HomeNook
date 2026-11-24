@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-2 text-3xl font-bold">{{ page_title }}</h1>
+        <p class="mb-6 text-slate-400">
+            {{ queue_status.total_jobs|default(queue_status.get('total', 0)) }} total ·
+            {{ queue_status.running|default(0) }} running ·
+            {{ queue_status.queued|default(0) }} queued
+        </p>
+
+        <section class="mb-8">
+            <h2 class="mb-3 text-xl font-semibold">Active Jobs</h2>
+            <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                {% for job in active_jobs %}
+                <li class="px-4 py-3">
+                    <span class="font-medium">{{ job.id }}</span>
+                    <span class="text-sm text-slate-400"> · {{ job.type }} · {{ job.status }} · {{ job.progress|default(0) }}%</span>
+                </li>
+                {% else %}
+                <li class="px-4 py-3 text-slate-500">No active jobs.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+                <h2 class="mb-3 text-xl font-semibold">Queued</h2>
+                <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                    {% for job in queued_jobs %}
+                    <li class="px-4 py-3">{{ job.id }} <span class="text-sm text-slate-400">· {{ job.type }}</span></li>
+                    {% else %}
+                    <li class="px-4 py-3 text-slate-500">Queue empty.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h2 class="mb-3 text-xl font-semibold">Completed</h2>
+                <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                    {% for job in completed_jobs %}
+                    <li class="px-4 py-3">{{ job.id }} <span class="text-sm text-slate-400">· {{ job.duration|default('') }}</span></li>
+                    {% else %}
+                    <li class="px-4 py-3 text-slate-500">No completed jobs.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="mb-3 text-xl font-semibold">Job types</h2>
+            <p class="text-sm text-slate-400">{{ job_types|join(' · ') }}</p>
+        </section>
+
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/automation">Automation</a>
+            <span aria-hidden="true"> · </span>
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>

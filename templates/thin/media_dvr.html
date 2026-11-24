@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-6 text-3xl font-bold">{{ page_title }}</h1>
+
+        <section class="mb-8">
+            <h2 class="mb-3 text-xl font-semibold">Active rules</h2>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                {% for rule in active_rules %}
+                <article class="rounded-xl bg-slate-800 p-5">
+                    <h3 class="text-lg font-semibold">{{ rule.name }}</h3>
+                    <p class="text-sm text-slate-400">{{ rule.type }} · {{ rule.channel }}</p>
+                    <p class="mt-2 text-sm">{{ rule.schedule }}</p>
+                    <p class="mt-1 text-sm text-amber-400">Next: {{ rule.next_recording }}</p>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="mb-8 overflow-x-auto">
+            <h2 class="mb-3 text-xl font-semibold">Upcoming schedule</h2>
+            <table class="w-full min-w-[32rem] text-left text-sm">
+                <thead class="text-slate-400">
+                    <tr><th class="py-2">Time</th><th class="py-2">Title</th><th class="py-2">Channel</th><th class="py-2">Status</th></tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    {% for entry in upcoming_schedule %}
+                    <tr>
+                        <td class="py-2">{{ entry.time }}</td>
+                        <td class="py-2">{{ entry.title }}</td>
+                        <td class="py-2">{{ entry.channel }}</td>
+                        <td class="py-2">{{ entry.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section class="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Rules</p><p class="text-2xl">{{ dvr_stats.total_rules }}</p></div>
+            <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Active</p><p class="text-2xl">{{ dvr_stats.active_rules }}</p></div>
+            <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Upcoming</p><p class="text-2xl">{{ dvr_stats.upcoming_recordings }}</p></div>
+            <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Used</p><p class="text-2xl">{{ dvr_stats.storage_used }}</p></div>
+        </section>
+
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/media">Media</a>
+            <span aria-hidden="true"> · </span>
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>

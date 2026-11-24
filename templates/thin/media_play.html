@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+        .hover-scale:hover { transform: scale(1.05); transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-2 text-3xl font-bold">{{ page_title }}</h1>
+        <p class="mb-6 text-slate-400">{{ current_playback.title }} · {{ current_playback.type }} · {{ current_playback.status }}</p>
+
+        <section class="mb-6 rounded-xl bg-slate-800 p-6">
+            <h2 class="mb-2 text-xl font-semibold">Now playing</h2>
+            <div class="h-3 w-full overflow-hidden rounded-full bg-slate-700">
+                <div class="h-3 rounded-full bg-amber-400" style="width: {{ current_playback.progress }}%"></div>
+            </div>
+            <p class="mt-2 text-sm text-slate-400">{{ current_playback.progress }}% of {{ current_playback.duration }}</p>
+        </section>
+
+        <section class="mb-6">
+            <h2 class="mb-3 text-xl font-semibold">Controls</h2>
+            <div class="grid grid-cols-2 gap-3 md:grid-cols-5">
+                {% for control in playback_controls %}
+                <button class="touch-target hover-scale rounded-xl bg-slate-800 px-3 py-4 text-center" data-action="{{ control.action }}">
+                    <span class="block text-2xl">{{ control.icon }}</span>
+                    <span class="block text-sm">{{ control.label }}</span>
+                </button>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section>
+            <h2 class="mb-3 text-xl font-semibold">Up next</h2>
+            <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                {% for item in playback_queue %}
+                <li class="flex items-center justify-between px-4 py-3">
+                    <span>{{ item.title }}</span>
+                    <span class="text-sm text-slate-400">{{ item.type }} · {{ item.duration }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/media">Media</a>
+            <span aria-hidden="true"> · </span>
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>

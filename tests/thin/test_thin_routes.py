@@ -5,12 +5,12 @@ Tests the thin UI endpoints including home, media, and automation views.
 """
 
 from datetime import datetime, timedelta
-from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
+from uhome_server.config import get_repo_root
 from uhome_server.services.job_queue import JobStatus, JobType, RecordingJob, get_job_queue
 
 
@@ -177,9 +177,21 @@ def test_thin_routes_navigation_links(client):
 
 
 def test_thin_routes_templates_exist():
-    """Test that all required templates exist."""
-    templates_dir = Path(__file__).parent.parent / "server" / "templates" / "thin"
-    required_templates = ["home.html", "media.html", "automation.html", "status.html"]
+    """Every template the thin routes render must exist in the app's template root."""
+    templates_dir = get_repo_root() / "templates" / "thin"
+    required_templates = [
+        "home.html",
+        "status.html",
+        "navigate.html",
+        "media.html",
+        "media_play.html",
+        "media_recordings.html",
+        "media_dvr.html",
+        "automation.html",
+        "automation_jobs.html",
+        "automation_status.html",
+        "automation_home.html",
+    ]
 
     for template in required_templates:
         template_path = templates_dir / template

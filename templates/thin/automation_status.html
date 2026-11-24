@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-6 text-3xl font-bold">{{ page_title }}</h1>
+
+        <section class="mb-8">
+            <h2 class="mb-3 text-xl font-semibold">System Health</h2>
+            <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+                <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">CPU</p><p class="text-2xl">{{ system_health.cpu_usage }}%</p></div>
+                <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Memory</p><p class="text-2xl">{{ system_health.memory_usage }}%</p></div>
+                <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Disk</p><p class="text-2xl">{{ system_health.disk_usage }}%</p></div>
+                <div class="rounded-xl bg-slate-900 p-4"><p class="text-xs uppercase text-slate-500">Network</p><p class="text-2xl">{{ system_health.network_status }}</p></div>
+            </div>
+        </section>
+
+        <section class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+                <h2 class="mb-3 text-xl font-semibold">Services</h2>
+                <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                    {% for service in service_status %}
+                    <li class="flex items-center justify-between px-4 py-3">
+                        <span>{{ service.name }}</span>
+                        <span class="text-sm text-slate-400">{{ service.status }} · {{ service.uptime }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h2 class="mb-3 text-xl font-semibold">Performance</h2>
+                <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                    <li class="flex items-center justify-between px-4 py-3"><span>Jobs processed</span><span>{{ performance_metrics.jobs_processed }}</span></li>
+                    <li class="flex items-center justify-between px-4 py-3"><span>Average time</span><span>{{ performance_metrics.average_processing_time }}</span></li>
+                    <li class="flex items-center justify-between px-4 py-3"><span>Success rate</span><span>{{ performance_metrics.success_rate }}</span></li>
+                    <li class="flex items-center justify-between px-4 py-3"><span>Current load</span><span>{{ performance_metrics.current_load }}</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="mb-3 text-xl font-semibold">Recent events</h2>
+            <ul class="divide-y divide-slate-800 rounded-xl bg-slate-900">
+                {% for event in recent_events %}
+                <li class="flex items-center justify-between px-4 py-3">
+                    <span>{{ event.timestamp }} · {{ event.event }}</span>
+                    <span class="text-sm text-slate-400">{{ event.component }} · {{ event.status }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/automation">Automation</a>
+            <span aria-hidden="true"> · </span>
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>

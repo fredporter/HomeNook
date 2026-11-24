@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+        .touch-target { min-height: 3rem; min-width: 3rem; }
+        .hover-scale:hover { transform: scale(1.05); transition: transform 0.2s ease; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="mb-6 text-3xl font-bold">{{ page_title }}</h1>
+        <p class="mb-6 text-slate-400">Choose a thin destination.</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {% for target in targets %}
+            <button class="touch-target hover-scale rounded-xl bg-slate-800 px-6 py-4 text-left text-lg"
+                    onclick="window.location.href='/api/runtime/thin/{{ target }}'">
+                {{ target|capitalize }}
+            </button>
+            {% endfor %}
+        </div>
+        <nav class="mt-8 text-sm text-slate-500">
+            <a class="text-amber-400 hover:underline" href="/api/runtime/thin/home">Home</a>
+        </nav>
+    </main>
+</body>
+</html>
