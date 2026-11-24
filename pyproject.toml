@@ -48,6 +48,7 @@ uhome-installer = "uhome_server.cli:installer_main"
 dev = [
   "httpx>=0.28,<1",
   "pytest>=8.3,<9",
+  "pytest-cov>=5.0,<8",
   "ruff>=0.1.0",
   "mypy>=1.0.0",
 ]
