@@ -1,0 +1,6 @@
+[flake8]
+# `server/` is the pre-restructure mirror kept in the tree during the HomeNook
+# rename: it duplicates `src/` and is not built, imported or tested. Linting it
+# reports syntax damage from the old tree, not from the current package.
+exclude = .git,.venv,__pycache__,node_modules,server,tests_archived_stale,*.egg-info
+max-line-length = 127
