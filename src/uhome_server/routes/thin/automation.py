@@ -4,14 +4,12 @@ Thin UI Automation routes for uHomeNest kiosk interface.
 Provides automation status, job queue monitoring, and home control views.
 """
 
-from typing import Optional
-
 import jinja2
 from fastapi import APIRouter, Request, Response
 from fastapi.templating import Jinja2Templates
 
 from uhome_server.config import get_repo_root
-from uhome_server.services.job_queue import JobStatus, get_job_queue
+from uhome_server.services.job_queue import get_job_queue
 
 router = APIRouter(prefix="/automation", tags=["thin-automation"])
 

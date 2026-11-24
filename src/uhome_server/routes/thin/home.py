@@ -4,7 +4,6 @@ Thin UI Home routes for uHomeNest kiosk interface.
 Provides the main home/index view and navigation for kiosk displays.
 """
 
-from pathlib import Path
 from typing import Optional
 
 import jinja2

@@ -4,8 +4,6 @@ Thin UI Media routes for uHomeNest kiosk interface.
 Provides media-related views including playback, recordings, and library browsing.
 """
 
-from typing import Optional
-
 import jinja2
 from fastapi import APIRouter, Request, Response
 from fastapi.templating import Jinja2Templates
