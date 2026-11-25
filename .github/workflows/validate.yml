@@ -1,5 +1,10 @@
 name: Validate
 
+# This job used to call fredporter/uDOS-dev/.github/workflows/validate.yml@main.
+# That repository was deleted, and a call to a missing reusable workflow fails
+# to load, so no job ever ran. Validation is now repo-owned and runs the
+# entrypoint declared in docs/activation.md.
+
 on:
   push:
     branches:
@@ -10,8 +15,32 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
-    uses: fredporter/uDOS-dev/.github/workflows/validate.yml@main
-    with:
-      governance_mode: public
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # The retired reusable workflow accepted `governance_mode: public`. Public
+      # repositories now run the same entrypoint with no shared governance
+      # inputs; the value stays recorded so the caller's intent is not lost.
+      GOVERNANCE_MODE: public
+      # Keep the runner off the host's legacy ~/.udos runtime path.
+      UDOS_USE_SHARED_RESOURCES: "0"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run uHOME server checks
+        # The runner context is only available inside a step, so the virtual
+        # environment lives in the workspace temp directory.
+        env:
+          UDOS_VENV_DIR: ${{ runner.temp }}/uhome-server-venv
+        run: bash scripts/run-uhome-server-checks.sh
