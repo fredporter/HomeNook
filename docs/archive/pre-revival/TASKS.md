@@ -37,7 +37,7 @@
 - [x] [UHN-R3-004] Implement `/api/playback/start` target selection #feature
 - [x] [UHN-INST-001] Docker-based Mint 22 install test script #infra
 - [x] [UHN-R3-002] Controller runtime bindings via Snackbar WebSocket bridge #ux
-- [x] [UHN-DOC-004] Create ARCHITECTURE.md (uCore ↔ HomeNest relationship) #docs
+- [x] [UHN-DOC-004] Create ARCHITECTURE.md (uCore ↔ HomeNook relationship) #docs
 - [x] [UHN-ARC-001] Move USX tokens to uCore/packages/usx-tokens/ (canonical home) #core
 
 ## Milestone Summary

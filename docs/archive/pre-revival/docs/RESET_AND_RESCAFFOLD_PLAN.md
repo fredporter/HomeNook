@@ -1,18 +1,18 @@
 > Historical/superseded scope (2026-09-10). See the [canonical revival plan](REVIVAL-PLAN-2026-09.md). HA/Matter is a separate product integration; prior release/install claims remain unqualified.
 
-# HomeNest Alignment and Consolidation Plan
+# HomeNook Alignment and Consolidation Plan
 
 **Status:** Canonical planning boundary; not part of uCode delivery sprints  
 **Date:** 2026-08-20
 
 ## Identity
 
-HomeNest is a separate household product for local media, playback, TV/DVR,
+HomeNook is a separate household product for local media, playback, TV/DVR,
 home automation, controller-first/TV interfaces, and appliance-style Linux
 deployment. It is not uCode3, a uCode 2 subsystem, or part of the uCode 1/2
 delivery sequence.
 
-HomeNest may later consume shared, versioned ecosystem packages or launch
+HomeNook may later consume shared, versioned ecosystem packages or launch
 uCode experiences, but neither project is allowed to absorb the other's
 runtime ownership.
 
@@ -29,18 +29,18 @@ partially duplicated implementations:
 - copied design tokens and older uCode3/uCode4 dependency language;
 - generated build/cache artifacts.
 
-HomeNest appears materially closer to a working product than the legacy uCode2
+HomeNook appears materially closer to a working product than the legacy uCode2
 prototype. Existing vertical slices are presumed worth preserving unless an
 audit or clean build disproves them. The purpose of the future review is to
 identify the strongest implementation path, consolidate duplicates, and
 repair boundaries rather than restart the product.
 
-This planning tidy-up does not compile, migrate, delete, or extend HomeNest
+This planning tidy-up does not compile, migrate, delete, or extend HomeNook
 code.
 
 ## Locked boundary
 
-HomeNest owns:
+HomeNook owns:
 
 - household media catalogue and playback orchestration;
 - TV/EPG/DVR product workflows;
@@ -49,7 +49,7 @@ HomeNest owns:
 - Linux household deployment and service health;
 - household-specific storage and policy.
 
-HomeNest does not own:
+HomeNook does not own:
 
 - GridCore or lattice algebra;
 - BBCSDL/AMOS runtime execution;
@@ -85,7 +85,7 @@ This work is explicitly outside the active uCode sprints.
 
 ## Drift guards
 
-Active HomeNest docs must not describe it as uCode3, depend on uCode4, claim
+Active HomeNook docs must not describe it as uCode3, depend on uCode4, claim
 that uCode2 owns media services, or copy uCode runtime responsibilities into
 the household server. Hard-coded household paths must be treated as deployment
 profiles, not universal architecture.

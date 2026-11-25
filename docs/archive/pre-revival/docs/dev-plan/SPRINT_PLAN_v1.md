@@ -1,4 +1,4 @@
-# HomeNest Sprint Plan — v1 Connected Front-End / Back-End
+# HomeNook Sprint Plan — v1 Connected Front-End / Back-End
 
 **Created:** 2026-07-08
 **Last Updated:** 2026-07-08
@@ -62,7 +62,7 @@ Original unchecked plan preserved below. All items now delivered except:
 - [x] Add clock / weather widget
 - [x] Add `GET /api/settings` endpoint — populated with real system data
 
-### Sprint 4 — HomeNest Installer + API Hardening
+### Sprint 4 — HomeNook Installer + API Hardening
 - [x] Rewrite `scripts/install.sh`
 - [x] Create `scripts/uninstall.sh` with `--purge`
 - [x] Create `docs/INSTALLER.md`

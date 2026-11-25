@@ -4,13 +4,13 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: roadmap
 tags: [roadmap, ucode3]
-description: "This update realigns the uHomeNest roadmap to reflect the new modular architecture, uDOS-family compatibility, sonic-..."
+description: "This update realigns the HomeNook roadmap to reflect the new modular architecture, uDOS-family compatibility, sonic-..."
 ---
 # Roadmap Update — 2026-04-20
 
 ## Summary
 
-This update realigns the uHomeNest roadmap to reflect the new modular architecture, uDOS-family compatibility, sonic-installer integration, and udev framework policies.
+This update realigns the HomeNook roadmap to reflect the new modular architecture, uDOS-family compatibility, sonic-installer integration, and udev framework policies.
 
 ## Changes
 

@@ -1,6 +1,6 @@
 > Historical/superseded scope (2026-09-10). See the [canonical revival plan](../REVIVAL-PLAN-2026-09.md). HA/Matter is a separate product integration; prior release/install claims remain unqualified.
 
-# HomeNest v1 — System Specification
+# HomeNook v1 — System Specification
 
 **Version:** 1.0
 **Date:** 2026-07-08
@@ -10,7 +10,7 @@
 
 ## 1. System Overview
 
-HomeNest is a **Linux-first decentralized home stream server** designed for the
+HomeNook is a **Linux-first decentralized home stream server** designed for the
 10-foot living room experience. It provides:
 
 - **Media streaming** via Jellyfin backbone (movies, TV shows, music, Live TV)
@@ -18,7 +18,7 @@ HomeNest is a **Linux-first decentralized home stream server** designed for the
 - **Controller-first UI** — fully navigable with d-pad / keyboard arrows (no mouse)
 - **Single-command deployment** on Linux Mint Cinnamon
 
-HomeNest operates **standalone**. uCore is an optional integration layer for
+HomeNook operates **standalone**. uCore is an optional integration layer for
 identity, diagnostics, and OS-level controller events.
 
 ---
@@ -38,7 +38,7 @@ Linux Mint Cinnamon
 │  │               │ fetch() to :7890                    │  │
 │  └───────────────┼─────────────────────────────────────┘  │
 │                  │                                          │
-│  uHomeNest API :7890 (Python)                               │
+│  HomeNook API :7890 (Python)                               │
 │  ┌───────────────────────────────────────────────────┐     │
 │  │ /api/library/  /api/playback/  /api/ha/  /api/tv/ │     │
 │  └──────┬───────────────────────┬────────────────────┘     │
@@ -54,7 +54,7 @@ Linux Mint Cinnamon
 
 | Service | Port | Required |
 |---|---|---|
-| uHomeNest API | 7890 | Yes |
+| HomeNook API | 7890 | Yes |
 | Console (dev) | 5173 | Dev only |
 | Console (prod) | 8080 (nginx) | Yes |
 | Jellyfin | 8096 | For media only |
@@ -235,9 +235,9 @@ GET responses.
 ### Steps
 
 1. Install system dependencies (python3, python3-pip, nginx, nodejs, sqlite3, curl, git)
-2. Create `homenest` system user + media vault (`/home/homenest/media/`)
+2. Create `homenook` system user + media vault (`/home/homenook/media/`)
 3. Optionally install Jellyfin (`SKIP_JELLYFIN=1` to skip)
-4. Copy HomeNest files to `/opt/homenest/`
+4. Copy HomeNook files to `/opt/homenook/`
 5. Install Python dependencies from `requirements.txt`
 6. Build console (`npm run build`) and configure nginx to serve on :8080
 7. Install systemd units + udev rules for USB media detection
@@ -261,7 +261,7 @@ the full install → verify → uninstall cycle.
 
 ## 6. Persistence
 
-SQLite database at `server/data/homenest.db` (auto-created by
+SQLite database at `server/data/homenook.db` (auto-created by
 `server/core/persistence.py`).
 
 | Table | Purpose |

@@ -46,6 +46,9 @@ coverage/
 **/dist/
 *.tsbuildinfo
 
+# Rust build output (tinshed workspace)
+tinshed/target/
+
 # Root frontend cache / local build
 .vite/
 *.local
