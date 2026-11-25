@@ -10,7 +10,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
-from uhome_server.config import get_repo_root
+from uhome_server.config import get_template_dir
 from uhome_server.services.job_queue import JobStatus, JobType, RecordingJob, get_job_queue
 
 
@@ -177,8 +177,8 @@ def test_thin_routes_navigation_links(client):
 
 
 def test_thin_routes_templates_exist():
-    """Every template the thin routes render must exist in the app's template root."""
-    templates_dir = get_repo_root() / "templates" / "thin"
+    """Every template the thin routes render must ship with the package."""
+    templates_dir = get_template_dir() / "thin"
     required_templates = [
         "home.html",
         "status.html",

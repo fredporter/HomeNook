@@ -18,20 +18,12 @@ This guide provides step-by-step instructions for setting up the CI/CD pipeline 
 
 ## Required Secrets
 
-The CI/CD workflows require the following GitHub secrets to be configured:
+`release.yml` needs **no secret**: it publishes a GitHub Release and attaches the
+sdist and wheel. `PYPI_API_TOKEN` only matters if PyPI publication is enabled
+later (`docs/RELEASE-POLICY.md` § Not configured); PyPI trusted publishing avoids
+the token entirely.
 
-### 1. PyPI API Token (for package publishing)
-
-**Secret Name**: `PYPI_API_TOKEN`
-**Purpose**: Authenticates with PyPI for package publishing
-**How to obtain**:
-1. Go to [PyPI](https://pypi.org/)
-2. Log in to your account
-3. Navigate to "Account Settings" > "API tokens"
-4. Create a new API token with "Entire account" scope
-5. Copy the token value
-
-### 2. Codecov Token (for coverage reporting)
+### Codecov Token (coverage reporting)
 
 **Secret Name**: `CODECOV_TOKEN`
 **Purpose**: Authenticates with Codecov for coverage reporting
@@ -50,23 +42,16 @@ The CI/CD workflows require the following GitHub secrets to be configured:
 3. Select "Secrets and variables" > "Actions"
 4. Click "New repository secret"
 
-### Step 2: Add PyPI API Token
-
-1. **Name**: `PYPI_API_TOKEN`
-2. **Value**: Paste your PyPI API token
-3. Click "Add secret"
-
-### Step 3: Add Codecov Token
+### Step 2: Add Codecov Token
 
 1. **Name**: `CODECOV_TOKEN`
 2. **Value**: Paste your Codecov repository token
 3. Click "Add secret"
 
-### Step 4: Verify Secrets
+### Step 3: Verify the secret
 
-After adding the secrets, you should see:
-- `PYPI_API_TOKEN` in the secrets list
-- `CODECOV_TOKEN` in the secrets list
+`CODECOV_TOKEN` should appear in the repository secret list. No publishing
+credential is needed for the release workflow.
 
 ## Testing the CI/CD Pipeline
 
@@ -115,9 +100,11 @@ Located in `.github/workflows/python-ci.yml`
 ### `release.yml`
 
 Located in `.github/workflows/release.yml`
-- Triggers on version tags (e.g., `v1.0.0`)
-- Builds and publishes package to PyPI
-- Creates GitHub release
+- Triggers on version tags matching `v*.*.*`, or a manual dispatch that names an existing tag
+- Refuses to run when the tag and `project.version` disagree
+- Builds the sdist and wheel, runs `twine check --strict`, and installs the wheel outside the checkout to render the thin home page
+- Attaches both artifacts to a GitHub Release using `CHANGELOG.md` as the notes
+- Does not publish to PyPI
 
 ## Branch Protection
 

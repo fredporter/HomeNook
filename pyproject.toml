@@ -1,13 +1,14 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "uhome-server"
-version = "0.1.0-dev"
+version = "0.1.0.dev0"
 description = "uHomeNest — uHOME server Python package (uhome-server CLI)"
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.9"
 authors = [
     { name = "uDos Team", email = "team@udos.io" },
@@ -17,7 +18,6 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -36,9 +36,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/uDosGo/uCode3"
-Repository = "https://github.com/uDosGo/uCode3.git"
-Documentation = "https://github.com/uDosGo/uCode3#readme"
+Homepage = "https://github.com/fredporter/HomeNook"
+Repository = "https://github.com/fredporter/HomeNook.git"
+Documentation = "https://github.com/fredporter/HomeNook#readme"
 
 [project.scripts]
 uhome = "uhome_server.cli:main"
@@ -94,4 +94,4 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.setuptools.package-data]
-uhome_server = ["contracts/*.json", "static/thin/*.css"]
+uhome_server = ["contracts/*.json", "static/thin/*.css", "templates/thin/*.html"]
