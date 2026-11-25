@@ -10,12 +10,12 @@ import jinja2
 from fastapi import APIRouter, Request, Response
 from fastapi.templating import Jinja2Templates
 
-from uhome_server.config import get_repo_root
+from uhome_server.config import get_template_dir
 
 router = APIRouter(prefix="/home", tags=["thin-home"])
 
 # Set up templates directory with cache disabled to avoid Jinja2 3.1.6 LRUCache bug
-_templates_loader = jinja2.FileSystemLoader(get_repo_root() / "templates")
+_templates_loader = jinja2.FileSystemLoader(get_template_dir())
 _templates_env = jinja2.Environment(
     loader=_templates_loader, autoescape=jinja2.select_autoescape(), cache_size=0
 )

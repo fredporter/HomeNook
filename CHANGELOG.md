@@ -5,13 +5,30 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<<<<<<< HEAD
+> **Versioning:** `pyproject.toml` is the single source of truth for the
+> installable `uhome-server` package; the runtime reads the same value from the
+> installed distribution metadata. The repo-root `VERSION` file mirrors it.
+
+## [Unreleased]
+
+### Changed
+
+- Release hardening: the thin UI templates move into the package
+  (`uhome_server/templates/thin`) and are resolved through `get_template_dir()`,
+  so an installed wheel renders the thin pages instead of raising
+  `TemplateNotFound`.
+- `__version__` is read from the installed distribution metadata, so the runtime
+  version, the wheel metadata and `pyproject.toml` cannot drift apart.
+- The tracked `src/uhome_server.egg-info/` metadata is no longer version
+  controlled; builds regenerate it.
+- `release.yml` publishes a GitHub Release (source tarball, wheel and notes) and
+  verifies the tag against the package version. PyPI publication is not
+  configured.
+- Resolved the merge-conflict markers that had been committed into this file.
+
 ## [1.0.1] - 2024-04-19
 
 ### Added
-=======
-**Product line:** the monorepo release is tracked in the repo-root **`VERSION`** file (uHomeNest **3.9.x**). The installable Python package **`uhome-server`** keeps its own version in `pyproject.toml`.
->>>>>>> develop
 
 - **Complete .dev Flow System**: Comprehensive development workflow infrastructure with 34 new files
 - **Roadmap Synchronization**: Bidirectional sync between v4 roadmap and .dev system (100% alignment)
@@ -42,7 +59,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-<<<<<<< HEAD
 - Reset repository direction to the v1.0.0 fresh-start architecture focused on Jellyfin, a `~/media/` vault model, Tailwind browser surface, and USXD controller-first console layout.
 - Added clean baseline scaffolding for `server/`, `ui/`, `media-vault/`, `scripts/`, `docs/`, and `tests/` paths aligned to the new objective.
 - Added `v0/` archive pointer/manifest scaffolding to preserve pre-1.0.0 material as historical reference.
@@ -55,7 +71,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added persistent media indexing with incremental change stats (`added`, `changed`, `removed`) and watcher-driven index refresh loop.
 - Completed Round 2 API data wiring: media browse/search now read persisted index data; started Round 3 by adding playback target/media request contracts on `/api/playback/start` and `/api/playback/stop`.
 - Added Round 3 now-playing session state so playback start/stop mutates shared state exposed via `GET /api/now-playing`.
-=======
 - **Naming:** completed **uHomeNest v3.9** positioning across README, `docs/MONOREPO.md`, pathway docs, wiki, scripts/learning READMEs, integration guide paths, `pyproject.toml` descriptions, and contributor briefs. **Wire / JSON** `policy_owner` values such as `uHOME-server` are unchanged (see MONOREPO naming table).
 
 ## [3.9.2] — 2026-04-10
@@ -206,4 +221,4 @@ Initial project setup (placeholder).
 ---
 
 **Note**: This changelog started being maintained consistently from v0.1.0 onwards. Earlier changes may be incomplete.
->>>>>>> develop
+

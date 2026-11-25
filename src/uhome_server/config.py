@@ -19,6 +19,18 @@ def get_repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def get_template_dir() -> Path:
+    """Return the Jinja2 template root that ships inside the package.
+
+    The thin templates are package data, so this path resolves to the same place
+    in a source checkout (``src/uhome_server/templates``) and in an installed
+    wheel. ``get_repo_root()`` cannot be used for them: installed, it points at
+    ``site-packages``' parent, which is why an installed wheel used to fail with
+    ``TemplateNotFound``.
+    """
+    return Path(__file__).resolve().parent / "templates"
+
+
 def get_udos_home() -> Path:
     explicit = os.environ.get("UDOS_HOME")
     if explicit:

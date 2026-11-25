@@ -155,41 +155,31 @@ git push origin v1.1.0
 
 ### 4. Create GitHub Release
 
-**Via GitHub Web Interface**:
-1. Navigate to: `https://github.com/fredporter/uHomeNest/releases/new`
-2. Select tag: `v1.1.0`
-3. Release title: `uHOME Server v1.1.0`
-4. Description: Copy from CHANGELOG.md + git tag message
-5. Attach artifacts (optional): tarball, wheel
-6. Mark as pre-release if applicable
-7. Publish release
+Tagging runs `.github/workflows/release.yml`, which publishes the release and:
 
-**Via GitHub CLI** (future automation):
+1. refuses to continue unless the tag matches `project.version`
+2. builds the sdist and wheel and runs `twine check --strict`
+3. installs the wheel in a throwaway environment outside the checkout and renders
+   the thin home page
+4. attaches `dist/*` to the GitHub Release with `CHANGELOG.md` as the notes
+
 ```bash
-gh release create v1.1.0 \
-  --title "uHOME Server v1.1.0" \
-  --notes-file CHANGELOG_v1.1.0.md \
-  --latest
+git tag -a v0.1.0 -m "uHomeNest v0.1.0"
+git push origin v0.1.0
+```
+
+Manual fallback when the release has to be created by hand:
+
+```bash
+gh release create v0.1.0 --title "uHomeNest v0.1.0" --notes-file CHANGELOG.md dist/*
 ```
 
 ### 5. Distribution
 
-**PyPI** (future):
-```bash
-# Build distribution
-python -m build
-
-# Upload to PyPI
-python -m twine upload dist/*
-```
-
-**Docker Hub** (future):
-```bash
-docker build -t uhome/uhome-server:1.1.0 .
-docker push uhome/uhome-server:1.1.0
-docker tag uhome/uhome-server:1.1.0 uhome/uhome-server:latest
-docker push uhome/uhome-server:latest
-```
+The current channel is the GitHub Release produced above: the source tarball and
+the wheel are attached to it. PyPI is **not** configured — see
+[Not configured](#not-configured) for the credential and trusted-publisher
+options. Docker Hub is not configured either.
 
 ### 6. Post-Release
 
@@ -365,60 +355,35 @@ If a release introduces critical issues:
 
 ## Tooling and Automation
 
-### Current (Manual)
+### Current
 
-- Version bumping: Manual `sed` commands
-- Tagging: Manual `git tag`
-- Release notes: Manual CHANGELOG editing
-- GitHub Releases: Manual via web interface
+- Version bump: `pyproject.toml` is the single source of truth and `VERSION` mirrors it; `__version__` reads the installed distribution metadata
+- Tagging: manual `git tag v<version>` on the release commit
+- Release notes: `CHANGELOG.md`
+- Publishing: `.github/workflows/release.yml` on the tag verifies the tag against the package version, builds the sdist and wheel, runs `twine check --strict`, smoke-tests the wheel outside the repository, and attaches both artifacts to a GitHub Release
 
-### Future (Automated)
+### Not configured
 
-**Proposed**:
-- `uhome version bump` CLI command
-- GitHub Actions for automated releases
-- Automated CHANGELOG generation from conventional commits
-- PyPI publishing via CI/CD
-- Docker Hub publishing via CI/CD
+- **PyPI**: there is no `PYPI_API_TOKEN` secret and no trusted publisher. To enable it, add the token secret and a `twine upload` step, or use PyPI trusted publishing (`environment: pypi` on the job plus `permissions: id-token: write`) with `pypa/gh-action-pypi-publish@release/v1`, which needs no secret. The PyPI name `uhome-server` was unclaimed as of 2026-11-25; the first upload binds it permanently.
+- **Docker Hub / Homebrew / APT**: no packaging or credentials; route any new artifact lane through the ecosystem Depot instead of adding a parallel store.
 
-**Example GitHub Action** (future):
-```yaml
-name: Release
+### Release sequence
 
-on:
-  push:
-    tags:
-      - 'v*'
-
-jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build distribution
-        run: python -m build
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Create GitHub Release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: CHANGELOG.md
-```
+1. Move the `## [Unreleased]` notes in `CHANGELOG.md` to `## [<version>] - <date>`.
+2. Set the same version in `pyproject.toml` and `VERSION`.
+3. Run `scripts/run-uhome-server-checks.sh` and `python -m build`.
+4. Commit, then tag `v<version>` and push the tag; the workflow refuses to publish when the tag and the package version disagree.
 
 ## Distribution Channels
 
 ### Current
 
-- **GitHub Releases**: Primary distribution (source tarball)
-- **Git Repository**: Direct clone for developers
+- **GitHub Releases**: primary distribution — source tarball (`*.tar.gz`) and wheel (`*.whl`) attached to the release
+- **Git Repository**: direct clone for developers
 
 ### Future
 
-- **PyPI**: Python package distribution
+- **PyPI**: requires the credential or trusted-publisher setup described in [Not configured](#not-configured)
 - **Docker Hub**: Container images
 - **Homebrew**: macOS package manager
 - **APT Repository**: Debian/Ubuntu packages
