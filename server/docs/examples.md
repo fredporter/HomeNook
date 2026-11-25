@@ -1,4 +1,4 @@
-# uHomeNest examples
+# HomeNook examples
 
 Useful examples:
 

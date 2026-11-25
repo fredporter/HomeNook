@@ -4,11 +4,11 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "Use this path to extend the **uHomeNest** runtime and thin surfaces. Historical phase milestones and **`@dev/`** bind..."
+description: "Use this path to extend the **HomeNook** runtime and thin surfaces. Historical phase milestones and **`@dev/`** bind..."
 ---
 # Build on uHOME (v4)
 
-Use this path to extend the **uHomeNest** runtime and thin surfaces. Historical phase milestones and **`@dev/`** binder trees were retired from the repo in **2026-04** (local archive: **`.compost/cleanup-2026-04-10/`**).
+Use this path to extend the **HomeNook** runtime and thin surfaces. Historical phase milestones and **`@dev/`** binder trees were retired from the repo in **2026-04** (local archive: **`.compost/cleanup-2026-04-10/`**).
 
 ## Start with
 

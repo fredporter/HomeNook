@@ -40,7 +40,7 @@ def create_app() -> FastAPI:
     app.include_router(create_dashboard_routes())
 
     # Optional Home Assistant integration: decoupled from standalone media server
-    if os.environ.get("HOMENEST_ENABLE_HA", "0").lower() in ("1", "true", "yes"):
+    if os.environ.get("HOMENOOK_ENABLE_HA", "0").lower() in ("1", "true", "yes"):
         try:
             from uhome_server.routes.home_assistant import create_ha_routes
 

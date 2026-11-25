@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # ============================================================================
-# HomeNest Installer — Linux Mint Cinnamon
+# HomeNook Installer — Linux Mint Cinnamon
 # ============================================================================
-# Installs HomeNest as a system service with Jellyfin, the uHomeNest API,
+# Installs HomeNook as a system service with Jellyfin, the HomeNook API,
 # and the web console. Designed for Linux Mint 21.x/22.x (Cinnamon).
 #
 # Usage:
 #   sudo bash scripts/install.sh
 #
 # Environment variables (optional):
-#   HOMENEST_USER       — system user to run services (default: homenest)
-#   HOMENEST_HOME       — install root (default: /opt/homenest)
-#   HOMENEST_MEDIA_ROOT — media vault path (default: /home/$HOMENEST_USER/media)
-#   HOMENEST_PORT       — API listen port (default: 7890)
+#   HOMENOOK_USER       — system user to run services (default: homenook)
+#   HOMENOOK_HOME       — install root (default: /opt/homenook)
+#   HOMENOOK_MEDIA_ROOT — media vault path (default: /home/$HOMENOOK_USER/media)
+#   HOMENOOK_PORT       — API listen port (default: 7890)
 #   SKIP_JELLYFIN       — set to 1 to skip Jellyfin install
 # ============================================================================
 
@@ -25,19 +25,19 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
-log()  { echo -e "${GREEN}[HomeNest]${NC} $1"; }
-warn() { echo -e "${YELLOW}[HomeNest]${NC} $1"; }
-err()  { echo -e "${RED}[HomeNest]${NC} $1" >&2; }
+log()  { echo -e "${GREEN}[HomeNook]${NC} $1"; }
+warn() { echo -e "${YELLOW}[HomeNook]${NC} $1"; }
+err()  { echo -e "${RED}[HomeNook]${NC} $1" >&2; }
 
 # ── config ─────────────────────────────────────────────────────────────────
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-HOMENEST_USER="${HOMENEST_USER:-homenest}"
-HOMENEST_HOME="${HOMENEST_HOME:-/opt/homenest}"
-HOMENEST_MEDIA_ROOT="${HOMENEST_MEDIA_ROOT:-/home/${HOMENEST_USER}/media}"
-HOMENEST_PORT="${HOMENEST_PORT:-7890}"
+HOMENOOK_USER="${HOMENOOK_USER:-homenook}"
+HOMENOOK_HOME="${HOMENOOK_HOME:-/opt/homenook}"
+HOMENOOK_MEDIA_ROOT="${HOMENOOK_MEDIA_ROOT:-/home/${HOMENOOK_USER}/media}"
+HOMENOOK_PORT="${HOMENOOK_PORT:-7890}"
 SKIP_JELLYFIN="${SKIP_JELLYFIN:-0}"
 SYSTEMD_DIR="/etc/systemd/system"
 
@@ -59,12 +59,12 @@ if ! grep -qi "mint" /etc/os-release 2>/dev/null; then
   fi
 fi
 
-log "HomeNest Installer for Linux Mint Cinnamon"
+log "HomeNook Installer for Linux Mint Cinnamon"
 log "==========================================="
-log "User:        ${HOMENEST_USER}"
-log "Install:     ${HOMENEST_HOME}"
-log "Media Root:  ${HOMENEST_MEDIA_ROOT}"
-log "API Port:    ${HOMENEST_PORT}"
+log "User:        ${HOMENOOK_USER}"
+log "Install:     ${HOMENOOK_HOME}"
+log "Media Root:  ${HOMENOOK_MEDIA_ROOT}"
+log "API Port:    ${HOMENOOK_PORT}"
 log "Repo Root:   ${REPO_ROOT}"
 echo ""
 
@@ -85,28 +85,28 @@ log "  System dependencies installed"
 
 # ── 2. Create system user ──────────────────────────────────────────────────
 
-log "[2/7] Creating homenest system user..."
+log "[2/7] Creating homenook system user..."
 
-if ! id "${HOMENEST_USER}" &>/dev/null; then
-  useradd --system --home-dir "${HOMENEST_HOME}" \
+if ! id "${HOMENOOK_USER}" &>/dev/null; then
+  useradd --system --home-dir "${HOMENOOK_HOME}" \
     --shell /usr/sbin/nologin \
-    --comment "HomeNest Service" \
-    "${HOMENEST_USER}"
-  log "  User '${HOMENEST_USER}' created"
+    --comment "HomeNook Service" \
+    "${HOMENOOK_USER}"
+  log "  User '${HOMENOOK_USER}' created"
 else
-  log "  User '${HOMENEST_USER}' already exists"
+  log "  User '${HOMENOOK_USER}' already exists"
 fi
 
 # ── 3. Media vault ─────────────────────────────────────────────────────────
 
 log "[3/7] Setting up media vault..."
 
-mkdir -p "${HOMENEST_MEDIA_ROOT}/movies"
-mkdir -p "${HOMENEST_MEDIA_ROOT}/tv"
-mkdir -p "${HOMENEST_MEDIA_ROOT}/music"
-chown -R "${HOMENEST_USER}:${HOMENEST_USER}" "${HOMENEST_MEDIA_ROOT}"
-chmod 755 "${HOMENEST_MEDIA_ROOT}"
-log "  Media vault at ${HOMENEST_MEDIA_ROOT}"
+mkdir -p "${HOMENOOK_MEDIA_ROOT}/movies"
+mkdir -p "${HOMENOOK_MEDIA_ROOT}/tv"
+mkdir -p "${HOMENOOK_MEDIA_ROOT}/music"
+chown -R "${HOMENOOK_USER}:${HOMENOOK_USER}" "${HOMENOOK_MEDIA_ROOT}"
+chmod 755 "${HOMENOOK_MEDIA_ROOT}"
+log "  Media vault at ${HOMENOOK_MEDIA_ROOT}"
 
 # ── 4. Jellyfin ────────────────────────────────────────────────────────────
 
@@ -123,33 +123,33 @@ else
   log "[4/7] Skipping Jellyfin (SKIP_JELLYFIN=1)"
 fi
 
-# ── 5. Copy HomeNest files ─────────────────────────────────────────────────
+# ── 5. Copy HomeNook files ─────────────────────────────────────────────────
 
-log "[5/7] Installing HomeNest to ${HOMENEST_HOME}..."
+log "[5/7] Installing HomeNook to ${HOMENOOK_HOME}..."
 
-mkdir -p "${HOMENEST_HOME}"
-cp -r "${REPO_ROOT}/server" "${HOMENEST_HOME}/server"
-cp -r "${REPO_ROOT}/apps" "${HOMENEST_HOME}/apps"
-cp -r "${REPO_ROOT}/config" "${HOMENEST_HOME}/config"
-cp -r "${REPO_ROOT}/packages" "${HOMENEST_HOME}/packages"
+mkdir -p "${HOMENOOK_HOME}"
+cp -r "${REPO_ROOT}/server" "${HOMENOOK_HOME}/server"
+cp -r "${REPO_ROOT}/apps" "${HOMENOOK_HOME}/apps"
+cp -r "${REPO_ROOT}/config" "${HOMENOOK_HOME}/config"
+cp -r "${REPO_ROOT}/packages" "${HOMENOOK_HOME}/packages"
 [[ -f "${REPO_ROOT}/requirements.txt" ]] && \
-  cp "${REPO_ROOT}/requirements.txt" "${HOMENEST_HOME}/requirements.txt" || true
-chown -R "${HOMENEST_USER}:${HOMENEST_USER}" "${HOMENEST_HOME}"
+  cp "${REPO_ROOT}/requirements.txt" "${HOMENOOK_HOME}/requirements.txt" || true
+chown -R "${HOMENOOK_USER}:${HOMENOOK_USER}" "${HOMENOOK_HOME}"
 
-log "  HomeNest files copied"
+log "  HomeNook files copied"
 
 # Python dependencies
 log "  Installing Python dependencies..."
-if [[ -f "${HOMENEST_HOME}/requirements.txt" ]]; then
-  sudo -u "${HOMENEST_USER}" python3 -m pip install --quiet \
-    -r "${HOMENEST_HOME}/requirements.txt" 2>&1 | tail -1
+if [[ -f "${HOMENOOK_HOME}/requirements.txt" ]]; then
+  sudo -u "${HOMENOOK_USER}" python3 -m pip install --quiet \
+    -r "${HOMENOOK_HOME}/requirements.txt" 2>&1 | tail -1
 fi
 log "  Python deps installed"
 
 # Console build
 log "  Building console..."
-if [[ -d "${HOMENEST_HOME}/apps/console" ]]; then
-  cd "${HOMENEST_HOME}/apps/console"
+if [[ -d "${HOMENOOK_HOME}/apps/console" ]]; then
+  cd "${HOMENOOK_HOME}/apps/console"
   npm install --silent 2>&1 | tail -1
   npm run build 2>&1 | tail -3
   cd "${REPO_ROOT}"
@@ -161,20 +161,20 @@ log "  Console built"
 log "[6/7] Installing systemd service units..."
 
 # API server unit
-cat > "${SYSTEMD_DIR}/homenest-server.service" << SYSTEMDEOF
+cat > "${SYSTEMD_DIR}/homenook-server.service" << SYSTEMDEOF
 [Unit]
-Description=HomeNest API Server
+Description=HomeNook API Server
 After=network.target jellyfin.service
 Wants=jellyfin.service
 
 [Service]
 Type=simple
-User=${HOMENEST_USER}
-WorkingDirectory=${HOMENEST_HOME}/server
+User=${HOMENOOK_USER}
+WorkingDirectory=${HOMENOOK_HOME}/server
 Environment="PYTHONUNBUFFERED=1"
-Environment="UHOME_MEDIA_ROOT=${HOMENEST_MEDIA_ROOT}"
-EnvironmentFile=-${HOMENEST_HOME}/config/environment.env
-ExecStart=python3 ${HOMENEST_HOME}/server/api/main.py
+Environment="UHOME_MEDIA_ROOT=${HOMENOOK_MEDIA_ROOT}"
+EnvironmentFile=-${HOMENOOK_HOME}/config/environment.env
+ExecStart=python3 ${HOMENOOK_HOME}/server/api/main.py
 Restart=on-failure
 RestartSec=5
 StandardOutput=journal
@@ -185,10 +185,10 @@ WantedBy=multi-user.target
 SYSTEMDEOF
 
 # Console unit (placeholder — nginx serves the static build)
-cat > "${SYSTEMD_DIR}/homenest-console.service" << SYSTEMDEOF
+cat > "${SYSTEMD_DIR}/homenook-console.service" << SYSTEMDEOF
 [Unit]
-Description=HomeNest Console (nginx frontend)
-After=network.target homenest-server.service
+Description=HomeNook Console (nginx frontend)
+After=network.target homenook-server.service
 
 [Service]
 Type=oneshot
@@ -201,12 +201,12 @@ WantedBy=multi-user.target
 SYSTEMDEOF
 
 # nginx site config
-cat > /etc/nginx/sites-available/homenest << NGINXEOF
+cat > /etc/nginx/sites-available/homenook << NGINXEOF
 server {
     listen 8080;
     server_name _;
 
-    root ${HOMENEST_HOME}/apps/console/dist;
+    root ${HOMENOOK_HOME}/apps/console/dist;
     index index.html;
 
     location / {
@@ -214,7 +214,7 @@ server {
     }
 
     location /api/ {
-        proxy_pass http://127.0.0.1:${HOMENEST_PORT};
+        proxy_pass http://127.0.0.1:${HOMENOOK_PORT};
         proxy_http_version 1.1;
         proxy_set_header Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
@@ -223,12 +223,12 @@ server {
 NGINXEOF
 
 rm -f /etc/nginx/sites-enabled/default 2>/dev/null || true
-ln -sf /etc/nginx/sites-available/homenest \
-  /etc/nginx/sites-enabled/homenest 2>/dev/null || true
+ln -sf /etc/nginx/sites-available/homenook \
+  /etc/nginx/sites-enabled/homenook 2>/dev/null || true
 
 systemctl daemon-reload
-systemctl enable homenest-server.service
-systemctl enable homenest-console.service 2>/dev/null || true
+systemctl enable homenook-server.service
+systemctl enable homenook-console.service 2>/dev/null || true
 systemctl enable nginx 2>/dev/null || true
 
 log "  systemd units installed"
@@ -237,9 +237,9 @@ log "  systemd units installed"
 
 log "  Installing Cinnamon desktop shortcut..."
 if [[ -d /usr/share/applications ]]; then
-  if [[ -f "${REPO_ROOT}/installer/homenest.desktop" ]]; then
-    cp "${REPO_ROOT}/installer/homenest.desktop" \
-      /usr/share/applications/homenest.desktop
+  if [[ -f "${REPO_ROOT}/installer/homenook.desktop" ]]; then
+    cp "${REPO_ROOT}/installer/homenook.desktop" \
+      /usr/share/applications/homenook.desktop
     log "    Desktop shortcut installed"
   fi
 fi
@@ -247,11 +247,11 @@ fi
 # ── 6c. First-run-launch script ────────────────────────────────────────────
 
 log "  Installing first-run-launch script..."
-mkdir -p "${HOMENEST_HOME}/scripts"
+mkdir -p "${HOMENOOK_HOME}/scripts"
 cp "${REPO_ROOT}/scripts/first-run-launch.sh" \
-  "${HOMENEST_HOME}/scripts/first-run-launch.sh"
-chmod +x "${HOMENEST_HOME}/scripts/first-run-launch.sh"
-log "    first-run-launch.sh at ${HOMENEST_HOME}/scripts/"
+  "${HOMENOOK_HOME}/scripts/first-run-launch.sh"
+chmod +x "${HOMENOOK_HOME}/scripts/first-run-launch.sh"
+log "    first-run-launch.sh at ${HOMENOOK_HOME}/scripts/"
 
 # ── 7. udev rules ──────────────────────────────────────────────────────────
 
@@ -274,15 +274,15 @@ log "==========================================="
 log "Installation complete!"
 log ""
 log "Starting services..."
-systemctl restart homenest-server.service
+systemctl restart homenook-server.service
 systemctl restart nginx
 sleep 2
 
-if systemctl is-active --quiet homenest-server.service; then
-  log "  API server running on http://localhost:${HOMENEST_PORT}"
+if systemctl is-active --quiet homenook-server.service; then
+  log "  API server running on http://localhost:${HOMENOOK_PORT}"
 else
   warn "  API server may not have started."
-  warn "  Check: journalctl -u homenest-server -n 20"
+  warn "  Check: journalctl -u homenook-server -n 20"
 fi
 
 log "  Console at http://localhost:8080"
@@ -293,8 +293,8 @@ log "  2. Settings → Connect Jellyfin (Dashboard → API Keys)"
 log "  3. Settings → Connect Home Assistant (Profile → Tokens)"
 log ""
 log "Manage services:"
-log "  sudo systemctl {start|stop|restart} homenest-server"
-log "  sudo journalctl -u homenest-server -f"
+log "  sudo systemctl {start|stop|restart} homenook-server"
+log "  sudo journalctl -u homenook-server -f"
 log ""
 log "Uninstall:"
 log "  sudo bash ${REPO_ROOT}/scripts/uninstall.sh"

@@ -1,6 +1,6 @@
 /**
  * Automation store — Home Assistant entity state & scenes.
- * Wired to uHomeNest API endpoints:
+ * Wired to HomeNook API endpoints:
  *   GET  /api/ha/status                  → fetchStatus
  *   POST /api/ha/scenes/:id/activate     → activateScene
  *   POST /api/ha/entities/:id/toggle     → toggleEntity

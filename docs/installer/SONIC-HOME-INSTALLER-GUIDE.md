@@ -1,22 +1,22 @@
 ---
-title: "Sonic-Home Installer Guide for uHomeNest"
+title: "Sonic-Home Installer Guide for HomeNook"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [cli, guide, sonic, ucode3]
-description: "This guide provides comprehensive instructions for using the Sonic-Home installer to set up uHomeNest on your househo..."
+description: "This guide provides comprehensive instructions for using the Sonic-Home installer to set up HomeNook on your househo..."
 ---
-# Sonic-Home Installer Guide for uHomeNest
+# Sonic-Home Installer Guide for HomeNook
 
 **Version**: 1.0
 **Date**: 2024-04-17
 **Status**: Active
 
-This guide provides comprehensive instructions for using the Sonic-Home installer to set up uHomeNest on your household media server.
+This guide provides comprehensive instructions for using the Sonic-Home installer to set up HomeNook on your household media server.
 
 ## Overview
 
-Sonic-Home is a specialized installer built on the `sonic-screwdriver` framework, designed to simplify the installation and configuration of uHomeNest for household media and automation purposes.
+Sonic-Home is a specialized installer built on the `sonic-screwdriver` framework, designed to simplify the installation and configuration of HomeNook for household media and automation purposes.
 
 ## Prerequisites
 
@@ -147,7 +147,7 @@ sudo ./install.sh
 #### 5. Package Selection
 
 **Required Packages**:
-- [x] uHomeNest Core
+- [x] HomeNook Core
 - [x] Jellyfin Media Server
 - [x] FFmpeg (with hardware acceleration)
 - [x] Python 3.11+
@@ -185,7 +185,7 @@ ssh uhome-admin@uhome-server
 # Update system
 sudo apt update && sudo apt upgrade -y
 
-# Start uHomeNest services
+# Start HomeNook services
 sudo systemctl start uhome-server
 sudo systemctl enable uhome-server
 
@@ -221,8 +221,8 @@ sudo netplan apply
 sudo apt install ufw
 sudo ufw allow 22/tcp       # SSH
 sudo ufw allow 8096/tcp     # Jellyfin
-sudo ufw allow 8000/tcp     # uHomeNest API
-sudo ufw allow 8080/tcp     # uHomeNest Web
+sudo ufw allow 8000/tcp     # HomeNook API
+sudo ufw allow 8080/tcp     # HomeNook Web
 sudo ufw enable
 ```
 
@@ -281,7 +281,7 @@ database:
 
 ```ini
 [Unit]
-Description=uHomeNest Server
+Description=HomeNook Server
 After=network.target postgresql.service
 
 [Service]
@@ -302,7 +302,7 @@ WantedBy=multi-user.target
 ### Starting Services
 
 ```bash
-# Start all uHomeNest services
+# Start all HomeNook services
 sudo systemctl start uhome-server
 sudo systemctl start jellyfin
 sudo systemctl start postgresql
@@ -419,7 +419,7 @@ df -h /media/recordings
 tail -f /var/log/uhome/dvr.log
 ```
 
-## Upgrading uHomeNest
+## Upgrading HomeNook
 
 ### Minor Version Upgrade
 
@@ -511,7 +511,7 @@ sudo apt install certbot python3-certbot-nginx
 # Obtain certificate
 sudo certbot --nginx -d uhome.example.com
 
-# Configure uHomeNest for SSL
+# Configure HomeNook for SSL
 sudo nano /etc/uhome/uhome-config.yaml
 
 server:
@@ -527,7 +527,7 @@ server:
 sudo apt install unattended-upgrades
 sudo dpkg-reconfigure unattended-upgrades
 
-# Configure automatic uHomeNest updates
+# Configure automatic HomeNook updates
 sudo nano /etc/cron.weekly/uhome-update
 
 #!/bin/bash
@@ -571,7 +571,7 @@ transcoding:
 ### Database Optimization
 
 ```sql
--- Optimize PostgreSQL for uHomeNest
+-- Optimize PostgreSQL for HomeNook
 ALTER SYSTEM SET shared_buffers = '2GB';
 ALTER SYSTEM SET effective_cache_size = '4GB';
 ALTER SYSTEM SET maintenance_work_mem = '512MB';
@@ -604,7 +604,7 @@ iftop -i eth0
 ### Log Management
 
 ```bash
-# View uHomeNest logs
+# View HomeNook logs
 journalctl -u uhome-server -f
 
 # Rotate logs
@@ -714,14 +714,14 @@ sudo delgroup uhome
 
 ### Documentation
 
-- [uHomeNest Official Docs](https://github.com/fredporter/uHomeNest/docs)
+- [HomeNook Official Docs](https://github.com/fredporter/HomeNook/docs)
 - [Jellyfin Documentation](https://jellyfin.org/docs)
 - [Sonic-Screwdriver Docs](https://github.com/fredporter/sonic-screwdriver)
 
 ### Community
 
-- GitHub Issues: https://github.com/fredporter/uHomeNest/issues
-- Discussion Forum: https://github.com/fredporter/uHomeNest/discussions
+- GitHub Issues: https://github.com/fredporter/HomeNook/issues
+- Discussion Forum: https://github.com/fredporter/HomeNook/discussions
 - Matrix Chat: #uhome:matrix.org
 
 ### Troubleshooting Guides
@@ -732,7 +732,7 @@ sudo delgroup uhome
 
 ## Conclusion
 
-This guide provides comprehensive instructions for installing, configuring, and maintaining uHomeNest using the Sonic-Home installer. The installation process is designed to be straightforward while providing flexibility for advanced configurations.
+This guide provides comprehensive instructions for installing, configuring, and maintaining HomeNook using the Sonic-Home installer. The installation process is designed to be straightforward while providing flexibility for advanced configurations.
 
 **Next Steps**:
 1. Prepare installation media using Ventoy
@@ -741,4 +741,4 @@ This guide provides comprehensive instructions for installing, configuring, and 
 4. Configure DVR rules and media library
 5. Set up monitoring and maintenance
 
-For additional help, refer to the [official documentation](https://github.com/fredporter/uHomeNest/docs) or the [community support resources](#support-resources).
+For additional help, refer to the [official documentation](https://github.com/fredporter/HomeNook/docs) or the [community support resources](#support-resources).

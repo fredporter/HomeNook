@@ -3,7 +3,7 @@ title: "uHOME Home Profile Decision"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "Status: active home profile lane"
 ---
 # uHOME Home Profile Decision

@@ -1,14 +1,14 @@
-# Gemini handover — HomeNest
+# Gemini handover — HomeNook
 
 Prepared 12 September 2026. Pre-work complete; implementation and appliance
 qualification remain open. User authorized redevelopment planning and cleanup.
-HomeNest follows Sonic's foundation work but can develop using manual artifact
+HomeNook follows Sonic's foundation work but can develop using manual artifact
 installation while Sonic's hardware writers remain unqualified.
 
 ## Mission
 
 Deliver standalone Linux Steam gaming plus films/music/TV with a controller-first
-living-room console. HomeNest is its own product, not uCode3. HA/Matter is a
+living-room console. HomeNook is its own product, not uCode3. HA/Matter is a
 separate repository, API, commands and uihub card. uDOS integration is optional.
 First prove: film with audio → Steam game → exit back to console → reboot and
 repeat, with HA/uDOS absent. Then qualify a second LAN media client.
@@ -45,7 +45,7 @@ The current runtime source remains available for characterization/extraction.
 1. HN-01: isolated Python test and frontend build baseline. Inventory every
    entrypoint, imports, assets and route differences; compare exact duplicates
    from the inventory. Choose canonical backend/console using behavior evidence.
-2. HN-02: make HomeNest independent. Extract only useful HA adapters/contracts
+2. HN-02: make HomeNook independent. Extract only useful HA adapters/contracts
    with source attribution into the separate repo; remove default HA dependencies
    once both products' independent boot tests pass. No mechanical folder move.
 3. HN-03/04: implement observed Steam/player lifecycle and controller UX. Use
@@ -55,7 +55,7 @@ The current runtime source remains available for characterization/extraction.
 5. HN-06: publish a tested prerelease artifact contract consumed identically by
    manual installation and Sonic. Compare installer code with Sonic before
    extracting generic logic; never maintain two copies of the same executor.
-6. INT-01: independent optional HomeNest/HA cards and versioned contracts through
+6. INT-01: independent optional HomeNook/HA cards and versioned contracts through
    existing uCore/uCode/uFlow mechanisms. Standalone acceptance remains mandatory.
 
 Defer DVR/tuners/EPG, synchronized multi-room playback, voice, native mobile apps,
@@ -93,7 +93,7 @@ No IDE/agent configuration tree or placeholder daemon was introduced.
 
 ## Gemini start prompt
 
-Complete HN-01 and HN-02 from this handover: characterize the competing HomeNest
+Complete HN-01 and HN-02 from this handover: characterize the competing HomeNook
 stacks in isolation, select one backend/console with evidence, and remove HA
 runtime coupling while preserving useful adapters in the separate HA repository.
 Keep Steam/media standalone. Continue into observed playback/Steam lifecycle
@@ -104,7 +104,7 @@ from stored intent or mocked provider responses.
 ## Pre-work verification — 12 September 2026
 
 New handover links, archive SHA-256 records and extraction hashes verified.
-HomeNest Git whitespace check and uCore home-path policy pass. Inventory found
+HomeNook Git whitespace check and uCore home-path policy pass. Inventory found
 79 corresponding backend files, 75 byte-identical; this does not establish
 that either runtime can safely be deleted before entrypoint/import tests.
 No runtime tests, frontend build, Steam/Jellyfin session or HA/Matter connection
@@ -115,14 +115,14 @@ is the first implementation step. All changes remain uncommitted.
 
 - Characterized backend stacks:
   - Canonical backend selected: `src/uhome_server` (declared in `pyproject.toml`, active FastAPI package).
-  - Isolated Vue 3 10-foot console (`apps/console`): excluded orphaned React remnants (`src/views/*.tsx`, `src/stores/homenestStore.ts`, `src/App.tsx`), corrected relative token CSS paths (`../../../packages/usx-tokens/`). Frontend build passed (`npm run build` generates `dist/` in 505ms).
+  - Isolated Vue 3 10-foot console (`apps/console`): excluded orphaned React remnants (`src/views/*.tsx`, `src/stores/homenookStore.ts`, `src/App.tsx`), corrected relative token CSS paths (`../../../packages/usx-tokens/`). Frontend build passed (`npm run build` generates `dist/` in 505ms).
 - Enforced HA boundary decoupling (HN-02):
-  - Modified `src/uhome_server/app.py` to make Home Assistant router conditional on `HOMENEST_ENABLE_HA=1`. HomeNest media server now boots and runs with HA completely absent.
+  - Modified `src/uhome_server/app.py` to make Home Assistant router conditional on `HOMENOOK_ENABLE_HA=1`. HomeNook media server now boots and runs with HA completely absent.
 - Implemented honest Steam and media lifecycle (HN-03/HN-04):
   - Upgraded `UHomePresentationService`: replaced false `running` inference with honest lifecycle states (`idle`, `launching`, `running`, `exited`, `failed`). Process health observed via active PID; process death triggers transition to `exited` and restores focus to console.
   - Upgraded `PlaybackService`: `handoff()` returns `status: "queued"` and `acknowledged: False`, never conflating queue acceptance with actual playback.
-- Migrated mutable state to `$UDOS_HOME/homenest` (HN-05):
-  - Added `get_udos_home()` and `get_homenest_state_dir()` in `config.py`. Presentation and playback queues write strictly to `$UDOS_HOME/homenest/` rather than repo-root `memory/`. Legacy paths retained as read-only fallback.
+- Migrated mutable state to `$UDOS_HOME/homenook` (HN-05):
+  - Added `get_udos_home()` and `get_homenook_state_dir()` in `config.py`. Presentation and playback queues write strictly to `$UDOS_HOME/homenook/` rather than repo-root `memory/`. Legacy paths retained as read-only fallback.
 - Test suite:
   - `tests/test_standalone_lifecycle.py` verified: standalone boot without HA, honest lifecycle transitions, queued handoff status, and `$UDOS_HOME` path compliance. 12 passing unit tests.
   - uCore home-path policy verified clean.

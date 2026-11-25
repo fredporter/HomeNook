@@ -1,22 +1,22 @@
 ---
-title: "DVR System Design for uHomeNest"
+title: "DVR System Design for HomeNook"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: architecture
 tags: [architecture, ucode3]
-description: "This document outlines the design for the Digital Video Recorder (DVR) system in uHomeNest, including rule models, sc..."
+description: "This document outlines the design for the Digital Video Recorder (DVR) system in HomeNook, including rule models, sc..."
 ---
-# DVR System Design for uHomeNest
+# DVR System Design for HomeNook
 
 **Status**: Draft
 **Version**: 1.0
 **Date**: 2024-04-17
 
-This document outlines the design for the Digital Video Recorder (DVR) system in uHomeNest, including rule models, scheduling backend, and integration with the media processing pipeline.
+This document outlines the design for the Digital Video Recorder (DVR) system in HomeNook, including rule models, scheduling backend, and integration with the media processing pipeline.
 
 ## Overview
 
-The DVR system enables uHomeNest to record television programs, movies, and other video content according to user-defined rules. It integrates with Jellyfin for media management and provides a robust scheduling and processing backend.
+The DVR system enables HomeNook to record television programs, movies, and other video content according to user-defined rules. It integrates with Jellyfin for media management and provides a robust scheduling and processing backend.
 
 ## System Components
 
@@ -537,7 +537,7 @@ class DVRErrorHandler:
 - [ ] Add notification system
 
 ### Phase 3: Integration and Testing (2-3 weeks)
-- [ ] Integrate with existing uHomeNest media system
+- [ ] Integrate with existing HomeNook media system
 - [ ] Implement REST API endpoints
 - [ ] Write comprehensive tests
 - [ ] Perform performance testing
@@ -570,12 +570,12 @@ class DVRErrorHandler:
 1. **Machine Learning Recommendations**: Suggest recordings based on viewing habits
 2. **Automatic Commercial Detection**: Skip commercials in recordings
 3. **Cloud Backup**: Optional cloud storage for important recordings
-4. **Multi-Device Sync**: Synchronize recordings across multiple uHomeNest instances
+4. **Multi-Device Sync**: Synchronize recordings across multiple HomeNook instances
 5. **Advanced Conflict Resolution**: AI-based scheduling optimization
 
 ## Conclusion
 
-This DVR system design provides a comprehensive foundation for recording functionality in uHomeNest. The modular architecture allows for flexible rule types, robust scheduling, and integration with the existing media ecosystem. The phased implementation plan ensures steady progress while maintaining system stability.
+This DVR system design provides a comprehensive foundation for recording functionality in HomeNook. The modular architecture allows for flexible rule types, robust scheduling, and integration with the existing media ecosystem. The phased implementation plan ensures steady progress while maintaining system stability.
 
 **Next Steps**:
 1. Implement core data models and storage

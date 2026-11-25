@@ -1,6 +1,6 @@
-# uHOME server runtime (`server/` in uHomeNest v3.9)
+# uHOME server runtime (`server/` in HomeNook v3.9)
 
-This subtree is the **uHOME** LAN server implementation inside **[uHomeNest](../README.md)** (**v3.9.x**). The former standalone GitHub repo was **`uHOME-server`**.
+This subtree is the **uHOME** LAN server implementation inside **[HomeNook](../README.md)** (**v3.9.x**). The former standalone GitHub repo was **`uHOME-server`**.
 
 ## Purpose
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #
-# udo home — HomeNest CLI
-# Communicates with homenest-mcp via Unix socket
+# udo home — HomeNook CLI
+# Communicates with homenook-mcp via Unix socket
 #
 
 set -euo pipefail
 
-SOCKET_PATH="${HOMENEST_SOCKET:-/tmp/homenest-mcp.sock}"
-MCP_BIN="${HOMENEST_MCP_BIN:-homenest-mcp}"
+SOCKET_PATH="${HOMENOOK_SOCKET:-/tmp/homenook-mcp.sock}"
+MCP_BIN="${HOMENOOK_MCP_BIN:-homenook-mcp}"
 
 # Colors
 GREEN='\033[0;32m'
@@ -18,7 +18,7 @@ NC='\033[0m'
 
 usage() {
     cat <<EOF
-HomeNest CLI — Media, Automation, TV/DVR
+HomeNook CLI — Media, Automation, TV/DVR
 
 Usage:
   udo home status                    Show system status
@@ -57,7 +57,7 @@ format_json() {
 }
 
 cmd_status() {
-    echo -e "${BLUE}HomeNest Status${NC}"
+    echo -e "${BLUE}HomeNook Status${NC}"
     echo "───────────────────────────────"
     local resp
     resp=$(send_mcp_request "SystemStatus")

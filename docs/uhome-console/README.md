@@ -3,7 +3,7 @@ title: "uHome Console — Complete Design Specification Sheet"
 status: draft
 last_updated: 2026-05-20T22:32:12+10:00
 category: readme
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "| Property               | Value                                                 |"
 ---
 # uHome Console — Complete Design Specification Sheet
@@ -31,7 +31,7 @@ description: "| Property               | Value                                  
 uHome Console
 ├── Console UI (Primary) → 10-foot, controller-first, card-based
 ├── Admin Desktop (Secondary) → Ubuntu GNOME + Classic Modern
-└── Shared → uHomeNest services, sonic-express bridge
+└── Shared → HomeNook services, sonic-express bridge
 ````
 
 ***
@@ -802,7 +802,7 @@ module.exports = {
 
 ***
 
-## 📡 12. Integration with uHomeNest
+## 📡 12. Integration with HomeNook
 
 ### 12.1 Device Status Cards
 
@@ -871,7 +871,7 @@ module.exports = {
 | Tailwind styling      | Custom config                  | ✅     |
 | Transitions           | Fade, scale, pulse             | ✅     |
 | Loading states        | Skeleton + spinner             | ✅     |
-| Device integration    | uHomeNest API ready            | ✅     |
+| Device integration    | HomeNook API ready            | ✅     |
 
 ***
 

@@ -1,4 +1,4 @@
-# uHomeNest requirements
+# HomeNook requirements
 
 # Core dependencies
 fastapi>=0.95.0

@@ -1,4 +1,4 @@
-# uHomeNest udev rules
+# HomeNook udev rules
 # Auto-detect media drives, USB installers, Matter devices
 
 # USB installer detection

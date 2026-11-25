@@ -1,1 +1,1 @@
-"""Route handlers for uHomeNest API."""
+"""Route handlers for HomeNook API."""

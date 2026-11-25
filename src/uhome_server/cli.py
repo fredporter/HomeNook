@@ -9,6 +9,7 @@ from typing import Any
 
 from pydantic import ValidationError
 
+from uhome_server import __version__
 from uhome_server.backup import create_backup, list_backups, restore_backup
 from uhome_server.config import (
     get_repo_root,
@@ -63,7 +64,7 @@ def _launcher_repo_root(value: str | None) -> Path:
 
 def launcher_main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="uhome-launcher", description="Manage local uHOME presentation launchers."
+        prog="homenook-launcher", description="Manage local HomeNook presentation launchers."
     )
     parser.add_argument(
         "--repo-root", help="Override the repository root for state and workspace access."
@@ -105,7 +106,7 @@ def launcher_main(argv: list[str] | None = None) -> int:
 
 def installer_main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="uhome-installer", description="Build and inspect uHOME install plans."
+        prog="homenook-installer", description="Build and inspect HomeNook install plans."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -401,7 +402,7 @@ def installer_main(argv: list[str] | None = None) -> int:
 def backup_main(argv: list[str] | None = None) -> int:
     """CLI for backup and restore operations."""
     parser = argparse.ArgumentParser(
-        prog="uhome-backup", description="Backup and restore uHOME Server state."
+        prog="homenook-backup", description="Backup and restore HomeNook server state."
     )
     parser.add_argument("--repo-root", help="Override the repository root.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -472,7 +473,7 @@ def backup_main(argv: list[str] | None = None) -> int:
 
 def contracts_main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="uhome-contracts", description="Inspect shared contract assets."
+        prog="homenook-contracts", description="Inspect shared contract assets."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -529,7 +530,7 @@ def contracts_main(argv: list[str] | None = None) -> int:
 
 def migrate_main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        prog="uhome-migrate", description="uHOME data and layout migrations."
+        prog="homenook-migrate", description="HomeNook data and layout migrations."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -585,7 +586,8 @@ def migrate_main(argv: list[str] | None = None) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="uhome", description="uHOME operator CLI.")
+    parser = argparse.ArgumentParser(prog="homenook", description="HomeNook operator CLI.")
+    parser.add_argument("--version", action="version", version=__version__)
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("launcher", help="Manage local launcher state.")
     subparsers.add_parser("installer", help="Manage install plans and preflight.")

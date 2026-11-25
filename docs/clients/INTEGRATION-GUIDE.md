@@ -461,7 +461,7 @@ Use the example installer artifacts to populate test data:
 
 ```bash
 # On uHOME server
-cd /path/to/uHomeNest
+cd /path/to/HomeNook
 pytest tests/test_example_installer_artifacts.py -v
 ```
 

@@ -1,4 +1,4 @@
-# HomeNest Architecture — uCore Relationship
+# HomeNook Architecture — uCore Relationship
 
 **Last updated:** 2026-07-08
 
@@ -6,14 +6,14 @@
 
 ## Overview
 
-HomeNest is a **standalone** Linux Mint Cinnamon home media console. It can operate independently without uCore. However, when uCore is present, HomeNest integrates for identity, diagnostics, container management, and controller events.
+HomeNook is a **standalone** Linux Mint Cinnamon home media console. It can operate independently without uCore. However, when uCore is present, HomeNook integrates for identity, diagnostics, container management, and controller events.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │  Linux Mint Cinnamon                                         │
 │                                                               │
 │  ┌─────────────────────────┐  ┌──────────────────────────┐  │
-│  │  HomeNest               │  │  uCore (optional)         │  │
+│  │  HomeNook               │  │  uCore (optional)         │  │
 │  │  ┌───────────────────┐  │  │  ┌────────────────────┐  │  │
 │  │  │ Console (Vue 3)   │  │  │  │ Snackbar (:8484)   │  │  │
 │  │  │ :8080 (nginx)     │  │  │  │ - identity         │  │  │
@@ -25,7 +25,7 @@ HomeNest is a **standalone** Linux Mint Cinnamon home media console. It can oper
 │  │  └────────┬──────────┘  │  └──────────────────────────┘  │
 │  │           │ fetch()      │                                 │
 │  │  ┌────────▼──────────┐  │                                 │
-│  │  │ uHomeNest API     │  │                                 │
+│  │  │ HomeNook API     │  │                                 │
 │  │  │ (:7890)           │──┼──► Jellyfin (:8096)            │
 │  │  │ /api/identity ────┼──┼──► Snackbar identity          │
 │  │  │ /api/ha/* ────────┼──┼──► Home Assistant (:8123)     │
@@ -45,9 +45,9 @@ HomeNest is a **standalone** Linux Mint Cinnamon home media console. It can oper
 
 ### 1. Identity (Soft Dependency)
 
-| HomeNest Endpoint | uCore Endpoint | Behavior |
+| HomeNook Endpoint | uCore Endpoint | Behavior |
 |---|---|---|
-| `GET /api/identity` | `Snackbar :8484/v1/identity` | Proxies to Snackbar. If Snackbar is down, returns `{ initialized: false, user_id: null }` — HomeNest operates normally. |
+| `GET /api/identity` | `Snackbar :8484/v1/identity` | Proxies to Snackbar. If Snackbar is down, returns `{ initialized: false, user_id: null }` — HomeNook operates normally. |
 
 ### 2. Controller Bridge (Soft Dependency)
 
@@ -65,11 +65,11 @@ HomeNest is a **standalone** Linux Mint Cinnamon home media console. It can oper
 
 | Package | Location | Role |
 |---|---|---|
-| `@udos/usx-tokens` | `uCore/packages/usx-tokens/` | Canonical source for CSS custom properties. HomeNest console imports from this location. |
+| `@udos/usx-tokens` | `uCore/packages/usx-tokens/` | Canonical source for CSS custom properties. HomeNook console imports from this location. |
 
 ## Standalone Mode
 
-HomeNest runs without uCore:
+HomeNook runs without uCore:
 
 | Feature | Without uCore | With uCore |
 |---|---|---|
@@ -83,14 +83,14 @@ HomeNest runs without uCore:
 ```
 1. Jellyfin (:8096)      — media server
 2. uCore Snackbar (:8484) — identity + controller (optional)
-3. uHomeNest API (:7890)  — media/HA/settings orchestrator
+3. HomeNook API (:7890)  — media/HA/settings orchestrator
 4. nginx (:8080)          — serves Vue 3 console SPA
 ```
 
 ## Key Design Decisions
 
-1. **HomeNest is the primary UX** — uCore augments, doesn't gate
-2. **Identity is optional** — HomeNest works without login
+1. **HomeNook is the primary UX** — uCore augments, doesn't gate
+2. **Identity is optional** — HomeNook works without login
 3. **Tokens live in uCore** — single source of truth for USX CSS across the uDos ecosystem
 4. **Snackbar bridges the OS** — gamepad, diagnostics, container management
 5. **Docker, not bare-metal** — install testing happens in containers, not VMs

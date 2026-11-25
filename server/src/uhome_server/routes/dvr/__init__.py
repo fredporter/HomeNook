@@ -1,5 +1,5 @@
 """
-DVR API routes for uHomeNest.
+DVR API routes for HomeNook.
 
 Implements the DVR system API endpoints based on the design specification.
 """

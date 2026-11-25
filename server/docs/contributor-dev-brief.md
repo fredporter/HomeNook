@@ -1,4 +1,4 @@
-# uHomeNest — contributor workflow (optional @dev / #binder parity)
+# HomeNook — contributor workflow (optional @dev / #binder parity)
 
 *Former filename:* `uHOME-server-dev-brief.md`.
 
@@ -12,7 +12,7 @@ The material below describes **optional** alignment if a contributor already use
 
 Purpose
 
-The uHomeNest monorepo should:
+The HomeNook monorepo should:
 	•	keep a clear split between local experiments and what ships in the public tree
 	•	use **roadmap + checklists + issues** as the default planning spine
 	•	allow local development scaffolding in private or `@dev` extension layers where useful
@@ -32,7 +32,7 @@ Some contributors mirror uDOS habits:
 	•	local extension supports scaffolding and background advancement
 	•	review before promoting large changes into the public server repo
 
-This does **not** imply uHomeNest commits are binder-gated or that operators ever see binder semantics in product UI.
+This does **not** imply HomeNook commits are binder-gated or that operators ever see binder semantics in product UI.
 
 ⸻
 
@@ -81,11 +81,11 @@ local completion does not imply repo contribution.
 
 ⸻
 
-uHomeNest (legacy uHOME-server naming) inside @dev (**historical — uDOS workspace**)
+HomeNook (legacy uHOME-server naming) inside @dev (**historical — uDOS workspace**)
 
-**uHomeNest (2026-04+):** use repo-root **`TASKS.md`**, **`.local/`**, and **`.compost/`** (UDN). Tracked **`@dev/`** binder trees were **removed** from this monorepo in favour of **v4** entry points in [`../../../docs/ROADMAP-V4.md`](../../../docs/ROADMAP-V4.md) and [`architecture/UHOME-SERVER-DEV-PLAN.md`](architecture/UHOME-SERVER-DEV-PLAN.md).
+**HomeNook (2026-04+):** use repo-root **`TASKS.md`**, **`.local/`**, and **`.compost/`** (UDN). Tracked **`@dev/`** binder trees were **removed** from this monorepo in favour of **v4** entry points in [`../../../docs/ROADMAP-V4.md`](../../../docs/ROADMAP-V4.md) and [`architecture/UHOME-SERVER-DEV-PLAN.md`](architecture/UHOME-SERVER-DEV-PLAN.md).
 
-The uHomeNest project should have a defined space inside the shared development workspace.
+The HomeNook project should have a defined space inside the shared development workspace.
 
 Example conceptual structure:
 
@@ -97,7 +97,7 @@ Example conceptual structure:
     review/
     compost/
 
-This allows uHomeNest development to remain consistent with uDOS core workflow patterns.
+This allows HomeNook development to remain consistent with uDOS core workflow patterns.
 
 ⸻
 
@@ -127,7 +127,7 @@ Deprecated experiments, stale drafts, or abandoned exploratory work.
 
 ## Optional: #binder usage (uDOS-family parity only)
 
-If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for uHomeNest: use GitHub issues and `docs/ROADMAP-V4.md` / `docs/thin-ui-feature-completion.md` first.
+If you already work in the uDOS `@dev` lane, you **may** track missions with `#binders`. **Do not** treat this as mandatory for HomeNook: use GitHub issues and `docs/ROADMAP-V4.md` / `docs/thin-ui-feature-completion.md` first.
 
 Where used, binders may represent:
 	•	milestones
@@ -170,7 +170,7 @@ This ensures server development progress is structured and inspectable.
 
 Advancing pending development tasks
 
-Pending uHomeNest development should be progressed within the @dev workspace.
+Pending HomeNook development should be progressed within the @dev workspace.
 
 Advancement should:
 	•	occur locally first
@@ -199,7 +199,7 @@ public repo
 
 Milestones and objectives
 
-uHomeNest development should organize work into milestones and objectives.
+HomeNook development should organize work into milestones and objectives.
 
 Milestones
 
@@ -245,7 +245,7 @@ for larger development streams.
 
 Local extension model
 
-uHomeNest development requires a local extension layer that supports experimentation and development tooling.
+HomeNook development requires a local extension layer that supports experimentation and development tooling.
 
 This layer should remain outside the distributable repo.
 
@@ -270,7 +270,7 @@ local extension is flexible and experimental; the distributable repo is curated 
 
 Contribution boundary
 
-The uHomeNest monorepo must enforce a clear contribution boundary.
+The HomeNook monorepo must enforce a clear contribution boundary.
 
 Rule
 
@@ -306,7 +306,7 @@ This ensures that the repo reflects intentional, curated development outcomes.
 
 Gitignore scaffold for local development
 
-The uHomeNest monorepo should include gitignore patterns that exclude local development artifacts.
+The HomeNook monorepo should include gitignore patterns that exclude local development artifacts.
 
 Example categories
 
@@ -355,7 +355,7 @@ This prevents development artifacts from entering the repo unintentionally.
 
 ⸻
 
-Recommended uHomeNest workflow
+Recommended HomeNook workflow
 
 1. Open a binder
 
@@ -404,7 +404,7 @@ An approved contributor moves selected outcomes into the distributable repo.
 
 ⸻
 
-Binder metadata for uHomeNest
+Binder metadata for HomeNook
 
 Example binder metadata:
 
@@ -436,7 +436,7 @@ completion_criteria:
 
 Compile and promotion behavior
 
-For uHomeNest, compile prepares a binder outcome for review and possible promotion.
+For HomeNook, compile prepares a binder outcome for review and possible promotion.
 
 Compile should:
 	•	clean dev artifacts
@@ -451,7 +451,7 @@ Promotion then moves approved artifacts only into the repo.
 
 Governance rule
 
-uHomeNest should follow the same governance philosophy as uDOS core.
+HomeNook should follow the same governance philosophy as uDOS core.
 
 The @dev workspace is the active mission development surface, #binders track development progress and objectives, local extension supports experimental work, and the distributable repo remains a curated output surface governed by approved contributors.
 
@@ -461,7 +461,7 @@ Short policy block for repo documentation
 
 You may include the following summary directly in the repo documentation.
 
-uHomeNest development follows the same @dev workspace and binder-driven workflow used by the uDOS core repo. Development objectives, milestones, and pending work are tracked as #binders within the historical uHOME-server area of the @dev workspace. Local extension scaffolding supports active development while remaining excluded from the distributable repo through gitignore and workspace separation. Contribution to the public uHomeNest monorepo is restricted to approved contributors, with changes promoted only after binder compile, review, and approval.
+HomeNook development follows the same @dev workspace and binder-driven workflow used by the uDOS core repo. Development objectives, milestones, and pending work are tracked as #binders within the historical uHOME-server area of the @dev workspace. Local extension scaffolding supports active development while remaining excluded from the distributable repo through gitignore and workspace separation. Contribution to the public HomeNook monorepo is restricted to approved contributors, with changes promoted only after binder compile, review, and approval.
 
 ⸻
 
@@ -481,11 +481,11 @@ binder promote #uhome-server-device-discovery
 
 Final intent
 
-The uHomeNest monorepo should remain:
+The HomeNook monorepo should remain:
 	•	developed locally within @dev
 	•	organized through #binders
 	•	structured by milestones and objectives
 	•	supported by a flexible local extension layer
 	•	promoted into the distributable repo only through approved contributor governance
 
-This keeps uHomeNest aligned with the uDOS development model while maintaining a clean and stable public repo.
+This keeps HomeNook aligned with the uDOS development model while maintaining a clean and stable public repo.

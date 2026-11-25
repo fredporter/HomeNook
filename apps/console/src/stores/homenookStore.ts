@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   HomeNest Console — Zustand Store
+   HomeNook Console — Zustand Store
    Manages system status, media, automation, TV, and MCP state.
    ═══════════════════════════════════════════════════════════════════ */
 import { create } from 'zustand'
@@ -52,7 +52,7 @@ export interface SnackbarMessage {
 
 // ─── Store Interface ────────────────────────────────────────────
 
-interface HomenestState {
+interface HomenookState {
   // System
   systemStatus: SystemStatus
   loading: boolean
@@ -97,7 +97,7 @@ interface HomenestState {
 
 // ─── Store Implementation ───────────────────────────────────────
 
-export const useHomenestStore = create<HomenestState>((set, get) => ({
+export const useHomenookStore = create<HomenookState>((set, get) => ({
   // ─── Initial State ────────────────────────────────────────────
   systemStatus: {
     version: '0.1.0',

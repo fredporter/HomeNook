@@ -4,17 +4,17 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "This guide covers the runtime environment variables that `uHomeNest`"
+description: "This guide covers the runtime environment variables that `HomeNook`"
 ---
 # Environment Configuration
 
-This guide covers the runtime environment variables that `uHomeNest`
+This guide covers the runtime environment variables that `HomeNook`
 actually reads today and the checked-in example files that operators can copy
 into service-managed environments.
 
 ## Active Runtime Variables
 
-`uHomeNest` currently reads these environment variables from the process
+`HomeNook` currently reads these environment variables from the process
 environment:
 
 - `JELLYFIN_URL`: base URL for the local Jellyfin instance

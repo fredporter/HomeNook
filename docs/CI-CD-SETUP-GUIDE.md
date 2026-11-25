@@ -1,14 +1,14 @@
 ---
-title: "CI/CD Setup Guide for uHomeNest"
+title: "CI/CD Setup Guide for HomeNook"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [guide, ucode3]
-description: "This guide provides step-by-step instructions for setting up the CI/CD pipeline for uHomeNest."
+description: "This guide provides step-by-step instructions for setting up the CI/CD pipeline for HomeNook."
 ---
-# CI/CD Setup Guide for uHomeNest
+# CI/CD Setup Guide for HomeNook
 
-This guide provides step-by-step instructions for setting up the CI/CD pipeline for uHomeNest.
+This guide provides step-by-step instructions for setting up the CI/CD pipeline for HomeNook.
 
 ## Prerequisites
 
@@ -30,14 +30,14 @@ the token entirely.
 **How to obtain**:
 1. Go to [Codecov](https://codecov.io/)
 2. Sign up/log in with your GitHub account
-3. Add the uHomeNest repository to your Codecov account
+3. Add the HomeNook repository to your Codecov account
 4. Copy the repository upload token
 
 ## Setup Instructions
 
 ### Step 1: Access GitHub Repository Secrets
 
-1. Go to your uHomeNest repository on GitHub
+1. Go to your HomeNook repository on GitHub
 2. Click on "Settings" tab
 3. Select "Secrets and variables" > "Actions"
 4. Click "New repository secret"

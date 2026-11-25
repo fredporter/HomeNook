@@ -4,7 +4,7 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "**uHomeNest** uses `pyproject.toml` for dependency declarations and"
+description: "**HomeNook** uses `pyproject.toml` for dependency declarations and"
 ---
 # Dependency Management
 
@@ -13,7 +13,7 @@ Updated: 2026-03-10
 
 ## Overview
 
-**uHomeNest** uses `pyproject.toml` for dependency declarations and
+**HomeNook** uses `pyproject.toml` for dependency declarations and
 `requirements.lock` for reproducible builds.
 
 ## Lockfile Policy

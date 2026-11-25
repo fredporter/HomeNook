@@ -267,7 +267,7 @@ async function connectHA() {
                 <div>
                   <div style="font-weight: var(--usx-font-weight-semibold); font-size: var(--usx-font-size-lg)">Version</div>
                   <div style="font-size: var(--usx-font-size-sm); color: var(--usx-color-on-surface-muted)">
-                    HomeNest v0.1.0 · Linux
+                    HomeNook v0.1.0 · Linux
                   </div>
                   <div style="font-size: var(--usx-font-size-sm); color: var(--usx-color-on-surface-muted)">
                     Config: {{ store.envFileExists ? 'environment.env' : 'none (env vars)' }}

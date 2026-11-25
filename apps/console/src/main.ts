@@ -1,5 +1,5 @@
 /**
- * HomeNest Console — Vue 3 entry point
+ * HomeNook Console — Vue 3 entry point
  * 10-foot media + automation control surface
  */
 import { createApp } from 'vue'

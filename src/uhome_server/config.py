@@ -38,8 +38,8 @@ def get_udos_home() -> Path:
     return Path.home() / "Code" / ".udos"
 
 
-def get_homenest_state_dir() -> Path:
-    return get_udos_home() / "homenest"
+def get_homenook_state_dir() -> Path:
+    return get_udos_home() / "homenook"
 
 
 def get_code_root() -> Path:

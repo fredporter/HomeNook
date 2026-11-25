@@ -1,6 +1,6 @@
 # HomeNook Skill
 
-The `udo home` CLI command for managing HomeNest — media playback, automation, TV/DVR, and system status.
+The `udo home` CLI command for managing HomeNook — media playback, automation, TV/DVR, and system status.
 
 ## Usage
 

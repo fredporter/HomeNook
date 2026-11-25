@@ -11,4 +11,4 @@ try:
     # wheel metadata cannot drift apart.
     __version__ = _distribution_version("uhome-server")
 except PackageNotFoundError:  # source checkout that has not been installed
-    __version__ = "0.1.0.dev0"
+    __version__ = "0.1.0"

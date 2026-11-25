@@ -1,7 +1,7 @@
 # Linux Scripts
 
 This directory is the future home for Linux-side checked-in operational scripts
-owned by **uHomeNest** (uHOME server runtime).
+owned by **HomeNook** (uHOME server runtime).
 
 Examples of acceptable ownership:
 

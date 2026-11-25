@@ -1,6 +1,6 @@
-# uHOME-client (`host/` in uHomeNest)
+# uHOME-client (`host/` in HomeNook)
 
-This package lives at **`host/`** inside the **[uHomeNest](../README.md)** monorepo (standalone repo was **`uHOME-client`**).
+This package lives at **`host/`** inside the **[HomeNook](../README.md)** monorepo (standalone repo was **`uHOME-client`**).
 
 ## Purpose
 

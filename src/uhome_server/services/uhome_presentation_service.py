@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from uhome_server.config import (
-    get_homenest_state_dir,
+    get_homenook_state_dir,
     read_json_file,
     utc_now_iso_z,
     write_json_file,
@@ -25,9 +25,9 @@ class UHomePresentationService:
         if state_dir:
             self._primary_state_dir = state_dir
         elif "UDOS_HOME" in os.environ:
-            self._primary_state_dir = get_homenest_state_dir() / "presentation"
+            self._primary_state_dir = get_homenook_state_dir() / "presentation"
         else:
-            self._primary_state_dir = self.repo_root / ".udos" / "homenest" / "presentation"
+            self._primary_state_dir = self.repo_root / ".udos" / "homenook" / "presentation"
         self._legacy_state_dir = self.repo_root / "memory" / "kiosk" / "uhome"
 
     @property

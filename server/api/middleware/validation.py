@@ -1,4 +1,4 @@
-"""Request validation utilities for uHomeNest API.
+"""Request validation utilities for HomeNook API.
 
 Provides structured error responses and field validation
 for POST endpoints.

@@ -4,7 +4,7 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "This document provides practical examples and test scenarios for using the uHomeNest DVR system."
+description: "This document provides practical examples and test scenarios for using the HomeNook DVR system."
 ---
 # DVR System Examples and Test Scenarios
 
@@ -12,7 +12,7 @@ description: "This document provides practical examples and test scenarios for u
 **Date**: 2024-04-17
 **Status**: Active
 
-This document provides practical examples and test scenarios for using the uHomeNest DVR system.
+This document provides practical examples and test scenarios for using the HomeNook DVR system.
 
 ## Overview
 
@@ -20,7 +20,7 @@ The examples demonstrate how to create, manage, and test different types of DVR 
 
 ## Prerequisites
 
-- uHomeNest server running
+- HomeNook server running
 - API accessible at `http://localhost:8000/api/dvr/`
 - `curl` or similar HTTP client for testing
 
@@ -623,7 +623,7 @@ echo "Performance test completed"
 
 ## Conclusion
 
-This document provides comprehensive examples and test scenarios for the uHomeNest DVR system. The examples cover:
+This document provides comprehensive examples and test scenarios for the HomeNook DVR system. The examples cover:
 
 - **All rule types**: Time-based, series, movie, keyword, channel
 - **Complete lifecycle**: Create, update, delete, enable, disable
@@ -635,7 +635,7 @@ This document provides comprehensive examples and test scenarios for the uHomeNe
 Use these examples to test and validate your DVR system implementation, or as templates for creating your own custom rules and scenarios.
 
 **Next Steps**:
-1. Try the examples with your uHomeNest installation
+1. Try the examples with your HomeNook installation
 2. Modify the scenarios to match your specific needs
 3. Create additional test cases for your unique use cases
 4. Integrate with your existing automation and monitoring systems

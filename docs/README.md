@@ -1,4 +1,4 @@
-# HomeNest documentation
+# HomeNook documentation
 
 Start with [Gemini handover](GEMINI-HANDOVER.md).
 

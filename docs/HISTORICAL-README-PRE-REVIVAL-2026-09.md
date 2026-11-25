@@ -2,9 +2,9 @@
 
 Captured before the 2026-09-10 revival plan. Claims below are historical.
 
-# HomeNest — Legacy Implementation Inventory
+# HomeNook — Legacy Implementation Inventory
 
-> **Architecture reset (2026-08-20):** HomeNest is a separate household media
+> **Architecture reset (2026-08-20):** HomeNook is a separate household media
 > and automation product, not uCode3 and not part of the uCode 1/2 sprint
 > sequence. The repository appears to contain useful working vertical slices;
 > duplicated layouts and old boundaries need consolidation before further
@@ -12,7 +12,7 @@ Captured before the 2026-09-10 revival plan. Claims below are historical.
 > [`docs/RESET_AND_RESCAFFOLD_PLAN.md`](docs/RESET_AND_RESCAFFOLD_PLAN.md).
 > The content below is retained as historical implementation context.
 
-# Historical: uCode3 — HomeNest (Application Layer)
+# Historical: uCode3 — HomeNook (Application Layer)
 
 **Ownership:** uDosGo  
 **Core Language:** Python + Rust  
@@ -24,7 +24,7 @@ Captured before the 2026-09-10 revival plan. Claims below are historical.
 
 ## Overview
 
-uCode3 is the **application layer** of the uDos ecosystem — a home media server, home automation bridge, and kiosk/console UI. It provides the uHomeNest product line: household media, kiosk/thin UI, LAN server, and Matter/Home Assistant bridges.
+uCode3 is the **application layer** of the uDos ecosystem — a home media server, home automation bridge, and kiosk/console UI. It provides the HomeNook product line: household media, kiosk/thin UI, LAN server, and Matter/Home Assistant bridges.
 
 uCode3 may import from uCode2 (MCP client, vault reads, feed queries) but never from uCode4.
 
@@ -34,18 +34,18 @@ uCode3 may import from uCode2 (MCP client, vault reads, feed queries) but never 
 - **Home Assistant Bridge** — Matter contracts, device management, automation
 - **Kiosk/Console UI** — Thin client runtime, controller-first UX
 - **Installer/Bundle System** — Sonic installer, bundle management, health checks
-- **Rust Crates (homenest-*):**
-  - `homenest-mcp` — MCP server for HomeNest (media, TV, automation, system)
-  - `homenest-media` — Media scanner, metadata workflow, mpv controller, subtitles
-  - `homenest-tv` — EPG parser, HDHomeRun tuner, DVR scheduler, storage manager
-  - `homenest-feed` — Feed spool, RSS poller
-  - `homenest-automation` — Scene manager, rule engine, OBF launcher
-  - `homenest-voice` — HomeKit bridge, Wyoming STT client, command dispatcher
-  - `homenest-docs` — Documentation generator
-  - `homenest-flatpak` — Flatpak packaging
-  - `homenest-debian` — Debian packaging
-  - `homenest-grid` — Grid system
-  - `homenest-spec` — USX bundle compiler
+- **Rust Crates (homenook-*):**
+  - `homenook-mcp` — MCP server for HomeNook (media, TV, automation, system)
+  - `homenook-media` — Media scanner, metadata workflow, mpv controller, subtitles
+  - `homenook-tv` — EPG parser, HDHomeRun tuner, DVR scheduler, storage manager
+  - `homenook-feed` — Feed spool, RSS poller
+  - `homenook-automation` — Scene manager, rule engine, OBF launcher
+  - `homenook-voice` — HomeKit bridge, Wyoming STT client, command dispatcher
+  - `homenook-docs` — Documentation generator
+  - `homenook-flatpak` — Flatpak packaging
+  - `homenook-debian` — Debian packaging
+  - `homenook-grid` — Grid system
+  - `homenook-spec` — USX bundle compiler
 
 ### What Belongs to Other Layers
 
@@ -96,13 +96,13 @@ uCode3 (Python + Rust)
 │   ├── installer/        — Bundle/install system
 │   ├── sonic/            — Sonic installer integration
 │   └── ...
-├── tinshed/              — Rust crates (homenest-*)
-│   ├── homenest-mcp/     — MCP server for HomeNest
-│   ├── homenest-media/   — Media scanner & player
-│   ├── homenest-tv/      — TV/DVR system
-│   ├── homenest-feed/    — Feed spool
-│   ├── homenest-automation/ — Scene & rules
-│   ├── homenest-voice/   — Voice assistant
+├── tinshed/              — Rust crates (homenook-*)
+│   ├── homenook-mcp/     — MCP server for HomeNook
+│   ├── homenook-media/   — Media scanner & player
+│   ├── homenook-tv/      — TV/DVR system
+│   ├── homenook-feed/    — Feed spool
+│   ├── homenook-automation/ — Scene & rules
+│   ├── homenook-voice/   — Voice assistant
 │   └── ...
 ├── ui/                   — Tailwind + USXD browser surface
 ├── apps/                 — Application configs

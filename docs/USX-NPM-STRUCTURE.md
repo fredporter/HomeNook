@@ -14,7 +14,7 @@ tags: [usx, design-tokens, npm, uDos]
 
 - **Source home:** `uCore/packages/usx-tokens/` (canonical)
 - **Published:** npm registry (public, `@udos` scope)
-- **Shared by:** uCore, HomeNest, Groovebox, and future uDos surfaces
+- **Shared by:** uCore, HomeNook, Groovebox, and future uDos surfaces
 - **Replaces:** Each project's local `/src/styles/` copies
 
 ---
@@ -39,7 +39,7 @@ tags: [usx, design-tokens, npm, uDos]
 │   ├── teletext.css       (BBC Teletext)
 │   └── high-contrast.css
 │
-├── home-nest/              ← HomeNest 10-foot console specifics
+├── home-nest/              ← HomeNook 10-foot console specifics
 │   ├── console-grid.css        (12-column TV grid, poster walls)
 │   ├── controller-focus.css    (dpad/gamepad focus rings)
 │   └── media-player.css         (now-playing bar, transport)
@@ -109,7 +109,7 @@ my-ui-project/
 
 ## Integration Examples
 
-### For Vue Projects (HomeNest, uCore)
+### For Vue Projects (HomeNook, uCore)
 
 ```typescript
 // src/main.ts
@@ -237,7 +237,7 @@ npm publish --access public
 - `minor` (3.0.0 → 3.1.0) — new tokens, new themes, new features
 - `major` (3.0.0 → 4.0.0) — breaking changes (rename tokens, restructure)
 
-### For Project Maintainers (HomeNest, Groovebox, etc.)
+### For Project Maintainers (HomeNook, Groovebox, etc.)
 
 **After npm publish:**
 
@@ -355,6 +355,6 @@ git commit -m "feat: bump @udos/usx-tokens to 3.0.1"
 ## Related Docs
 
 - [uCore Architecture](../../uCore/docs/architecture.md)
-- [HomeNest Console Design](../../HomeNest/docs/architecture.md)
+- [HomeNook Console Design](../../HomeNook/docs/architecture.md)
 - [PicoCSS Reference](https://picocss.com/)
 

@@ -1,12 +1,12 @@
 ---
-title: "uHomeNest — education structure refactor brief"
+title: "HomeNook — education structure refactor brief"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: dev-brief
 tags: [ucode3]
 description: "*Former filename:* `uHOME-server-education-dev-brief.md`."
 ---
-# uHomeNest — education structure refactor brief
+# HomeNook — education structure refactor brief
 
 *Former filename:* `uHOME-server-education-dev-brief.md`.
 

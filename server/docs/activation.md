@@ -1,9 +1,9 @@
-# uHomeNest activation (uHOME server)
+# HomeNook activation (uHOME server)
 
 ## Purpose
 
 This document marks the first active implementation tranche for
-**uHomeNest** (**v3.9.x**).
+**HomeNook** (**v3.9.x**).
 
 The activation goal is to make the server runnable, testable, and teachable as
 the always-on local-service runtime without broadening its ownership beyond:
@@ -37,7 +37,7 @@ This command:
 
 ## Boundaries
 
-This activation does not move ownership into **uHomeNest** for:
+This activation does not move ownership into **HomeNook** for:
 
 - canonical runtime semantics
 - shell interaction ownership

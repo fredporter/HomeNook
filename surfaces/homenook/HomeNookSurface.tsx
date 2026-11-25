@@ -1,5 +1,5 @@
 /**
- * HomeNest Surface — USX/UDO/UDX Surface Component
+ * HomeNook Surface — USX/UDO/UDX Surface Component
  *
  * Follows the Groovebox surface pattern:
  * - Fetches USX files from the uHome server API
@@ -63,9 +63,9 @@ async function fetchJson<T>(url: string): Promise<T> {
   return res.json();
 }
 
-// ── HomeNest Surface ───────────────────────────────────────────────
+// ── HomeNook Surface ───────────────────────────────────────────────
 
-export function HomeNestSurface() {
+export function HomeNookSurface() {
   const [page, setPage] = useState<SurfacePage>('dashboard');
   const [viewMode, setViewMode] = useState<ViewMode>('udo');
   const [usx, setUsx] = useState<USXFile | null>(null);
@@ -99,7 +99,7 @@ export function HomeNestSurface() {
     if (!usx?.actions?.on_timer) return;
     const timers = usx.actions.on_timer.map(({ delay, action }) =>
       setInterval(() => {
-        console.log('[HomeNest] Timer action:', action.type, action.command);
+        console.log('[HomeNook] Timer action:', action.type, action.command);
         // Re-fetch the USX to refresh data
         loadUSX(page);
       }, delay)
@@ -111,7 +111,7 @@ export function HomeNestSurface() {
   useEffect(() => {
     const handler = (e: CustomEvent) => {
       const { type, command } = e.detail;
-      console.log('[HomeNest] UDO action:', type, command);
+      console.log('[HomeNook] UDO action:', type, command);
       if (type === 'navigate') {
         const target = SURFACE_PAGES.find(p => p.id === command);
         if (target) setPage(target.id);
@@ -147,7 +147,7 @@ export function HomeNestSurface() {
                 <polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
             </button>
-            <span className="text-lg font-semibold text-purple-400">HomeNest</span>
+            <span className="text-lg font-semibold text-purple-400">HomeNook</span>
           </div>
 
           <nav className="flex items-center gap-1" aria-label="Pages">
@@ -262,10 +262,10 @@ export function HomeNestSurface() {
 
       {/* Footer */}
       <footer className="border-t border-gray-800 py-4 text-center text-xs text-gray-600">
-        <p>HomeNest Surface · USX v1.0.0 · uDos HomeNest</p>
+        <p>HomeNook Surface · USX v1.0.0 · uDos HomeNook</p>
       </footer>
     </div>
   );
 }
 
-export default HomeNestSurface;
+export default HomeNookSurface;

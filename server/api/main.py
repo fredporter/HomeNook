@@ -1,4 +1,4 @@
-"""uHomeNest API server — HTTP handler with CORS, JSON bodies, and
+"""HomeNook API server — HTTP handler with CORS, JSON bodies, and
 dynamic route matching.
 
 Run from the repo root:
@@ -92,7 +92,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def run() -> None:
     server = HTTPServer(("127.0.0.1", 7890), Handler)
-    print("uHomeNest API listening on http://127.0.0.1:7890")
+    print("HomeNook API listening on http://127.0.0.1:7890")
     server.serve_forever()
 
 

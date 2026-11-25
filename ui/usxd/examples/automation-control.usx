@@ -4,7 +4,7 @@
     "description": "Monitor and control home automation, job queue, and scenes",
     "surface": "both",
     "version": "1.0.0",
-    "author": "uDos HomeNest",
+    "author": "uDos HomeNook",
     "tags": ["automation", "ha", "scenes", "jobs"]
   },
   "udo": {

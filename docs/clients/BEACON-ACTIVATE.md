@@ -4,20 +4,20 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "Describe the active v2 role of Beacon-facing local access in `uHomeNest`."
+description: "Describe the active v2 role of Beacon-facing local access in `HomeNook`."
 ---
 # Beacon Activate
 
 ## Purpose
 
-Describe the active v2 role of Beacon-facing local access in `uHomeNest`.
+Describe the active v2 role of Beacon-facing local access in `HomeNook`.
 
 This document promotes the useful Beacon concept from the archive without
 bringing forward the old repo ownership model unchanged.
 
 ## Current Ownership
 
-`uHomeNest` owns:
+`HomeNook` owns:
 
 - local-network access surfaces
 - living-room or tablet-safe portal entry points
@@ -38,7 +38,7 @@ bringing forward the old repo ownership model unchanged.
 Beacon is an access and handoff surface, not a data store.
 
 `Beacon Activate` is the local Wi-Fi connection and portal experience offered
-by Wizard. It introduces the user to `uHomeNest` surfaces that can:
+by Wizard. It introduces the user to `HomeNook` surfaces that can:
 
 - show approved vault content on a TV or tablet
 - present a host-curated offline information library
@@ -108,7 +108,7 @@ Those systems may appear behind the portal, but they are not the same contract.
 
 ## Near-Term Documentation Goal
 
-As `uHomeNest` implementation hardens, this doc should grow into:
+As `HomeNook` implementation hardens, this doc should grow into:
 
 - portal URL and Beacon Activate guidance
 - approved client modes
@@ -122,5 +122,5 @@ Household networking policy for **regular LAN** operation is exposed through:
 - `GET /api/runtime/contracts/uhome-network-policy/schema`
 - `POST /api/runtime/contracts/uhome-network-policy/validate`
 
-`uHomeNest` ships the contract and schema; the default profile is **`lan`**.
+`HomeNook` ships the contract and schema; the default profile is **`lan`**.
 Future work may link profiles to **uDOS-ubuntu** command-centre networking.

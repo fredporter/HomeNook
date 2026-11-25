@@ -17,5 +17,5 @@
     "types": ["node"]
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "env.d.ts"],
-  "exclude": ["src/views/**", "src/stores/homenestStore.ts", "src/App.tsx", "node_modules", "dist"]
+  "exclude": ["src/views/**", "src/stores/homenookStore.ts", "src/App.tsx", "node_modules", "dist"]
 }

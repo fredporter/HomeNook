@@ -1,4 +1,4 @@
-"""Simple in-memory rate limiter for uHomeNest API.
+"""Simple in-memory rate limiter for HomeNook API.
 
 Limits requests per client IP for HA toggle/activate endpoints
 to prevent accidental spam from controller double-taps.

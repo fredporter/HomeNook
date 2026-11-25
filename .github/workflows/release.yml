@@ -29,9 +29,11 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Resolve the release tag
+        env:
+          REQUESTED_TAG: ${{ inputs.tag }}
         run: |
           set -euo pipefail
-          tag="${{ inputs.tag }}"
+          tag="$REQUESTED_TAG"
           if [ -z "$tag" ]; then
             tag="${GITHUB_REF_NAME}"
           fi
@@ -39,13 +41,14 @@ jobs:
             v*) ;;
             *) echo "::error::release tags must start with v"; exit 1 ;;
           esac
+          git check-ref-format "refs/tags/$tag"
           echo "RELEASE_TAG=$tag" >> "$GITHUB_ENV"
           echo "releasing $tag"
 
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.tag || github.ref }}
+          ref: refs/tags/${{ env.RELEASE_TAG }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -81,6 +84,7 @@ jobs:
           venv="$RUNNER_TEMP/wheel-smoke/bin"
           "$venv/pip" install --quiet dist/*.whl
           cd "$RUNNER_TEMP"
+          test "$("$venv/uhome" --version)" = "${RELEASE_TAG#v}"
           "$venv/python" -c "import uhome_server; print('installed version', uhome_server.__version__)"
           "$venv/python" - <<'PY'
           from fastapi.testclient import TestClient
@@ -97,7 +101,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}
-          name: uHomeNest ${{ env.RELEASE_TAG }}
+          name: HomeNook ${{ env.RELEASE_TAG }}
           body_path: CHANGELOG.md
           files: dist/*
           draft: false

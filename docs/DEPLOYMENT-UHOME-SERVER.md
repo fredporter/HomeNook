@@ -3,7 +3,7 @@ title: "uHOME Server Deployment Guide for Ubuntu 20.04+"
 status: draft
 last_updated: 2026-05-26T19:20:27+10:00
 category: guide
-tags: [deployment, homenest, ucode3, uhome]
+tags: [deployment, homenook, ucode3, uhome]
 description: "**Target**: Ubuntu 20.04 LTS, 22.04 LTS, 24.04 LTS"
 ---
 # uHOME Server Deployment Guide for Ubuntu 20.04+

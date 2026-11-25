@@ -1,4 +1,4 @@
-# uHomeNest — education structure refactor brief
+# HomeNook — education structure refactor brief
 
 *Former filename:* `uHOME-server-education-dev-brief.md`.
 

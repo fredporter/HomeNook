@@ -3,7 +3,7 @@ title: "V1 5 3 Uhome Kiosk"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "V1.5.3 — uHOME Android Kiosk + Local Network Server"
 ---
 V1.5.3 — uHOME Android Kiosk + Local Network Server

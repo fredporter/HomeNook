@@ -8,7 +8,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
-from uhome_server.config import bootstrap_runtime, get_homenest_state_dir
+from uhome_server.config import bootstrap_runtime, get_homenook_state_dir
 
 
 @pytest.fixture
@@ -170,7 +170,7 @@ def test_playback_handoff_route(app_client, tmp_path, monkeypatch, mock_workspac
     assert "timestamp" in data
 
     # Verify queue was updated (state belongs under UDOS_HOME, not the repo)
-    queue_file = get_homenest_state_dir() / "playback" / "playback_queue.json"
+    queue_file = get_homenook_state_dir() / "playback" / "playback_queue.json"
     assert queue_file.exists()
     queue = json.loads(queue_file.read_text())
     assert len(queue) == 1
@@ -281,7 +281,7 @@ def test_playback_handoff_with_extra_params(app_client, tmp_path, monkeypatch, m
     assert data["success"] is True
 
     # Verify params were stored (state belongs under UDOS_HOME, not the repo)
-    queue_file = get_homenest_state_dir() / "playback" / "playback_queue.json"
+    queue_file = get_homenook_state_dir() / "playback" / "playback_queue.json"
     queue = json.loads(queue_file.read_text())
     assert queue[0]["params"]["start_position"] == 120
     assert queue[0]["params"]["audio_track"] == "en"

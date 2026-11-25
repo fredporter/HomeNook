@@ -1,6 +1,6 @@
 # Scripts
 
-The `scripts/` root is reserved for checked-in operational tooling for **uHomeNest**
+The `scripts/` root is reserved for checked-in operational tooling for **HomeNook**
 (**v3.9.x**) / the uHOME server runtime.
 
 Current state:
@@ -12,7 +12,7 @@ Boundary rule:
 
 - generic deployment bootstrap should converge toward
   `sonic-screwdriver`
-- **uHomeNest** should keep only server-owned scripts and host-role helpers
+- **HomeNook** should keep only server-owned scripts and host-role helpers
 
 Current validation entrypoint:
 

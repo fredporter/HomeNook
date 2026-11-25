@@ -1,4 +1,4 @@
-# CI/CD Configuration Example for uHomeNest
+# CI/CD Configuration Example for HomeNook
 
 # This file contains example configuration for CI/CD services
 # Copy to config/ci-config.yml and update with your actual values
@@ -30,7 +30,7 @@ github:
   # GitHub API endpoint
   api_url: "https://api.github.com"
   # GitHub repository
-  repository: "fredporter/uHomeNest"
+  repository: "fredporter/HomeNook"
   # Default branch
   default_branch: "main"
 

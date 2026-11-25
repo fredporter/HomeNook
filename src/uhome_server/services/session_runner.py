@@ -1,4 +1,4 @@
-"""Unprivileged desktop session runner for HomeNest presentations."""
+"""Unprivileged desktop session runner for HomeNook presentations."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import uuid
 from pathlib import Path
 from typing import Any, Callable
 
-from uhome_server.config import get_homenest_state_dir, utc_now_iso_z
+from uhome_server.config import get_homenook_state_dir, utc_now_iso_z
 
 
 class SessionError(RuntimeError):
@@ -77,7 +77,7 @@ class DesktopSessionRunner:
 
     @property
     def state_dir(self) -> Path:
-        return self._custom_state_dir or (get_homenest_state_dir() / "sessions")
+        return self._custom_state_dir or (get_homenook_state_dir() / "sessions")
 
     @property
     def current_focus(self) -> str:
@@ -178,8 +178,8 @@ class DesktopSessionRunner:
         env = dict(os.environ)
         if env_overrides:
             env.update(env_overrides)
-        env["HOMENEST_SESSION_ID"] = session_id
-        env["HOMENEST_PRESENTATION"] = presentation_type
+        env["HOMENOOK_SESSION_ID"] = session_id
+        env["HOMENOOK_PRESENTATION"] = presentation_type
 
         # 4. Spawn process using non-shell vector
         proc = self._process_spawner(

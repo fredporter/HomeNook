@@ -1,12 +1,12 @@
-# HomeNest auto-install preseed
+# HomeNook auto-install preseed
 # Target: Linux Mint 22+ Cinnamon
-home_nest:
+homenook:
   version: 0.2.0
   target_os: linux-mint
   target_de: cinnamon
-  install_path: /opt/homenest
-  service_user: homenest
-  media_vault: /home/homenest/media
+  install_path: /opt/homenook
+  service_user: homenook
+  media_vault: /home/homenook/media
   api_port: 7890
   console_port: 8080
   skip_jellyfin: false

@@ -1,5 +1,5 @@
 """
-Jellyfin API client for uHomeNest media library and playback.
+Jellyfin API client for HomeNook media library and playback.
 """
 
 import json

@@ -4,11 +4,11 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "Use this path if you want to understand **uHomeNest** as the local-network"
+description: "Use this path if you want to understand **HomeNook** as the local-network"
 ---
 # Learn uHOME Server
 
-Use this path if you want to understand **uHomeNest** as the local-network
+Use this path if you want to understand **HomeNook** as the local-network
 home infrastructure pathway (**uHOME** product) in the wider `uDOS` family.
 
 ## Start With

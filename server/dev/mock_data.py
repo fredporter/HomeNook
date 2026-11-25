@@ -278,7 +278,7 @@ MOCK_HA_ENTITIES = [
 
 MOCK_SYSTEM_INFO = {
     "Version": "10.9.11",
-    "ServerName": "HomeNest Dev Jellyfin",
+    "ServerName": "HomeNook Dev Jellyfin",
     "OperatingSystem": "Linux",
     "Id": "dev-jellyfin-001",
 }
@@ -288,7 +288,7 @@ MOCK_SYSTEM_INFO = {
 MOCK_USERS = [
     {
         "Id": "dev-user-001",
-        "Name": "HomeNest Dev",
+        "Name": "HomeNook Dev",
         "HasPassword": True,
         "HasConfiguredPassword": True,
     },

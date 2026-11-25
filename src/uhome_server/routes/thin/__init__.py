@@ -1,5 +1,5 @@
 """
-Thin UI routes for uHomeNest kiosk interface.
+Thin UI routes for HomeNook kiosk interface.
 
 This module provides lightweight, server-rendered UI views for kiosk displays
 and thin clients, optimized for low-resource devices and embedded systems.

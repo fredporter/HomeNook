@@ -1,21 +1,21 @@
 # udos-home — Home Automation Plugin
 
-HomeNest module for home automation capabilities (udos-\* prefix convention).
+HomeNook module for home automation capabilities (udos-\* prefix convention).
 
 ## What is a udos- plugin?
 
-udos-\* modules are optional domain plugins that plug into the HomeNest repo's
+udos-\* modules are optional domain plugins that plug into the HomeNook repo's
 module structure and, where applicable, expose an extension manifest for the
 uCore host runtime.
 
-This module is the starter template udos- plugin for HomeNest's home-ops lane.
+This module is the starter template udos- plugin for HomeNook's home-ops lane.
 It demonstrates the convention that future plugins (udos-budget, udos-identity,
 udos-media, udos-automation) will follow.
 
 ## Extending uCore
 
 ```
-uCore (host)                   HomeNest (module repo)
+uCore (host)                   HomeNook (module repo)
 ┌──────────────────────┐       ┌──────────────────────────────┐
 │ ExtensionRegistry    │◄──────│ modules/home-ops/udos-home/  │
 │ registry.discover()  │       │ ucore-extension.json         │

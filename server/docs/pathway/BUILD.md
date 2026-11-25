@@ -1,6 +1,6 @@
 # Build on uHOME (v4)
 
-Use this path to extend the **uHomeNest** runtime. Historical phase milestones and **`@dev/`** binder trees were retired from the repo in **2026-04** (local archive: monorepo **`.compost/cleanup-2026-04-10/`**).
+Use this path to extend the **HomeNook** runtime. Historical phase milestones and **`@dev/`** binder trees were retired from the repo in **2026-04** (local archive: monorepo **`.compost/cleanup-2026-04-10/`**).
 
 ## Start with
 

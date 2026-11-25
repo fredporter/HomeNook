@@ -1,5 +1,5 @@
 """
-Thin UI Home routes for uHomeNest kiosk interface.
+Thin UI Home routes for HomeNook kiosk interface.
 
 Provides the main home/index view and navigation for kiosk displays.
 """
@@ -30,7 +30,7 @@ async def home_index(request: Request) -> Response:
     """
     context = {
         "request": request,
-        "page_title": "uHomeNest Kiosk",
+        "page_title": "HomeNook Kiosk",
         "version": "3.9.0",
         "nav_items": [
             {"url": "/api/runtime/thin/home", "label": "Home", "icon": "🏠"},
