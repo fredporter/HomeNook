@@ -9,7 +9,7 @@ Deliver a Linux-first decentralized home stream server with Jellyfin backbone, `
 1. Foundation and archive stabilization ✅
 2. Media vault scanning and search indexing ✅
 3. Playback orchestration and UI control loop ✅ (17 API endpoints, SQLite persistence)
-4. HomeNest Installer for Linux Mint Cinnamon ✅ (`scripts/install.sh`)
+4. HomeNook Installer for Linux Mint Cinnamon ✅ (`scripts/install.sh`)
 5. API hardening — validation, rate limiting, structured errors ✅
 6. **Console Polish** — *Deferred, pending Operator Test and Feedback*
 7. **Developer Integration** — Backend dev-mode scaffold ✅ (mock data, dev launcher, `npm run dev:mock`)
@@ -28,17 +28,17 @@ Deliver a Linux-first decentralized home stream server with Jellyfin backbone, `
 
 `scripts/install.sh` handles the full deployment on Linux Mint Cinnamon:
 - System dependencies (python3, nginx, nodejs, sqlite3)
-- `homenest` system user + media vault (`/home/homenest/media`)
+- `homenook` system user + media vault (`/home/homenook/media`)
 - Jellyfin (optional, `SKIP_JELLYFIN=1` to skip)
-- HomeNest files → `/opt/homenest`, Python deps, console build
-- systemd units (homenest-server, nginx proxy)
+- HomeNook files → `/opt/homenook`, Python deps, console build
+- systemd units (homenook-server, nginx proxy)
 - udev rules for USB/media drive detection
 
 See `docs/INSTALLER.md` for the full guide.
 
 ## Strategy
 
-**HomeNest is a standalone Linux media and home network/automation system first and foremost.**
+**HomeNook is a standalone Linux media and home network/automation system first and foremost.**
 - Operates independently on Linux Mint Cinnamon
 - Jellyfin backbone for media streaming
 - Home Assistant bridge for home automation
@@ -47,7 +47,7 @@ See `docs/INSTALLER.md` for the full guide.
 
 ## Removed lanes
 
-- **Sonic Home Express** — moved to separate experimental project. The HomeNest Installer (`scripts/install.sh`) replaces the packager/distribution need.
+- **Sonic Home Express** — moved to separate experimental project. The HomeNook Installer (`scripts/install.sh`) replaces the packager/distribution need.
 - **Ubuntu service units** — replaced by Mint Cinnamon systemd installer.
-- **uDOS-family deep integration** — deferred; HomeNest uses uCore for shared deps (USX tokens) only.
+- **uDOS-family deep integration** — deferred; HomeNook uses uCore for shared deps (USX tokens) only.
 - **Console Polish** → deferred pending operator feedback (shortcut, first-run, locale detection)

@@ -1,14 +1,14 @@
 ---
-title: "Getting started (uHomeNest v3.9)"
+title: "Getting started (HomeNook v3.9)"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: tutorial
 tags: [tutorial, ucode3]
-description: "1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside **uHomeNest**."
+description: "1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside **HomeNook**."
 ---
-# Getting started (uHomeNest v3.9)
+# Getting started (HomeNook v3.9)
 
-1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside **uHomeNest**.
+1. Review `docs/boundary.md` and `docs/base-runtime-boundary.md` so local runtime ownership stays inside **HomeNook**.
 2. Run `QUICKSTART.md` for the first runnable API and route checks (regular LAN baseline).
 3. Review `examples/basic-uhome-server-session.md` for the smallest standalone operator smoke.
 4. Run the repo validation entrypoint before and after runtime changes:

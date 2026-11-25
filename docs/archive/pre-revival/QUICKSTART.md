@@ -1,6 +1,6 @@
 > Historical/superseded scope (2026-09-10). See the [canonical revival plan](docs/REVIVAL-PLAN-2026-09.md). HA/Matter is a separate product integration; prior release/install claims remain unqualified.
 
-# uHomeNest Quickstart (v1.0.0)
+# HomeNook Quickstart (v1.0.0)
 
 <<<<<<< HEAD
 Bring up a fresh local stream stack with Jellyfin + minimal API + USXD browser surface.
