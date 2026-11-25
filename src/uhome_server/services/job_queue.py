@@ -52,18 +52,17 @@ class Job:
     created_at: datetime
     updated_at: datetime
     params: Dict[str, Any]
-    result: Optional[Dict[str, Any]] = None
-    error_message: Optional[str] = None
+    result: Optional[Dict[str, Any]]
+    error_message: Optional[str]
 
 
 @dataclass(init=False)
 class RecordingJob(Job):
     """Job for recording media content.
 
-    The constructor is explicit because the base already carries defaulted
-    fields: a generated ``__init__`` would put ``rule_id`` after those defaults
-    and ``dataclasses`` refuses that ordering. Keyword construction keeps both
-    ``_deserialize_job`` and callers that omit ``result``/``error_message`` valid.
+    The constructor is explicit so ``result`` and ``error_message`` can default
+    to ``None`` without turning the required recording fields into defaults,
+    which ``dataclasses`` forbids after an inherited default.
     """
 
     rule_id: str
@@ -272,11 +271,11 @@ class JobQueue:
         try:
             _log.info(f"Processing job {job.job_id} ({job.job_type.value})")
 
-            if job.job_type == JobType.RECORDING:
+            if job.job_type == JobType.RECORDING and isinstance(job, RecordingJob):
                 self._process_recording_job(job)
-            elif job.job_type == JobType.POST_PROCESSING:
+            elif job.job_type == JobType.POST_PROCESSING and isinstance(job, PostProcessingJob):
                 self._process_post_processing_job(job)
-            elif job.job_type == JobType.CLEANUP:
+            elif job.job_type == JobType.CLEANUP and isinstance(job, CleanupJob):
                 self._process_cleanup_job(job)
             elif job.job_type == JobType.TRANSCODING:
                 self._process_transcoding_job(job)
@@ -519,7 +518,7 @@ class JobQueue:
 
     def _serialize_job(self, job: Job) -> Dict[str, Any]:
         """Serialize a job to JSON."""
-        base_data = {
+        base_data: dict[str, Any] = {
             "job_id": job.job_id,
             "job_type": job.job_type.value,
             "status": job.status.value,

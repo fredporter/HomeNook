@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import asyncio
 from datetime import datetime
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 
 from uhome_server.config import get_logger
 from uhome_server.services.home_assistant.schemas.device import DeviceSchema, DeviceStateSchema
@@ -29,9 +29,9 @@ class GatewayManager:
             "device_discovered": [],
             "state_changed": [],
         }
-        self._ha_client = None
-        self._discovery_task = None
-        self._heartbeat_task = None
+        self._ha_client: Any = None
+        self._discovery_task: Optional[asyncio.Task[None]] = None
+        self._heartbeat_task: Optional[asyncio.Task[None]] = None
         self.start_time = datetime.now()
 
     async def initialize(self) -> bool:

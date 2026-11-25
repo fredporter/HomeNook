@@ -303,7 +303,7 @@ def verify_promoted_target(host_root: Path) -> VerificationResult:
         else []
     )
     env_files = sorted(path.name for path in env_root.glob("*.env")) if env_root.exists() else []
-    checks = {
+    checks: dict[str, dict[str, Any]] = {
         "service_units": {
             "ok": bool(service_units),
             "count": len(service_units),

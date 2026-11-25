@@ -15,7 +15,7 @@ import re
 import threading
 import uuid
 from dataclasses import field
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -285,7 +285,7 @@ class RuleEngine:
         self.schedule: List[ScheduleEntry] = []
         self.conflicts: Dict[str, Conflict] = {}
         self.execution_history: List[Dict[str, Any]] = []
-        self.rule_index: Dict[str, List[str]] = {
+        self.rule_index: Dict[str, Dict[str, List[str]]] = {
             "type": {},
             "channel": {},
             "priority": {},
@@ -915,7 +915,7 @@ class RuleEngine:
             pass
         return datetime.now()
 
-    def _parse_time(self, time_str: str) -> datetime.time:
+    def _parse_time(self, time_str: str) -> time:
         """Parse time string."""
         # Implement time parsing
         try:
@@ -1131,7 +1131,7 @@ class RuleEngine:
         if not rule:
             raise ValueError(f"Rule {rule_id} not found")
 
-        result = {
+        result: Dict[str, Any] = {
             "rule_id": rule.rule_id,
             "rule_name": rule.rule_name,
             "rule_type": rule.rule_type.value,
@@ -1150,7 +1150,7 @@ class RuleEngine:
         self, action: Action, rule: Rule, schedule_entry: ScheduleEntry
     ) -> Dict[str, Any]:
         """Execute a single action."""
-        action_result = {
+        action_result: Dict[str, Any] = {
             "action_type": action.action_type,
             "status": "completed",
             "timestamp": datetime.now().isoformat(),
@@ -1293,7 +1293,7 @@ class RuleDSLParser:
 
     def parse(self, dsl_text: str) -> Dict[str, Any]:
         """Parse DSL text into rule definition."""
-        rule_def = {}
+        rule_def: Dict[str, Any] = {}
         current_section = None
 
         lines = [line.strip() for line in dsl_text.split("\n") if line.strip()]
@@ -1339,7 +1339,11 @@ class RuleDSLParser:
                     elif field_value.isdigit():
                         field_value = int(field_value)
 
-                    rule_def[current_section][field_name] = field_value
+                    section = rule_def.get(current_section)
+                    if not isinstance(section, dict):
+                        section = {}
+                        rule_def[current_section] = section
+                    section[field_name] = field_value
 
         return rule_def
 

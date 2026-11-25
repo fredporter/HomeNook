@@ -259,7 +259,7 @@ def installer_main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "preflight":
-        result = preflight_check(
+        result: Any = preflight_check(
             _read_json(args.probe), host_profile=get_host_profile(args.host_profile)
         )
         _write_output(result.to_dict(), args.output)
@@ -438,7 +438,7 @@ def backup_main(argv: list[str] | None = None) -> int:
 
     if args.command == "create":
         backup_dir = Path(args.backup_dir).expanduser().resolve() if args.backup_dir else None
-        result = create_backup(
+        result: Any = create_backup(
             repo_root=repo_root,
             backup_dir=backup_dir,
             include_workspace=not args.no_workspace,

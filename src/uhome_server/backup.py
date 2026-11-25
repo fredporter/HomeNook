@@ -147,7 +147,6 @@ def create_backup(
     except Exception as e:
         errors.append(f"Backup failed: {str(e)}")
         success = False
-        backup_path = None
 
     return BackupResult(
         success=success,
@@ -174,7 +173,7 @@ def restore_backup(
         RestoreResult with details of the restore operation
     """
     errors = []
-    warnings = []
+    warnings: list[str] = []
     items_restored = []
     timestamp = _utc_now_iso()
 
@@ -306,7 +305,7 @@ def list_backups(backup_dir: Path) -> list[dict[str, Any]]:
     Returns:
         List of backup info dictionaries
     """
-    backups = []
+    backups: list[dict[str, Any]] = []
 
     if not backup_dir.exists():
         return backups

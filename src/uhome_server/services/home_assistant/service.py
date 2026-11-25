@@ -62,16 +62,20 @@ class HomeAssistantService:
 
         @app.websocket("/ws/ha")
         async def websocket_endpoint(websocket: WebSocket):
-            await self.ws_manager.connect(websocket)
+            manager = self.ws_manager
+            if manager is None:
+                await websocket.close()
+                return
+            await manager.connect(websocket)
             try:
                 while True:
                     data = await websocket.receive_text()
-                    await self.ws_manager.handle_message(websocket, data)
+                    await manager.handle_message(websocket, data)
             except WebSocketDisconnect:
-                self.ws_manager.disconnect(websocket)
+                manager.disconnect(websocket)
             except Exception as exc:
                 logger.error("WebSocket error: %s", exc)
-                self.ws_manager.disconnect(websocket)
+                manager.disconnect(websocket)
 
         @app.get("/health")
         async def health():
@@ -97,7 +101,10 @@ class HomeAssistantService:
             await self.gateway_manager.shutdown()
 
     async def _on_device_discovered(self, device) -> None:
-        self.device_registry.register_device(device.id, device.to_dict())
+        registry = self.device_registry
+        if registry is None:
+            return
+        registry.register_device(device.id, device.to_dict())
         if self.ws_manager:
             await self.ws_manager.broadcast_discovery([device.to_dict()])
 
