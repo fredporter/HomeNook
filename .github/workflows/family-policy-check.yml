@@ -1,5 +1,10 @@
 name: Family Policy Check
 
+# This job used to call
+# fredporter/uDOS-dev/.github/workflows/family-policy-check.yml@main. That
+# repository was deleted, so the call never resolved and the check stopped
+# running. The policy now lives in this repository as a script.
+
 on:
   push:
     branches:
@@ -11,6 +16,24 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   family-policy-check:
-    uses: fredporter/uDOS-dev/.github/workflows/family-policy-check.yml@main
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install YAML parser
+        run: python -m pip install --quiet pyyaml
+
+      - name: Check workflow policy
+        run: python3 scripts/check-family-policy.py
