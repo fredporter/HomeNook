@@ -1,4 +1,4 @@
-# HomeNest Setup Guide
+# HomeNook Setup Guide
 
 **Last updated:** 2026-07-08
 
@@ -20,7 +20,7 @@ cd apps/console && npm run dev
 
 ## Connecting Media (Jellyfin)
 
-HomeNest uses Jellyfin as its media backbone. You need a Jellyfin server and an API key.
+HomeNook uses Jellyfin as its media backbone. You need a Jellyfin server and an API key.
 
 ### Step 1 — Locate your Jellyfin server
 
@@ -32,10 +32,10 @@ HomeNest uses Jellyfin as its media backbone. You need a Jellyfin server and an 
 1. Open Jellyfin in your browser
 2. Go to **Dashboard → API Keys** (or `http://your-server:8096/web/#/apikeys.html`)
 3. Click **+ (New API Key)**
-4. Name it `HomeNest` and click **OK**
+4. Name it `HomeNook` and click **OK**
 5. Copy the generated key
 
-### Step 3 — Configure HomeNest
+### Step 3 — Configure HomeNook
 
 Set environment variables before starting the API server:
 
@@ -68,10 +68,10 @@ curl http://localhost:7890/api/library/media/ | python3 -m json.tool
 1. Open Home Assistant in your browser
 2. Click your user profile (bottom-left) → **Security**
 3. Scroll to **Long-Lived Access Tokens** → **Create Token**
-4. Name it `HomeNest` and click **OK**
+4. Name it `HomeNook` and click **OK**
 5. Copy the token immediately (it's shown only once)
 
-### Step 3 — Configure HomeNest
+### Step 3 — Configure HomeNook
 
 ```bash
 export HA_URL=http://192.168.1.100:8123
@@ -162,7 +162,7 @@ For a future browser-based setup wizard, the flow would be:
    CORS │  localhost:7890          │
         ▼             ▼            ▼
 ┌─────────────────────────────────────────┐
-│  uHomeNest API (Python, :7890)          │
+│  HomeNook API (Python, :7890)          │
 │  /api/library/  /api/tv/  /api/ha/      │
 │  /api/playback/ /api/settings/          │
 └────┬────────────────────┬───────────────┘

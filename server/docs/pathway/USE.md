@@ -1,6 +1,6 @@
 # Use uHOME Server
 
-Use this path if you want to run or operate **uHomeNest** (**v3.9.x**) — the monorepo that hosts the uHOME server runtime.
+Use this path if you want to run or operate **HomeNook** (**v3.9.x**) — the monorepo that hosts the uHOME server runtime.
 
 ## What You Get
 

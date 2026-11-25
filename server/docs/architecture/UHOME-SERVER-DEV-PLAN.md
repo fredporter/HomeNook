@@ -12,4 +12,4 @@ Phase-based planning documents and binder-era **`@dev/`** trees were **removed f
 ## Workflow
 
 - **[`../../../TASKS.md`](../../../TASKS.md)** — Task Forge backlog
-- **[`../../../dev/UNIVERSAL-DEV.md`](../../../dev/UNIVERSAL-DEV.md)** — uHomeNest + USXD
+- **[`../../../dev/UNIVERSAL-DEV.md`](../../../dev/UNIVERSAL-DEV.md)** — HomeNook + USXD

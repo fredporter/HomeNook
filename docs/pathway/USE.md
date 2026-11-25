@@ -4,11 +4,11 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "Use this path if you want to run or operate **uHomeNest** (**v3.9.x**) — the monorepo that hosts the uHOME server run..."
+description: "Use this path if you want to run or operate **HomeNook** (**v3.9.x**) — the monorepo that hosts the uHOME server run..."
 ---
 # Use uHOME Server
 
-Use this path if you want to run or operate **uHomeNest** (**v3.9.x**) — the monorepo that hosts the uHOME server runtime.
+Use this path if you want to run or operate **HomeNook** (**v3.9.x**) — the monorepo that hosts the uHOME server runtime.
 
 ## What You Get
 

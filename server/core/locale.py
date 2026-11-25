@@ -1,4 +1,4 @@
-"""System locale/timezone detection for uHomeNest."""
+"""System locale/timezone detection for HomeNook."""
 
 import os
 import sys

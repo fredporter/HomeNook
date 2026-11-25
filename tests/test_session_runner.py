@@ -82,7 +82,7 @@ def test_session_lifecycle_with_mock_process(tmp_path: Path):
     call_args, call_kwargs = mock_spawner.call_args
     assert call_args[0] == ["steam", "-tenfoot"]
     assert call_kwargs.get("shell") is False
-    assert call_kwargs["env"]["HOMENEST_PRESENTATION"] == "steam-console"
+    assert call_kwargs["env"]["HOMENOOK_PRESENTATION"] == "steam-console"
 
     # 2. Prevent duplicate concurrent session
     with pytest.raises(DuplicateSessionError):

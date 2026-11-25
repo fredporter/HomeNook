@@ -3,13 +3,13 @@ title: "uHOME Install Lanes"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "This document is the operator-facing Phase 4 reference for the two supported"
 ---
 # uHOME Install Lanes
 
 This document is the operator-facing Phase 4 reference for the two supported
-example install lanes in **uHomeNest**.
+example install lanes in **HomeNook**.
 
 ## Lane 1: Standalone Linux Host
 

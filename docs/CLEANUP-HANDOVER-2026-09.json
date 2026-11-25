@@ -2,7 +2,7 @@
   "date": "2026-09-12",
   "records": [
     {
-      "path": "HOMENEST_README.md",
+      "path": "HOMENOOK_README.md",
       "archive": "docs/archive/pre-revival/HOMENEST_README.md",
       "sha256": "daec77b965d084052259a1b19907eb765135152d62f2de63ae3828b8969fd40f",
       "disposition": "Historical text archived; original path is now a redirect, not active instructions"
@@ -56,7 +56,7 @@
       "disposition": "Historical text archived; original path is now a redirect, not active instructions"
     },
     {
-      "path": "docs/specs/HOMENEST_v1_SPEC.md",
+      "path": "docs/specs/HOMENOOK_v1_SPEC.md",
       "archive": "docs/archive/pre-revival/docs/specs/HOMENEST_v1_SPEC.md",
       "sha256": "acc45160f3a8ff3b4025565ffcfff1fe5f820ca454cfbc563b2fa5ab5253ad83",
       "disposition": "Historical text archived; original path is now a redirect, not active instructions"

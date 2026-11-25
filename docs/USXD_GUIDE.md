@@ -4,13 +4,13 @@ status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [guide, surface, ucode3, usx]
-description: "USXD (Universal eXtensible Display) is a JSON-based layout and control system for uHomeNest's browser-based interface..."
+description: "USXD (Universal eXtensible Display) is a JSON-based layout and control system for HomeNook's browser-based interface..."
 ---
 # USXD (Universal eXtensible Display) Guide
 
 ## 📖 Overview
 
-USXD (Universal eXtensible Display) is a JSON-based layout and control system for uHomeNest's browser-based interfaces. USXD provides a flexible, declarative way to define UI layouts, controls, and behaviors for home entertainment surfaces.
+USXD (Universal eXtensible Display) is a JSON-based layout and control system for HomeNook's browser-based interfaces. USXD provides a flexible, declarative way to define UI layouts, controls, and behaviors for home entertainment surfaces.
 
 ## 📁 USXD Structure
 
@@ -37,11 +37,11 @@ ui/usxd/
 
 ```json
 {
-  "$schema": "https://uhomenest.org/schemas/usxd/v1.json",
+  "$schema": "https://uhomenook.org/schemas/usxd/v1.json",
   "version": "1.0",
   "name": "launcher",
-  "title": "uHomeNest Launcher",
-  "description": "Main launcher surface for uHomeNest",
+  "title": "HomeNook Launcher",
+  "description": "Main launcher surface for HomeNook",
   "theme": "dark",
   "grid": {
     "columns": 12,
@@ -54,7 +54,7 @@ ui/usxd/
       "type": "header",
       "grid": {"x": 0, "y": 0, "w": 12, "h": 1},
       "properties": {
-        "title": "uHomeNest",
+        "title": "HomeNook",
         "subtitle": "Welcome Home",
         "logo": "/assets/logo.png"
       }
@@ -106,7 +106,7 @@ ui/usxd/
   },
   "metadata": {
     "version": "1.0.0",
-    "author": "uHomeNest Team",
+    "author": "HomeNook Team",
     "created": "2026-04-29",
     "updated": "2026-04-29"
   }
@@ -123,7 +123,7 @@ ui/usxd/
   "type": "header",
   "grid": {"x": 0, "y": 0, "w": 12, "h": 1},
   "properties": {
-    "title": "uHomeNest",
+    "title": "HomeNook",
     "subtitle": "Welcome Home",
     "logo": "/assets/logo.png",
     "showClock": true,
@@ -295,7 +295,7 @@ ui/usxd/
 ```json
 {
   "name": "dark",
-  "description": "Dark theme for uHomeNest",
+  "description": "Dark theme for HomeNook",
   "colors": {
     "primary": "#e94560",
     "secondary": "#0f3460",
@@ -351,7 +351,7 @@ ui/usxd/
 ```json
 {
   "name": "classic-modern",
-  "description": "Classic Modern Mint theme for uHomeNest",
+  "description": "Classic Modern Mint theme for HomeNook",
   "extends": "dark",
   "colors": {
     "primary": "#51cf66",
@@ -955,7 +955,7 @@ npm run restart:ui
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "USXD Layout",
-  "description": "uHomeNest USXD Layout Schema",
+  "description": "HomeNook USXD Layout Schema",
   "type": "object",
   "properties": {
     "$schema": {
@@ -1180,6 +1180,6 @@ npm run watch:usxd
 ---
 
 *Last Updated: 2026-04-29*
-*uHomeNest v1.0.1*
+*HomeNook v1.0.1*
 *USXD Guide: Comprehensive*
 *USXD Version: 1.0*

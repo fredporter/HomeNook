@@ -3,7 +3,7 @@ title: "uHOME Home Profile Decision"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: specification
-tags: [homenest, specification, ucode3, uhome]
+tags: [homenook, specification, ucode3, uhome]
 description: "Status: active home profile lane"
 ---
 # uHOME Home Profile Decision
@@ -93,7 +93,7 @@ uHOME supports:
 
 ### Runtime ownership
 
-- **uHomeNest** (this monorepo) owns the household Linux runtime: media, kiosk/thin UX,
+- **HomeNook** (this monorepo) owns the household Linux runtime: media, kiosk/thin UX,
   LAN services, local scheduling, and thin automation fulfilment on the box.
 - **`uHOME-matter`** owns Home Assistant / Matter **contracts** fed into that UX.
 - **`sonic-screwdriver`** owns **install, recovery, Ventoy/USB, and dual-boot**

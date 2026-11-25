@@ -1,4 +1,4 @@
-# Superseded HomeNest document
+# Superseded HomeNook document
 
 Use the [Gemini implementation handover](docs/GEMINI-HANDOVER.md) for current scope and work.
 The [historical text](docs/archive/pre-revival/TASKS.md) is retained as evidence only; its release, setup

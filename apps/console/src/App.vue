@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * HomeNest Console — App Shell
+ * HomeNook Console — App Shell
  * 10-foot display with topbar, viewport, now-playing bar, and button hints overlay
  */
 import { onMounted, onUnmounted } from 'vue'
@@ -54,7 +54,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
     <header class="hn-console__topbar usx-topbar">
       <div class="usx-flex-row usx-gap-sm">
         <span class="material-symbols-outlined" style="color: var(--usx-color-primary)">nest_eco_leaf</span>
-        <span style="font-size: var(--usx-font-size-xl); font-weight: var(--usx-font-weight-bold)">HomeNest</span>
+        <span style="font-size: var(--usx-font-size-xl); font-weight: var(--usx-font-weight-bold)">HomeNook</span>
       </div>
 
       <nav class="usx-tabs" aria-label="Surface navigation">

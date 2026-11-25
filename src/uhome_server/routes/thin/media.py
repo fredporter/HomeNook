@@ -1,5 +1,5 @@
 """
-Thin UI Media routes for uHomeNest kiosk interface.
+Thin UI Media routes for HomeNook kiosk interface.
 
 Provides media-related views including playback, recordings, and library browsing.
 """

@@ -1,6 +1,6 @@
 """
 Library enrichment — converts raw Jellyfin items to
-uHomeNest MediaItem format consumable by the console.
+HomeNook MediaItem format consumable by the console.
 """
 
 from typing import Any, Optional

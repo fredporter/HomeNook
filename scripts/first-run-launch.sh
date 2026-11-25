@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# HomeNest First-Run Launch — Linux Mint Cinnamon
+# HomeNook First-Run Launch — Linux Mint Cinnamon
 # ============================================================================
 # Runs on first boot after install or can be triggered manually.
 # Checks services, opens the console in the default browser, and
@@ -17,8 +17,8 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-log()  { echo -e "${GREEN}[HomeNest]${NC} $1"; }
-warn() { echo -e "${YELLOW}[HomeNest]${NC} $1"; }
+log()  { echo -e "${GREEN}[HomeNook]${NC} $1"; }
+warn() { echo -e "${YELLOW}[HomeNook]${NC} $1"; }
 info() { echo -e "${CYAN}       ${NC} $1"; }
 
 CONSOLE_URL="http://localhost:8080"
@@ -26,7 +26,7 @@ API_URL="http://localhost:7890"
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════╗${NC}"
-echo -e "${GREEN}║   Welcome to HomeNest!              ║${NC}"
+echo -e "${GREEN}║   Welcome to HomeNook!              ║${NC}"
 echo -e "${GREEN}║   Linux Mint Cinnamon Edition       ║${NC}"
 echo -e "${GREEN}╚══════════════════════════════════════╝${NC}"
 echo ""
@@ -49,7 +49,7 @@ check_service() {
 
 ALL_OK=true
 
-check_service "homenest-server" "" || ALL_OK=false
+check_service "homenook-server" "" || ALL_OK=false
 check_service "nginx" "" || ALL_OK=false
 check_service "jellyfin" "" || true  # optional, don't fail
 
@@ -57,8 +57,8 @@ if $ALL_OK; then
     log "All core services are running."
 else
     warn "Some services are not running."
-    info "Try: sudo systemctl start homenest-server nginx"
-    info "Check logs: sudo journalctl -u homenest-server -n 20"
+    info "Try: sudo systemctl start homenook-server nginx"
+    info "Check logs: sudo journalctl -u homenook-server -n 20"
 fi
 
 echo ""
@@ -99,7 +99,7 @@ echo ""
 
 # ── 4. Open console ───────────────────────────────────────────────────────
 
-log "Opening HomeNest Console..."
+log "Opening HomeNook Console..."
 if command -v xdg-open &>/dev/null; then
     xdg-open "${CONSOLE_URL}" 2>/dev/null || true
     info "  Console opened at ${CONSOLE_URL}"
@@ -115,17 +115,17 @@ echo -e "${GREEN}Quick Start Guide:${NC}"
 echo ""
 echo "  1. Connect Jellyfin:"
 echo "     → Open Jellyfin Dashboard → API Keys"
-echo "     → Create a key named 'HomeNest'"
-echo "     → In HomeNest Settings, paste the key"
+echo "     → Create a key named 'HomeNook'"
+echo "     → In HomeNook Settings, paste the key"
 echo ""
 echo "  2. Connect Home Assistant:"
 echo "     → Open HA Profile → Security → Long-Lived Tokens"
-echo "     → Create a token named 'HomeNest'"
-echo "     → In HomeNest Settings, paste the token"
+echo "     → Create a token named 'HomeNook'"
+echo "     → In HomeNook Settings, paste the token"
 echo ""
 echo "  3. Add media to your vault:"
-echo "     → Drop files into /home/homenest/media/movies/"
-echo "     → Or /home/homenest/media/tv/ and /music/"
+echo "     → Drop files into /home/homenook/media/movies/"
+echo "     → Or /home/homenook/media/tv/ and /music/"
 echo "     → Jellyfin will auto-scan them"
 echo ""
 echo "  4. Navigate with your keyboard or gamepad:"
@@ -142,4 +142,4 @@ echo "  6. Verify the install:"
 echo "     → bash scripts/run-uhome-server-checks.sh"
 echo ""
 
-log "Enjoy your HomeNest!"
+log "Enjoy your HomeNook!"

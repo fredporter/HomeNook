@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "uhome-server"
-version = "0.1.0.dev0"
-description = "uHomeNest — uHOME server Python package (uhome-server CLI)"
+version = "0.1.0"
+description = "HomeNook — uHOME server Python package (uhome-server CLI)"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -41,6 +41,11 @@ Repository = "https://github.com/fredporter/HomeNook.git"
 Documentation = "https://github.com/fredporter/HomeNook#readme"
 
 [project.scripts]
+homenook = "uhome_server.cli:main"
+homenook-launcher = "uhome_server.cli:launcher_main"
+homenook-installer = "uhome_server.cli:installer_main"
+# Deprecated aliases: installer scripts and in-flight documentation still call
+# `uhome`. Drop these entries once every caller has moved to `homenook`.
 uhome = "uhome_server.cli:main"
 uhome-launcher = "uhome_server.cli:launcher_main"
 uhome-installer = "uhome_server.cli:installer_main"

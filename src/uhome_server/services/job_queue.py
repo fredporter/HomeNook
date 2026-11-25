@@ -1,5 +1,5 @@
 """
-Job Queue Service for uHomeNest Media Processing
+Job Queue Service for HomeNook Media Processing
 
 This module implements a priority-based job queue system for media processing tasks
 including DVR recordings, post-processing, and cleanup operations.

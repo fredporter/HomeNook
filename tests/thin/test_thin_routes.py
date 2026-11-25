@@ -1,5 +1,5 @@
 """
-Integration tests for uHomeNest Thin UI routes.
+Integration tests for HomeNook Thin UI routes.
 
 Tests the thin UI endpoints including home, media, and automation views.
 """
@@ -32,7 +32,7 @@ def test_home_index_route(client):
     response = client.get("/api/runtime/thin/home/")
     assert response.status_code == 200
     assert "text/html" in response.headers["content-type"]
-    assert "uHomeNest Kiosk" in response.text
+    assert "HomeNook Kiosk" in response.text
     assert "Quick Actions" in response.text
 
 
@@ -40,7 +40,7 @@ def test_home_index_alias(client):
     """Test that home index alias route works."""
     response = client.get("/api/runtime/thin/home/index")
     assert response.status_code == 200
-    assert "uHomeNest Kiosk" in response.text
+    assert "HomeNook Kiosk" in response.text
 
 
 def test_home_status_route(client):

@@ -13,7 +13,7 @@ description: "**Document ID:** UDN-MEDIA-001"
 **Version:** 1.0.0  
 **Date:** 2026-04-21  
 **Priority:** HIGH  
-**Related:** [uHomeNest v1.0.0 Dev Brief](./UHOMENEST-V1-DEV-BRIEF.md), [HA Deep Integration](./UDN-HA-EMBED-001.md), [Matter+HA Integration](./UDN-INTEGRATION-001.md)
+**Related:** [HomeNook v1.0.0 Dev Brief](./HOMENOOK-V1-DEV-BRIEF.md), [HA Deep Integration](./UDN-HA-EMBED-001.md), [Matter+HA Integration](./UDN-INTEGRATION-001.md)
 
 ***
 
@@ -816,7 +816,7 @@ uhome media metadata fetch --title "The Matrix" --type movie
 ## Related Documents
 
 - [HA Deep Integration](./UDN-HA-EMBED-001.md)
-- [uHomeNest v1.0.0 Dev Brief](./UHOMENEST-V1-DEV-BRIEF.md)
+- [HomeNook v1.0.0 Dev Brief](./HOMENOOK-V1-DEV-BRIEF.md)
 - [Alexa/Google/HomeKit Guide](./UDN-VOICE-INTEGRATION-001.md)
 - [Vibe CLI Project Reset](./UDN-RESET-001.md)
 

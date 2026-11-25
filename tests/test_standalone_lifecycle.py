@@ -1,11 +1,11 @@
-"""Tests for HomeNest standalone lifecycle, decoupling from HA, and state compliance."""
+"""Tests for HomeNook standalone lifecycle, decoupling from HA, and state compliance."""
 
 import os
 from pathlib import Path
 
 import pytest
 
-from uhome_server.config import get_homenest_state_dir
+from uhome_server.config import get_homenook_state_dir
 from uhome_server.services.playback_service import PlaybackService
 from uhome_server.services.uhome_presentation_service import UHomePresentationService
 
@@ -82,9 +82,9 @@ def test_state_directory_under_udos_home(tmp_path, monkeypatch):
     play_svc = PlaybackService(repo_root=repo_root)
     play_svc.handoff("sample-track")
 
-    # State must be under UDOS_HOME/homenest
-    assert (udos_home / "homenest" / "presentation" / "presentation.json").exists()
-    assert (udos_home / "homenest" / "playback" / "playback_queue.json").exists()
+    # State must be under UDOS_HOME/homenook
+    assert (udos_home / "homenook" / "presentation" / "presentation.json").exists()
+    assert (udos_home / "homenook" / "playback" / "playback_queue.json").exists()
 
     # Must NOT have created legacy repo memory
     assert not (repo_root / "memory").exists()

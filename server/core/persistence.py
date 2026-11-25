@@ -1,4 +1,4 @@
-"""SQLite-backed state persistence for uHomeNest.
+"""SQLite-backed state persistence for HomeNook.
 
 Replaces in-memory global dicts with a durable store that survives restarts.
 """
@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 
-_DB_DIR = Path(os.environ.get("UHOME_STATE_DIR", Path.home() / ".uhomenest"))
+_DB_DIR = Path(os.environ.get("UHOME_STATE_DIR", Path.home() / ".uhomenook"))
 _DB_PATH = _DB_DIR / "state.db"
 
 

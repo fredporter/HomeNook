@@ -1,6 +1,6 @@
 /**
  * Media store — Jellyfin library browse & playback.
- * Wired to uHomeNest API endpoints:
+ * Wired to HomeNook API endpoints:
  *   GET  /api/library/media/     → fetchLibrary
  *   POST /api/playback/start     → play
  *   POST /api/playback/pause     → togglePlay (when pausing)

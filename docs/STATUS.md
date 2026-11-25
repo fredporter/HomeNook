@@ -20,7 +20,7 @@ installer boundary, and decentralized LAN-model contract in place.
 
 - extend the home-media runtime beyond scaffolded DVR and playback behavior
 - keep the standalone server package reliable and locally bootable
-- preserve clear repo boundaries between `uHomeNest`, `uDOS`, and
+- preserve clear repo boundaries between `HomeNook`, `uDOS`, and
   companion repos
 
 ## Next Steps

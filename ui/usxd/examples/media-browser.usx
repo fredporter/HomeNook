@@ -4,7 +4,7 @@
     "description": "Browse and play media from your Jellyfin library",
     "surface": "both",
     "version": "1.0.0",
-    "author": "uDos HomeNest",
+    "author": "uDos HomeNook",
     "tags": ["media", "jellyfin", "playback"]
   },
   "udo": {

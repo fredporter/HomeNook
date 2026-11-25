@@ -1,5 +1,5 @@
 """
-USX (Universal Surface eXchange) API routes for HomeNest.
+USX (Universal Surface eXchange) API routes for HomeNook.
 
 Serves USX files for UDO/UDX renderers and provides runtime
 evaluation of USX actions against the uHome server API.

@@ -3,7 +3,7 @@ title: "uHOME Console Launch Path"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "This runbook captures the launchable end-to-end console runtime path for v2.1 Round C."
 ---
 # uHOME Console Launch Path

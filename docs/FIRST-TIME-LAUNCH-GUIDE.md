@@ -1,23 +1,23 @@
 ---
-title: "uHomeNest First Time Launch Guide"
+title: "HomeNook First Time Launch Guide"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [guide, ucode3]
-description: "Welcome to uHomeNest! This guide will walk you through your first time launch experience, covering all the new featur..."
+description: "Welcome to HomeNook! This guide will walk you through your first time launch experience, covering all the new featur..."
 ---
-# uHomeNest First Time Launch Guide
+# HomeNook First Time Launch Guide
 
 **Version**: 1.0
 **Date**: 2024-04-17
 **Status**: Active
 
-Welcome to uHomeNest! This guide will walk you through your first time launch experience, covering all the new features and capabilities available in the latest version.
+Welcome to HomeNook! This guide will walk you through your first time launch experience, covering all the new features and capabilities available in the latest version.
 
 ## Overview
 
 This guide is designed to help you:
-1. **Launch uHomeNest for the first time**
+1. **Launch HomeNook for the first time**
 2. **Explore the new features** introduced in recent updates
 3. **Configure your household media system**
 4. **Set up automation and DVR**
@@ -32,7 +32,7 @@ Before starting, ensure you have:
 - ✅ Network connection for initial setup
 - ✅ Modern web browser (Chrome, Firefox, Safari, Edge)
 
-## Launching uHomeNest
+## Launching HomeNook
 
 ### Starting the Server
 
@@ -56,7 +56,7 @@ Open your browser and navigate to:
 **Default URL**: `http://localhost:8000`
 **LAN Access**: `http://[server-ip]:8000` (if configured)
 
-You should see the uHomeNest welcome screen with setup options.
+You should see the HomeNook welcome screen with setup options.
 
 ## First Time Setup Wizard
 
@@ -104,7 +104,7 @@ You should see the uHomeNest welcome screen with setup options.
 
 - **Review Configuration**: Verify all settings
 - **Start Services**: Initialize all components
-- **Launch Dashboard**: Enter uHomeNest
+- **Launch Dashboard**: Enter HomeNook
 
 ## Exploring New Features
 
@@ -186,7 +186,7 @@ You should see the uHomeNest welcome screen with setup options.
 1. **Access Jellyfin**: `http://localhost:8096`
 2. **Complete Setup Wizard**: Follow Jellyfin's initial setup
 3. **Configure Libraries**: Add your media folders
-4. **Enable uHomeNest Plugin**: Install the uHomeNest integration
+4. **Enable HomeNook Plugin**: Install the HomeNook integration
 
 ## Configuring Your Media System
 
@@ -456,7 +456,7 @@ sudo apt install certbot python3-certbot-nginx
 # Obtain certificate
 sudo certbot certonly --standalone -d uhome.example.com
 
-# Configure uHomeNest
+# Configure HomeNook
 sudo nano /etc/uhome/uhome-config.yaml
 
 server:
@@ -475,7 +475,7 @@ sudo systemctl restart uhome-server
 sudo ufw allow 22/tcp       # SSH
 sudo ufw allow 80/tcp       # HTTP
 sudo ufw allow 443/tcp      # HTTPS
-sudo ufw allow 8000/tcp     # uHomeNest API
+sudo ufw allow 8000/tcp     # HomeNook API
 sudo ufw allow 8096/tcp     # Jellyfin
 sudo ufw enable
 
@@ -549,7 +549,7 @@ find /backups/uhome -name "uhome-config-*.tar.gz" -mtime +4 -delete
 
 #### Android TV
 1. Install **Jellyfin for Android TV**
-2. Add uHomeNest server: `http://uhome-server:8000`
+2. Add HomeNook server: `http://uhome-server:8000`
 3. Log in with your credentials
 4. Enjoy your media!
 
@@ -597,8 +597,8 @@ find /backups/uhome -name "uhome-config-*.tar.gz" -mtime +4 -delete
 
 ### Community Support
 
-- **GitHub Issues**: https://github.com/fredporter/uHomeNest/issues
-- **Discussions**: https://github.com/fredporter/uHomeNest/discussions
+- **GitHub Issues**: https://github.com/fredporter/HomeNook/issues
+- **Discussions**: https://github.com/fredporter/HomeNook/discussions
 - **Matrix Chat**: #uhome:matrix.org
 
 ### Professional Support
@@ -616,7 +616,7 @@ Now that you've completed the first time launch:
 3. ✅ **Configure DVR Rules**: Schedule your favorite programs
 4. ✅ **Test Playback**: Verify everything works on your devices
 5. ✅ **Set Up Backups**: Configure automatic backups
-6. ✅ **Customize**: Personalize your uHomeNest experience
+6. ✅ **Customize**: Personalize your HomeNook experience
 
 ## Advanced Topics
 
@@ -626,7 +626,7 @@ Now that you've completed the first time launch:
 <!-- Custom thin UI template -->
 <div class="custom-thin-ui">
     <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-2xl font-bold">My uHomeNest</h1>
+        <h1 class="text-2xl font-bold">My HomeNook</h1>
     </header>
     <main class="p-4">
         <iframe src="/api/runtime/thin/automation" class="w-full h-screen"></iframe>
@@ -677,7 +677,7 @@ plugins:
 
 ## Conclusion
 
-Congratulations! You've successfully completed the first time launch of uHomeNest. This guide has walked you through:
+Congratulations! You've successfully completed the first time launch of HomeNook. This guide has walked you through:
 
 - **Initial setup** and configuration
 - **Exploring new features** like DVR and job queue
@@ -686,13 +686,13 @@ Congratulations! You've successfully completed the first time launch of uHomeNes
 - **Security and backup** best practices
 - **Integrating with your network**
 
-Your uHomeNest system is now ready to serve as the central hub for your household media and automation needs. As you become more familiar with the system, explore the advanced features and customization options to tailor uHomeNest to your specific requirements.
+Your HomeNook system is now ready to serve as the central hub for your household media and automation needs. As you become more familiar with the system, explore the advanced features and customization options to tailor HomeNook to your specific requirements.
 
 **Remember**:
 - Check for updates regularly
 - Review the [documentation](docs/README.md) for advanced features
-- Join the [community](https://github.com/fredporter/uHomeNest/discussions) for tips and support
-- Provide [feedback](https://github.com/fredporter/uHomeNest/issues) to help improve uHomeNest
+- Join the [community](https://github.com/fredporter/HomeNook/discussions) for tips and support
+- Provide [feedback](https://github.com/fredporter/HomeNook/issues) to help improve HomeNook
 
 Enjoy your new household media system! 🎬🎵📺
 

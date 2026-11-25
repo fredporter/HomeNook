@@ -1,7 +1,7 @@
 # uHOME Install Lanes
 
 This document is the operator-facing Phase 4 reference for the two supported
-example install lanes in **uHomeNest**.
+example install lanes in **HomeNook**.
 
 ## Lane 1: Standalone Linux Host
 

@@ -1,5 +1,5 @@
 """
-Home Assistant REST API client for uHomeNest automation.
+Home Assistant REST API client for HomeNook automation.
 """
 
 import json

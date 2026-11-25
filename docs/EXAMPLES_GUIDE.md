@@ -1,16 +1,16 @@
 ---
-title: "uHomeNest Examples Guide"
+title: "HomeNook Examples Guide"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [guide, ucode3]
-description: "Comprehensive collection of examples demonstrating uHomeNest v1.0.1 features, integration patterns, and best practices."
+description: "Comprehensive collection of examples demonstrating HomeNook v1.0.1 features, integration patterns, and best practices."
 ---
-# uHomeNest Examples Guide
+# HomeNook Examples Guide
 
 ## 📚 Overview
 
-Comprehensive collection of examples demonstrating uHomeNest v1.0.1 features, integration patterns, and best practices.
+Comprehensive collection of examples demonstrating HomeNook v1.0.1 features, integration patterns, and best practices.
 
 ## 🎬 Scheduled Service Jobs
 
@@ -1235,5 +1235,5 @@ describe('MediaScanner Performance', () => {
 ---
 
 *Last Updated: 2026-04-29*
-*uHomeNest v1.0.1*
+*HomeNook v1.0.1*
 *Examples Guide: Comprehensive*

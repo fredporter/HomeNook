@@ -3,7 +3,7 @@ title: "uHOME Settings Template"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
-tags: [homenest, ucode3, uhome]
+tags: [homenook, ucode3, uhome]
 description: "- presentation: thin-gui-or-steam-console"
 ---
 # uHOME Settings Template

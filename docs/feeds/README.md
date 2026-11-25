@@ -1,12 +1,12 @@
 ---
-title: "uHomeNest Feed/Spool Specification"
+title: "HomeNook Feed/Spool Specification"
 status: draft
 last_updated: 2026-05-20T22:32:12+10:00
 category: readme
 tags: [feed, streaming, ucode3]
 description: "**Document ID:** UDN-FEEDSPOOL-001"
 ---
-# uHomeNest Feed/Spool Specification
+# HomeNook Feed/Spool Specification
 
 **Document ID:** UDN-FEEDSPOOL-001  
 **Status:** Active  
@@ -19,7 +19,7 @@ description: "**Document ID:** UDN-FEEDSPOOL-001"
 
 ## Executive Summary
 
-The **Feed/Spool Specification** defines a **unified data format** for all streaming, scheduled, and reactive content in uHomeNest. One format handles:
+The **Feed/Spool Specification** defines a **unified data format** for all streaming, scheduled, and reactive content in HomeNook. One format handles:
 
 - **Feeds** — Incoming data streams (RSS, JSON, MCP resources, EPG, media catalogs)
 - **Spools** — Outgoing/scheduled bundles (playlists, automation sequences, OBF sheets)
@@ -240,7 +240,7 @@ protocol:
   type: http
   endpoint: https://api.example.com
   headers:
-    User-Agent: "uHomeNest/1.0"
+    User-Agent: "HomeNook/1.0"
   timeout: 30
   retry:
     max_attempts: 3
@@ -970,7 +970,7 @@ automation:
 - [uHome Media Player](./UDN-MEDIA-001.md)
 - [HA Deep Integration](./UDN-HA-EMBED-001.md)
 - [Matter+HA Integration](./UDN-INTEGRATION-001.md)
-- [uHomeNest v1.0.0 Dev Brief](./UHOMENEST-V1-DEV-BRIEF.md)
+- [HomeNook v1.0.0 Dev Brief](./HOMENOOK-V1-DEV-BRIEF.md)
 
 ***
 

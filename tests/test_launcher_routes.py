@@ -7,7 +7,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from uhome_server.app import create_app
-from uhome_server.config import bootstrap_runtime, get_homenest_state_dir
+from uhome_server.config import bootstrap_runtime, get_homenook_state_dir
 
 
 @pytest.fixture
@@ -139,7 +139,7 @@ def test_launcher_session_persistence(launcher_api_client, launcher_test_workspa
     start_data = start_response.json()
 
     # Verify state file was created under UDOS_HOME
-    state_path = get_homenest_state_dir() / "presentation" / "presentation.json"
+    state_path = get_homenook_state_dir() / "presentation" / "presentation.json"
     assert state_path.exists()
 
     # Verify state file content

@@ -1,6 +1,6 @@
 # Pathway
 
-**uHomeNest** (**v3.9.x**) carries the **uHOME product** pathway: **media + controller-first
+**HomeNook** (**v3.9.x**) carries the **uHOME product** pathway: **media + controller-first
 kiosk + decentralised LAN server + Steam/Linux gaming + curated library**, with
 **Home Assistant** surfaced through the **thin UX** (`matter/` owns bridge
 contracts).

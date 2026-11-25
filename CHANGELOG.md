@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Set the package version to `0.1.0` and expose it through `uhome --version`
+  for the installer health check.
 - Release hardening: the thin UI templates move into the package
   (`uhome_server/templates/thin`) and are resolved through `get_template_dir()`,
   so an installed wheel renders the thin pages instead of raising
@@ -71,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added persistent media indexing with incremental change stats (`added`, `changed`, `removed`) and watcher-driven index refresh loop.
 - Completed Round 2 API data wiring: media browse/search now read persisted index data; started Round 3 by adding playback target/media request contracts on `/api/playback/start` and `/api/playback/stop`.
 - Added Round 3 now-playing session state so playback start/stop mutates shared state exposed via `GET /api/now-playing`.
-- **Naming:** completed **uHomeNest v3.9** positioning across README, `docs/MONOREPO.md`, pathway docs, wiki, scripts/learning READMEs, integration guide paths, `pyproject.toml` descriptions, and contributor briefs. **Wire / JSON** `policy_owner` values such as `uHOME-server` are unchanged (see MONOREPO naming table).
+- **Naming:** completed **HomeNook v3.9** positioning across README, `docs/MONOREPO.md`, pathway docs, wiki, scripts/learning READMEs, integration guide paths, `pyproject.toml` descriptions, and contributor briefs. **Wire / JSON** `policy_owner` values such as `uHOME-server` are unchanged (see MONOREPO naming table).
 
 ## [3.9.2] — 2026-04-10
 
@@ -91,11 +93,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.9.0] — 2026-04-10
 
-Monorepo **uHomeNest** product release **3.9.0**: canonical **`VERSION`**, consolidated universal-dev and v4 roadmap docs, USXD interchange scaffold for uHOME thin/kiosk handoff, and compost guidance for legacy material.
+Monorepo **HomeNook** product release **3.9.0**: canonical **`VERSION`**, consolidated universal-dev and v4 roadmap docs, USXD interchange scaffold for uHOME thin/kiosk handoff, and compost guidance for legacy material.
 
 ### Added
 - Root **`VERSION`** file (**3.9.0**).
-- **`dev/UNIVERSAL-DEV.md`** — UDN map for uHomeNest + UniversalSurfaceXD, workspace files, commands.
+- **`dev/UNIVERSAL-DEV.md`** — UDN map for HomeNook + UniversalSurfaceXD, workspace files, commands.
 - **`dev/COMPOST-LEGACY.md`** — when and how to use **`.compost/`** for superseded local copies.
 - **`docs/ROADMAP-V4.md`** — uHOME v4 narrative vs USXD v4 lab line (cross-links).
 - `docs/thin-ui-feature-completion.md` — living checklist for thin UI lanes and product backlog.

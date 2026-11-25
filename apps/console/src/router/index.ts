@@ -1,5 +1,5 @@
 /**
- * HomeNest Console — Vue Router
+ * HomeNook Console — Vue Router
  * 10-foot controller-first surface routes
  */
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'launcher',
     component: () => import('@/surfaces/LauncherSurface.vue'),
-    meta: { title: 'HomeNest', icon: 'home' },
+    meta: { title: 'HomeNook', icon: 'home' },
   },
   {
     path: '/media',
@@ -55,5 +55,5 @@ export const router = createRouter({
 })
 
 router.afterEach((to) => {
-  document.title = to.meta.title ? `${to.meta.title} — HomeNest` : 'HomeNest'
+  document.title = to.meta.title ? `${to.meta.title} — HomeNook` : 'HomeNook'
 })

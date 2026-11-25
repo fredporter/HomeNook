@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   HomeNest Console — App Entry Point (React, Bootstrap + GitHub Dark)
+   HomeNook Console — App Entry Point (React, Bootstrap + GitHub Dark)
    ═══════════════════════════════════════════════════════════════════ */
 import React from 'react'
 import ReactDOM from 'react-dom/client'

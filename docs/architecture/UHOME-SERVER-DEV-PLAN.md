@@ -3,7 +3,7 @@ title: "uHOME Server — development entry (v4)"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: architecture
-tags: [architecture, homenest, ucode3, uhome]
+tags: [architecture, homenook, ucode3, uhome]
 description: "Phase-based planning documents and binder-era **`@dev/`** trees were **removed from Git** in favour of **v4** entry p..."
 ---
 # uHOME Server — development entry (v4)
@@ -20,4 +20,4 @@ Phase-based planning documents and binder-era **`@dev/`** trees were **removed f
 ## Workflow
 
 - **[`../../TASKS.md`](../../TASKS.md)** — Task Forge backlog
-- **[`../../dev/UNIVERSAL-DEV.md`](../../dev/UNIVERSAL-DEV.md)** — uHomeNest + USXD
+- **[`../../dev/UNIVERSAL-DEV.md`](../../dev/UNIVERSAL-DEV.md)** — HomeNook + USXD

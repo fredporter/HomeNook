@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   HomeNest Console — GitHub Dark Theme (Bootstrap Overrides)
+   HomeNook Console — GitHub Dark Theme (Bootstrap Overrides)
    Device-ready: large fonts, big touch targets, 10-foot view optimized.
    ═══════════════════════════════════════════════════════════════════ */
 
@@ -45,7 +45,7 @@
   --gh-success: #3fb950;
   --gh-warning: #d29922;
 
-  /* HomeNest accent (blue) */
+  /* HomeNook accent (blue) */
   --hn-accent: #3A7BD5;
   --hn-accent-dim: #2E6BC4;
   --hn-accent-container: rgba(58, 123, 213, 0.15);
@@ -86,14 +86,14 @@ body {
 }
 
 /* ─── App Shell ─────────────────────────────────────────────────── */
-.homenest-app {
+.homenook-app {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
 /* ─── Sidebar ───────────────────────────────────────────────────── */
-.homenest-sidebar {
+.homenook-sidebar {
   display: flex;
   flex-direction: column;
   width: var(--hn-sidebar-width);
@@ -105,7 +105,7 @@ body {
   z-index: 10;
 }
 
-.homenest-sidebar.collapsed {
+.homenook-sidebar.collapsed {
   width: var(--hn-sidebar-collapsed-width);
 }
 
@@ -221,11 +221,11 @@ body {
   font-weight: 500;
 }
 
-.homenest-sidebar.collapsed .nav-item-label {
+.homenook-sidebar.collapsed .nav-item-label {
   display: none;
 }
 
-.homenest-sidebar.collapsed .nav-item {
+.homenook-sidebar.collapsed .nav-item {
   justify-content: center;
   padding: 12px 0;
 }
@@ -262,7 +262,7 @@ body {
 }
 
 /* ─── Main Content ──────────────────────────────────────────────── */
-.homenest-main {
+.homenook-main {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -908,7 +908,7 @@ body {
     --hn-sidebar-collapsed-width: 0;
   }
 
-  .homenest-sidebar {
+  .homenook-sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -918,7 +918,7 @@ body {
     transition: transform 200ms ease;
   }
 
-  .homenest-sidebar.collapsed {
+  .homenook-sidebar.collapsed {
     transform: translateX(-100%);
   }
 

@@ -52,7 +52,7 @@
       "sha256": "cc18da4832cdb9970f0e2c4a0ba54fee8bc56849b3e2c4cbb24db922b07e8af1"
     },
     {
-      "path": "HOMENEST_README.md",
+      "path": "HOMENOOK_README.md",
       "sha256": "81b485a238709f55a063d7cc9429a352d990500ae639dccb50fdf099a1fe8da6"
     },
     {
@@ -128,7 +128,7 @@
       "sha256": "c0766e1891e53530bb2038f98e3724d018ee4ad1592d84b420993f0f15eabe27"
     },
     {
-      "path": "docs/DEPLOYMENT-UHOMENEST.md",
+      "path": "docs/DEPLOYMENT-HOMENOOK.md",
       "sha256": "52e0f21ddb7f2f50c2ca8a2dcd6233df5ac57449730a54de1397548e32e714e1"
     },
     {
@@ -396,7 +396,7 @@
       "sha256": "6acb798a24391e25a23fd4b4e8bd6cd9746c2f841de82bbfab3bcc4b89235499"
     },
     {
-      "path": "docs/specs/HOMENEST_v1_SPEC.md",
+      "path": "docs/specs/HOMENOOK_v1_SPEC.md",
       "sha256": "f80996ef33f9d2d8f5272cfb7b0ca9847d3ba19f94ba534d0c460516f18d74de"
     },
     {
@@ -1356,11 +1356,11 @@
       "sha256": "3070bf6f471de44babaf5d4e9fdf950ca43a96b426a553ed7be4cb8835b1abe9"
     },
     {
-      "path": "skills/homenest-skill/README.md",
+      "path": "skills/homenook-skill/README.md",
       "sha256": "79f4dd83f0e200d7439ae3ed4d97a70f375314fc7b05d41fb45c70ada56d7997"
     },
     {
-      "path": "skills/homenest-skill/skill.yaml",
+      "path": "skills/homenook-skill/skill.yaml",
       "sha256": "a878ea49eede5b1793112f2420a6380729eddf1e365d828693f6eee1b0f58b1f"
     },
     {
@@ -1444,7 +1444,7 @@
       "sha256": "d7c71cb563e7b1f6756539e836c2fdce6f0be886cdb0245a0f687402300a823b"
     },
     {
-      "path": "surfaces/homenest/surface-definition.json",
+      "path": "surfaces/homenook/surface-definition.json",
       "sha256": "7af1294d8ba1622d0cc5446f3d746dfb4d82364e9809d38fc16c24cca927003a"
     },
     {
@@ -1520,47 +1520,47 @@
       "sha256": "7c9fd3b3b3d0c1476cbcd8b81d90ab267ab57c4df68afb9f6d2b460d42072e17"
     },
     {
-      "path": "tinshed/homenest-automation/Cargo.toml",
+      "path": "tinshed/homenook-automation/Cargo.toml",
       "sha256": "8c91ba3f973916e055ced603febb6e5c0d2237c18b7711c1ade5e1f6d984c725"
     },
     {
-      "path": "tinshed/homenest-debian/Cargo.toml",
+      "path": "tinshed/homenook-debian/Cargo.toml",
       "sha256": "a5a4740a66bf5bd9235baca1daa63be52595f73e33e7e60a8545d2a9658599f9"
     },
     {
-      "path": "tinshed/homenest-docs/Cargo.toml",
+      "path": "tinshed/homenook-docs/Cargo.toml",
       "sha256": "f92af9a59eab9919ed3d856e655fe631b86aa62f1e10a24c30016e24ad177a45"
     },
     {
-      "path": "tinshed/homenest-feed/Cargo.toml",
+      "path": "tinshed/homenook-feed/Cargo.toml",
       "sha256": "79db7d6916c8155cd6eadecd47e73656d3b845f08cf5348cfdcf3b114a304d83"
     },
     {
-      "path": "tinshed/homenest-flatpak/Cargo.toml",
+      "path": "tinshed/homenook-flatpak/Cargo.toml",
       "sha256": "6204967a211934c88e546aec5cd5b9126262209ef04204cc93bead1f558fb438"
     },
     {
-      "path": "tinshed/homenest-grid/Cargo.toml",
+      "path": "tinshed/homenook-grid/Cargo.toml",
       "sha256": "a3cffe9cc97150e9202096ba97aadaeeb1a233cbf78b63ce6c700ad4b0dad757"
     },
     {
-      "path": "tinshed/homenest-mcp/Cargo.toml",
+      "path": "tinshed/homenook-mcp/Cargo.toml",
       "sha256": "860cf9ab0164b98cfb292ea19a4d67bedfb2cf3824d834f4190a642b0df5aafc"
     },
     {
-      "path": "tinshed/homenest-media/Cargo.toml",
+      "path": "tinshed/homenook-media/Cargo.toml",
       "sha256": "bef54b23b6f16d746f680c674c411edd19c807b1e261bb3cc9bbec1a51e6951c"
     },
     {
-      "path": "tinshed/homenest-spec/Cargo.toml",
+      "path": "tinshed/homenook-spec/Cargo.toml",
       "sha256": "d9bef767b30f77ce41227a65a216e38d3e02203efebb3f6952554d074088fd2e"
     },
     {
-      "path": "tinshed/homenest-tv/Cargo.toml",
+      "path": "tinshed/homenook-tv/Cargo.toml",
       "sha256": "ffac9a74ce9c8faa4ee345df779a5e4c8fe0418230cfc070b34758ea08ca44d6"
     },
     {
-      "path": "tinshed/homenest-voice/Cargo.toml",
+      "path": "tinshed/homenook-voice/Cargo.toml",
       "sha256": "57125d020b32df3773b9bafe522e61debaf7d7fa744c2f64ed68d95cacb707fc"
     },
     {

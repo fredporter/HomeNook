@@ -6,7 +6,7 @@
   "type": "usxd-surface",
   "port": 5182,
   "routes": {
-    "dashboard": "/usx/homenest-dashboard",
+    "dashboard": "/usx/homenook-dashboard",
     "media": "/usx/media-browser",
     "automation": "/usx/automation-control"
   },

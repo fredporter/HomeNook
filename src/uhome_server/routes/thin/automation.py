@@ -1,5 +1,5 @@
 """
-Thin UI Automation routes for uHomeNest kiosk interface.
+Thin UI Automation routes for HomeNook kiosk interface.
 
 Provides automation status, job queue monitoring, and home control views.
 """

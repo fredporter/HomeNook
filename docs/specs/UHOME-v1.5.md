@@ -3,7 +3,7 @@ title: "uHOME v1.5 Canonical Spec"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: specification
-tags: [homenest, specification, ucode3, uhome]
+tags: [homenook, specification, ucode3, uhome]
 description: "Release baseline: v1.5 rebaseline"
 ---
 # uHOME v1.5 Canonical Spec

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   HomeNest Console — App Shell (React, Bootstrap + GitHub Dark)
+   HomeNook Console — App Shell (React, Bootstrap + GitHub Dark)
    Sidebar-driven layout for device-ready home media/automation control.
    ═══════════════════════════════════════════════════════════════════ */
 import React, { useEffect } from 'react'
@@ -30,7 +30,7 @@ const NAV_ITEMS = [
 export default function App() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { sidebarCollapsed, toggleSidebar, connectMcp, systemStatus, snackbar, dismissSnackbar } = useHomenestStore()
+  const { sidebarCollapsed, toggleSidebar, connectMcp, systemStatus, snackbar, dismissSnackbar } = useHomenookStore()
 
   useEffect(() => {
     connectMcp()
@@ -51,7 +51,7 @@ export default function App() {
             </svg>
             {!sidebarCollapsed && (
               <>
-                <span className="sidebar-brand-text">HomeNest</span>
+                <span className="sidebar-brand-text">HomeNook</span>
                 <span className="sidebar-brand-version">v{systemStatus.version}</span>
               </>
             )}

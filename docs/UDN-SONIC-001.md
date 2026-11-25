@@ -1,12 +1,12 @@
 ---
-title: "Sonic-Home-Express - Lite Packager Module for uHomeNest"
+title: "Sonic-Home-Express - Lite Packager Module for HomeNook"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [cli, sonic, ucode3]
 description: "- **Document ID:** `UDN-SONIC-001`"
 ---
-# Sonic-Home-Express - Lite Packager Module for uHomeNest
+# Sonic-Home-Express - Lite Packager Module for HomeNook
 
 - **Document ID:** `UDN-SONIC-001`
 - **Status:** Active
@@ -15,11 +15,11 @@ description: "- **Document ID:** `UDN-SONIC-001`"
 
 ## Objective
 
-Define `sonic-home-express` as a lightweight packager/installer/distribution helper for uHomeNest that works standalone now and can upgrade to full Sonic-family later.
+Define `sonic-home-express` as a lightweight packager/installer/distribution helper for HomeNook that works standalone now and can upgrade to full Sonic-family later.
 
 Core outcomes:
 
-- Package uHomeNest components into `.she` bundles
+- Package HomeNook components into `.she` bundles
 - Verify/sign manifests and payload checksums
 - Install from file, USB, or network channel with dry-run support
 - Serve LAN channels (`stable`, `beta`, `edge`) for updates
@@ -27,7 +27,7 @@ Core outcomes:
 ## Module placement (planned)
 
 ```text
-uHomeNest/
+HomeNook/
   sonic-home-express/
     cmd/{pack,install,serve}
     pkg/{bundle,manifest,handler,transport}

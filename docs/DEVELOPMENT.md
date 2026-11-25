@@ -1,4 +1,4 @@
-# HomeNest Development Guide
+# HomeNook Development Guide
 
 **Last updated:** 2026-07-08
 
@@ -77,7 +77,7 @@ The launcher picks them up automatically on next restart.
 ## Project Structure
 
 ```
-HomeNest/
+HomeNook/
 ├── apps/console/          Vue 3 console (10-foot UI)
 │   ├── src/
 │   │   ├── surfaces/      Screen-level components

@@ -3,7 +3,7 @@ description: "HomeNook — media playback, automation, TV/DVR control"
 version: "0.1.0"
 commands:
   - name: status
-    description: "Show HomeNest system status"
+    description: "Show HomeNook system status"
     script: "bin/udo-home status"
   - name: media
     description: "Media playback commands"

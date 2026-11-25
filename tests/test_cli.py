@@ -4,8 +4,11 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
+
+from uhome_server import __version__
 from uhome_server.cli import contracts_main, installer_main, launcher_main, main
-from uhome_server.config import get_homenest_state_dir
+from uhome_server.config import get_homenook_state_dir
 from uhome_server.installer.bundle import (
     BUNDLE_SCHEMA_VERSION,
     UHOMEBundleComponent,
@@ -13,6 +16,14 @@ from uhome_server.installer.bundle import (
     UHOMEHostProfileRef,
     write_bundle_manifest,
 )
+
+
+def test_main_reports_package_version(capsys):
+    with pytest.raises(SystemExit) as exit_info:
+        main(["--version"])
+
+    assert exit_info.value.code == 0
+    assert capsys.readouterr().out.strip() == __version__
 
 
 def _write_probe(path: Path) -> None:
@@ -73,7 +84,7 @@ def test_launcher_cli_writes_state(tmp_path, monkeypatch):
     monkeypatch.setenv("UDOS_HOME", str(tmp_path / "udos"))
     code = launcher_main(["--repo-root", str(tmp_path), "start", "--presentation", "thin-gui"])
     assert code == 0
-    state_path = get_homenest_state_dir() / "presentation" / "presentation.json"
+    state_path = get_homenook_state_dir() / "presentation" / "presentation.json"
     payload = json.loads(state_path.read_text(encoding="utf-8"))
     assert payload["active_presentation"] == "thin-gui"
 

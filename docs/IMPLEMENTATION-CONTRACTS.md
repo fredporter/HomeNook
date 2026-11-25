@@ -1,4 +1,4 @@
-# HomeNest implementation contracts
+# HomeNook implementation contracts
 
 Design baseline, 12 September 2026. Proposed paths/API names below are not
 installed services. Keep the current package scaffold until HN-01 selects and
@@ -8,14 +8,14 @@ verifies the canonical runtime. No extra IDE, agent or service trees are needed.
 
 | Component | Starting point / next responsibility | Ownership and lifecycle |
 |---|---|---|
-| Python API | `src/uhome_server`, compare `server/` before consolidation | HomeNest; unprivileged service, independent of uDOS/HA |
-| Living-room console | `apps/console` Vue candidate; compare root React remnants | HomeNest; compiled assets served with the artifact; no dev server in deployment |
-| Steam session adapter | Existing presentation intent + generated `steam -tenfoot` command | HomeNest adapter, Steam upstream process; interactive user session |
-| Media provider | Existing Jellyfin probe and playback queue | HomeNest adapter; Jellyfin owns catalog/streaming/transcoding |
-| Installer | `src/uhome_server/installer/` | App payload/migrations HomeNest; generic device application Sonic |
+| Python API | `src/uhome_server`, compare `server/` before consolidation | HomeNook; unprivileged service, independent of uDOS/HA |
+| Living-room console | `apps/console` Vue candidate; compare root React remnants | HomeNook; compiled assets served with the artifact; no dev server in deployment |
+| Steam session adapter | Existing presentation intent + generated `steam -tenfoot` command | HomeNook adapter, Steam upstream process; interactive user session |
+| Media provider | Existing Jellyfin probe and playback queue | HomeNook adapter; Jellyfin owns catalog/streaming/transcoding |
+| Installer | `src/uhome_server/installer/` | App payload/migrations HomeNook; generic device application Sonic |
 | HA/Matter | Existing `matter/`, HA gateways/routes/rules | Extract reviewed adapter behavior to separate repo; upstream owns home control |
 | Rust crates | Existing `rust-workspace/` | Retain only independently tested unique media functionality; no automatic rewrite |
-| Runtime state | Proposed `$UDOS_HOME/homenest` | HomeNest; explicit legacy migration, bounded logs/cache, removal preserves media |
+| Runtime state | Proposed `$UDOS_HOME/homenook` | HomeNook; explicit legacy migration, bounded logs/cache, removal preserves media |
 
 Before removal compare tests, imports, entrypoints and assets, not just identical
 filenames. Use EXTRACTION-INVENTORY-2026-09.json. Do not copy an entire runtime
@@ -23,7 +23,7 @@ into a new package and leave both active. Preserve provenance for adopted files.
 
 ## Media and Steam contracts
 
-HomeNest logical API namespace: `homenest/v1`; actual host prefix must follow
+HomeNook logical API namespace: `homenook/v1`; actual host prefix must follow
 uCore registration conventions when integrated. Standalone owns its endpoint.
 Operations: capabilities, provider health, library browse/search, playback
 request/status/stop, launcher request/status/stop. Validate IDs/arguments;
@@ -58,7 +58,7 @@ launch host Steam without an authenticated local adapter.
 
 ## Independence, state and security
 
-HomeNest must install/start with HA/uCore/uCode absent. Optional integrations
+HomeNook must install/start with HA/uCore/uCode absent. Optional integrations
 have their own enablement and failure states. No unconditional HA routes/imports
 in the selected media entrypoint. Standalone config stores local credentials
 with restricted permissions; connected mode references uCore secrets. Never
@@ -68,7 +68,7 @@ validate origins/session permissions and use upstream TLS appropriately.
 
 Migrate old `memory/` and competing JSON/SQLite state explicitly with backups,
 receipts and rollback. Media paths remain user-configured and external to the
-package. Uninstall stops only HomeNest services, unregisters its optional card,
+package. Uninstall stops only HomeNook services, unregisters its optional card,
 and retains media; it never stops HA or removes Matter fabric data.
 Measure API idle RAM/CPU, startup time, indexing I/O and playback load on the
 reference host before claiming minimum hardware. Budget logs/cache and expose
@@ -84,10 +84,10 @@ release pins. Manual installation precedes Sonic consumption of the same artifac
 A container can host qualified headless media services; it is not automatically
 suitable for Steam's desktop session. Custom Mint/ISO is a later Sonic recipe.
 
-Separate uihub cards: HomeNest for media/gaming; HA for entities/scenes. Reuse
+Separate uihub cards: HomeNook for media/gaming; HA for entities/scenes. Reuse
 uCode/GridCore rendering packages where needed, not copied application trees.
 uCore owns identity/secrets/module lifecycle. uFlow owns cross-product workflows;
-HA owns local home rules. A movie-night workflow observes HomeNest playback then
+HA owns local home rules. A movie-night workflow observes HomeNook playback then
 requests an HA scene and records partial failure without breaking playback.
 
 ## Release acceptance matrix
@@ -98,7 +98,7 @@ requests an HA scene and records partial failure without breaking playback.
 | Media | Browse and play lawful sample with audio; second LAN client; invalid token/outage/unsupported file behavior |
 | Steam | User-owned game launch, exit, focus return, restart and already-running behavior; separate Remote Play evidence |
 | State | UDOS_HOME override, backup/migrate, rollback and uninstall retain media |
-| Boundaries | HA unavailable/removed does not prevent media; HomeNest removed does not affect HA |
+| Boundaries | HA unavailable/removed does not prevent media; HomeNook removed does not affect HA |
 | Integration | Optional cards independent; authentication and outcome correlation; no duplicate retry |
 
 Mocks characterize contracts; a real Linux host/controller/display/audio and

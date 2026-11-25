@@ -1,17 +1,17 @@
 ---
-title: "uHomeNest → uHOME-matter handoff"
+title: "HomeNook → uHOME-matter handoff"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [iot, matter, ucode3]
 description: "This document closes the active v2 gap between the server runtime and the"
 ---
-# uHomeNest → uHOME-matter handoff
+# HomeNook → uHOME-matter handoff
 
 This document closes the active v2 gap between the server runtime and the
 Matter automation lane.
 
-## uHomeNest keeps
+## HomeNook keeps
 
 - host lifecycle and persistent execution
 - scheduling and service composition
@@ -31,4 +31,4 @@ If a change defines what a local automation target is, how it is mapped, or
 which adapter profile it uses, it belongs in `uHOME-matter`.
 
 If a change defines how the server starts, supervises, probes, or exposes that
-integration at runtime, it belongs in **uHomeNest** (`server/`).
+integration at runtime, it belongs in **HomeNook** (`server/`).

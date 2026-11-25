@@ -1,7 +1,7 @@
 {
-  "name": "uHomeNest + UniversalSurfaceXD",
+  "name": "HomeNook + UniversalSurfaceXD",
   "folders": [
-    { "name": "uHomeNest", "path": "." },
+    { "name": "HomeNook", "path": "." },
     { "name": "UniversalSurfaceXD", "path": "../Apps/UniversalSurfaceXD" }
   ],
   "settings": {

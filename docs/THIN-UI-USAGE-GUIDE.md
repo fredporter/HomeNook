@@ -1,22 +1,22 @@
 ---
-title: "uHomeNest Thin UI Usage Guide"
+title: "HomeNook Thin UI Usage Guide"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: guide
 tags: [guide, ucode3]
-description: "This guide provides comprehensive documentation for using the uHomeNest thin UI, including port information, API endp..."
+description: "This guide provides comprehensive documentation for using the HomeNook thin UI, including port information, API endp..."
 ---
-# uHomeNest Thin UI Usage Guide
+# HomeNook Thin UI Usage Guide
 
 **Version**: 1.0
 **Date**: 2024-04-17
 **Status**: Active
 
-This guide provides comprehensive documentation for using the uHomeNest thin UI, including port information, API endpoints, and usage examples.
+This guide provides comprehensive documentation for using the HomeNook thin UI, including port information, API endpoints, and usage examples.
 
 ## Overview
 
-The uHomeNest thin UI provides a lightweight, server-rendered interface for accessing household media, automation status, and documentation through simple HTTP endpoints. The thin UI is designed to work on various devices including tablets, TVs, and desktop browsers.
+The HomeNook thin UI provides a lightweight, server-rendered interface for accessing household media, automation status, and documentation through simple HTTP endpoints. The thin UI is designed to work on various devices including tablets, TVs, and desktop browsers.
 
 ## Base Configuration
 
@@ -25,7 +25,7 @@ The uHomeNest thin UI provides a lightweight, server-rendered interface for acce
 **Primary Port**: `8000`
 **Base URL**: `http://127.0.0.1:8000`
 
-The default port for uHomeNest is **8000**, as specified in the quickstart guide and server configuration. All thin UI endpoints are relative to this base URL.
+The default port for HomeNook is **8000**, as specified in the quickstart guide and server configuration. All thin UI endpoints are relative to this base URL.
 
 ### Configuration Options
 
@@ -278,7 +278,7 @@ For remote access, you may need to set up port forwarding on your router:
 
 ### LAN-Only Access
 
-By default, uHomeNest binds to `127.0.0.1` (localhost only). For LAN access:
+By default, HomeNook binds to `127.0.0.1` (localhost only). For LAN access:
 
 ```bash
 # Allow LAN access (behind firewall)
@@ -405,7 +405,7 @@ bash scripts/restart-uhome-server.sh
 3. **Clear cache**: `Ctrl+F5` or clear browser cache
 4. **Rebuild CSS**: `cd thin-prose-build && npm run build`
 
-## Integration with uHomeNest Ecosystem
+## Integration with HomeNook Ecosystem
 
 ### Dashboard Integration
 
@@ -452,14 +452,14 @@ bash scripts/restart-uhome-server.sh
 
 ### Roadmap Alignment
 
-These enhancements align with the uHomeNest v4 roadmap:
+These enhancements align with the HomeNook v4 roadmap:
 - **Q2 2024**: Documentation enhancements
 - **Q3 2024**: Client integration improvements
 - **Q4 2024**: Operational maturity features
 
 ## Conclusion
 
-This guide provides comprehensive documentation for using the uHomeNest thin UI, including:
+This guide provides comprehensive documentation for using the HomeNook thin UI, including:
 
 - **Port configuration** and management
 - **Endpoint documentation** with examples

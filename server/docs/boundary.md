@@ -1,4 +1,4 @@
-# uHomeNest — runtime boundary
+# HomeNook — runtime boundary
 
 ## Owns
 
@@ -22,7 +22,7 @@
 
 ## v2 Runtime Rule
 
-`uHomeNest` is the durable local runtime that remains available when Wizard
+`HomeNook` is the durable local runtime that remains available when Wizard
 is not open.
 
 It may:
@@ -35,7 +35,7 @@ It may:
 It should not become the owner of online assist policy or conscious workflow
 advancement semantics.
 
-`uHomeNest` should consume the shared handoff artifacts from:
+`HomeNook` should consume the shared handoff artifacts from:
 
 - `uDOS-core/contracts/automation-job-contract.json`
 - `uDOS-core/contracts/automation-result-contract.json`

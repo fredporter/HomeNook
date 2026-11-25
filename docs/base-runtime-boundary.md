@@ -1,14 +1,14 @@
 ---
-title: "uHomeNest — base runtime boundary"
+title: "HomeNook — base runtime boundary"
 status: draft
 last_updated: 2026-04-22T23:26:13+10:00
 category: documentation
 tags: [ucode3]
-description: "`uHomeNest` is the **runtime repo for the uHOME product**: media player,"
+description: "`HomeNook` is the **runtime repo for the uHOME product**: media player,"
 ---
-# uHomeNest — base runtime boundary
+# HomeNook — base runtime boundary
 
-`uHomeNest` is the **runtime repo for the uHOME product**: media player,
+`HomeNook` is the **runtime repo for the uHOME product**: media player,
 controller-first kiosk/thin UI, decentralised LAN server, Steam/Linux gaming
 surfaces, and **presentation** of home automation (fed by `uHOME-matter`). It is
 **not** the generic Sonic/Ventoy installer product—that stays in

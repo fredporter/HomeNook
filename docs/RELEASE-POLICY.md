@@ -164,14 +164,14 @@ Tagging runs `.github/workflows/release.yml`, which publishes the release and:
 4. attaches `dist/*` to the GitHub Release with `CHANGELOG.md` as the notes
 
 ```bash
-git tag -a v0.1.0 -m "uHomeNest v0.1.0"
+git tag -a v0.1.0 -m "HomeNook v0.1.0"
 git push origin v0.1.0
 ```
 
 Manual fallback when the release has to be created by hand:
 
 ```bash
-gh release create v0.1.0 --title "uHomeNest v0.1.0" --notes-file CHANGELOG.md dist/*
+gh release create v0.1.0 --title "HomeNook v0.1.0" --notes-file CHANGELOG.md dist/*
 ```
 
 ### 5. Distribution
