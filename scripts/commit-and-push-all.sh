@@ -74,26 +74,11 @@ commit_and_push "~/uDosGo/Connect" "Connect"
 commit_and_push "~/Code" "Code"
 commit_and_push "~/Vault" "Vault"
 
-# AgentDigitalOK repositories
-echo "Processing AgentDigitalOK Repositories..."
-echo "=========================================="
-commit_and_push "~/Code/Vendor/AgentDigitalOK/Hivemind" "Hivemind"
-
 # Applications
 echo "Processing Applications..."
 echo "=========================================="
 commit_and_push "~/Code/Apps/Marksmith" "Marksmith"
 commit_and_push "~/Code/Apps/McSnackbar" "McSnackbar"
-
-# Other vendor repositories
-echo "Processing Other Vendor Repositories..."
-echo "=========================================="
-commit_and_push "~/Code/Vendor/airpaint" "airpaint"
-commit_and_push "~/Code/Vendor/edit.tf" "edit.tf"
-commit_and_push "~/Code/Vendor/markdownify-mcp" "markdownify-mcp"
-commit_and_push "~/Code/Vendor/masquerain" "masquerain"
-commit_and_push "~/Code/Vendor/milkdown" "milkdown"
-commit_and_push "~/Code/Vendor/nextchat" "nextchat"
 
 echo "=========================================="
 echo "Commit and Push Complete"
