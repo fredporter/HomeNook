@@ -31,7 +31,8 @@ not current release instructions. No runtime code was removed in this planning p
 Retain now: Steam launch/return, Jellyfin media, controller navigation, LAN media
 clients, honest health, install/upgrade/uninstall, optional uihub media card.
 
-Extract/adapt: HA/Matter bridge and entity contracts to `udos-home-assistant`;
+Retain (D1 ratified 2026-11-27): HA/Matter bridge and entity contracts stay in
+HomeNook — see `docs/decisions/D1-HA-MATTER-OWNERSHIP.md`;
 generic provisioning to Sonic after characterization; identity/secrets/module
 lifecycle to uCore; durable cross-product automation to uFlow; terminal/font
 rendering to uCode; manuals/knowledge to uKnowledge.

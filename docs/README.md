@@ -8,7 +8,7 @@ Start with [Gemini handover](GEMINI-HANDOVER.md).
 - [Assessment](REVIVAL-ASSESSMENT-2026-09.md)
 - [Extraction inventory](EXTRACTION-INVENTORY-2026-09.json)
 - [Cleanup record](CLEANUP-HANDOVER-2026-09.json)
-- [Separate HA handover](../../udos-home-assistant/docs/GEMINI-HANDOVER.md)
+- [HA/Matter ownership decision](decisions/D1-HA-MATTER-OWNERSHIP.md)
 
 All other pre-revival guides/specifications describe historical attempts until
 explicitly adopted by these documents. Archived release/install commands are

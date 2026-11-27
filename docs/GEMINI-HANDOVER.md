@@ -19,7 +19,7 @@ repeat, with HA/uDOS absent. Then qualify a second LAN media client.
 - [Implementation contracts](IMPLEMENTATION-CONTRACTS.md).
 - [Revival plan](REVIVAL-PLAN-2026-09.md) and [ordered sprint](SPRINT-01-REVIVAL-2026-09.md).
 - [Assessment](REVIVAL-ASSESSMENT-2026-09.md) and [extraction inventory](EXTRACTION-INVENTORY-2026-09.json).
-- [Separate HA handover](../../udos-home-assistant/docs/GEMINI-HANDOVER.md).
+- [HA/Matter ownership decision](decisions/D1-HA-MATTER-OWNERSHIP.md) and the in-repo gateway ([notes](home-assistant/README.md)).
 - [Sonic handover](../../SonicScrewdriver/docs/GEMINI-HANDOVER.md).
 
 ## Exact starting state
